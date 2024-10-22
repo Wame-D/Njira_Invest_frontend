@@ -1,6 +1,6 @@
 
 .header {
-background-color: white;
+background-color: rgba(7, 28, 122, 0.7);
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -13,19 +13,19 @@ background-color: white;
   padding-top: 1vw;
   padding-bottom: 1vw;
   z-index: 1000;
-  color: rgba(3, 3, 90, 1);
+  color: rgb(241, 241, 241);
 }
 
 @font-face {
   font-family: 'CustomFont';
-  src: url('/1Robotech Regular.ttf') format('truetype');
+  src: url('../fonts/1Robotech Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MontserratAlternates-Light';
-  src: url('/MontserratAlternates-Medium.otf') format('opentype');
+  src: url('../fonts/MontserratAlternates-Medium.otf') format('opentype');
 
 }
 
@@ -34,7 +34,7 @@ background-color: white;
   position: absolute;
   left: 1rem;
   margin-top: 3px;
-  color:blue;
+  color:rgb(240, 240, 240);
 }
 
 .in-header2 {
@@ -45,7 +45,7 @@ background-color: white;
 
 
 .links {
-  color: blue;
+  color: rgb(224, 224, 224);
   margin-left: 2.5em;
   display: flex, inline-block;
   font-weight: bold;

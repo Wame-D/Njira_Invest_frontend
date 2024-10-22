@@ -23,8 +23,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
       <div
         style={{
           cursor: 'pointer',
-          padding: '10px',
-          borderRadius: '5px',
+          padding: '5px',
         }}
         onClick={toggleAnswer}
       >
@@ -44,16 +43,16 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
 export default function FAQPage() {
   const faqData: { question: string; answer: string }[] = [
     {
-      question: 'What is Lumina?',
-      answer: 'We are a mental health platform dedicated to providing resources, support, and tools to help users improve their mental well-being.',
+      question: "What is algorithmic trading?",
+      answer: "Algorithmic trading involves using computer algorithms to automatically execute trades based on predefined criteria. This method allows for faster and more efficient trading without the need for manual intervention",
     },
     {
-      question: 'How do I create an account?',
-      answer: 'Click the "Sign Up" button on the homepage and fill in your details to create an account.',
+      question: 'How does your platform work?',
+      answer: 'Our platform connects to various forex markets and uses advanced algorithms to analyze market data, identify trading opportunities, and execute trades on your behalf. Users can monitor their accounts and track performance in real time.',
     },
     {
-      question: 'Is my personal information safe?',
-      answer: 'We prioritize your privacy and use industry-standard encryption to protect your data. Please see our Privacy Policy for more details.',
+      question: 'Do I need to have prior trading experience to use your platform?',
+      answer: 'No, prior trading experience is not required. Our platform is designed for both beginners and experienced traders. We provide user-friendly tools and resources to help you understand the trading process.',
     },
   ];
 
@@ -62,7 +61,7 @@ export default function FAQPage() {
       <div className="items-center flex flex-col justify-items-center w-full faqpage pt-12 p-8">
         <h2 className="text-black opacity-80">FAQ (Frequently Asked Questions)</h2>
         <p className="text-m text-black opacity-65 mt-2 mb-12">
-          Find answers to the most common questions about our platform, features, and services. From account management to privacy, we've got you covered.
+          Find answers to the most common questions about our platform, features, and services.
         </p>
         {faqData.map((faq, index) => (
           <FAQItem key={index} question={faq.question} answer={faq.answer} />

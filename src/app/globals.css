@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +24,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+} */
+
+body {
+  width: 100%;
+  height: fit-content;
 }

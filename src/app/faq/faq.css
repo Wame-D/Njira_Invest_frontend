@@ -1,0 +1,17 @@
+.faqpage{
+    min-height: 50vh;
+    max-height: fit-content;
+    background-color: aliceblue;
+}
+
+.faqpage h2{
+    font-size: 30px;
+}
+
+.faq-components{
+    width: 80%;
+}
+
+.faq-components h3{
+    font-size: 20px;
+}

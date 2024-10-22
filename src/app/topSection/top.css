@@ -1,0 +1,82 @@
+.topsection {
+    min-height: 60vh;
+    background-image: url(https://s3.tradingview.com/userpics/8931762-Hd8a_orig.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.inner-div {
+    min-height: 60vh;
+    background: linear-gradient(to right, rgba(1, 1, 194, 0.5), rgba(1, 1, 194, 0.3));
+    position: relative;
+}
+
+.text-div {
+    width: 40%;
+    position: absolute;
+    left: 10rem;
+    /* background-color: blue; */
+}
+
+.text-div h1 {
+    color: white;
+    font-size: 55px;
+}
+
+.inside-utton {
+    background-color: rgb(14, 2, 68);
+    width: 12rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.inside-utton:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(14, 2, 68);
+
+}
+
+.links-in-top {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.overlay {
+    position: fixed;
+    top: 10rem;
+    right: 25vw;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(238, 236, 236, 0.5);   
+    width: fit-content;
+    max-height: fit-content;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.close:hover {
+    color: #09b7ce;
+}

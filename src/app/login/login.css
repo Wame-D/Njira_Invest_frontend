@@ -1,0 +1,64 @@
+.loginsection{
+    width: 50vw;
+    border-radius: 3rem;
+    /* background-image: url(https://avatars.mds.yandex.net/i?id=f5bdb3b50623668922973b9066fed14883523113-5221370-images-thumbs&n=13);
+    background-size: cover; */
+
+}
+
+.insidelogin{
+    min-height: 50vh ;
+    /* background: linear-gradient(to right, rgba(1, 1, 194, 0.4), rgba(1, 1, 194, 0.2)); */
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.firstdiv{
+    width: 50%;
+    height: 100%;
+    background-image: url(https://frankfurt.apollo.olxcdn.com/v1/files/bkveetk1q4ze2-KZ/image;s=1000x700);
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    
+}
+
+.contentdiv{
+    background: linear-gradient(to right, rgba(1, 1, 168, 0.7), rgba(1, 1, 194, 0.3));
+}
+
+.contentdiv h1{
+    font-size: 40px;
+}
+
+.seconddiv{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background-color: white;
+}
+
+#in-form-head{
+    font-size: 40px;
+
+}
+
+.aplyf{
+    width: 80%;
+    height: 4rem;
+    border-radius: 1rem;
+    outline: none;
+    padding-left: 2rem;
+    border: 2px solid rgba(14, 2, 68,0.5);
+}
+
+.aplyfs{
+    width: 80%;
+    height: 4rem;
+    border-radius: 1rem;
+    outline: none;
+    background-color:rgba(14, 2, 68,1) ;
+    color: white;
+}

@@ -1,0 +1,26 @@
+.servicesdive{
+    height: fit-content;
+    flex-direction: row;
+}
+
+.servicescards{
+    height: 20rem;
+    width: 20rem;
+    box-shadow: 2px 2px 3px 0px rgb(148, 148, 148);
+    position: relative;
+    margin-right: 2rem;
+}
+
+.servicescards h1{
+    font-size: 45px;
+}
+
+.servicescards a{
+    color: blue;
+    position: absolute;
+    bottom: 1rem;
+}
+
+.servicescards a:hover{
+    color: rgb(73, 73, 73);
+}

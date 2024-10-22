@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
-import Image from 'next/image';
 
 export default function Header() {
   const [showLinks, setShowLinks] = useState(false);

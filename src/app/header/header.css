@@ -16,19 +16,6 @@ background-color: rgba(7, 28, 122, 0.7);
   color: rgb(241, 241, 241);
 }
 
-@font-face {
-  font-family: 'CustomFont';
-  src: url('../fonts/1Robotech Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'MontserratAlternates-Light';
-  src: url('../fonts/MontserratAlternates-Medium.otf') format('opentype');
-
-}
-
 .logo {
   font-family: 'CustomFont', sans-serif;
   position: absolute;

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-// @ts-ignore
+
 import DerivAPIBasic from '@deriv/deriv-api/dist/DerivAPIBasic';
 import "./dash.css";
 import Header from '../header/page';

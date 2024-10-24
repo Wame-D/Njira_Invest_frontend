@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <div className='header'>
-      <h1 className='logo'>LOGO</h1>
+      <h1 className='logo'>Auto-FX</h1>
       <div className={`menu-icon ${showLinks ? 'change' : ''}`} onClick={toggleLinks}>
         <span id='menu'>
           <div className="bar bar1"></div>

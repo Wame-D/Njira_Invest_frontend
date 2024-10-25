@@ -178,7 +178,8 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
     ];
 
     if (isConnected && accounts.length > 0) {
-      accounts.forEach(account => authorizeUser(account.token));
+      // accounts.forEach(account => authorizeUser(account.token));
+      authorizeUser(accounts[0].token);
     }
 
     // Cleanup function

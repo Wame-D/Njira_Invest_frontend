@@ -63,7 +63,7 @@ export default function Login() {
                                     </select>
                                     <button className='aplyfs mt-2' onClick={() => {
                                         if (selectedBroker === "") {
-                                            window.location.href = 'https://oauth.deriv.com/oauth2/authorize?app_id=64953'; // Redirect to Deriv site
+                                            window.location.href = 'https://oauth.deriv.com/oauth2/authorize?app_id=65102'; // Redirect to Deriv site
                                         }
                                     }}>
                                         <p>Next</p>

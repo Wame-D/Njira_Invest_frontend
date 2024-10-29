@@ -1,35 +1,37 @@
 .topsection {
-    min-height: 60vh;
+    min-height: 70vh;
     max-height: fit-content;
-    background-image: url(https://s3.tradingview.com/userpics/8931762-Hd8a_orig.png);
+    background-image: url(https://s.yimg.com/ny/api/res/1.2/iH2Xw1qy.eA4dswgC7aL_Q--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzQ-/https://s.yimg.com/hd/cp-video-transcode/prod/2021-05/14/609ec968ae808b0c59e015eb/609ec968ae808b0c59e015ec_o_U_v2.jpg);
     background-position: center;
     background-size: cover;
 }
 
 .inner-div {
-    min-height: 60vh;
+    min-height: 70vh;
     max-height: fit-content;
-    background: linear-gradient(to right, rgba(1, 1, 194, 0.5), rgba(1, 1, 194, 0.4), rgba(1, 1, 194, 0.3));
+   background-color: rgba(12, 38, 61,0.9);
     position: relative;
+    margin-top: 6rem;
 }
 
 .text-div {
     width: 40%;
-    position: absolute;
-    left: 10rem;
-    /* background-color: blue; */
 }
 
 .text-div h1 {
     color: white;
     font-size: 55px;
+    font-weight: bold;
+}
+
+.automated{
+    color: #0ba2da ;
 }
 
 .inside-utton {
-    background-color: rgb(112, 1, 47);
-    width: 12rem;
-    height: 2.5rem;
-    border-radius: 1rem;
+    background-color: #0ba2da;
+    width: 18rem;
+    height: 3.5rem;
     align-items: center;
     justify-content: center;
     color: white;

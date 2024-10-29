@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <div className='header'>
-      <h1 className='logo'>Auto-FX</h1>
+      <h1 className='logo'>FOREX <strong className='trading'>TRADING</strong></h1>
       <div className={`menu-icon ${showLinks ? 'change' : ''}`} onClick={toggleLinks}>
         <span id='menu'>
           <div className="bar bar1"></div>
@@ -43,11 +43,11 @@ export default function Header() {
         </div>
       )}
       <div className='nav-links'>
-        <a className="links" href="../">Home  </a>
-        <a className="links" href="/aboutus">About Us</a>
-      </div>
-      <div className='about-link in-header2'>
-        <a className="about-li" href="/Contact">Get in Touch</a>
+        <a className="links" href="../">HOME  &gt;</a>
+        <a className="links" href="/aboutus">ABOUT &gt;</a>
+        <a className="links" href="/aboutus">PLARTFORM &gt;</a>
+        <a className="links" href="/aboutus">TRADING &gt;</a>
+        <a className="links" href="/aboutus">CONTACT US &gt;</a>
       </div>
     </div>
   );

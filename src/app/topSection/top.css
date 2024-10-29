@@ -27,6 +27,20 @@
 .automated{
     color: #0ba2da ;
 }
+.top-links{
+flex-direction: row;
+justify-content: space-between;
+}
+.inside-utton2 {
+    background-color: rgb(226, 124, 7);
+    width: 18rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-left: 1rem;
+}
+
 
 .inside-utton {
     background-color: #0ba2da;

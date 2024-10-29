@@ -21,10 +21,14 @@ export default function TopSection() {
                         <h1 className='text-center'>TRADE FOREX WITH <strong className='automated'>AUTOMATED</strong> PRECISION</h1>
                         <p className='text-m text-white opacity-90 text-center'>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
 
-                        <div className='w-fit h-fit flex flex-row mt-8  inside-utton  '>
-                            <button className="links-in-top flex flex row  justify-items-center items-center " onClick={openLogin}>
-                                Get Started  &gt;
+                        <div className='w-fit h-fit flex  mt-20  top-links  '>
+                            <button className="links-in-top flex flex row  justify-items-center items-center inside-utton " onClick={openLogin}>
+                                Start Trading  &gt;
                             </button>
+
+                            <a className="links-in-top flex flex row  justify-items-center items-center inside-utton2 " href='/#how-it-work'>
+                                How it Works  &gt;
+                            </a>
                         </div>
 
                     </div>

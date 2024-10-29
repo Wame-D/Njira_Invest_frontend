@@ -3,6 +3,10 @@
    font-weight: bold;
 }
 
+.what-we-offer{
+    font-size: 30px !important;
+}
+
 .servicesdive1{
     height: fit-content;
     flex-direction: row;

@@ -10,12 +10,12 @@
 .inside-how {
     background-color: rgba(12, 38, 61, 0.9);
     min-height: 50vh;
-    /* flex-direction: row; */
 }
 
 #how-it-work-t {
     color: white;
     font-size: 30px;
+    font-weight: bold;
 }
 
 .body-div {
@@ -34,7 +34,6 @@
 .number-div {
     width: 5rem;
     height: 3rem;
-    /* border-radius: 50%; */
 }
 
 .number-div h2 {

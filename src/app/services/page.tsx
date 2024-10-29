@@ -11,7 +11,7 @@ export default function Services() {
     return (
         <>
             <div className=" items-center flex flex-col justify-center pt-20 h-fit mb-20 w-full  servicesdive">
-                <h2>WHAT WE OFFER</h2>
+                <h2 className="what-we-offer">WHAT WE OFFER</h2>
                 <div className="items-center flex justify-center servicesdive1">
                     <div className="flex flex-col p-4 m-4 servicescards">
                         <h1> <AiOutlineRobot size={50} /></h1>

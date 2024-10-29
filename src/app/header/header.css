@@ -12,7 +12,7 @@
   padding-top: 1vw;
   padding-bottom: 1vw;
   z-index: 1000;
-  color: rgb(17, 17, 17);
+border-bottom: 0.5px solid rgba(12, 38, 61, 0.9);
 }
 
 .logo {
@@ -20,7 +20,7 @@
   position: absolute;
   left: 10rem;
   margin-top: 3px;
-  color: rgb(3, 46, 187);
+  color: rgba(12, 38, 61, 1);
   font-size: 20px;
 }
 

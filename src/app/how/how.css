@@ -1,0 +1,80 @@
+.how-it-works {
+    background-image: url(https://i.pinimg.com/originals/b3/6b/8c/b36b8cfdf3d9016e2da450e2eb43ed74.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    min-height: 50vh;
+    max-height: fit-content;
+}
+
+.inside-how {
+    background-color: rgba(12, 38, 61, 0.9);
+    min-height: 50vh;
+    /* flex-direction: row; */
+}
+
+#how-it-work-t {
+    color: white;
+    font-size: 30px;
+}
+
+.body-div {
+    width: 80%;
+    height: 20rem;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cards {
+    width: 40%;
+    height: 100%;
+    align-items: stretch;
+}
+
+.number-div {
+    width: 5rem;
+    height: 3rem;
+    /* border-radius: 50%; */
+}
+
+.number-div h2 {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.titles-in-how{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+.number1{
+    background-color: rgb(0, 135, 253);
+}
+.number2{
+    background-color: rgb(226, 124, 7);
+}
+
+.number3{
+    background-color: rgb(226, 58, 7);
+}
+
+.number4{
+    background-color: rgb(3, 179, 27);
+}
+
+.number1-div{
+    border-top: 0.5px solid rgb(0, 135, 253);
+}
+
+.number2-div{
+    border-top: 0.5px solid rgb(226, 124, 7);
+}
+
+.number3-div{
+    border-top: 0.5px solid rgb(226, 58, 7);
+}
+
+.number4-div{
+    border-top: 0.5px solid rgb(3, 179, 27);
+}

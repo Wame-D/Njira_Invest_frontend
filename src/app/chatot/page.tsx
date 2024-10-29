@@ -3,6 +3,7 @@ import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './ai.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { MdOutlineSmartToy } from 'react-icons/md';
 
 export interface Part {
     text: string;
@@ -195,10 +196,12 @@ const AiPage: React.FC = () => {
 
     return (
         <div className='aibody'>
+             <h2 id='chatname'>Chatbot</h2>
+             <h3 className='chatboticon'><MdOutlineSmartToy /></h3>
+             <hr id='hrqw'></hr>
             <div className='chatinside'>
                 <div className='outputText '>
-                    <h2 id='chatname'>Xhed ai</h2>
-                    <hr id='hrqw'></hr>
+                   
                     <div className='mainanswer'>
                         <div id='cover'>
                             <div id='cover2'>

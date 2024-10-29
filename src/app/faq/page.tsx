@@ -72,22 +72,6 @@ export default function FAQPage() {
     {
         question: "Can I stop the automated trading at any time?",
         answer: "Yes, you can pause or stop automated trading at any time through your account dashboard. Your settings will be saved for when you wish to resume.",
-    },
-    {
-        question: "What are the costs associated with using the platform?",
-        answer: "We offer a monthly subscription with no additional fees per trade. Please see our pricing section for details on our subscription options.",
-    },
-    {
-        question: "Is there a demo mode available?",
-        answer: "Yes, we offer a demo mode where you can test the platform’s features without risking real money. It’s an excellent way to familiarize yourself with our system.",
-    },
-    {
-        question: "How can I monitor my trades and account performance?",
-        answer: "You can view real-time updates on your trades, account balance, and overall performance from your dashboard 24/7.",
-    },
-    {
-        question: "What if I need help with setup or have questions?",
-        answer: "Our support team is available 24/7 to assist you with setup and answer any questions. You can reach us through live chat or email for quick support.",
     }
 ];
 

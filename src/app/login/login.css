@@ -1,16 +1,17 @@
 .loginsection {
     width: 50vw;
     border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 
 .insidelogin {
     min-height: 50vh;
-    /* background: linear-gradient(to right, rgba(1, 1, 194, 0.4), rgba(1, 1, 194, 0.2)); */
-    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
+    justify-content: space-between;
 }
 
 .firstdiv {
@@ -18,13 +19,12 @@
     height: 100%;
     background-image: url(https://s3.tradingview.com/userpics/12465059-3uZm_orig.png);
     background-size: cover;
-    position: absolute;
-    left: 0;
-
+    border: 0.05px solid rgba(255, 255, 255,0.3);
 }
 
 .contentdiv {
-    background: linear-gradient(to top, rgba(1, 1, 116, 0.7), rgba(1, 1, 155, 0.6));
+    background-color: rgba(12, 38, 61, 0.9);
+    padding: 2px;
 }
 
 .contentdiv h1 {
@@ -34,8 +34,6 @@
 .seconddiv {
     width: 50%;
     height: 100%;
-    position: absolute;
-    right: 0;
     background-color: white;
 }
 
@@ -49,7 +47,7 @@
     border-radius: 1rem;
     outline: none;
     padding-left: 2rem;
-    border: 2px solid rgba(14, 2, 68, 0.5);
+    border: 2px solid rgba(12, 38, 61, 0.9);
 }
 
 .aplyfs {
@@ -57,7 +55,7 @@
     height: 4rem;
     border-radius: 1rem;
     outline: none;
-    background-color: rgba(14, 2, 68, 1);
+    background-color: rgba(12, 38, 61, 0.9);
     color: white;
 }
 
@@ -65,13 +63,22 @@
     #in-form-head {
         font-size: 25px;
     }
+
+    .loginsection {
+        width: fit-content;
+        height: fit-content;
+    }
+
     .insidelogin {
         min-height: 80vh;
         width: 85vw;
-        position: relative;
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
+        background-color: aliceblue;
     }
+
     .aplyfs {
         width: 90%;
         height: 3rem !important;
@@ -91,25 +98,16 @@
     }
 
     .firstdiv {
-        width:90vw;
-        height: 50%;
+        width: 90vw;
+        height: 40vh;
         background-image: url(https://s3.tradingview.com/userpics/12465059-3uZm_orig.png);
         background-size: cover;
-        position: absolute;
-        top: 0;
-        left: none;
-        align-self: center !important;
     }
 
     .seconddiv {
         width: 90vw;
-        height: 50%;
-        position: absolute;
-        bottom: 0;
-        right: none;
-        left: 0;
+        height: 40vh;
         background-color: white;
-        align-self: center !important;
     }
 
 }

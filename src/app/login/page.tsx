@@ -44,9 +44,9 @@ export default function Login() {
             <div className="flex loginsection">
                 <div className=" insidelogin">
                     <div className="firstdiv">
-                        <div className="w-full h-full contentdiv p-8 flex flex-col items-center justify-center">
+                        <div className="w-full h-full contentdiv p-0 flex flex-col items-center justify-center">
                             <h1 className="text-white"><strong>Hello, </strong>User!</h1>
-                            <p className='text-m text-white opacity-90'>Before you log in, please ensure you have selected the correct broker from the dropdown menu.</p>
+                            <p className='text-m text-white opacity-70'>Before you log in, please ensure you have selected the correct broker from the dropdown menu.</p>
                         </div>
                     </div>
 

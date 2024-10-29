@@ -10,6 +10,7 @@
 .inside-how {
     background-color: rgba(12, 38, 61, 0.9);
     min-height: 50vh;
+    max-height: fit-content;
 }
 
 #how-it-work-t {
@@ -28,7 +29,50 @@
 .cards {
     width: 40%;
     height: 100%;
-    align-items: stretch;
+}
+
+.number2-div,
+.number1-div,
+.number3-div,
+.number4-div {
+    margin: 0;
+    margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 820px) {
+    .body-div {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+
+    }
+    .inside-how {
+        background-color: rgba(12, 38, 61, 0.99);
+   
+    }
+
+    .cards {
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 1rem;
+    }
+
+    .number2-div,
+    .number1-div,
+    .number3-div,
+    .number4-div {
+        margin: 0;
+        margin-bottom: 3rem;
+        width: 98%;
+    }
+
+    .titles-in-how {
+        font-size: 18px;
+    }
+
+    #how-it-work-t {
+        font-size: 25px;
+    }
 }
 
 .number-div {
@@ -42,38 +86,40 @@
     font-weight: bold;
 }
 
-.titles-in-how{
+.titles-in-how {
     font-size: 20px;
     font-weight: bold;
     margin-top: 3px;
 }
-.number1{
+
+.number1 {
     background-color: rgb(0, 135, 253);
 }
-.number2{
+
+.number2 {
     background-color: rgb(226, 124, 7);
 }
 
-.number3{
+.number3 {
     background-color: rgb(226, 58, 7);
 }
 
-.number4{
+.number4 {
     background-color: rgb(3, 179, 27);
 }
 
-.number1-div{
+.number1-div {
     border-top: 0.5px solid rgb(0, 135, 253);
 }
 
-.number2-div{
+.number2-div {
     border-top: 0.5px solid rgb(226, 124, 7);
 }
 
-.number3-div{
+.number3-div {
     border-top: 0.5px solid rgb(226, 58, 7);
 }
 
-.number4-div{
+.number4-div {
     border-top: 0.5px solid rgb(3, 179, 27);
 }

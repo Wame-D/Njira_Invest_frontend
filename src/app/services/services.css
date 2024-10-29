@@ -63,4 +63,9 @@
         align-self: center;
         margin: 0;
     }
+
+    .what-we-offer{
+        font-size: 25px !important;
+        margin-bottom: 2rem;
+    }
 }

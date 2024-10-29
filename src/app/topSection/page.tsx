@@ -37,8 +37,8 @@ export default function TopSection() {
 
                 {/* Conditional rendering for the chatbot overlay */}
                 {showChatbot && (
-                    <div className="overlay">
-                        <div className="modal">
+                    <div className="overlay w-full h-full ">
+                        <div className="modal w-full h-full">
                             <div className="close" onClick={closeChatbot}>&times;</div>
                             <Login />
                         </div>

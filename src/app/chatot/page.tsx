@@ -1,5 +1,5 @@
 'use client';
-import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './ai.css';
 import { IoMdSend } from "react-icons/io";
 import { RiRobot3Line, RiRobot3Fill } from "react-icons/ri";

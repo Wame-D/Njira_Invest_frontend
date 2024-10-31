@@ -14,16 +14,62 @@
 .personalinfo-div {
     padding-top: 5rem;
     width: 100%;
-    height: 13rem;
+    height: 20rem;
     padding-left: 6rem;
+    background-color: rgba(12, 38, 61, 0.8);
+    position: relative;
+    flex-direction: row;
+}
+
+.dashboard-imge{
+    background-image: url(https://s3.tradingview.com/y/y2yJHAWc_big.png);
+    background-position: center;
+    background-size: cover;
     margin-bottom: 1rem;
-    background-color: rgb(138, 178, 253);
+}
+
+.namesandemail{
+    position: absolute;
+    left: 6rem;
 }
 
 .fulname {
-    font-size: 2rem;
+    font-size: 40px;
     font-weight: bold;
     font-family: 'MontserratAlternates-Light';
+    color: white;
+}
+
+.emailinheader{
+    color: rgb(0, 135, 253);
+}
+
+.top-links {
+    flex-direction: row;
+    justify-content: space-between;
+    width: fit-content;
+    position: absolute;
+    right: 6rem;
+}
+
+.inside-utton2 {
+    background-color: rgb(226, 124, 7);
+    width: 10rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-left: 1rem;
+}
+
+
+.inside-utton {
+    background-color: #0ba2da;
+    width: 10rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 .balancediv {

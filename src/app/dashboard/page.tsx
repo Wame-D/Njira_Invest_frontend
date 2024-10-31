@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import DerivAPIBasic from '@deriv/deriv-api/dist/DerivAPIBasic';
 import "./dash.css";
-import Header from '../header/page';
+import Header from '../dashboard-header/page';
 
 interface UserAccount {
   account: string;
@@ -73,18 +73,34 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
     <>
 
       <div className='w-full min-h-screen dashboard flex  justify-center'>
-      <Header />
+
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         {authorizeData ? (
 
           <div className='w-full h-fit  flex flex-col justify-center insidediv'>
-            <div className='w-ful flex flex-col justify-center personalinfo-div'>
-              <h1 className='fulname'> {authorizeData.authorize.fullname}</h1>
-              <p className='text-m text-black opacity-70'> {authorizeData.authorize.email}</p>
+            <div className='w-full dashboard-imge'>
+              <Header />
+              <div className='w-ful flex justify-center items-center personalinfo-div'>
+                <div className='namesandemail'>
+                  <h1 className='fulname'> {authorizeData.authorize.fullname}</h1>
+                  <p className='text-m emailinheader opacity-90'> {authorizeData.authorize.email}</p>
+                </div>
+                <div className='w-fit h-fit flex  top-links  '>
+                  <button className="links-in-top flex flex row  justify-items-center items-center inside-utton " >
+                    Start Trading  &gt;
+                  </button>
+
+                  <a className="links-in-top flex flex row  justify-items-center items-center inside-utton2 " href='/#how-it-work'>
+                    How it Works  &gt;
+                  </a>
+                </div>
+              </div>
+
+
             </div>
-            <hr></hr>
+
             <div className=' mt-4 balancediv'>
               <h2>My Balance</h2>
               <h1>{authorizeData.authorize.balance} {authorizeData.authorize.currency}</h1>

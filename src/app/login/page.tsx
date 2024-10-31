@@ -29,7 +29,7 @@ export default function Login() {
                 const user = userCredential.user;
                 console.log("User signed in:", user);
                 localStorage.setItem('user', JSON.stringify(user));
-                window.location.href = '/dashboard';
+                window.location.href = '/Admin';
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -44,7 +44,7 @@ export default function Login() {
             <div className="flex loginsection">
                 <div className=" insidelogin">
                     <div className="firstdiv">
-                        <div className="w-full h-full contentdiv p-0 flex flex-col items-center justify-center">
+                        <div className="w-full h-full contentdiv flex flex-col items-center justify-center">
                             <h1 className="text-white"><strong>Hello, </strong>User!</h1>
                             <p className='text-m text-white opacity-70'>Before you log in, please ensure you have selected the correct broker from the dropdown menu.</p>
                         </div>
@@ -60,6 +60,7 @@ export default function Login() {
                                         <option value="first">Select a broker</option>
                                         <option value="">Deriv</option>
                                         <option value="otherBroker">Other Broker</option>
+                                        <option value="admin">Local Admin</option>
                                     </select>
                                     <button className='aplyfs mt-2' onClick={() => {
                                         if (selectedBroker === "") {

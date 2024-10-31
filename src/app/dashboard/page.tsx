@@ -93,7 +93,7 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
                   </button>
 
                   <a className="links-in-top flex flex row  justify-items-center items-center inside-utton2 " href='/#how-it-work'>
-                    How it Works  &gt;
+                    Current Analysis  &gt;
                   </a>
                 </div>
               </div>
@@ -116,9 +116,21 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
                 <p className='text-m text-black opacity-70 '>{authorizeData.authorize.account_list[0].account_category} account</p>
               </div>
             </div>
+
+            <div className=' mt-8 balancediv'>
+              <h2>Current Analysis</h2>
+            </div>
+
+            <div className=' mt-8 balancediv'>
+              <h2>Trade History</h2>
+            </div>
+
+            <div className=' mt-8 balancediv'>
+              <h2>Profit and Loss</h2>
+            </div>
           </div>
         ) : (
-          <p>Loading authorization...</p>
+          <p className='mt-40'>Loading authorization...</p>
         )}
       </div>
     </>

@@ -43,7 +43,39 @@
 .emailinheader{
     color: rgb(0, 135, 253);
 }
-
+@media only screen and (max-width: 820px) {
+    .personalinfo-div {
+        padding-top: 5rem;
+        width: 100%;
+        height: 20rem;
+        background-color: rgba(12, 38, 61, 0.8);
+        position:relative;
+        flex-direction: column;
+    }
+    .top-links {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100vw;
+        padding: 2px;
+        position: absolute;
+        left: 2vw;
+        bottom: 1rem;
+    }
+    .namesandemail{
+        position: absolute;
+        left: 1rem;
+        margin-bottom: 2rem;
+    }
+    .inside-utton2 {
+        width: 40vw;
+        height: 3rem;
+        margin-left: 1rem;
+    }
+    .inside-utton {
+        width: 40vw;
+        height: 3rem;
+    }
+}
 .top-links {
     flex-direction: row;
     justify-content: space-between;
@@ -75,13 +107,14 @@
 .balancediv {
     width: 90%;
     height: 15rem;
-    border: 1px solid rgb(111, 196, 252);
+    border: 1px solid rgba(12, 38, 61, 0.8);
     border-radius: 0.5rem;
     padding: 2rem;
 
 }
 
 .balancediv h2 {
+    color: rgba(12, 38, 61, 0.8);
     font-weight: bold;
 }
 
@@ -100,7 +133,7 @@
 }
 
 strong{
-    color: rgb(104, 156, 253);
+    color: rgb(0, 135, 253);
 }
 
 @media only screen and (max-width: 820px) {

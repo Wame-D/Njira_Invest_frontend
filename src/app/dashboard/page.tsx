@@ -78,7 +78,7 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
         },
         body: JSON.stringify({ token }),
       });
-
+      console.log(token);
       if (!response.ok) {
         // Log additional info for debugging
         const errorData = await response.json();

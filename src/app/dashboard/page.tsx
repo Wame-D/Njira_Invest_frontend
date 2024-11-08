@@ -40,10 +40,6 @@ interface AuthorizeResponse {
 const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) => {
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // const app_id = 65102;
-  // const connection = new WebSocket(`wss://ws.derivws.com/websockets/v3?app_id=${app_id}`);
-  // const api = new DerivAPIBasic({ connection });
-
   useEffect(() => {
     const { acct1, token1, cur1, acct2, token2, cur2 } = searchParams;
 
@@ -57,20 +53,8 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
     }
   }, [searchParams]);
 
-  // const authorizeUser = async (token: string) => {
-  //   try {
-  //     const authorizeResponse = await api.authorize(token);
-  //     if (authorizeResponse.error) {
-  //       throw new Error(authorizeResponse.error.message);
-  //     }
-  //     setAuthorizeData(authorizeResponse);
-  //     console.log("Authorize Response:", authorizeResponse); // Log to check the structure
-  //   } catch (error) {
-  //     setError('Error during authorization');
-  //     console.error('Authorization error:', error);
-  //   }
-  // };
   const authorizeUser = async (token: string) => {
+    console.log("Sending token:", token); 
     try {
       const response = await fetch('https://forex1-ul7ikrzn.b4a.run/authorize/', {
         method: "POST",
@@ -79,7 +63,7 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
         },
         body: JSON.stringify({ token }),
       });
-      console.log(token);
+
       if (!response.ok) {
         // Log additional info for debugging
         const errorData = await response.json();
@@ -95,8 +79,6 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
       console.error('Authorization error:', error);
     }
   };
-
-
 
   return (
     <>

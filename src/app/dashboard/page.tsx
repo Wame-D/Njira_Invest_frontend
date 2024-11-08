@@ -72,26 +72,30 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
   const authorizeUser = async (token: string) => {
     try {
       const response = await fetch('https://forex1-ul7ikrzn.b4a.run/authorize/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        method: "POST",
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
         body: JSON.stringify({ token }),
       });
-  
+
       if (!response.ok) {
-        throw new Error('Authorization failed');
+        // Log additional info for debugging
+        const errorData = await response.json();
+        console.error('Authorization failed:', errorData);
+        throw new Error(`Authorization failed with status ${response.status}`);
       }
-  
+
       const data = await response.json();
-      console.log(data);
+      console.log('Authorization successful:', data);
       setAuthorizeData(data);
     } catch (error) {
       setError('Error during authorization');
       console.error('Authorization error:', error);
     }
   };
-  
+
+
 
   return (
     <>

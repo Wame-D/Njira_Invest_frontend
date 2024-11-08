@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import DerivAPIBasic from '@deriv/deriv-api/dist/DerivAPIBasic';
+// import DerivAPIBasic from '@deriv/deriv-api/dist/DerivAPIBasic';
 import "./dash.css";
 import Header from '../dashboard-header/page';
 
@@ -13,26 +13,27 @@ interface UserAccount {
 
 interface AuthorizeResponse {
   authorize: {
-    authorize: any;
-    account_list: {
-      account_type: string;
-      loginid: string;
+    authorize: {
+      account_list: {
+        account_type: string;
+        loginid: string;
+        currency: string;
+        is_virtual: number;
+        trading: Record<string, unknown>;
+        account_category: string;
+      }[];
+      balance: number;
+      email: string;
       currency: string;
-      is_virtual: number;
-      trading: Record<string, unknown>;
+      fullname: string;
+      loginid: string;
+      scopes: string[];
+      country: string;
+      local_currencies: { [key: string]: unknown };
+      user_id: number;
+      landing_company_fullname: string;
       account_category: string;
-    }[];
-    balance: number;
-    email: string;
-    currency: string;
-    fullname: string;
-    loginid: string;
-    scopes: string[];
-    country: string;
-    local_currencies: { [key: string]: unknown };
-    user_id: number;
-    landing_company_fullname: string;
-    account_category: string;
+    };
   };
 }
 
@@ -73,9 +74,9 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
     try {
       const response = await fetch('https://forex1-ul7ikrzn.b4a.run/authorize/', {
         method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
         body: JSON.stringify({ token }),
       });
       console.log(token);

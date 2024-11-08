@@ -56,10 +56,11 @@ const Dashboard = () => {
 
   // Effect to handle the authorization request when query parameters are available
   useEffect(() => {
-    if (acct1 && token1 && cur1 && acct2 && token2 && cur2) {
+    //   if (acct1 && token1 && cur1 && acct2 && token2 && cur2) {
+    if (acct1 && token1 && cur1 ) {
       const accounts: UserAccount[] = [
         { account: acct1, token: token1, currency: cur1 },
-        { account: acct2, token: token2, currency: cur2 },
+        // { account: acct2, token: token2, currency: cur2 },
       ];
       authorizeUser(accounts[0].token);
     }

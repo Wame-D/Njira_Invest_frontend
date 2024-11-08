@@ -73,9 +73,9 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
     try {
       const response = await fetch('https://forex1-ul7ikrzn.b4a.run/authorize/', {
         method: "POST",
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ token }),
       });
 

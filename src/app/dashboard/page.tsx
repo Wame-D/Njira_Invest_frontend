@@ -150,8 +150,9 @@
 // };
 
 // export default Dashboard;
+'use client'; // Add this directive at the top of the file
+
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation'; // Import from next/navigation
 import "./dash.css";
 import Header from '../dashboard-header/page';
 
@@ -188,33 +189,37 @@ interface AuthorizeResponse {
 }
 
 const Dashboard = () => {
-  const searchParams = useSearchParams();  // Use useSearchParams to fetch query parameters
+  const [searchParams, setSearchParams] = useState<URLSearchParams | null>(null);
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Get the query parameters
-  const acct1 = searchParams.get('acct1');
-  const token1 = searchParams.get('token1');
-  const cur1 = searchParams.get('cur1');
-  const acct2 = searchParams.get('acct2');
-  const token2 = searchParams.get('token2');
-  const cur2 = searchParams.get('cur2');
+  // Initialize the search parameters when the component mounts
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setSearchParams(params);
+  }, []);  // This effect runs only once when the component mounts
 
-  // Check if the required parameters are available
+  // Get the query parameters after the searchParams state is set
+  const acct1 = searchParams?.get('acct1');
+  const token1 = searchParams?.get('token1');
+  const cur1 = searchParams?.get('cur1');
+  const acct2 = searchParams?.get('acct2');
+  const token2 = searchParams?.get('token2');
+  const cur2 = searchParams?.get('cur2');
+
+  // Effect to handle the authorization request when query parameters are available
   useEffect(() => {
     if (acct1 && token1 && cur1 && acct2 && token2 && cur2) {
       const accounts: UserAccount[] = [
         { account: acct1, token: token1, currency: cur1 },
         { account: acct2, token: token2, currency: cur2 },
       ];
-      // Start the authorization process
       authorizeUser(accounts[0].token);
     } else {
       setError('Error: Missing query parameters');
     }
-  }, [acct1, token1, cur1, acct2, token2, cur2]);  // Dependency array ensures this effect runs when params change
+  }, [acct1, token1, cur1, acct2, token2, cur2]); // Trigger effect only when query parameters change
 
-  // Authorization function
   const authorizeUser = async (token: string) => {
     console.log("Sending token:", token);
 

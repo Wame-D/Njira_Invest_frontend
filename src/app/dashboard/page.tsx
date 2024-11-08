@@ -13,6 +13,7 @@ interface UserAccount {
 
 interface AuthorizeResponse {
   authorize: {
+    authorize: any;
     account_list: {
       account_type: string;
       loginid: string;
@@ -38,9 +39,9 @@ interface AuthorizeResponse {
 const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) => {
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const app_id = 65102;
-  const connection = new WebSocket(`wss://ws.derivws.com/websockets/v3?app_id=${app_id}`);
-  const api = new DerivAPIBasic({ connection });
+  // const app_id = 65102;
+  // const connection = new WebSocket(`wss://ws.derivws.com/websockets/v3?app_id=${app_id}`);
+  // const api = new DerivAPIBasic({ connection });
 
   useEffect(() => {
     const { acct1, token1, cur1, acct2, token2, cur2 } = searchParams;
@@ -55,19 +56,42 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
     }
   }, [searchParams]);
 
+  // const authorizeUser = async (token: string) => {
+  //   try {
+  //     const authorizeResponse = await api.authorize(token);
+  //     if (authorizeResponse.error) {
+  //       throw new Error(authorizeResponse.error.message);
+  //     }
+  //     setAuthorizeData(authorizeResponse);
+  //     console.log("Authorize Response:", authorizeResponse); // Log to check the structure
+  //   } catch (error) {
+  //     setError('Error during authorization');
+  //     console.error('Authorization error:', error);
+  //   }
+  // };
   const authorizeUser = async (token: string) => {
     try {
-      const authorizeResponse = await api.authorize(token);
-      if (authorizeResponse.error) {
-        throw new Error(authorizeResponse.error.message);
+      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/authorize/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Authorization failed');
       }
-      setAuthorizeData(authorizeResponse);
-      console.log("Authorize Response:", authorizeResponse); // Log to check the structure
+  
+      const data = await response.json();
+      console.log(data);
+      setAuthorizeData(data);
     } catch (error) {
       setError('Error during authorization');
       console.error('Authorization error:', error);
     }
   };
+  
 
   return (
     <>
@@ -84,8 +108,8 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
               <Header />
               <div className='w-ful flex justify-center items-center personalinfo-div'>
                 <div className='namesandemail'>
-                  <h1 className='fulname'> {authorizeData.authorize.fullname}</h1>
-                  <p className='text-m emailinheader opacity-90'> {authorizeData.authorize.email}</p>
+                  <h1 className='fulname'> {authorizeData.authorize.authorize.fullname}</h1>
+                  <p className='text-m emailinheader opacity-90'> {authorizeData.authorize.authorize.email}</p>
                 </div>
                 <div className='w-fit h-fit flex  top-links  '>
                   <button className="links-in-top flex flex row  justify-items-center items-center inside-utton " >
@@ -103,17 +127,17 @@ const Dashboard = ({ searchParams }: { searchParams: Record<string, string> }) =
 
             <div className=' mt-4 balancediv'>
               <h2>My Balance</h2>
-              <h1>{authorizeData.authorize.balance} {authorizeData.authorize.currency}</h1>
+              <h1>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
               <div className='w-ful  flex  justify-center mt-4 pt-2 small-info'>
                 <p className='text-m text-black opacity-70 '>
-                  <strong>Account Type:</strong> {authorizeData.authorize.account_list[0].account_type}
+                  <strong>Account Type:</strong> {authorizeData.authorize.authorize.account_list[0].account_type}
                 </p>
-                <p className='text-m text-black opacity-70 '><strong> Login ID:</strong> {authorizeData.authorize.loginid}</p>
-                <p className='text-m text-black opacity-70 '><strong> Country:</strong> {authorizeData.authorize.country}</p>
-                <p className='text-m text-black opacity-70 '><strong> Local Currencies:</strong> {Object.keys(authorizeData.authorize.local_currencies).join(', ')}</p>
-                <p className='text-m text-black opacity-70 '><strong> User ID:</strong> {authorizeData.authorize.user_id}</p>
-                <p className='text-m text-red-500 opacity-70 '><strong className='text-red-500'> Brocker:</strong> {authorizeData.authorize.landing_company_fullname}</p>
-                <p className='text-m text-black opacity-70 '>{authorizeData.authorize.account_list[0].account_category} account</p>
+                <p className='text-m text-black opacity-70 '><strong> Login ID:</strong> {authorizeData.authorize.authorize.loginid}</p>
+                <p className='text-m text-black opacity-70 '><strong> Country:</strong> {authorizeData.authorize.authorize.country}</p>
+                <p className='text-m text-black opacity-70 '><strong> Local Currencies:</strong> {Object.keys(authorizeData.authorize.authorize.local_currencies).join(', ')}</p>
+                <p className='text-m text-black opacity-70 '><strong> User ID:</strong> {authorizeData.authorize.authorize.user_id}</p>
+                <p className='text-m text-red-500 opacity-70 '><strong className='text-red-500'> Brocker:</strong> {authorizeData.authorize.authorize.landing_company_fullname}</p>
+                <p className='text-m text-black opacity-70 '>{authorizeData.authorize.authorize.account_list[0].account_category} account</p>
               </div>
             </div>
 

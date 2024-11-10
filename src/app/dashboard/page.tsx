@@ -65,8 +65,8 @@ const Dashboard = () => {
       if (token) {
         authorizeUser(token);
       } else {
-        alert("No tocken found please login first1");
         router.push('/');
+        alert("No tocken found please login first1");
       }
     }
   }, [acct1, token1, cur1]); 

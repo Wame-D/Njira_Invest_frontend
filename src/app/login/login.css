@@ -1,9 +1,10 @@
 .loginsection {
     width: 50vw;
-    border-radius: 3rem;
+    /* border-radius: 3rem; */
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 6px 0 rgb(0, 135, 253);
 }
 
 .insidelogin {

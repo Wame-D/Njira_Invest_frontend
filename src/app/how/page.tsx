@@ -1,12 +1,25 @@
 import "./how.css";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function HowItWork() {
+    //framer motion
+    const { ref, inView } = useInView({
+        triggerOnce: false,
+        threshold: 0.2,
+     });
+
     return (
         <>
-            <div className=" items-center flex flex-col justify-center  h-fit w-full how-it-works">
+            <div className=" items-center flex flex-col justify-center  h-fit w-full how-it-works ">
                 <div className="h-full w-full inside-how pt-20 items-center flex flex-col justify-center">
                     <h2 id="how-it-work-t" className="mb-12">HOW IT WORKS</h2>
-                    <div className="flex body-div">
+                    <motion.div
+                        ref={ref}
+                        initial={{ opacity: 0, y: 50 }} 
+                        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }} 
+                        transition={{ duration: 1, ease: 'easeOut' }}
+                        className="flex body-div ">
                         <div className="cards  items-center flex flex-col ">
 
                             <div className="w-full flex flex-row  number1-div">
@@ -54,9 +67,9 @@ export default function HowItWork() {
                             </div>
 
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

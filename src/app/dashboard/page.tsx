@@ -65,10 +65,10 @@ const Dashboard = () => {
       if (token) {
         authorizeUser(token);
       } 
-      // else {
-      //   router.push('/');
-      //   alert("No tocken found please login first1");
-      // }
+      else {
+        router.replace('/');
+        alert("No tocken found please login first1");
+      }
     }
   }, [acct1, token1, cur1]); 
 
@@ -87,7 +87,7 @@ const Dashboard = () => {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('Authorization failed:', errorData);
-        alert(errorData);
+        // alert(errorData);
         throw new Error(`Authorization failed with status ${response.status}`);
       }
 

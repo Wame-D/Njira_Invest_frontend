@@ -65,10 +65,10 @@ const Dashboard = () => {
       if (token) {
         authorizeUser(token);
       } 
-      else {
-        router.replace('/');
-        alert("No tocken found please login first1");
-      }
+      // else {
+      //   router.replace('/');
+      //   alert("No tocken found please login first1");
+      // }
     }
   }, [acct1, token1, cur1]); 
 
@@ -100,7 +100,7 @@ const Dashboard = () => {
     } catch (error) {
       setError('Error during authorization');
       console.error('Authorization error:', error);
-      alert(error);
+      // alert(error);
     }
   };
 

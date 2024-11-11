@@ -2,7 +2,8 @@
 import './top.css';
 import React, { useState, useEffect } from 'react';
 import Login from '../login/page';
-import anime from 'animejs';
+// import anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 import { useRouter } from 'next/navigation';
 
 export default function TopSection() {

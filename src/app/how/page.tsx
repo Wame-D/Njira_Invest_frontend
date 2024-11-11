@@ -1,24 +1,29 @@
 import "./how.css";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+// import { motion } from 'framer-motion';
+// import { useInView } from "react-intersection-observer";
+// import dynamic from 'next/dynamic';
+// import { DiEnvato } from "react-icons/di";
+
+// const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
+
 
 export default function HowItWork() {
-    //framer motion
-    const { ref, inView } = useInView({
-        triggerOnce: false,
-        threshold: 0.2,
-     });
+    // //framer motion
+    // const { ref, inView } = useInView({
+    //     triggerOnce: false,
+    //     threshold: 0.1,
+    // });
 
     return (
         <>
             <div className=" items-center flex flex-col justify-center  h-fit w-full how-it-works ">
                 <div className="h-full w-full inside-how pt-20 items-center flex flex-col justify-center">
                     <h2 id="how-it-work-t" className="mb-12">HOW IT WORKS</h2>
-                    <motion.div
-                        ref={ref}
-                        initial={{ opacity: 0, y: 50 }} 
-                        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }} 
-                        transition={{ duration: 1, ease: 'easeOut' }}
+                    <div
+                        // ref={ref}
+                        // initial={{ opacity: 0, y: 50 }}
+                        // animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
+                        // transition={{ duration: 1, ease: 'easeOut' }}
                         className="flex body-div ">
                         <div className="cards  items-center flex flex-col ">
 
@@ -67,7 +72,7 @@ export default function HowItWork() {
                             </div>
 
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div >
         </>

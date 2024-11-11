@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import './dash.css';
 import Header from '../dashboard-header/page';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 interface UserAccount {
   account: string;
@@ -40,7 +40,7 @@ const Dashboard = () => {
   const [searchParams, setSearchParams] = useState<URLSearchParams | null>(null);
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  // const router = useRouter();
 
   // Initialize the search parameters when the component mounts
   useEffect(() => {

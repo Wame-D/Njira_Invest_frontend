@@ -64,10 +64,11 @@ const Dashboard = () => {
       const token = localStorage.getItem('userToken');
       if (token) {
         authorizeUser(token);
-      } else {
-        router.push('/');
-        alert("No tocken found please login first1");
-      }
+      } 
+      // else {
+      //   router.push('/');
+      //   alert("No tocken found please login first1");
+      // }
     }
   }, [acct1, token1, cur1]); 
 

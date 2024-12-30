@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './dash.css';
 import Header from '../dashboard-header/page';
+import EmbeddedDashboard from '../charts/page';
 // import { useRouter } from 'next/navigation';
 
 interface UserAccount {
@@ -146,6 +147,7 @@ const Dashboard = () => {
             </div>
             <div className='mt-8 balancediv'>
               <h2>Current Analysis</h2>
+              <EmbeddedDashboard/>
             </div>
 
             <div className='mt-8 balancediv'>

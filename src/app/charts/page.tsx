@@ -1,19 +1,90 @@
-// components/EmbeddedDashboard.js
+'use client';
+import React, { useEffect } from "react";
+import { embedDashboard } from "@preset-sdk/embedded";
+import './charts.css';
 
-import React from 'react';
+// A function that fetches the guest token from your Django backend
+// const fetchGuestToken = async () => {
+//   try {
+//     const response = await fetch('http://127.0.0.1:8000/generate-guest-token/'); // Replace with your Django backend endpoint URL
 
-const EmbeddedDashboard = () => {
+//     if (!response.ok) {
+//       throw new Error('Failed to fetch guest token');
+//     }
+
+//     const data = await response.json();
+//     return data.guest_token;
+//   } catch (error) {
+//     console.error('Error fetching guest token:', error);
+//     throw error;
+//   }
+// };
+
+const SupersetDashboard = () => {
+  const supersetDomain = "https://970dc793.us2a.app.preset.io";
+  const embeddedDashboardId = "afe0ee9c-4bda-4694-8877-eca384df8ffb"
+
+  const fetchGuestToken = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/generate-guest-token/'); // Replace with your Django backend endpoint URL
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch guest token');
+      }
+
+      const data = await response.json();
+      return data.guest_token;
+    } catch (error) {
+      console.error('Error fetching guest token:', error);
+      throw error;
+    }
+  };
+  useEffect(() => {
+    const mountPoint = document.getElementById("superset-dashboard-container");
+
+    if (mountPoint) { //
+
+      const initializeDashboard = async () => {
+        try {
+          // Fetch the guest token from the backend
+          const guestToken = await fetchGuestToken();
+
+          await embedDashboard({
+            id: embeddedDashboardId,
+            supersetDomain,
+            mountPoint,
+            fetchGuestToken: () => {
+              console.log("Fetching guest token for embedDashboard");
+              console.log("Guest Token:", guestToken);
+
+              return guestToken;
+            },
+            dashboardUiConfig: {
+              hideTitle:true,
+              hideChartControls: false,
+              filters: {
+                expanded: false,
+              },
+            },
+          });
+
+        } catch (error) {
+          console.error('Error initializing dashboard:', error);
+        }
+      };
+
+      initializeDashboard();
+    };
+  }, [embeddedDashboardId, supersetDomain]);
+
   return (
-    <div style={{ width: '100%', height: '800px' }}>
-      <iframe
-        src="https://970dc793.us2a.app.preset.io/superset/dashboard/d3ca855a-799b-4db7-84ae-394a88d2f920/"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        title="Embedded Dashboard"
-      />
-    </div>
-  );
-};
+    <>
+      <div id="dashboard-wrapper">
+        <div id="superset-dashboard-container" className="w-screen h-screen"></div>
+      </div>
+    </>);
 
-export default EmbeddedDashboard;
+}
+
+export default SupersetDashboard;
+

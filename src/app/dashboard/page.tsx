@@ -1,9 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
 import './dash.css';
-import Header from '../dashboard-header/page';
 import SupersetDashboard from '../charts/page';
-// import { useRouter } from 'next/navigation';
+import { FaChartPie } from "react-icons/fa";
+import { AiOutlineHistory } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { MdDashboard } from "react-icons/md";
+import Link from 'next/link';
+import { FaCog } from "react-icons/fa";
+import { FaExclamationTriangle } from "react-icons/fa";
+
 
 interface UserAccount {
   account: string;
@@ -108,6 +115,30 @@ const Dashboard = () => {
     <div className='dashoard'>
       <div id='nav-bar'>
         <h1 className='logo'>FX <strong className='trading'>TRADING</strong></h1>
+        <div className='links-in-nav-bar'>
+          <Link href="/about" className='nav-links mt-8'>
+            <MdDashboard className='link-icon' /> <p className='link-text'>Overview   </p>
+          </Link>
+          <Link href="/about" className='nav-links mt-8'>
+            <FaChartPie className='link-icon' /> <p className='link-text'>Analytics   </p>
+          </Link>
+          <Link href="/about" className='nav-links mt-8'>
+            <AiOutlineHistory className='link-icon' /> <p className='link-text'>Trade History   </p>
+          </Link>
+          <Link href="/about" className='nav-links mt-8'>
+            <FaExclamationTriangle className='link-icon' /> <p className='link-text'>Risk Analysis   </p>
+          </Link>
+          <Link href="/about" className='nav-links mt-8'>
+            <FaCog className='link-icon' /> <p className='link-text'>Settings   </p>
+          </Link>
+          <Link href="/about" className='nav-links mt-8'>
+            <FaUserCircle className='link-icon' /> <p className='link-text'>Profile   </p>
+          </Link>
+
+          <Link href="/about" className='logout-link mt-4'>
+            <FiLogOut className='logout-icon' /> <p className='link-text'>Login  </p>
+          </Link>
+        </div>
       </div>
       <div className='dashboard-conntent'>
         <div className='small-header'></div>

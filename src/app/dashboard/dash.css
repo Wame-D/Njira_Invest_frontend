@@ -9,32 +9,60 @@
     overflow-x: hidden !important;
     margin: 0;
     padding: 0;
-    /* padding: 2rem; */
 }
 
 .logo {
     font-family: 'CustomFont', sans-serif;
-    /* position: absolute;
-    left: 10rem; */
     margin-top: 3px;
     color: rgba(12, 38, 61, 0.4);
     font-size: 18px;
     text-align: center;
-  }
-  
-  .trading {
+}
+
+.trading {
     color: rgb(4, 155, 214);
-  }
+}
 
 #nav-bar {
     height: 100vh;
     width: 15vw;
     margin: 0;
     padding: 1rem;
-    /* position: fixed; */
-    /* background-color: white; */
     background-color: rgba(12, 38, 61, 1);
-    /* left: 0; */
+}
+
+.links-in-nav-bar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    position: relative;
+    height: 80vh;
+}
+
+.logout-link{
+    position: absolute;
+    bottom: 2rem;
+}
+
+.logout-icon, .logout-text{
+    display: inline;
+    color: red;
+}
+
+.logout-icon{
+    font-size: 25px;
+    margin-right: 0.5vw;
+}
+.link-icon{
+    font-size: 25px;
+    margin-right: 0.5vw;
+    opacity: 0.5;
+}
+.link-icon,
+.link-text{
+    color: rgb(4, 155, 214);
+    display: inline;
 }
 
 .dashboard-conntent {
@@ -50,7 +78,6 @@
 
 .small-header {
     background-color: rgba(12, 38, 61, 1);
-    /* background-color: white; */
     height: 6rem;
     width: 100%;
     display: flex;
@@ -60,9 +87,8 @@
 }
 
 .accounts-info {
-    width:80vw;
+    width: 80vw;
     height: 10rem;
-    /* background-color: rgb(0, 0, 0); */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,13 +98,12 @@
 .superset-chatrs-div {
     width: 95%;
     height: 100vh;
-    /* background-color: rgb(126, 231, 245); */
     align-self: center;
-    border-radius: 1rem;
-    box-shadow: 0 0 9px rgba(115, 162, 250,0.5);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
 }
 
-.names-div{
+.names-div {
     width: 15vw;
     height: 12vh;
     border-radius: 5px;
@@ -87,20 +112,20 @@
     padding-left: 2rem;
     /* background-color: aquamarine; */
     margin-right: 2rem;
-    box-shadow: 0 0 9px rgba(115, 162, 250,0.5);
+    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
 }
 
 .names-div h1 {
     font-weight: bold;
     font-size: 2rem;
     font-family: 'MontserratAlternates-Light';
-    
+
     margin: 0;
     padding: 0;
     color: rgba(12, 38, 61, 0.6);
 }
 
-.emailinheader2{
+.emailinheader2 {
     margin: 0;
     color: rgba(12, 38, 61, 0.6);
 }

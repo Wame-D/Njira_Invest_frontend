@@ -67,17 +67,10 @@ const Dashboard = () => {
       const accounts: UserAccount[] = [
         { account: acct1, token: token1, currency: cur1 },
       ];
-      localStorage.setItem("userToken", token1 as string);
       authorizeUser(accounts[0].token);
     } else {
-      // Check if the token exists in local storage
-      const token = localStorage.getItem('userToken');
-      if (token) {
-        authorizeUser(token);
-      } else {
-        router.replace('/');
-        alert("No tocken found please login first1");
-      }
+      router.replace('/');
+      alert("No tocken found please login first1");
     }
   }, [acct1, token1, cur1]);
 
@@ -226,7 +219,9 @@ const Dashboard = () => {
             )}
           </div>
         </div>
-        <div className='superset-chatrs-div'></div>
+        <div className='superset-chatrs-div'>
+        <SupersetDashboard/>
+        </div>
       </div>
 
     </div>

@@ -53,13 +53,9 @@ export default function TopSection() {
     };
 
     const handleDashboardClick = () => {
-        const token = localStorage.getItem('userToken');
-        if (token) {
+
             router.push('/dashboard'); 
-        } else {
-            openLogin(); 
-            alert("Your tocken expired login again!");
-        }
+        
     };
 
     return (

@@ -78,7 +78,6 @@
     display: flex;
     flex-direction: column;
     align-items: center !important;
-    justify-content: center !important;
     align-self: flex-end;
     position: absolute;
     right: 0;
@@ -89,11 +88,10 @@
 
 .dashboard-conntent::-webkit-scrollbar {
     display: none;
-    /* For Chrome, Safari, and Edge */
 }
 
-.quick-links-content{
-    color: rgba(255, 255, 255,0.8);
+.quick-links-content {
+    color: rgba(255, 255, 255, 0.8);
     margin-right: 1.5rem;
     font-weight: bold;
 }
@@ -113,12 +111,12 @@ small header styles
     padding-left: 2.4rem;
 }
 
-.small-header h3{
+.small-header h3 {
     color: white;
     font-size: 25px;
     font-weight: bold;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: rgba(255, 255, 255,0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     padding: 1rem;
     border-radius: 0.3rem;
 }
@@ -147,12 +145,14 @@ small header styles
     opacity: 0.6;
 }
 
-.quick-links{
+.quick-links {
     display: flex;
     flex-direction: row;
 }
 
 /* 
+personal information container and 
+small divs styles
  */
 
 .accounts-info {
@@ -165,9 +165,10 @@ small header styles
 
 .superset-chatrs-div {
     width: 95%;
-    height: 100vh;
+    height: 60vh;
     align-self: center;
     border-radius: 0.5rem;
+    background-color: rgb(253, 250, 246);
     box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
 }
 
@@ -200,176 +201,4 @@ small header styles
     color: rgb(4, 155, 214);
     font-weight: bold;
     margin-top: 0.5rem;
-}
-
-/* dghsgdhgdshgdhsdgsd */
-.insidediv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.inside-dashboard {}
-
-.personalinfo-div {
-    padding-top: 5rem;
-    width: 100%;
-    height: 20rem;
-    padding-left: 6rem;
-    background-color: rgba(12, 38, 61, 0.8);
-    position: relative;
-    flex-direction: row;
-}
-
-.dashboard-imge {
-    background-image: url(https://s3.tradingview.com/y/y2yJHAWc_big.png);
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 1rem;
-}
-
-.namesandemail {
-    position: absolute;
-    left: 6rem;
-}
-
-.fulname {
-    font-size: 40px;
-    font-weight: bold;
-    font-family: 'MontserratAlternates-Light';
-    color: white;
-}
-
-.emailinheader {
-    color: rgb(0, 135, 253);
-}
-
-@media only screen and (max-width: 820px) {
-    .personalinfo-div {
-        padding-top: 5rem;
-        width: 100%;
-        height: 20rem;
-        background-color: rgba(12, 38, 61, 0.8);
-        position: relative;
-        flex-direction: column;
-    }
-
-    .top-links {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100vw;
-        padding: 2px;
-        position: absolute;
-        left: 2vw;
-        bottom: 1rem;
-    }
-
-    .namesandemail {
-        position: absolute;
-        left: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .inside-utton2 {
-        width: 40vw;
-        height: 3rem;
-        margin-left: 1rem;
-    }
-
-    .inside-utton {
-        width: 40vw;
-        height: 3rem;
-    }
-}
-
-.top-links {
-    flex-direction: row;
-    justify-content: space-between;
-    width: fit-content;
-    position: absolute;
-    right: 6rem;
-}
-
-.inside-utton2 {
-    background-color: rgb(226, 124, 7);
-    width: 10rem;
-    height: 3.5rem;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    margin-left: 1rem;
-}
-
-
-.inside-utton {
-    background-color: #0ba2da;
-    width: 10rem;
-    height: 3.5rem;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.balancediv {
-    width: 90%;
-    height: fit-content;
-    border: 1px solid rgba(12, 38, 61, 0.8);
-    border-radius: 0.5rem;
-    padding: 2rem;
-    overflow: hidden;
-
-}
-
-.balancediv h2 {
-    color: rgba(12, 38, 61, 0.8);
-    font-weight: bold;
-}
-
-.balancediv h1 {
-    font-weight: bold;
-    font-size: 3rem;
-    font-family: 'MontserratAlternates-Light';
-    color: rgb(115, 162, 250);
-}
-
-.small-info {
-    height: 2rem;
-    border-top: 2px solid grey;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-strong {
-    color: rgb(0, 135, 253);
-}
-
-@media only screen and (max-width: 820px) {
-    .small-info {
-        height: fit-content;
-        border-top: 1px solid grey;
-        justify-content: flex-start;
-        flex-direction: column;
-    }
-
-    .balancediv {
-        width: 90%;
-        height: fit-content;
-    }
-
-    .balancediv h1 {
-        font-size: 2rem;
-    }
-
-    .personalinfo-div {
-        padding-left: 2rem;
-    }
-
-    .fulname {
-        font-size: 2rem;
-        font-weight: bold;
-        font-family: 'MontserratAlternates-Light';
-        margin-bottom: 0;
-    }
-
 }

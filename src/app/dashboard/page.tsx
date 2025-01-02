@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { FaCog } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 
 
 interface UserAccount {
@@ -61,17 +62,25 @@ const Dashboard = () => {
   const acct1 = searchParams?.get('acct1');
   const token1 = searchParams?.get('token1');
   const cur1 = searchParams?.get('cur1');
+  const cookietoken = getCookie('userToken');
 
   useEffect(() => {
     if (acct1 && token1 && cur1) {
       const accounts: UserAccount[] = [
         { account: acct1, token: token1, currency: cur1 },
       ];
+      setCookie('userToken', accounts[0].token, {
+        secure: true,
+        maxAge: 60 * 60 * 24 * 7, // 7 days 
+        sameSite: 'none',
+      });
       authorizeUser(accounts[0].token);
-    } else {
-      router.replace('/');
-      alert("No tocken found please login first1");
-    }
+    } else if (cookietoken) {
+      if (typeof cookietoken === 'string') {
+        console.log(cookietoken)
+        authorizeUser(cookietoken);
+      }
+    } 
   }, [acct1, token1, cur1]);
 
   const authorizeUser = async (token: string) => {
@@ -118,8 +127,9 @@ const Dashboard = () => {
   };
 
   const handleLogout = () => {
-    // Clear the token from local storage
-    localStorage.removeItem("userToken");
+    // Remove a cookie
+    // Delete the token
+    deleteCookie('userToken');
     router.replace('/');
     console.log("User token cleared from local storage.");
   };
@@ -151,9 +161,9 @@ const Dashboard = () => {
             <FaUserCircle className='link-icon' /> <p className='link-text'>Profile   </p>
           </Link>
 
-          <Link href="" className='logout-link mt-4' onClick={handleLogout}>
+          <button className='logout-link mt-4' onClick={handleLogout}>
             <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
-          </Link>
+          </button>
         </div>
       </div>
       <div className='dashboard-conntent'>
@@ -211,7 +221,6 @@ const Dashboard = () => {
                 <div>
                   <h2>My Balance</h2>
                   <h1>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
-
                 </div>
               ) : (
                 <p className='text-center'>Loading authorization...</p>
@@ -220,7 +229,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className='superset-chatrs-div'>
-        <SupersetDashboard/>
+          <SupersetDashboard />
         </div>
       </div>
 
@@ -230,59 +239,11 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-// {error && <p style={{ color: 'red' }}>{error}</p>}
 
-// {(
-//   // If authorization data is present, display dashboard
-//   authorizeData ? (
-//     <div className='w-full h-fit flex flex-col justify-center insidediv'>
-//       <div className='w-full dashboard-imge'>
-//         <Header />
-//         <div className='w-ful flex justify-center items-center personalinfo-div'>
-//           <div className='namesandemail'>
-//             <h1 className='fulname'>{authorizeData.authorize.authorize.fullname}</h1>
-//             <p className='text-m emailinheader opacity-90'>{authorizeData.authorize.authorize.email}</p>
-//           </div>
-//           <div className='w-fit h-fit flex top-links'>
-//             <button className="links-in-top flex flex row justify-items-center items-center inside-utton">
-//               Start Trading &gt;
-//             </button>
-//             <a className="links-in-top flex flex row justify-items-center items-center inside-utton2" href='/#how-it-work'>
-//               Current Analysis &gt;
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className='mt-4 balancediv'>
-//         <h2>My Balance</h2>
-//         <h1>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
-//         <div className='w-ful flex justify-center mt-4 pt-2 small-info'>
-//           <p className='text-m text-black opacity-70'>
-//             <strong>Account Type:</strong> {authorizeData.authorize.authorize.account_list[0].account_type}
-//           </p>
 //           <p className='text-m text-black opacity-70'><strong>Login ID:</strong> {authorizeData.authorize.authorize.loginid}</p>
 //           <p className='text-m text-black opacity-70'><strong>Country:</strong> {authorizeData.authorize.authorize.country}</p>
 //           <p className='text-m text-black opacity-70'><strong>Local Currencies:</strong> {Object.keys(authorizeData.authorize.authorize.local_currencies).join(', ')}</p>
 //           <p className='text-m text-black opacity-70'><strong>User ID:</strong> {authorizeData.authorize.authorize.user_id}</p>
 //           <p className='text-m text-red-500 opacity-70'><strong className='text-red-500'>Broker:</strong> {authorizeData.authorize.authorize.landing_company_fullname}</p>
 //           <p className='text-m text-black opacity-70'>{authorizeData.authorize.authorize.account_list[0].account_category} account</p>
-//         </div>
-//       </div>
-//       <div className='mt-8 balancediv'>
-//         <h2>Current Analysis</h2>
-//         <SupersetDashboard />
-//       </div>
 
-//       <div className='mt-8 balancediv'>
-//         <h2>Trade History</h2>
-//       </div>
-
-//       <div className='mt-8 balancediv'>
-//         <h2>Profit and Loss</h2>
-//       </div>
-//     </div>
-//   ) : (
-//     <p className='mt-40'>Loading authorization...</p>
-//   )
-// )}

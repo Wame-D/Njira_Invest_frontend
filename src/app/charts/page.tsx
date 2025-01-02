@@ -3,30 +3,13 @@ import React, { useEffect } from "react";
 import { embedDashboard } from "@preset-sdk/embedded";
 import './charts.css';
 
-// A function that fetches the guest token from your Django backend
-// const fetchGuestToken = async () => {
-//   try {
-//     const response = await fetch('http://127.0.0.1:8000/generate-guest-token/'); // Replace with your Django backend endpoint URL
-
-//     if (!response.ok) {
-//       throw new Error('Failed to fetch guest token');
-//     }
-
-//     const data = await response.json();
-//     return data.guest_token;
-//   } catch (error) {
-//     console.error('Error fetching guest token:', error);
-//     throw error;
-//   }
-// };
-
 const SupersetDashboard = () => {
   const supersetDomain = "https://970dc793.us2a.app.preset.io";
   const embeddedDashboardId = "afe0ee9c-4bda-4694-8877-eca384df8ffb"
 
   const fetchGuestToken = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/generate-guest-token/'); // Replace with your Django backend endpoint URL
+      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/generate-guest-token/'); 
 
       if (!response.ok) {
         throw new Error('Failed to fetch guest token');

@@ -5,6 +5,7 @@ import Login from '../login/page';
 // import anime from 'animejs';
 import anime from 'animejs/lib/anime.es.js';
 import { useRouter } from 'next/navigation';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 
 export default function TopSection() {
     const [showChatbot, setShowChatbot] = useState(false);
@@ -39,8 +40,8 @@ export default function TopSection() {
         });
     }, []); 
 
+    const  token = getCookie('userToken');
     const openLogin = () => {
-        const token = localStorage.getItem('userToken');
         if (token) {
             router.push('/dashboard'); 
         } else {
@@ -53,9 +54,11 @@ export default function TopSection() {
     };
 
     const handleDashboardClick = () => {
-
+        if (token) {
             router.push('/dashboard'); 
-        
+        } else {
+            setShowChatbot(true);
+        }
     };
 
     return (

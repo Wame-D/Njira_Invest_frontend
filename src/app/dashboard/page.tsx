@@ -10,6 +10,7 @@ import { MdDashboard } from "react-icons/md";
 import Link from 'next/link';
 import { FaCog } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 
 interface UserAccount {
@@ -48,7 +49,7 @@ const Dashboard = () => {
   const [searchParams, setSearchParams] = useState<URLSearchParams | null>(null);
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // const router = useRouter();
+  const router = useRouter();
 
   // Initialize the search parameters when the component mounts
   useEffect(() => {
@@ -66,6 +67,7 @@ const Dashboard = () => {
       const accounts: UserAccount[] = [
         { account: acct1, token: token1, currency: cur1 },
       ];
+      localStorage.setItem("userToken", token1 as string);
       authorizeUser(accounts[0].token);
     } else {
       // Check if the token exists in local storage
@@ -73,8 +75,8 @@ const Dashboard = () => {
       if (token) {
         authorizeUser(token);
       } else {
-        // router.replace('/');
-        // alert("No tocken found please login first1");
+        router.replace('/');
+        alert("No tocken found please login first1");
       }
     }
   }, [acct1, token1, cur1]);
@@ -111,10 +113,31 @@ const Dashboard = () => {
     }
   };
 
+  // to handle stop and start
+  const [isTrading, setIsTrading] = useState(false); // Initial state: not trading
+
+  const handleStart = () => {
+    setIsTrading(true); // Enable trading
+  };
+
+  const handleStop = () => {
+    setIsTrading(false); // Disable trading
+  };
+
+  const handleLogout = () => {
+    // Clear the token from local storage
+    localStorage.removeItem("userToken");
+    router.replace('/');
+    console.log("User token cleared from local storage.");
+  };
+
   return (
     <div className='dashoard'>
       <div id='nav-bar'>
-        <h1 className='logo'>FX <strong className='trading'>TRADING</strong></h1>
+        <Link href="/">
+          <h1 className='logo'>FX TRADING</h1>
+        </Link>
+
         <div className='links-in-nav-bar'>
           <Link href="/about" className='nav-links mt-8'>
             <MdDashboard className='link-icon' /> <p className='link-text'>Overview   </p>
@@ -135,13 +158,39 @@ const Dashboard = () => {
             <FaUserCircle className='link-icon' /> <p className='link-text'>Profile   </p>
           </Link>
 
-          <Link href="/about" className='logout-link mt-4'>
-            <FiLogOut className='logout-icon' /> <p className='link-text'>Login  </p>
+          <Link href="" className='logout-link mt-4' onClick={handleLogout}>
+            <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
           </Link>
         </div>
       </div>
       <div className='dashboard-conntent'>
-        <div className='small-header'></div>
+        <div className='small-header'>
+          <h3>Main Dashboard</h3>
+          <div className='quick-links'>
+            <Link href="/" className='quick-links-content'>
+              Home
+            </Link>
+            <Link href="/contact" className='quick-links-content'>
+              Contacts
+            </Link>
+          </div>
+          <div>
+            <button
+              onClick={handleStart}
+              disabled={isTrading}
+              className={`button ${isTrading ? "disabled" : ""}`}
+            >
+              Start Trading
+            </button>
+            <button
+              onClick={handleStop}
+              disabled={!isTrading}
+              className={`button ${!isTrading ? "disabled" : ""}`}
+            >
+              Stop Trading
+            </button>
+          </div>
+        </div>
         <div className='accounts-info'>
           <div className='names-div'>
             {error && <p style={{ color: 'red' }}>{error}</p>}

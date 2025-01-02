@@ -9,18 +9,15 @@
     overflow-x: hidden !important;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 .logo {
     font-family: 'CustomFont', sans-serif;
-    margin-top: 3px;
-    color: rgba(12, 38, 61, 0.4);
+    margin-top: 5px;
+    color: rgba(4, 155, 214, 0.5);
     font-size: 18px;
-    text-align: center;
-}
-
-.trading {
-    color: rgb(4, 155, 214);
+    /* text-align: center; */
 }
 
 #nav-bar {
@@ -29,9 +26,10 @@
     margin: 0;
     padding: 1rem;
     background-color: rgba(12, 38, 61, 1);
+    position: fixed;
 }
 
-.links-in-nav-bar{
+.links-in-nav-bar {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -40,42 +38,69 @@
     height: 80vh;
 }
 
-.logout-link{
+.logout-link {
     position: absolute;
     bottom: 2rem;
 }
 
-.logout-icon, .logout-text{
+.logout-icon,
+.logout-text {
     display: inline;
-    color: red;
+    color: rgb(226, 124, 7);
 }
 
-.logout-icon{
+.logout-icon {
     font-size: 25px;
     margin-right: 0.5vw;
 }
-.link-icon{
+
+.link-icon {
     font-size: 25px;
     margin-right: 0.5vw;
     opacity: 0.5;
 }
+
+.link-text:hover,
+.link-icon:hover {
+    color: white;
+}
+
 .link-icon,
-.link-text{
+.link-text {
     color: rgb(4, 155, 214);
     display: inline;
 }
 
 .dashboard-conntent {
     min-height: 100vh;
+    max-height: fit-content;
     width: 85vw;
     display: flex;
     flex-direction: column;
     align-items: center !important;
     justify-content: center !important;
-    /* background-color: black; */
     align-self: flex-end;
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
+.dashboard-conntent::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Edge */
+}
+
+.quick-links-content{
+    color: rgba(255, 255, 255,0.8);
+    margin-right: 1.5rem;
+    font-weight: bold;
+}
+
+/* 
+small header styles
+ */
 .small-header {
     background-color: rgba(12, 38, 61, 1);
     height: 6rem;
@@ -84,7 +109,51 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
 }
+
+.small-header h3{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgba(255, 255, 255,0.15);
+    padding: 1rem;
+    border-radius: 0.3rem;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Disabled Button Style */
+.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.quick-links{
+    display: flex;
+    flex-direction: row;
+}
+
+/* 
+ */
 
 .accounts-info {
     width: 80vw;
@@ -92,7 +161,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
 }
 
 .superset-chatrs-div {
@@ -107,10 +175,8 @@
     width: 15vw;
     height: 12vh;
     border-radius: 5px;
-
     align-items: center;
     padding-left: 2rem;
-    /* background-color: aquamarine; */
     margin-right: 2rem;
     box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
 }

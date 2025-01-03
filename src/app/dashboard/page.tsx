@@ -12,8 +12,6 @@ import { FaCog } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
-import { usePathname } from 'next/navigation';
-
 
 interface UserAccount {
   account: string;
@@ -52,7 +50,6 @@ const Dashboard = () => {
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const pathname = usePathname();
 
   // Initialize the search parameters when the component mounts
   useEffect(() => {

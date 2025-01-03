@@ -163,14 +163,6 @@ small divs styles
     align-items: center;
 }
 
-.superset-chatrs-div {
-    width: 95%;
-    height: 60vh;
-    align-self: center;
-    border-radius: 0.5rem;
-    background-color: rgb(253, 250, 246);
-    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
-}
 
 .names-div {
     width: 15vw;
@@ -201,4 +193,23 @@ small divs styles
     color: rgb(4, 155, 214);
     font-weight: bold;
     margin-top: 0.5rem;
+}
+
+/*
+superset chart div 
+ */
+.superset-chatrs-div {
+    width: 95%;
+    height: 60vh;
+    align-self: center;
+    border-radius: 0.5rem;
+    background-color: rgb(253, 250, 246);
+    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
+}
+
+.active-link,
+.active-link p {
+    color: white;
+    font-weight: bold;
+    opacity: 1 !important;
 }

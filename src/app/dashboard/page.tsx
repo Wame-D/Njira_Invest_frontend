@@ -12,6 +12,7 @@ import { FaCog } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
+import { usePathname } from 'next/navigation';
 
 
 interface UserAccount {
@@ -51,6 +52,7 @@ const Dashboard = () => {
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   // Initialize the search parameters when the component mounts
   useEffect(() => {
@@ -80,7 +82,7 @@ const Dashboard = () => {
         console.log(cookietoken)
         authorizeUser(cookietoken);
       }
-    } 
+    }
   }, [acct1, token1, cur1]);
 
   const authorizeUser = async (token: string) => {
@@ -115,25 +117,58 @@ const Dashboard = () => {
     }
   };
 
-  // to handle stop and start
-  const [isTrading, setIsTrading] = useState(false); // Initial state: not trading
-
-  const handleStart = () => {
-    setIsTrading(true); // Enable trading
-  };
-
-  const handleStop = () => {
-    setIsTrading(false); // Disable trading
-  };
-
   const handleLogout = () => {
     // Remove a cookie
-    // Delete the token
     deleteCookie('userToken');
     router.replace('/');
     console.log("User token cleared from local storage.");
   };
 
+  const [isTrading, setIsTrading] = useState(false);
+  const [startTime, setStartTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const handleStart = () => {
+    setIsTrading(true);
+    const start = Date.now();
+    // Record the start time in milliseconds
+    setStartTime(start);
+    // Reset the elapsed time
+    setCurrentTime(0);
+  };
+
+  const handleStop = () => {
+    setIsTrading(false);
+  };
+
+  // Update the current time every second when trading is active
+  useEffect(() => {
+    let interval: string | number | NodeJS.Timeout | undefined;
+    if (isTrading && startTime) {
+      interval = setInterval(() => {
+        // Calculate elapsed time
+        setCurrentTime(Date.now() - startTime);
+        // Update every second
+      }, 1000);
+    } else if (!isTrading) {
+      clearInterval(interval);
+    }
+    // Cleanup the interval on component unmount or state change
+    return () => clearInterval(interval);
+  }, [isTrading, startTime]);
+
+  const formatDuration = (ms: number) => {
+    const seconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    return `${hours} H . ${minutes % 60}M . ${seconds % 60}S `;
+  };
+
+  // variable to keep track  of active link setting default to overveiw
+  const [activeLink, setActiveLink] = useState('overview');
+  const handleClick = (link: string) => {
+    setActiveLink(link);
+  };
   return (
     <div className='dashoard'>
       <div id='nav-bar'>
@@ -142,25 +177,48 @@ const Dashboard = () => {
         </Link>
 
         <div className='links-in-nav-bar'>
-          <Link href="/about" className='nav-links mt-8'>
-            <MdDashboard className='link-icon' /> <p className='link-text'>Overview   </p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-8 ${activeLink === 'overview' ? 'active-link' : ''}`}
+            onClick={() => handleClick('overview')}
+          >
+            <MdDashboard className={`link-icon ${activeLink === 'overview' ? 'active-link' : ''}`} /> <p className='link-text'>Overview</p>
           </Link>
-          <Link href="/about" className='nav-links mt-8'>
-            <FaChartPie className='link-icon' /> <p className='link-text'>Analytics   </p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-8 ${activeLink === 'analytics' ? 'active-link' : ''}`}
+            onClick={() => handleClick('analytics')}
+          >
+            <FaChartPie className={`link-icon ${activeLink === 'analytics' ? 'active-link' : ''}`} /> <p className='link-text'>Analytics</p>
           </Link>
-          <Link href="/about" className='nav-links mt-8'>
-            <AiOutlineHistory className='link-icon' /> <p className='link-text'>Trade History   </p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-8 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
+            onClick={() => handleClick('trade-history')}
+          >
+            <AiOutlineHistory className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Trade History</p>
           </Link>
-          <Link href="/about" className='nav-links mt-8'>
-            <FaExclamationTriangle className='link-icon' /> <p className='link-text'>Risk Analysis   </p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-8 ${activeLink === 'risk-analysis' ? 'active-link' : ''}`}
+            onClick={() => handleClick('risk-analysis')}
+          >
+            <FaExclamationTriangle className={`link-icon ${activeLink === 'risk-analysis' ? 'active-link' : ''}`} /> <p className='link-text'>Risk Analysis</p>
           </Link>
-          <Link href="/about" className='nav-links mt-8'>
-            <FaCog className='link-icon' /> <p className='link-text'>Settings   </p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-8 ${activeLink === 'settings' ? 'active-link' : ''}`}
+            onClick={() => handleClick('settings')}
+          >
+            <FaCog className={`link-icon ${activeLink === 'settings' ? 'active-link' : ''}`} /> <p className='link-text'>Settings</p>
           </Link>
-          <Link href="/about" className='nav-links mt-8'>
-            <FaUserCircle className='link-icon' /> <p className='link-text'>Profile   </p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-8 ${activeLink === 'profile' ? 'active-link' : ''}`}
+            onClick={() => handleClick('profile')}
+          >
+            <FaUserCircle className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
           </Link>
-
           <button className='logout-link mt-4' onClick={handleLogout}>
             <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
           </button>
@@ -223,12 +281,40 @@ const Dashboard = () => {
                   <h1>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
                 </div>
               ) : (
-                <p className='text-center'>Loading authorization...</p>
+                <p className='text-center'>Getting Balances...</p>
               )
             )}
           </div>
+          <div className='names-div'>
+            {!isTrading && currentTime == 0 && (
+              <div>
+                <h2>Bot execution time: </h2>
+                <h1>0.0.0</h1>
+              </div>
+            )}
+
+            {isTrading && (
+              <div>
+                <h2>Bot is running for: </h2>
+                <h1>{formatDuration(currentTime)}</h1>
+              </div>
+            )}
+
+            {startTime > 0 && (
+              <div>
+                <p className='text-m emailinheader2 opacity-90'>Started at: {new Date(startTime).toLocaleString()}</p>
+              </div>
+            )}
+
+            {!isTrading && currentTime > 0 && (
+              <div>
+                <h2>Stopped after: </h2>
+                <p className='text-m emailinheader2 opacity-90'>{formatDuration(currentTime)}</p>
+              </div>
+            )}
+          </div>
         </div>
-        <div className='superset-chatrs-div'>
+        <div id="over" className='superset-chatrs-div'>
           <SupersetDashboard />
         </div>
       </div>
@@ -238,7 +324,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
 
 //           <p className='text-m text-black opacity-70'><strong>Login ID:</strong> {authorizeData.authorize.authorize.loginid}</p>
 //           <p className='text-m text-black opacity-70'><strong>Country:</strong> {authorizeData.authorize.authorize.country}</p>

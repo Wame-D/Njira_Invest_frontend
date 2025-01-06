@@ -127,7 +127,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStartTime = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/start-time/', {
+        const response = await fetch('https://forex1-ul7ikrzn.b4a.run/start-time/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -138,11 +138,14 @@ const Dashboard = () => {
         const data = await response.json();
 
         if (response.ok) {
-          const startTime = new Date(data.start_time).getTime(); 
+          const startTime = new Date(data.start_time).getTime();
+          const trading = data.trading;
           setStartTime(startTime);
           const targetDate = new Date('2025-01-06T10:00:00').getTime();
           if (startTime >= targetDate) {
-            setIsTrading(true); 
+            if (trading) {
+              setIsTrading(true);
+            }
           }
         } else {
           console.error('Error:', data);
@@ -158,7 +161,7 @@ const Dashboard = () => {
 
   const handleStart = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/update-trading/', {
+      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/update-trading/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -190,8 +193,34 @@ const Dashboard = () => {
     setCurrentTime(0);
   };
 
-  const handleStop = () => {
+  const handleStop = async () => {
     setIsTrading(false);
+
+    try {
+      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/update-trading/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          trading: false,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Response:', data);
+        alert('started trading successfully!');
+      } else {
+        console.error('Error:', data);
+        alert('Error  Please try again.');
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      alert('Error connecting to the server.');
+    }
   };
 
   // Update the current time every second when trading is active

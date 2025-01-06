@@ -1,4 +1,4 @@
-.settings-div{
+.settings-div {
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -6,8 +6,7 @@
     height: 60vh;
 }
 
-.tittle-set{
-    /* color: rgba(12, 38, 61, 0.6); */
+.tittle-set {
     font-weight: bold;
     font-size: 2rem;
     color: rgb(4, 155, 214);
@@ -16,10 +15,9 @@
 .description-text {
     margin: 0;
     color: rgba(12, 38, 61, 0.6);
-    /* width: 60vw; */
 }
 
-.strategy-div{
+.strategy-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -28,30 +26,38 @@
     width: 70vw;
     height: 30vh;
     box-shadow: 0 0 1px rgba(12, 38, 61, 0.9);
-border-radius: 0.5rem;
+    border-radius: 0.5rem;
 }
 
-.strategy-div h2{
+.strategy-div h2 {
     font-weight: bold;
     font-size: 1.5rem;
     color: rgb(4, 155, 214);
 }
 
-.small-divs{
-    width: 30vw !important;
-    padding: 1vw;
-    /* background-color: aqua;
-    margin-right: 1rem; */
+.strategy-div h3 {
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgb(4, 155, 214);
+    margin-top: 1rem;
 }
 
-.boxes-str{
+.strategy{
+    color: red !important;
+}
+
+.small-divs {
+    width: 30vw !important;
+    padding: 1vw;
+}
+
+.boxes-str {
     width: 1rem;
     height: 1rem;
 }
 
 .submitt {
     padding: 10px 20px;
-    /* margin: 5px; */
     font-size: 16px;
     font-weight: bold;
     color: white;

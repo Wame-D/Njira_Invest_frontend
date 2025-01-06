@@ -2,16 +2,17 @@
 import './settings.css';
 import { SetStateAction, useState } from 'react';
 import { getCookie } from 'cookies-next';
+import { useEffect } from 'react';
 
 const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
+    const token = getCookie('userToken');
 
     // Handle radio button change
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         setSelectedStrategy(event.target.value);
     };
-
-    const token = getCookie('userToken');
+  
     // Handle form submission
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -22,7 +23,7 @@ const SettingsPage = () => {
         }
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/save-strategy/', {
+            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/save-strategy/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,6 +50,36 @@ const SettingsPage = () => {
         }
     };
 
+    // Fetch the start_time when the page loads
+    const [strategy, setStrategy] = useState('');
+    useEffect(() => {
+        const fetchStartStrategy = async () => {
+            try {
+                const response = await fetch('https://forex1-ul7ikrzn.b4a.run/choosen-strategy/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const strategy = data.strategy;
+                    setStrategy(strategy);
+                    console.log(strategy);
+                } else {
+                    console.error('Error:', data);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+
+        fetchStartStrategy();
+    }, [token]);
+
     return (
         <div className='settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
@@ -58,6 +89,8 @@ const SettingsPage = () => {
                 <div className='small-divs flex flex-col '>
                     <h2>Strategy</h2>
                     <p className='text-m description-text opacity-90'>Choose a strategy that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
+                   <h3>Your current strategy:</h3>
+                    <p className='text-m strategy' >{strategy}</p>
                 </div>
                 <div className='small-divs flex flex-col'>
                     <h2>Choose your strategy below</h2>

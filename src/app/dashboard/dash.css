@@ -178,7 +178,6 @@ small divs styles
     font-weight: bold;
     font-size: 2rem;
     font-family: 'MontserratAlternates-Light';
-
     margin: 0;
     padding: 0;
     color: rgba(12, 38, 61, 0.6);
@@ -195,16 +194,32 @@ small divs styles
     margin-top: 0.5rem;
 }
 
+/* hiding alll content unless clicked */
+.hidden-content{
+    display: none ; 
+}
+
 /*
 superset chart div 
  */
 .superset-chatrs-div {
+    display: flex;
     width: 95%;
     height: 60vh;
     align-self: center;
     border-radius: 0.5rem;
     background-color: rgb(253, 250, 246);
     box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
+}
+
+.settings-div {
+    display: flex;
+    width: 95%;
+    height: 60vh;
+    align-self: center;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 0 0 9px rgba(115, 162, 250, 0.5); */
 }
 
 .active-link,

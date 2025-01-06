@@ -12,6 +12,7 @@ import { FaCog } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
+import SettingsPage from '../settings/page';
 
 interface UserAccount {
   account: string;
@@ -97,7 +98,6 @@ const Dashboard = () => {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('Authorization failed:', errorData);
-        // alert(errorData);
         throw new Error(`Authorization failed with status ${response.status}`);
       }
 
@@ -311,8 +311,12 @@ const Dashboard = () => {
             )}
           </div>
         </div>
-        <div id="over" className='superset-chatrs-div'>
+        <div id="over"   className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
           <SupersetDashboard />
+        </div>
+
+        <div   className={`hidden-content ${activeLink === 'settings'? 'settings-div' : ''}`}>
+          <SettingsPage />
         </div>
       </div>
 

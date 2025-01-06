@@ -104,8 +104,6 @@ const Dashboard = () => {
       const data = await response.json();
       console.log('Authorization successful:', data);
 
-      // Save the token and related data to localStorage
-      localStorage.setItem('userToken', token);
       setAuthorizeData(data);
     } catch (error) {
       setError('Error during authorization');
@@ -115,7 +113,6 @@ const Dashboard = () => {
   };
 
   const handleLogout = () => {
-    // Remove a cookie
     deleteCookie('userToken');
     router.replace('/');
     console.log("User token cleared from local storage.");
@@ -124,8 +121,67 @@ const Dashboard = () => {
   const [isTrading, setIsTrading] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const token = getCookie('userToken');
 
-  const handleStart = () => {
+  // Fetch the start_time when the page loads
+  useEffect(() => {
+    const fetchStartTime = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/start-time/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const startTime = new Date(data.start_time).getTime(); 
+          setStartTime(startTime);
+          const targetDate = new Date('2025-01-06T10:00:00').getTime();
+          if (startTime >= targetDate) {
+            setIsTrading(true); 
+          }
+        } else {
+          console.error('Error:', data);
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
+    };
+
+    fetchStartTime();
+  }, [token]);
+
+
+  const handleStart = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/update-trading/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          trading: true,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Response:', data);
+        alert('started trading successfully!');
+      } else {
+        console.error('Error:', data);
+        alert('Error  Please try again.');
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      alert('Error connecting to the server.');
+    }
     setIsTrading(true);
     const start = Date.now();
     // Record the start time in milliseconds
@@ -311,11 +367,11 @@ const Dashboard = () => {
             )}
           </div>
         </div>
-        <div id="over"   className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
+        <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
           <SupersetDashboard />
         </div>
 
-        <div   className={`hidden-content ${activeLink === 'settings'? 'settings-div' : ''}`}>
+        <div className={`hidden-content ${activeLink === 'settings' ? 'settings-div' : ''}`}>
           <SettingsPage />
         </div>
       </div>

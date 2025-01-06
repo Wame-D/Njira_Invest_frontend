@@ -8,7 +8,7 @@ const SettingsPage = () => {
 
     // Handle radio button change
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        setSelectedStrategy(event.target.value); 
+        setSelectedStrategy(event.target.value);
     };
 
     const token = getCookie('userToken');
@@ -29,7 +29,7 @@ const SettingsPage = () => {
                 },
                 body: JSON.stringify({
                     token,
-                    strategy: selectedStrategy, 
+                    strategy: selectedStrategy,
                     trading: false,
                 }),
             });
@@ -63,21 +63,21 @@ const SettingsPage = () => {
                     <h2>Choose your strategy below</h2>
                     <form className='w-full h-fit mt-4' onSubmit={handleSubmit}>
                         <div className='flex flex-row items-center '>
-                            <input className='ml-2 boxes-str' type="radio"
+                            <input className='mr-2 boxes-str' type="radio"
                                 checked={selectedStrategy === 'Moving_averages'}
                                 value="Moving_averages"
                                 onChange={handleRadioChange}></input>
                             <label className='text-m description-text opacity-90 '>Moving averages</label>
                         </div>
                         <div className='flex flex-row items-center '>
-                            <input className='boxes-str ml-2' name='mal' id='mal' type="radio"
+                            <input className='boxes-str mr-2' name='mal' id='mal' type="radio"
                                 checked={selectedStrategy === 'malysian'}
                                 value="malysian"
                                 onChange={handleRadioChange}></input>
                             <label htmlFor='mal' className='text-m description-text opacity-90 ml-2'>Malysian strategy</label>
                         </div>
                         <div className='flex flex-row items-center '>
-                            <input className='boxes-str ml-2' name='mal' id='mal' type="radio"
+                            <input className='boxes-str mr-2 ' name='mal' id='mal' type="radio"
                                 checked={selectedStrategy === 'both'}
                                 value="both"
                                 onChange={handleRadioChange}></input>

@@ -12,7 +12,7 @@ const SettingsPage = () => {
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         setSelectedStrategy(event.target.value);
     };
-  
+
     // Handle form submission
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -50,7 +50,47 @@ const SettingsPage = () => {
         }
     };
 
-    // Fetch the start_time when the page loads
+    const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        const checked = event.target.checked;
+
+        if (checked) {
+            // Add symbol if it's not already in the array
+            if (!selectedSymbols.includes(value)) {
+                setSelectedSymbols([...selectedSymbols, value]);
+            }
+        } else {
+            // Remove symbol if unchecked
+            const updatedSymbols = selectedSymbols.filter(symbol => symbol !== value);
+            setSelectedSymbols(updatedSymbols);
+        }
+    };
+
+    const handleSymbolChange = async (event: React.FormEvent) => {
+        event.preventDefault();
+        try {
+            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/save_symbols/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    token,
+                    symbols: selectedSymbols
+                }),
+            });
+            if (response.ok) {
+                alert('Symbols saved successfully!');
+            } else {
+                alert('Failed to save symbols.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    // Fetch the strategy when the page loads
     const [strategy, setStrategy] = useState('');
     useEffect(() => {
         const fetchStartStrategy = async () => {
@@ -80,6 +120,33 @@ const SettingsPage = () => {
         fetchStartStrategy();
     }, [token]);
 
+    const [symbols, setSymbols] = useState<string[]>([]);
+    useEffect(() => {
+        const fetchSymbols = async () => {
+            try {
+                const response = await fetch('https://forex1-ul7ikrzn.b4a.run/get_symbols/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const symbol = data.symbol;
+                    setSymbols(symbol);
+                } else {
+                    console.error('Error:', data);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+
+        fetchSymbols();
+    }, [token]);
     return (
         <div className='settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
@@ -89,7 +156,7 @@ const SettingsPage = () => {
                 <div className='small-divs flex flex-col '>
                     <h2>Strategy</h2>
                     <p className='text-m description-text opacity-90'>Choose a strategy that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
-                   <h3>Your current strategy:</h3>
+                    <h3>Your current strategy:</h3>
                     <p className='text-m strategy' >{strategy}</p>
                 </div>
                 <div className='small-divs flex flex-col'>
@@ -115,6 +182,57 @@ const SettingsPage = () => {
                                 value="both"
                                 onChange={handleRadioChange}></input>
                             <label htmlFor='mal' className='text-m description-text opacity-90'>Both</label>
+                        </div>
+                        <input className='submitt mt-4' type='Submit'></input>
+                    </form>
+                </div>
+            </div>
+
+            <div className='strategy-div mb-16'>
+                <div className='small-divs flex flex-col '>
+                    <h2>Symbols</h2>
+                    <p className='text-m description-text opacity-90'>Choose a symbols that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
+                    <h3>Your current selected symbols:</h3>
+                    <p className='text-m strategy' >
+                        <ul className="list-disc ml-6">
+                            {symbols.map((item, index) => (
+                                <li key={index} className="text-m description-text opacity-90">
+                                    {item[0]}
+                                </li>
+                            ))}
+                        </ul>
+                    </p>
+                </div>
+                <div className='small-divs flex flex-col'>
+                    <h2>Choose symbols below</h2>
+                    <form className='w-full h-fit mt-4' onSubmit={handleSymbolChange}>
+                        <div className='flex flex-row items-center '>
+                            <input className='mr-2 boxes-str' type="checkbox"
+                                // checked={selectedStrategy === 'Gold'}
+                                value="Gold"
+                                onChange={handleCheckboxChange}></input>
+                            <label className='text-m description-text opacity-90 '>Gold</label>
+                        </div>
+                        <div className='flex flex-row items-center '>
+                            <input className='boxes-str mr-2' name='mal' id='mal' type="checkbox"
+                                // checked={selectedStrategy === 'US_30'}
+                                value="US_30"
+                                onChange={handleCheckboxChange}></input>
+                            <label htmlFor='mal' className='text-m description-text opacity-90 ml-2'>US_30</label>
+                        </div>
+                        <div className='flex flex-row items-center '>
+                            <input className='boxes-str mr-2 ' name='mal' id='mal' type="checkbox"
+                                // checked={selectedStrategy === 'Euro/USD'}
+                                value="Euro/USD"
+                                onChange={handleCheckboxChange}></input>
+                            <label htmlFor='mal' className='text-m description-text opacity-90'>Euro/USD</label>
+                        </div>
+                        <div className='flex flex-row items-center '>
+                            <input className='boxes-str mr-2 ' name='mal' id='mal' type="checkbox"
+                                // checked={selectedStrategy === 'V_75'}
+                                value="V_75"
+                                onChange={handleCheckboxChange}></input>
+                            <label htmlFor='mal' className='text-m description-text opacity-90'>V_75</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
                     </form>

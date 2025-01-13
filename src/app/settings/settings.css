@@ -14,9 +14,12 @@
 
 .description-text {
     margin: 0;
-    color: rgba(12, 38, 61, 0.6);
+    color: rgba(3, 25, 44, 0.8);
 }
 
+.disabled-label{
+    color: rgba(150, 150, 150, 0.8);
+}
 .strategy-div {
     display: flex;
     flex-direction: row;

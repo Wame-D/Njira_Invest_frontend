@@ -208,31 +208,37 @@ const SettingsPage = () => {
                     <form className='w-full h-fit mt-4' onSubmit={handleSymbolChange}>
                         <div className='flex flex-row items-center '>
                             <input className='mr-2 boxes-str' type="checkbox"
-                                // checked={selectedStrategy === 'Gold'}
+                                checked={symbols.some((item) => item[0] === "Gold")}
+                                disabled={symbols.some((item) => item[0] === "Gold")}
                                 value="Gold"
                                 onChange={handleCheckboxChange}></input>
-                            <label className='text-m description-text opacity-90 '>Gold</label>
+                            <label
+                                className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-label' : ''}`}
+                            >Gold</label>
                         </div>
                         <div className='flex flex-row items-center '>
                             <input className='boxes-str mr-2' name='mal' id='mal' type="checkbox"
-                                // checked={selectedStrategy === 'US_30'}
+                                checked={symbols.some((item) => item[0] === "US_30")}
+                                disabled={symbols.some((item) => item[0] === "US_30")}
                                 value="US_30"
                                 onChange={handleCheckboxChange}></input>
-                            <label htmlFor='mal' className='text-m description-text opacity-90 ml-2'>US_30</label>
+                            <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
                         </div>
-                        <div className='flex flex-row items-center '>
+                        <div className='flex flex-row items-center'>
                             <input className='boxes-str mr-2 ' name='mal' id='mal' type="checkbox"
-                                // checked={selectedStrategy === 'Euro/USD'}
+                                checked={symbols.some((item) => item[0] === "Euro/USD")}
+                                disabled={symbols.some((item) => item[0] === "Euro/USD")}
                                 value="Euro/USD"
                                 onChange={handleCheckboxChange}></input>
-                            <label htmlFor='mal' className='text-m description-text opacity-90'>Euro/USD</label>
+                            <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
                         </div>
                         <div className='flex flex-row items-center '>
                             <input className='boxes-str mr-2 ' name='mal' id='mal' type="checkbox"
-                                // checked={selectedStrategy === 'V_75'}
+                                checked={symbols.some((item) => item[0] === "V_75")}
+                                disabled={symbols.some((item) => item[0] === "V_75")}
                                 value="V_75"
                                 onChange={handleCheckboxChange}></input>
-                            <label htmlFor='mal' className='text-m description-text opacity-90'>V_75</label>
+                            <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
                     </form>

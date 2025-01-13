@@ -71,3 +71,12 @@
     transition: opacity 0.3s ease;
     width: 10vw;
 }
+
+.delete_icon{
+    size: 0.4rem !important;
+    color: rgb(237, 5, 5);
+}
+
+.delete_icon:hover{
+    color:  #007bff;
+}

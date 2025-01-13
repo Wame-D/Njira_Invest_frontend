@@ -3,6 +3,7 @@ import './settings.css';
 import { SetStateAction, useState } from 'react';
 import { getCookie } from 'cookies-next';
 import { useEffect } from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
@@ -14,6 +15,9 @@ const SettingsPage = () => {
     };
 
     // Handle form submission
+    const [error1, setError1] = useState<string>("")
+    const [success1, setSucces1] = useState<string>("")
+    const [changed, setChanged] = useState(false)
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
@@ -39,14 +43,15 @@ const SettingsPage = () => {
 
             if (response.ok) {
                 console.log('Response:', data);
-                alert('Strategy saved successfully!');
+                setChanged(!changed)
+                setSucces1('Strategy saved successfully!');
             } else {
                 console.error('Error:', data);
-                alert('Error saving strategy. Please try again.');
+                setError1('Error saving strategy. Please try again.');
             }
         } catch (error) {
             console.error('Fetch error:', error);
-            alert('Error connecting to the server.');
+            setError1('Error connecting to the server.');
         }
     };
 
@@ -67,6 +72,8 @@ const SettingsPage = () => {
         }
     };
 
+    const [error2, setError2] = useState<string>("")
+    const [success2, setSucces2] = useState<string>("")
     const handleSymbolChange = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
@@ -81,12 +88,13 @@ const SettingsPage = () => {
                 }),
             });
             if (response.ok) {
-                alert('Symbols saved successfully!');
+                setChanged(!changed)
+                setSucces2('Symbols saved successfully!');
             } else {
-                alert('Failed to save symbols.');
+                setError2('Failed to save symbols.');
             }
         } catch (error) {
-            console.error('Error:', error);
+            setError2("{error}");
         }
     };
 
@@ -108,6 +116,7 @@ const SettingsPage = () => {
                 if (response.ok) {
                     const strategy = data.strategy;
                     setStrategy(strategy);
+                    setSucces1("")
                     console.log(strategy);
                 } else {
                     console.error('Error:', data);
@@ -118,7 +127,7 @@ const SettingsPage = () => {
         };
 
         fetchStartStrategy();
-    }, [token]);
+    }, [token, changed]);
 
     const [symbols, setSymbols] = useState<string[]>([]);
     useEffect(() => {
@@ -137,6 +146,8 @@ const SettingsPage = () => {
                 if (response.ok) {
                     const symbol = data.symbol;
                     setSymbols(symbol);
+                    setSuccess("")
+                    setSucces2("")
                 } else {
                     console.error('Error:', data);
                 }
@@ -146,7 +157,34 @@ const SettingsPage = () => {
         };
 
         fetchSymbols();
-    }, [token]);
+    }, [token,changed]);
+
+    // Function to delete an item
+    const [error, setError] = useState<string>("")
+    const [success, setSuccess] = useState<string>("")
+    const deleteItem = async (index: string) => {
+        try {
+            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/delete_symbols/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token, index }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSuccess("deleted successful")
+                setChanged(!changed)
+            } else {
+                console.error('Error:', data);
+                setError(data)
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    };
     return (
         <div className='settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
@@ -184,6 +222,8 @@ const SettingsPage = () => {
                             <label htmlFor='mal' className='text-m description-text opacity-90'>Both</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
+                        {error1 && <p style={{color: "red"}}>{error1}</p>}
+                        {success1 && <p style={{color: "green"}}>{success1}</p>}
                     </form>
                 </div>
             </div>
@@ -194,13 +234,22 @@ const SettingsPage = () => {
                     <p className='text-m description-text opacity-90'>Choose a symbols that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
                     <h3>Your current selected symbols:</h3>
                     <p className='text-m strategy' >
-                        <ul className="list-disc ml-6">
+                        <ul className=" ml-6">
                             {symbols.map((item, index) => (
                                 <li key={index} className="text-m description-text opacity-90">
+                                    <button
+                                        onClick={() => deleteItem(item[0])} // Call delete function on click
+                                        className=" mr-4"
+                                    >
+                                        <FaTrashAlt className='delete_icon' />
+                                    </button>
                                     {item[0]}
                                 </li>
                             ))}
+
                         </ul>
+                        {error && <p style={{color: "red"}}>{error}</p>}
+                        {success && <p style={{color: "green"}}>{success}</p>}
                     </p>
                 </div>
                 <div className='small-divs flex flex-col'>
@@ -241,6 +290,8 @@ const SettingsPage = () => {
                             <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
+                        {error2 && <p style={{color: "red"}}>{error2}</p>}
+                        {success2 && <p style={{color: "green"}}>{success2}</p>}
                     </form>
                 </div>
             </div>

@@ -81,7 +81,7 @@ const Dashboard = () => {
         authorizeUser(cookietoken);
       }
     }
-  }, [acct1, token1, cur1, cookietoken]);
+  }, [acct1, token1, cur1]);
 
   const authorizeUser = async (token: string) => {
     console.log("Sending token:", token);

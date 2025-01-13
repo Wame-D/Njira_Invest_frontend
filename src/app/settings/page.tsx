@@ -161,7 +161,7 @@ const SettingsPage = () => {
         };
 
         fetchSymbols();
-    }, [token, changed, symbols]);
+    }, [token, changed]);
 
     // Function to delete an item
     const [error, setError] = useState<string>("")

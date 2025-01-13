@@ -96,7 +96,8 @@ const SettingsPage = () => {
                 setError2('Failed to save symbols.');
             }
         } catch (error) {
-            // setError2('{error}');
+            console.log(error)
+          
         }
     };
 

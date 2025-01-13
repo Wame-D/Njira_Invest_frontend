@@ -243,8 +243,12 @@ const Dashboard = () => {
     const seconds = Math.floor(ms / 1000);
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
-    return `${hours} H . ${minutes % 60}M . ${seconds % 60}S `;
-  };
+    const days = Math.floor(hours / 24);
+    
+    return days > 0 
+      ? `${days} D + ${hours % 24} : ${minutes % 60} : ${seconds % 60}` 
+      : `${hours} : ${minutes % 60} : ${seconds % 60}`;
+  };  
 
   // variable to keep track  of active link setting default to overveiw
   const [activeLink, setActiveLink] = useState('overview');
@@ -378,7 +382,7 @@ const Dashboard = () => {
             {isTrading && (
               <div>
                 <h2>Bot is running for: </h2>
-                <h1>{formatDuration(currentTime)}</h1>
+                <h1 id='runing-time'>{formatDuration(currentTime)}</h1>
               </div>
             )}
 

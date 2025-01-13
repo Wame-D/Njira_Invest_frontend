@@ -18,7 +18,14 @@
 }
 
 .disabled-label{
+    /* display: none; */
     color: rgba(150, 150, 150, 0.8);
+    cursor: not-allowed;
+    margin-left: 1.5rem;
+}
+
+.disabled-box{
+    display: none !important;
 }
 .strategy-div {
     display: flex;

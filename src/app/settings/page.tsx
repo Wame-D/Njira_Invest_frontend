@@ -60,7 +60,7 @@ const SettingsPage = () => {
         const value = event.target.value;
         const checked = event.target.checked;
 
-        if (checked) {
+        if (!checked) {
             // Add symbol if it's not already in the array
             if (!selectedSymbols.includes(value)) {
                 setSelectedSymbols([...selectedSymbols, value]);
@@ -77,7 +77,7 @@ const SettingsPage = () => {
     const handleSymbolChange = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/save_symbols/', {
+            const response = await fetch('http://127.0.0.1:8000/save_symbols/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchSymbols = async () => {
             try {
-                const response = await fetch('https://forex1-ul7ikrzn.b4a.run/get_symbols/', {
+                const response = await fetch('http://127.0.0.1:8000/get_symbols/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -145,6 +145,7 @@ const SettingsPage = () => {
 
                 if (response.ok) {
                     const symbol = data.symbol;
+                    console.log(symbols);
                     setSymbols(symbol);
                     setSuccess("")
                     setSucces2("")
@@ -157,14 +158,14 @@ const SettingsPage = () => {
         };
 
         fetchSymbols();
-    }, [token,changed]);
+    }, [token, changed]);
 
     // Function to delete an item
     const [error, setError] = useState<string>("")
     const [success, setSuccess] = useState<string>("")
     const deleteItem = async (index: string) => {
         try {
-            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/delete_symbols/', {
+            const response = await fetch(' http://127.0.0.1:8000/delete_symbols/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -179,10 +180,11 @@ const SettingsPage = () => {
                 setChanged(!changed)
             } else {
                 console.error('Error:', data);
-                setError(data)
+                setError("failed to delete the symbol")
             }
         } catch (error) {
             console.error('Fetch error:', error);
+            setError("failed to delete the symbol")
         }
     };
     return (
@@ -222,8 +224,8 @@ const SettingsPage = () => {
                             <label htmlFor='mal' className='text-m description-text opacity-90'>Both</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
-                        {error1 && <p style={{color: "red"}}>{error1}</p>}
-                        {success1 && <p style={{color: "green"}}>{success1}</p>}
+                        {error1 && <p style={{ color: "red" }}>{error1}</p>}
+                        {success1 && <p style={{ color: "green" }}>{success1}</p>}
                     </form>
                 </div>
             </div>
@@ -233,32 +235,30 @@ const SettingsPage = () => {
                     <h2>Symbols</h2>
                     <p className='text-m description-text opacity-90'>Choose a symbols that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
                     <h3>Your current selected symbols:</h3>
-                    <p className='text-m strategy' >
-                        <ul className=" ml-6">
-                            {symbols.map((item, index) => (
-                                <li key={index} className="text-m description-text opacity-90">
-                                    <button
-                                        onClick={() => deleteItem(item[0])} // Call delete function on click
-                                        className=" mr-4"
-                                    >
-                                        <FaTrashAlt className='delete_icon' />
-                                    </button>
-                                    {item[0]}
-                                </li>
-                            ))}
+                    <ul className=" ml-6">
+                        {symbols.map((item, index) => (
+                            <li key={index} className="text-m description-text opacity-90">
+                                <button
+                                    onClick={() => deleteItem(item[0])}
+                                    className=" mr-4"
+                                >
+                                    <FaTrashAlt className='delete_icon' />
+                                </button>
+                                {item[0]}
+                            </li>
+                        ))}
 
-                        </ul>
-                        {error && <p style={{color: "red"}}>{error}</p>}
-                        {success && <p style={{color: "green"}}>{success}</p>}
-                    </p>
+                    </ul>
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                    {success && <p style={{ color: "green" }}>{success}</p>}
                 </div>
                 <div className='small-divs flex flex-col'>
                     <h2>Choose symbols below</h2>
                     <form className='w-full h-fit mt-4' onSubmit={handleSymbolChange}>
                         <div className='flex flex-row items-center '>
                             <input className='mr-2 boxes-str' type="checkbox"
-                                checked={symbols.some((item) => item[0] === "Gold")}
-                                disabled={symbols.some((item) => item[0] === "Gold")}
+                                // checked={symbols.some((item) => item[0] === "Gold")}
+                                // disabled={symbols.some((item) => item[0] === "Gold")}
                                 value="Gold"
                                 onChange={handleCheckboxChange}></input>
                             <label
@@ -266,32 +266,33 @@ const SettingsPage = () => {
                             >Gold</label>
                         </div>
                         <div className='flex flex-row items-center '>
-                            <input className='boxes-str mr-2' name='mal' id='mal' type="checkbox"
-                                checked={symbols.some((item) => item[0] === "US_30")}
-                                disabled={symbols.some((item) => item[0] === "US_30")}
+                            <input className='boxes-str mr-2' name='us_30' id='us_30' type="checkbox"
+                                // checked={symbols.some((item) => item[0] === "US_30")}
+                                disabled={symbols.length > 0 && symbols.some((item) => item[0] === "US_30")}
                                 value="US_30"
                                 onChange={handleCheckboxChange}></input>
-                            <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
+                            <label htmlFor='us_30' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
                         </div>
                         <div className='flex flex-row items-center'>
-                            <input className='boxes-str mr-2 ' name='mal' id='mal' type="checkbox"
-                                checked={symbols.some((item) => item[0] === "Euro/USD")}
-                                disabled={symbols.some((item) => item[0] === "Euro/USD")}
+                            <input className='boxes-str mr-2 ' name='Euro/usd' id='Euro/usd' type="checkbox"
+                                // checked={symbols.some((item) => item[0] === "Euro/USD")}
+                                // disabled={symbols.some((item) => item[0] === "Euro/USD")}
+                                disabled={symbols.length > 0 && symbols.some((item) => item[0] === "Euro/USD")}
                                 value="Euro/USD"
                                 onChange={handleCheckboxChange}></input>
-                            <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
+                            <label htmlFor='Euro/usd' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
                         </div>
                         <div className='flex flex-row items-center '>
-                            <input className='boxes-str mr-2 ' name='mal' id='mal' type="checkbox"
-                                checked={symbols.some((item) => item[0] === "V_75")}
-                                disabled={symbols.some((item) => item[0] === "V_75")}
+                            <input className='boxes-str mr-2 ' name='v_75' id='v_75' type="checkbox"
+                                // checked={symbols.some((item) => item[0] === "V_75")}
+                                // disabled={symbols.some((item) => item[0] === "V_75")}
                                 value="V_75"
                                 onChange={handleCheckboxChange}></input>
-                            <label htmlFor='mal' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
+                            <label htmlFor='v_75' className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
-                        {error2 && <p style={{color: "red"}}>{error2}</p>}
-                        {success2 && <p style={{color: "green"}}>{success2}</p>}
+                        {error2 && <p style={{ color: "red" }}>{error2}</p>}
+                        {success2 && <p style={{ color: "green" }}>{success2}</p>}
                     </form>
                 </div>
             </div>

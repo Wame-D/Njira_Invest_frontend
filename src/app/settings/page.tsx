@@ -280,9 +280,9 @@ const SettingsPage = () => {
 
                         <div className='flex flex-row items-center'>
                             <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-box' : ''}`}
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "frxEURUSD") ? 'disabled-box' : ''}`}
                                 type="checkbox"
-                                value="Euro/USD"
+                                value="frxEURUSD"
                                 onChange={handleCheckboxChange}></input>
                             <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
                         </div>

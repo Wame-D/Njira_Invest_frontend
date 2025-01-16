@@ -43,6 +43,7 @@ export default function TopSection() {
     const openLogin = () => {
         if (token) {
             window.location.href = '/dashboard';
+            // going to dashboad
         } else {
             setShowChatbot(true);
         }

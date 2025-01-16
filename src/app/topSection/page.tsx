@@ -55,6 +55,7 @@ export default function TopSection() {
     const handleDashboardClick = () => {
         if (token) {
             window.location.href = '/dashboard';
+            // going to dashboard
         } else {
             setShowChatbot(true);
         }

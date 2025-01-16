@@ -42,7 +42,7 @@ export default function TopSection() {
     const  token = getCookie('userToken');
     const openLogin = () => {
         if (token) {
-            router.push('/dashboard'); 
+            window.location.href = '/dashboard';
         } else {
             setShowChatbot(true);
         }
@@ -54,7 +54,7 @@ export default function TopSection() {
 
     const handleDashboardClick = () => {
         if (token) {
-            router.push('/dashboard'); 
+            window.location.href = '/dashboard';
         } else {
             setShowChatbot(true);
         }

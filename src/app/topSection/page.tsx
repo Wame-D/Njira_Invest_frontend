@@ -3,12 +3,12 @@ import './top.css';
 import React, { useState, useEffect } from 'react';
 import Login from '../login/page';
 import anime from 'animejs/lib/anime.es.js';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import {  getCookie } from 'cookies-next';
 
 export default function TopSection() {
     const [showChatbot, setShowChatbot] = useState(false);
-    const router = useRouter();
+    // const router = useRouter();
 
     useEffect(() => {
         // Anime.js for dir-normal element with opacity change

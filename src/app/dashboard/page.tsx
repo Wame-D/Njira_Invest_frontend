@@ -112,16 +112,22 @@ const Dashboard = () => {
     }
   };
 
+  if (authorizeData) {
+    setCookie('userEmail',  authorizeData.authorize.authorize.email );
+  }
+
   const handleLogout = () => {
     deleteCookie('userToken');
+    deleteCookie('userEmail');
     router.replace('/');
-    console.log("User token cleared from local storage.");
+    console.log("User token  and email cleared from this pc.");
   };
 
   const [isTrading, setIsTrading] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const token = getCookie('userToken');
+  const email = getCookie('userEmail');
 
   // Fetch the start_time when the page loads
   useEffect(() => {
@@ -132,7 +138,7 @@ const Dashboard = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ token }),
+          body: JSON.stringify({ email }),
         });
 
         const data = await response.json();
@@ -167,7 +173,7 @@ const Dashboard = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          token,
+          email,
           trading: true,
         }),
       });
@@ -203,7 +209,7 @@ const Dashboard = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          token,
+          email,
           trading: false,
         }),
       });
@@ -244,11 +250,11 @@ const Dashboard = () => {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    
-    return days > 0 
-      ? `${days} D + ${hours % 24} : ${minutes % 60} : ${seconds % 60}` 
+
+    return days > 0
+      ? `${days} D + ${hours % 24} : ${minutes % 60} : ${seconds % 60}`
       : `${hours} : ${minutes % 60} : ${seconds % 60}`;
-  };  
+  };
 
   // variable to keep track  of active link setting default to overveiw
   const [activeLink, setActiveLink] = useState('overview');

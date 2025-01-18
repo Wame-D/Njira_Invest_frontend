@@ -7,6 +7,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 
 const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
+    const email = getCookie('userEmail');
     const token = getCookie('userToken');
 
     // Handle radio button change
@@ -18,6 +19,8 @@ const SettingsPage = () => {
     const [error1, setError1] = useState<string>("")
     const [success1, setSucces1] = useState<string>("")
     const [changed, setChanged] = useState(false)
+    const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
+
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
@@ -34,6 +37,7 @@ const SettingsPage = () => {
                 },
                 body: JSON.stringify({
                     token,
+                    email,
                     strategy: selectedStrategy,
                     trading: false,
                 }),
@@ -55,7 +59,6 @@ const SettingsPage = () => {
         }
     };
 
-    const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         const checked = event.target.checked;
@@ -84,6 +87,7 @@ const SettingsPage = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    email,
                     token,
                     symbols: selectedSymbols
                 }),
@@ -110,7 +114,7 @@ const SettingsPage = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ token }),
+                    body: JSON.stringify({ email }),
                 });
 
                 const data = await response.json();
@@ -140,7 +144,7 @@ const SettingsPage = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ token }),
+                    body: JSON.stringify({ email }),
                 });
 
                 const data = await response.json();
@@ -174,7 +178,7 @@ const SettingsPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ token, index }),
+                body: JSON.stringify({ email, index }),
             });
 
             const data = await response.json();
@@ -196,7 +200,7 @@ const SettingsPage = () => {
         <div className='settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
             <p className='text-m description-text opacity-90'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
-
+                {/* strategy analysis setting */}
             <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Strategy</h2>
@@ -234,10 +238,78 @@ const SettingsPage = () => {
                     </form>
                 </div>
             </div>
-
+            {/* symbols analysing settings */}
             <div className='strategy-div mb-16'>
                 <div className='small-divs flex flex-col '>
                     <h2>Symbols</h2>
+                    <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
+                    <h3>Your current selected symbols:</h3>
+                    <ul className=" mt-4 ml-6">
+                        {symbols.map((item, index) => (
+                            <li key={index} className="text-m description-text opacity-90">
+                                <button
+                                    onClick={() => deleteItem(item[0])}
+                                    className=" mr-4"
+                                >
+                                    <FaTrashAlt className='delete_icon' />
+                                </button>
+                                {item[0]}
+                            </li>
+                        ))}
+
+                    </ul>
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                    {success && <p style={{ color: "green" }}>{success}</p>}
+                </div>
+                <div className='small-divs flex flex-col'>
+                    <h2>Choose symbols below</h2>
+                    <form className='w-full h-fit mt-4' onSubmit={handleSymbolChange}>
+                        <div className='flex flex-row items-center ' >
+                            <input
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-box' : ''}`}
+                                type="checkbox"
+                                value="Gold"
+                                onChange={handleCheckboxChange}></input>
+                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-label' : ''}`}>Gold</label>
+                        </div>
+
+                        <div className='flex flex-row items-center '>
+                            <input
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-box' : ''}`}
+                                type="checkbox"
+                                value="US_30"
+                                onChange={handleCheckboxChange}></input>
+                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
+                        </div>
+
+                        <div className='flex flex-row items-center'>
+                            <input
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "frxEURUSD") ? 'disabled-box' : ''}`}
+                                type="checkbox"
+                                value="frxEURUSD"
+                                onChange={handleCheckboxChange}></input>
+                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
+                        </div>
+
+                        <div className='flex flex-row items-center '>
+                            <input
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-box' : ''}`}
+                                type="checkbox"
+                                value="V_75"
+                                onChange={handleCheckboxChange}></input>
+                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
+                        </div>
+
+                        <input className='submitt mt-4' type='Submit'></input>
+                        {error2 && <p style={{ color: "red" }}>{error2}</p>}
+                        {success2 && <p style={{ color: "green" }}>{success2}</p>}
+                    </form>
+                </div>
+            </div>
+            {/* Risk analysis settings */}
+            <div className='strategy-div mb-16'>
+                <div className='small-divs flex flex-col '>
+                    <h2>Risk Analysis</h2>
                     <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
                     <h3>Your current selected symbols:</h3>
                     <ul className=" mt-4 ml-6">

@@ -87,7 +87,7 @@ const Dashboard = () => {
     console.log("Sending token:", token);
 
     try {
-      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/authorize/', {
+      const response = await fetch('http://127.0.0.1:8000/authorize/', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

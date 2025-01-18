@@ -20,6 +20,7 @@ const SettingsPage = () => {
     const [success1, setSucces1] = useState<string>("")
     const [changed, setChanged] = useState(false)
     const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
+    const [save_symbol, setSymbolChange] = useState(false)
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -30,7 +31,7 @@ const SettingsPage = () => {
         }
 
         try {
-            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/save-strategy/', {
+            const response = await fetch('http://127.0.0.1:8000/save-strategy/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,7 +82,7 @@ const SettingsPage = () => {
         event.preventDefault();
         setError2("")
         try {
-            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/save_symbols/', {
+            const response = await fetch('http://127.0.0.1:8000/save_symbols/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +94,7 @@ const SettingsPage = () => {
                 }),
             });
             if (response.ok) {
-                setChanged(!changed)
+                setSymbolChange(!save_symbol)
                 setSucces2('Symbols saved successfully!');
                 setSelectedSymbols([]);
             } else {
@@ -109,7 +110,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchStartStrategy = async () => {
             try {
-                const response = await fetch('https://forex1-ul7ikrzn.b4a.run/choosen-strategy/', {
+                const response = await fetch('http://127.0.0.1:8000/choosen-strategy/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -139,7 +140,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchSymbols = async () => {
             try {
-                const response = await fetch('https://forex1-ul7ikrzn.b4a.run/get_symbols/', {
+                const response = await fetch('http://127.0.0.1:8000/get_symbols/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -165,7 +166,7 @@ const SettingsPage = () => {
         };
 
         fetchSymbols();
-    }, [token, changed]);
+    }, [email, save_symbol]);
 
     // Function to delete an item
     const [error, setError] = useState<string>("")
@@ -173,7 +174,7 @@ const SettingsPage = () => {
     const deleteItem = async (index: string) => {
         setError("")
         try {
-            const response = await fetch('https://forex1-ul7ikrzn.b4a.run/delete_symbols/', {
+            const response = await fetch('http://127.0.0.1:8000/delete_symbols/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -185,7 +186,7 @@ const SettingsPage = () => {
 
             if (response.ok) {
                 setSuccess("deleted successful")
-                setChanged(!changed)
+                setSymbolChange(!save_symbol)
             } else {
                 console.error('Error:', data);
                 setError("failed to delete the symbol")
@@ -196,11 +197,173 @@ const SettingsPage = () => {
         }
     };
 
+
+    // method to save risks data
+    const [perTrade, setPerTrade] = useState<number | null>(null);
+    const [perDay, setPerDay] = useState<number | null>(null);
+    const [error3, setError3] = useState<string | null>(null);
+    const [success3, setSuccess3] = useState<string | null>(null);
+    const [saved_risk, setSaved] = useState(false)
+    const saveRiskData = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (perTrade === null || perDay === null) {
+            setError('Please fill in all fields');
+            setSuccess("");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/save_risks/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    per_trade: perTrade,
+                    per_day: perDay,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSuccess3('Risk data saved successfully');
+                setSaved(!saved_risk)
+                setError3("");
+            } else {
+                setError3(data.error || 'Failed to save risk data');
+                setSuccess3("");
+            }
+        } catch (err) {
+            setError3('An unexpected error occurred');
+            setSuccess3("");
+            console.error(err);
+        }
+    };
+
+    // fetch risks data when page loads or when there is a change
+    const [risk, setRisk] = useState<string[]>([]);
+    useEffect(() => {
+        const fetchRisk = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/get_risks/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const risk_data = data.risks;
+                    console.log(risk_data);
+                    setRisk(risk_data)
+                    setSuccess3("")
+                    setError3("")
+                } else {
+                    console.error('Error:', data);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+
+        fetchRisk();
+    }, [email, saved_risk]);
+
+    // method to save profit loss margin to database
+    const [maxLossPerDay, setMaxLossPerDay] = useState<number | null>(null);
+    const [overallLoss, setOverallLoss] = useState<number | null>(null);
+    const [maxWinPerDay, setMaxWinPerDay] = useState<number | null>(null);
+    const [overallWin, setOverallWin] = useState<number | null>(null);
+    const [error4, setError4] = useState<string | null>(null);
+    const [success4, setSuccess4] = useState<string | null>(null);
+    const [startDate, setStartDate] = useState('');
+    const [stopDate, setStopDate] = useState('');
+    const today = new Date().toISOString().split('T')[0];
+    const handleStartDateChange = (event: { target: { value: any; }; }) => {
+        const selectedStartDate = event.target.value;
+        setStartDate(selectedStartDate);
+
+        // Calculate the default stop date (start date + 1 day)
+        if (selectedStartDate) {
+            const nextDay = new Date(selectedStartDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            setStopDate(nextDay.toISOString().split('T')[0]);
+        } else {
+            setStopDate('');
+        }
+    };
+
+    const handleStopDateChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+        setStopDate(event.target.value);
+    };
+
+    const getMinStopDate = () => {
+        if (startDate) {
+            const nextDay = new Date(startDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            return nextDay.toISOString().split('T')[0];
+        }
+        // Default to tomorrow if no start date is selected
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        return tomorrow.toISOString().split('T')[0];
+    };
+
+    const saveProfitLossMargin = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (!maxLossPerDay || !overallLoss || !maxWinPerDay || !overallWin || !startDate || !stopDate) {
+            setError('Please fill in all fields');
+            setSuccess("");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/save_profit_and_loss/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    max_loss_per_day: maxLossPerDay,
+                    overall_loss: overallLoss,
+                    max_win_per_day: maxWinPerDay,
+                    overall_win: overallWin,
+                    start_date: startDate,
+                    stop_date: stopDate,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSuccess4('Profit/Loss margin saved successfully');
+                setError4("");
+            } else {
+                setError4(data.error || 'Failed to save profit/loss margin');
+                setSuccess4("");
+                console.log(data)
+            }
+        } catch (err) {
+            setError4('An unexpected error occurred');
+            setSuccess4("");
+            console.error(err);
+        }
+    };
+
+
     return (
         <div className='settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
             <p className='text-m description-text opacity-90'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
-                {/* strategy analysis setting */}
+            {/* strategy analysis setting */}
             <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Strategy</h2>
@@ -239,7 +402,7 @@ const SettingsPage = () => {
                 </div>
             </div>
             {/* symbols analysing settings */}
-            <div className='strategy-div mb-16'>
+            <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Symbols</h2>
                     <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
@@ -307,70 +470,114 @@ const SettingsPage = () => {
                 </div>
             </div>
             {/* Risk analysis settings */}
-            <div className='strategy-div mb-16'>
+            <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Risk Analysis</h2>
                     <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
-                    <h3>Your current selected symbols:</h3>
-                    <ul className=" mt-4 ml-6">
-                        {symbols.map((item, index) => (
-                            <li key={index} className="text-m description-text opacity-90">
-                                <button
-                                    onClick={() => deleteItem(item[0])}
-                                    className=" mr-4"
-                                >
-                                    <FaTrashAlt className='delete_icon' />
-                                </button>
-                                {item[0]}
-                            </li>
-                        ))}
+                    <h3>Your current settings:</h3>
+                    <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[0]}%</p>
+                    <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[1]}%</p>      {error && <p style={{ color: "red" }}>{error}</p>}
+                    {success && <p style={{ color: "green" }}>{success}</p>}
+                </div>
+                <div className='small-divs flex flex-col'>
+                    <h2>Choose symbols below</h2>
+                    <form className='w-full h-fit mt-4 flex flex-col' onSubmit={saveRiskData}>
+                        <input
+                            className="risk_boxes mt-2"
+                            type="number"
+                            placeholder="Risk per trade"
+                            max={5}
+                            onChange={(e) => setPerTrade(Number(e.target.value))}
+                        />
+                        <input
+                            className="risk_boxes mt-2"
+                            type="number"
+                            placeholder="Risk per day"
+                            max={10}
+                            onChange={(e) => setPerDay(Number(e.target.value))}
+                        />
+                        <input className="submitt mt-2" type="submit" value="Submit" />
+                        {error3 && <p style={{ color: 'red' }}>{error3}</p>}
+                        {success3 && <p style={{ color: 'green' }}>{success3}</p>}
+                    </form>
+                </div>
+            </div>
 
-                    </ul>
+            {/* start and stop setting settings */}
+            <div className='strategy-div'>
+                <div className='small-divs flex flex-col '>
+                    <h2>Start and stop Settings</h2>
+                    <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
+                    <h3>Your settings:</h3>
+
+                    <h3>Loss margin:</h3>
+                    <p className='text-m description-text opacity-90'>Max loss per day: </p>
+                    <p className='text-m description-text opacity-90'>Max overall loss: </p>
+
+                    <h3>Win margin:</h3>
+                    <p className='text-m description-text opacity-90'>Max Win per dat: </p>
+                    <p className='text-m description-text opacity-90'>Max overall win:</p>
+
+                    <h3>Time Frame:</h3>
+                    <p className='text-m description-text opacity-90'>Start Date: </p>
+                    <p className='text-m description-text opacity-90'>Stop Date: </p>
+
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}
                 </div>
                 <div className='small-divs flex flex-col'>
                     <h2>Choose symbols below</h2>
-                    <form className='w-full h-fit mt-4' onSubmit={handleSymbolChange}>
-                        <div className='flex flex-row items-center ' >
-                            <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-box' : ''}`}
-                                type="checkbox"
-                                value="Gold"
-                                onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-label' : ''}`}>Gold</label>
-                        </div>
-
-                        <div className='flex flex-row items-center '>
-                            <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-box' : ''}`}
-                                type="checkbox"
-                                value="US_30"
-                                onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
-                        </div>
-
-                        <div className='flex flex-row items-center'>
-                            <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "frxEURUSD") ? 'disabled-box' : ''}`}
-                                type="checkbox"
-                                value="frxEURUSD"
-                                onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
-                        </div>
-
-                        <div className='flex flex-row items-center '>
-                            <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-box' : ''}`}
-                                type="checkbox"
-                                value="V_75"
-                                onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
-                        </div>
-
-                        <input className='submitt mt-4' type='Submit'></input>
-                        {error2 && <p style={{ color: "red" }}>{error2}</p>}
-                        {success2 && <p style={{ color: "green" }}>{success2}</p>}
+                    <form className="w-full h-fit mt-4 flex flex-col" onSubmit={saveProfitLossMargin}>
+                        <h3>Loss margin</h3>
+                        <input
+                            className="risk_boxes mt-2"
+                            type="number"
+                            placeholder="Max loss per day %"
+                            max={5}
+                            onChange={(e) => setMaxLossPerDay(Number(e.target.value))}
+                        />
+                        <input
+                            className="risk_boxes mt-2"
+                            type="number"
+                            placeholder="Overall loss"
+                            max={10}
+                            onChange={(e) => setOverallLoss(Number(e.target.value))}
+                        />
+                        <h3>Win margin</h3>
+                        <input
+                            className="risk_boxes mt-2"
+                            type="number"
+                            placeholder="Max win per day"
+                            max={10}
+                            onChange={(e) => setMaxWinPerDay(Number(e.target.value))}
+                        />
+                        <input
+                            className="risk_boxes mt-2"
+                            type="number"
+                            placeholder="Overall max win"
+                            max={10}
+                            onChange={(e) => setOverallWin(Number(e.target.value))}
+                        />
+                        <h3>When should it start and stop</h3>
+                        <input
+                            className="risk_boxes mt-2"
+                            type="date"
+                            placeholder="Start date"
+                            value={startDate}
+                            onChange={handleStartDateChange}
+                            min={today}
+                        />
+                        <input
+                            className="risk_boxes mt-2"
+                            type="date"
+                            placeholder="Stop date"
+                            value={stopDate}
+                            onChange={handleStopDateChange}
+                            min={getMinStopDate()}
+                        />
+                        <input className="submitt mt-4" type="submit" value="Submit" />
+                        {error4 && <p style={{ color: 'red' }}>{error4}</p>}
+                        {success4 && <p style={{ color: 'green' }}>{success4}</p>}
                     </form>
                 </div>
             </div>

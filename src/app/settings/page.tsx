@@ -371,7 +371,7 @@ const SettingsPage = () => {
     }, [email, saved_margins]);
 
     const [isTrading, setIsTrading] = useState(false);
-    const [isComplete, setIsComplete] = useState(false);
+    // const [isComplete, setIsComplete] = useState(false);
     const handleStart = async () => {
         try {
             const response = await fetch('http://109.74.196.98:9090/update-trading/', {
@@ -399,7 +399,7 @@ const SettingsPage = () => {
             alert('Error connecting to the server.');
         }
         setIsTrading(true);
-        const start = Date.now();
+        // const start = Date.now();
         // Record the start time in milliseconds
         // setStartTime(start);
         // // Reset the elapsed time
@@ -663,7 +663,7 @@ const SettingsPage = () => {
                         />
                         <input
                             // disabled={!isComplete}
-                            className={`submitt mt-4 ${!isComplete ? "" : ""}`}
+                            className="submitt mt-4"
                             type="submit" value="Submit" />
                         {error4 && <p style={{ color: 'red' }}>{error4}</p>}
                         {success4 && <p style={{ color: 'green' }}>{success4}</p>}
@@ -674,15 +674,15 @@ const SettingsPage = () => {
             {/* start and stop buttons */}
             <div className='strategy-div mb-8'>
                 <div className='small-divs flex flex-col '>
-                    <h2>You're all set</h2>
+                    <h2>You are all set</h2>
                     <p className='text-m description-text opacity-90'>You have set up all the neccessary information needed, you can now press the start trading button to authorise the bot to trade on your account</p>
                     <p className='text-m description-text opacity-90'>You can modify these settings anytime you want and they will be effective immediately, you can also stop the bot anytime you want y pressing stop trading button</p>
                 </div>
                 <div className='small-divss flex flex-row '>
                     <button
                         onClick={handleStart}
-                        disabled={!isComplete}
-                        className={`button ${!isComplete ? "disabled" : ""}`}
+                        // disabled={!isComplete}
+                        className="button"
                     >
                         Start Trading
                     </button>

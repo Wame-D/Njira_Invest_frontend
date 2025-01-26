@@ -87,7 +87,7 @@ const Dashboard = () => {
     console.log("Sending token:", token);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/authorize/', {
+      const response = await fetch('http://109.74.196.98:9090/authorize/', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -133,13 +133,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStartTime = async () => {
       try {
-        const response = await fetch('https://forex1-ul7ikrzn.b4a.run/start-time/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        });
+        const response = await fetch( `http://109.74.196.98:9090/Get-start-time/?email=${email}`)
 
         const data = await response.json();
 
@@ -167,8 +161,8 @@ const Dashboard = () => {
 
   const handleStart = async () => {
     try {
-      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/update-trading/', {
-        method: 'POST',
+      const response = await fetch('http://109.74.196.98:9090/update-trading/', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -203,8 +197,8 @@ const Dashboard = () => {
     setIsTrading(false);
 
     try {
-      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/update-trading/', {
-        method: 'POST',
+      const response = await fetch('http://109.74.196.98:9090/update-trading/', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },

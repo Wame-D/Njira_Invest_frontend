@@ -4,12 +4,12 @@ import { embedDashboard } from "@preset-sdk/embedded";
 import './charts.css';
 
 const SupersetDashboard = () => {
-  const supersetDomain = "https://970dc793.us2a.app.preset.io";
-  const embeddedDashboardId = "afe0ee9c-4bda-4694-8877-eca384df8ffb"
+  const supersetDomain = "http://109.74.196.98:8088";
+  const embeddedDashboardId = "707fbb66-9a39-4919-a772-473406b806b1"
 
   const fetchGuestToken = async () => {
     try {
-      const response = await fetch('https://forex1-ul7ikrzn.b4a.run/generate-guest-token/'); 
+      const response = await fetch('http://109.74.196.98:9090/generate-guest-token/'); 
 
       if (!response.ok) {
         throw new Error('Failed to fetch guest token');

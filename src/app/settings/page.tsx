@@ -269,7 +269,7 @@ const SettingsPage = () => {
     const [stopDate, setStopDate] = useState('');
     const today = new Date().toISOString().split('T')[0];
     const [saved_margins, setSavedMargis] = useState(false)
-    const handleStartDateChange = (event: { target: { value: any; }; }) => {
+    const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedStartDate = event.target.value;
         setStartDate(selectedStartDate);
 

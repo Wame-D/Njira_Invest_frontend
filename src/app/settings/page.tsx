@@ -9,7 +9,7 @@ const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
     const email = getCookie('userEmail');
     const token = getCookie('userToken');
-    const domain = "https://a3f4-2a01-7e00-00-f03c-91ff-fed2-449d.ngrok-free.app";
+    const domain = "https://109.74.196.98";
 
     // Handle radio button change
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {

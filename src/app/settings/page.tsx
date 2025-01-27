@@ -9,6 +9,7 @@ const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
     const email = getCookie('userEmail');
     const token = getCookie('userToken');
+    const domain = "https://a3f4-2a01-7e00-00-f03c-91ff-fed2-449d.ngrok-free.app";
 
     // Handle radio button change
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
@@ -31,7 +32,7 @@ const SettingsPage = () => {
         }
 
         try {
-            const response = await fetch('http://109.74.196.98:9090/save-strategy/', {
+            const response = await fetch(`${domain}/save-strategy/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ const SettingsPage = () => {
         event.preventDefault();
         setError2("")
         try {
-            const response = await fetch('http://127.0.0.1:8000/save_symbols/', {
+            const response = await fetch(`${domain}/save_symbols/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +111,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchStartStrategy = async () => {
             try {
-                const response = await fetch(`http://109.74.196.98:9090/choosen-strategy/?email=${email}`)
+                const response = await fetch(`${domain}/choosen-strategy/?email=${email}`)
 
                 const data = await response.json();
 
@@ -135,7 +136,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchSymbols = async () => {
             try {
-                const response = await fetch(`http://109.74.196.98:9090/get_symbols/?email=${email}`)
+                const response = await fetch(`${domain}/get_symbols/?email=${email}`)
 
                 const data = await response.json();
 
@@ -163,7 +164,7 @@ const SettingsPage = () => {
     const deleteItem = async (index: string) => {
         setError("")
         try {
-            const response = await fetch('http://109.74.196.98:9090/delete_symbols/', {
+            const response = await fetch(`${domain}/delete_symbols/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -203,7 +204,7 @@ const SettingsPage = () => {
         }
 
         try {
-            const response = await fetch('http://109.74.196.98:9090/save_risks/', {
+            const response = await fetch(`${domain}/save_risks/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -237,7 +238,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchRisk = async () => {
             try {
-                const response = await fetch(`http://109.74.196.98:9090/get_risks/?email=${email}`)
+                const response = await fetch(`${domain}/get_risks/?email=${email}`)
 
                 const data = await response.json();
 
@@ -309,7 +310,7 @@ const SettingsPage = () => {
         }
 
         try {
-            const response = await fetch('http://109.74.196.98:9090/save_profit_and_loss/', {
+            const response = await fetch(`${domain}/save_profit_and_loss/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -347,7 +348,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchMargins = async () => {
             try {
-                const response = await fetch(`http://109.74.196.98:9090/get_profit_and_loss/?email=${email} `) 
+                const response = await fetch(`${domain}/get_profit_and_loss/?email=${email} `) 
 
                 const data = await response.json();
 
@@ -374,7 +375,7 @@ const SettingsPage = () => {
     // const [isComplete, setIsComplete] = useState(false);
     const handleStart = async () => {
         try {
-            const response = await fetch('http://109.74.196.98:9090/update-trading/', {
+            const response = await fetch(`${domain}/update-trading/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -410,7 +411,7 @@ const SettingsPage = () => {
         setIsTrading(false);
 
         try {
-            const response = await fetch('http://109.74.196.98:9090/update-trading/', {
+            const response = await fetch(`${domain}/update-trading/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

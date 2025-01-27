@@ -51,6 +51,7 @@ const Dashboard = () => {
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const domain = "https://a3f4-2a01-7e00-00-f03c-91ff-fed2-449d.ngrok-free.app";
 
   // Initialize the search parameters when the component mounts
   useEffect(() => {
@@ -87,7 +88,7 @@ const Dashboard = () => {
     console.log("Sending token:", token);
 
     try {
-      const response = await fetch('http://109.74.196.98:9090/authorize/', {
+      const response = await fetch(`${domain}/authorize/`,{
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +134,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStartTime = async () => {
       try {
-        const response = await fetch( `http://109.74.196.98:9090/Get-start-time/?email=${email}`)
+        const response = await fetch( `${domain}/?email=${email}`)
 
         const data = await response.json();
 
@@ -161,7 +162,7 @@ const Dashboard = () => {
 
   const handleStart = async () => {
     try {
-      const response = await fetch('http://109.74.196.98:9090/update-trading/', {
+      const response = await fetch(`${domain}update-trading/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -197,7 +198,7 @@ const Dashboard = () => {
     setIsTrading(false);
 
     try {
-      const response = await fetch('http://109.74.196.98:9090/update-trading/', {
+      const response = await fetch(`${domain}/update-trading/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

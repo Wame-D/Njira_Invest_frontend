@@ -4,12 +4,12 @@ import { embedDashboard } from "@preset-sdk/embedded";
 import './charts.css';
 
 const SupersetDashboard = () => {
-  const supersetDomain = "http://109.74.196.98:8088";
-  const embeddedDashboardId = "707fbb66-9a39-4919-a772-473406b806b1"
+  const supersetDomain = "https://0acc-2a01-7e00-00-f03c-91ff-fed2-449d.ngrok-free.app";
+  const embeddedDashboardId = "8102f84b-d555-4dc8-b96b-0d3bc81c9900"
 
   const fetchGuestToken = async () => {
     try {
-      const response = await fetch('http://109.74.196.98:9090/generate-guest-token/'); 
+      const response = await fetch('https://a3f4-2a01-7e00-00-f03c-91ff-fed2-449d.ngrok-free.app/generate-guest-token/'); 
 
       if (!response.ok) {
         throw new Error('Failed to fetch guest token');

@@ -384,7 +384,7 @@ const SettingsPage = () => {
                 inputDate.getMonth() === today.getMonth() &&
                 inputDate.getDate() === today.getDate()
             ) {
-                const response = await fetch(`http://127.0.0.1:8000/update-trading/`, {
+                const response = await fetch(`${domain}/update-trading/`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -427,7 +427,7 @@ const SettingsPage = () => {
                     const trading = data.trading;
                     const targetDate = new Date('2025-01-06T10:00:00').getTime();
                     if (startTime >= targetDate) {
-                        if (trading) {
+                        if (trading == 1) {
                             setIsTrading(true);
                         }
                     }
@@ -462,7 +462,7 @@ const SettingsPage = () => {
 
             if (response.ok) {
                 console.log('Response:', data);
-                alert('started trading successfully!');
+                alert('stoped trading successfully!');
             } else {
                 console.error('Error:', data);
                 alert('Error  Please try again.');

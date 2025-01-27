@@ -88,7 +88,7 @@ const Dashboard = () => {
     console.log("Sending token:", token);
 
     try {
-      const response = await fetch(`${domain}/authorize/`,{
+      const response = await fetch(`${domain}/authorize/`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ const Dashboard = () => {
   };
 
   if (authorizeData) {
-    setCookie('userEmail',  authorizeData.authorize.authorize.email );
+    setCookie('userEmail', authorizeData.authorize.authorize.email);
   }
 
   const handleLogout = () => {
@@ -134,20 +134,20 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStartTime = async () => {
       try {
-        const response = await fetch( `${domain}/Get-start-time/?email=${email}`)
+        const response = await fetch(`${domain}/Get-start-time/?email=${email}`)
 
         const data = await response.json();
 
         if (response.ok) {
           const startTime = new Date(data.start_time).getTime();
           const trading = data.trading;
-          setStartTime(startTime);
-          const targetDate = new Date('2025-01-06T10:00:00').getTime();
-          if (startTime >= targetDate) {
-            if (trading) {
-              setIsTrading(true);
-            }
+          // const targetDate = new Date('2025-01-06T10:00:00').getTime();
+
+          if (trading == 1 ) {
+            setIsTrading(true);
+            setStartTime(startTime);
           }
+
         } else {
           console.error('Error:', data);
         }

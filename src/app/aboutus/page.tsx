@@ -9,7 +9,7 @@ export default function Page() {
             <Header />
             <div className="about-container">
                 <header className="about-header">
-                    About Us
+                    About Our Service
                 </header>
                 <div className="about-content">
                     <p>

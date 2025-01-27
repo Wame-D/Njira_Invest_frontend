@@ -162,7 +162,7 @@ const Dashboard = () => {
 
   const handleStart = async () => {
     try {
-      const response = await fetch(`${domain}update-trading/`, {
+      const response = await fetch(`${domain}/update-trading/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

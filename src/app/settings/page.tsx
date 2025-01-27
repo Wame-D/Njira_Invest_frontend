@@ -348,7 +348,7 @@ const SettingsPage = () => {
     useEffect(() => {
         const fetchMargins = async () => {
             try {
-                const response = await fetch(`${domain}/get_profit_and_loss/?email=${email} `) 
+                const response = await fetch(`${domain}/get_profit_and_loss/?email=${email} `)
 
                 const data = await response.json();
 
@@ -375,44 +375,81 @@ const SettingsPage = () => {
     // const [isComplete, setIsComplete] = useState(false);
     const handleStart = async () => {
         try {
-            const response = await fetch(`${domain}/update-trading/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    trading: true,
-                }),
-            });
+            const inputDate = new Date(margins[0]);
+            const today = new Date();
 
-            const data = await response.json();
+            // Compare year, month, and date
+            if (
+                inputDate.getFullYear() === today.getFullYear() &&
+                inputDate.getMonth() === today.getMonth() &&
+                inputDate.getDate() === today.getDate()
+            ) {
+                const response = await fetch(`http://127.0.0.1:8000/update-trading/`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        trading: true,
+                    }),
+                });
 
-            if (response.ok) {
-                console.log('Response:', data);
-                alert('started trading successfully!');
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log('Response:', data);
+                    alert('started trading successfully!');
+                } else {
+                    console.error('Error:', data);
+                    alert('Error  Please try again.');
+                }
             } else {
-                console.error('Error:', data);
-                alert('Error  Please try again.');
+                alert(`your bot will trading on ${margins[0]}`);
             }
         } catch (error) {
             console.error('Fetch error:', error);
             alert('Error connecting to the server.');
         }
         setIsTrading(true);
-        // const start = Date.now();
-        // Record the start time in milliseconds
-        // setStartTime(start);
-        // // Reset the elapsed time
-        // setCurrentTime(0);
+        const start = Date.now();
     };
+
+    // Fetch the start_time when the page loads
+    useEffect(() => {
+        const fetchStartTime = async () => {
+            try {
+                const response = await fetch(`${domain}/Get-start-time/?email=${email}`)
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const startTime = new Date(data.start_time).getTime();
+                    const trading = data.trading;
+                    const targetDate = new Date('2025-01-06T10:00:00').getTime();
+                    if (startTime >= targetDate) {
+                        if (trading) {
+                            setIsTrading(true);
+                        }
+                    }
+                } else {
+                    console.error('Error:', data);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+
+        fetchStartTime();
+    }, [token]);
+
 
     const handleStop = async () => {
         setIsTrading(false);
 
         try {
             const response = await fetch(`${domain}/update-trading/`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -554,8 +591,8 @@ const SettingsPage = () => {
                     <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
                     <h3>Your current settings:</h3>
                     <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[0]}%</p>
-                    <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[1]}%</p>     
-                     {error && <p style={{ color: "red" }}>{error}</p>}
+                    <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[1]}%</p>
+                    {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}
                 </div>
                 <div className='small-divs flex flex-col'>
@@ -614,7 +651,7 @@ const SettingsPage = () => {
                         <input
                             className="risk_boxes mb-4"
                             type="number"
-                            placeholder="Max loss per day %"
+                            placeholder="Max loss per day"
                             max={5}
                             onChange={(e) => setMaxLossPerDay(Number(e.target.value))}
                         />
@@ -682,8 +719,8 @@ const SettingsPage = () => {
                 <div className='small-divss flex flex-row '>
                     <button
                         onClick={handleStart}
-                        // disabled={!isComplete}
-                        className="button"
+                        disabled={isTrading}
+                        className={`button ${isTrading ? "disabled" : ""}`}
                     >
                         Start Trading
                     </button>

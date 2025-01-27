@@ -134,7 +134,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStartTime = async () => {
       try {
-        const response = await fetch( `${domain}/?email=${email}`)
+        const response = await fetch( `${domain}/Get-start-time/?email=${email}`)
 
         const data = await response.json();
 
@@ -159,70 +159,6 @@ const Dashboard = () => {
     fetchStartTime();
   }, [token]);
 
-
-  const handleStart = async () => {
-    try {
-      const response = await fetch(`${domain}/update-trading/`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          trading: true,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Response:', data);
-        alert('started trading successfully!');
-      } else {
-        console.error('Error:', data);
-        alert('Error  Please try again.');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      alert('Error connecting to the server.');
-    }
-    setIsTrading(true);
-    const start = Date.now();
-    // Record the start time in milliseconds
-    setStartTime(start);
-    // Reset the elapsed time
-    setCurrentTime(0);
-  };
-
-  const handleStop = async () => {
-    setIsTrading(false);
-
-    try {
-      const response = await fetch(`${domain}/update-trading/`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          trading: false,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Response:', data);
-        alert('started trading successfully!');
-      } else {
-        console.error('Error:', data);
-        alert('Error  Please try again.');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      alert('Error connecting to the server.');
-    }
-  };
 
   // Update the current time every second when trading is active
   useEffect(() => {
@@ -322,7 +258,7 @@ const Dashboard = () => {
               Contacts
             </Link>
           </div>
-          <div>
+          {/* <div>
             <button
               onClick={handleStart}
               disabled={isTrading}
@@ -337,7 +273,7 @@ const Dashboard = () => {
             >
               Stop Trading
             </button>
-          </div>
+          </div> */}
         </div>
         <div className='accounts-info'>
           <div className='names-div'>

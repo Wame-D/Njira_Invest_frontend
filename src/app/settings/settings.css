@@ -53,7 +53,8 @@
 }
 
 .strategy{
-    color: red !important;
+    color: rgb(17, 17, 17) !important;
+    font-weight: bold;
 }
 
 .small-divs {

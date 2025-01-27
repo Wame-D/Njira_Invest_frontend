@@ -589,8 +589,8 @@ const SettingsPage = () => {
                     <h2>Risk Analysis</h2>
                     <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
                     <h3>Your current settings:</h3>
-                    <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[0]}%</p>
-                    <p className='text-m description-text opacity-90'>Risk amount per trade: {risk[1]}%</p>
+                    <p className='text-m description-text opacity-90'>Risk amount per trade: <span className='text-m strategy'>{risk[0]}%</span></p>
+                    <p className='text-m description-text opacity-90'>Risk amount per trade: <span className='text-m strategy'>{risk[1]}%</span></p>
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}
                 </div>
@@ -628,16 +628,16 @@ const SettingsPage = () => {
                     <h3>Your settings:</h3>
 
                     <h3>Loss margin:</h3>
-                    <p className='text-m description-text opacity-90'>Max loss per day: {margins[2]}%</p>
-                    <p className='text-m description-text opacity-90'>Max overall loss: {margins[3]}%</p>
+                    <p className='text-m description-text opacity-90'>Max loss per day: <span className='text-m strategy'>{margins[2]}%</span></p>
+                    <p className='text-m description-text opacity-90'>Max overall loss: <span className='text-m strategy'>{margins[3]}%</span></p>
 
                     <h3>Win margin:</h3>
-                    <p className='text-m description-text opacity-90'>Max Win per dat: {margins[4]}%</p>
-                    <p className='text-m description-text opacity-90'>Max overall win: {margins[5]}%</p>
+                    <p className='text-m description-text opacity-90'>Max Win per dat: <span className='text-m strategy'>{margins[4]}%</span></p>
+                    <p className='text-m description-text opacity-90'>Max overall win: <span className='text-m strategy'>{margins[5]}%</span></p>
 
                     <h3>Time Frame:</h3>
-                    <p className='text-m description-text opacity-90'>Start Date: {margins[0]}</p>
-                    <p className='text-m description-text opacity-90'>Stop Date: {margins[1]}</p>
+                    <p className='text-m description-text opacity-90'>Start Date: <span className='text-m strategy'>{margins[0]}</span></p>
+                    <p className='text-m description-text opacity-90'>Stop Date: <span className='text-m strategy'>{margins[1]}</span></p>
 
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}

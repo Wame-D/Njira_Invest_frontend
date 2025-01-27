@@ -412,7 +412,6 @@ const SettingsPage = () => {
             alert('Error connecting to the server.');
         }
         setIsTrading(true);
-        const start = Date.now();
     };
 
     // Fetch the start_time when the page loads

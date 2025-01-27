@@ -1,0 +1,60 @@
+.about-container {
+    background-color: white;
+    width: 100vw;
+    min-height: 100vh;
+    padding-top: 6rem; /* To account for the fixed header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.about-header {
+    background-color: rgba(12, 38, 61, 1);
+    width: 100%;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-radius: 0.3rem;
+    margin-bottom: 2rem;
+}
+
+.about-content {
+    width: 80%;
+    font-family: 'MontserratAlternates-Light', sans-serif;
+    color: rgba(12, 38, 61, 0.8);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: justify;
+    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: rgb(253, 250, 246);
+}
+
+.about-links {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.about-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.about-button:hover {
+    background-color: #0056b3;
+}

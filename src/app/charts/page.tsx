@@ -4,7 +4,7 @@ import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import './charts.css';
 
 const SupersetDashboard = () => {
-  const supersetDomain = "http://109.74.196.98:8088";
+  const supersetDomain = "https://109.74.196.98:8088";
   const embeddedDashboardId = "e6eba5a8-905a-49ec-8bc9-e3d3c4dfc7db";
 
   const fetchGuestToken = async () => {

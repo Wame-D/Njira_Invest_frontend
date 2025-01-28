@@ -51,7 +51,7 @@ const Dashboard = () => {
   const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const domain = "https://109.74.196.98";
+  const domain = "https://api.xhed.net";
 
   // Initialize the search parameters when the component mounts
   useEffect(() => {

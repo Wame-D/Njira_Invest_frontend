@@ -9,7 +9,7 @@ const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
     const email = getCookie('userEmail');
     const token = getCookie('userToken');
-    const domain = "https://109.74.196.98";
+    const domain = "https://api.xhed.net";
 
     // Handle radio button change
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {

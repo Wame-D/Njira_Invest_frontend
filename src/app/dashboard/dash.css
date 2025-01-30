@@ -109,6 +109,7 @@ small header styles
     align-items: center;
     padding-right: 2.4rem;
     padding-left: 2.4rem;
+    color: white;
 }
 
 .small-header h3 {
@@ -154,15 +155,16 @@ personal information container and
 small divs styles
  */
 
-.accounts-info {
+/* .accounts-info {
     width: 80vw;
     height: 10rem;
-    display: flex;
+    /display: flex; 
     flex-direction: row;
     align-items: center;
-}
+    display: none;
+} */
 
-.names-div {
+/* .names-div {
     width: 15vw;
     height: 12vh;
     border-radius: 5px;
@@ -170,34 +172,36 @@ small divs styles
     padding-left: 2rem;
     margin-right: 2rem;
     box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
-}
+} */
 
-.names-div h1 {
+.fulname,
+#runing-time {
     font-weight: bold;
-    font-size: 1.4rem;
-    font-family: 'MontserratAlternates-Light';
-    margin: 0;
-    padding: 0;
-    color: rgba(12, 38, 61, 0.6);
-}
-
-#runing-time{
-    font-size: 1.4rem;
+    font-size: 0.9vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
-    color: rgba(12, 38, 61, 0.6);
-}
-.emailinheader2 {
-    margin: 0;
-    color: rgba(12, 38, 61, 0.6);
+    color: rgba(255, 255, 255, 1) !important;
+    text-align: left;
 }
 
-.names-div h2 {
+.emailinheader2 {
+    margin: 0;
+    color: rgba(255, 255, 255) !important;
+}
+
+
+.face-icon {
+    font-size: 2vw;
+    margin-right: 0.8vw;
+    opacity: 1;
+}
+
+/* .names-div h2 {
     color: rgb(4, 155, 214);
     font-weight: bold;
     margin-top: 0.5rem;
-}
+} */
 
 /* hiding alll content unless clicked */
 .hidden-content{
@@ -209,12 +213,12 @@ superset chart div
  */
 .superset-chatrs-div {
     display: flex;
-    width: 95%;
-    height: 60vh;
+    width: 100%;
+    height: fit-content;
     align-self: center;
     border-radius: 0.5rem;
     background-color: rgb(253, 250, 246);
-    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
+    /* box-shadow: 0 0 9px rgba(115, 162, 250, 0.5); */
 }
 
 .settings-div {

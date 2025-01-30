@@ -13,6 +13,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import SettingsPage from '../settings/page';
+import StockChart from '../livecharts/page';
 
 interface UserAccount {
   account: string;
@@ -143,7 +144,7 @@ const Dashboard = () => {
           const trading = data.trading;
           // const targetDate = new Date('2025-01-06T10:00:00').getTime();
 
-          if (trading == 1 ) {
+          if (trading == 1) {
             setIsTrading(true);
             setStartTime(startTime);
           }
@@ -209,10 +210,10 @@ const Dashboard = () => {
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'analytics' ? 'active-link' : ''}`}
-            onClick={() => handleClick('analytics')}
+            className={`nav-links mt-8 ${activeLink === 'charts' ? 'active-link' : ''}`}
+            onClick={() => handleClick('charts')}
           >
-            <FaChartPie className={`link-icon ${activeLink === 'analytics' ? 'active-link' : ''}`} /> <p className='link-text'>Analytics</p>
+            <FaChartPie className={`link-icon ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text'>Charts</p>
           </Link>
           <Link
             href="/dashboard"
@@ -250,33 +251,70 @@ const Dashboard = () => {
       <div className='dashboard-conntent'>
         <div className='small-header'>
           <h3>Main Dashboard</h3>
-          <div className='quick-links'>
-            <Link href="/" className='quick-links-content'>
-              Home
-            </Link>
-            <Link href="/contact" className='quick-links-content'>
-              Contacts
-            </Link>
+          {/* account balance div */}
+          <div>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+
+            {(
+              // If authorization data is present, display dashboard
+              authorizeData ? (
+                <div>
+                  <h1 className='fulname '>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
+                  <p className='text-sm emailinheader2 opacity-80'>Balance</p>
+                </div>
+              ) : (
+                <p className='text-center'>Getting Balances...</p>
+              )
+            )}
           </div>
-          {/* <div>
-            <button
-              onClick={handleStart}
-              disabled={isTrading}
-              className={`button ${isTrading ? "disabled" : ""}`}
-            >
-              Start Trading
-            </button>
-            <button
-              onClick={handleStop}
-              disabled={!isTrading}
-              className={`button ${!isTrading ? "disabled" : ""}`}
-            >
-              Stop Trading
-            </button>
-          </div> */}
+          {/* div for execution time */}
+          <div className='flex flex-row'>
+            {!isTrading && currentTime == 0 && (
+              <div>
+                <h2>Bot execution time: </h2>
+                <h1>0.0.0</h1>
+              </div>
+            )}
+
+            {isTrading && (
+              <div className='w-full'>
+                <h1 id='runing-time'><span className='opacity-80'>Bot is running for: </span> {formatDuration(currentTime)}</h1>
+                <p className='text-sm emailinheader2 opacity-80'>Started at: {new Date(startTime).toLocaleString()}</p>
+              </div>
+            )}
+
+            {!isTrading && currentTime > 0 && (
+              <div>
+                <h1 id='runing-time'>Stopped after: </h1>
+                <p className='text-sm emailinheader2 opacity-80'>{formatDuration(currentTime)}</p>
+              </div>
+            )}
+          </div>
+          {/* div for personal information */}
+          <div className='flex flex-row items-center justify-center'>
+            <div>
+              <FaUserCircle className='face-icon' />
+            </div>
+            <div className='flex flex-col mr-8 '>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
+
+              {(
+                // If authorization data is present, display dashboard
+                authorizeData ? (
+                  <div>
+                    <h1 className='fulname '>{authorizeData.authorize.authorize.fullname}</h1>
+                    <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{authorizeData.authorize.authorize.email}</p>
+
+                  </div>
+                ) : (
+                  <p className='text-center'>Loading authorization...</p>
+                )
+              )}
+            </div>
+          </div>
         </div>
-        <div className='accounts-info'>
-          <div className='names-div'>
+        {/* <div className='accounts-info'> */}
+          {/* <div className='names-div'>
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
             {(
@@ -292,8 +330,8 @@ const Dashboard = () => {
                 <p className='text-center'>Loading authorization...</p>
               )
             )}
-          </div>
-          <div className='names-div'>
+          </div> */}
+          {/* <div className='names-div'>
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
             {(
@@ -307,8 +345,8 @@ const Dashboard = () => {
                 <p className='text-center'>Getting Balances...</p>
               )
             )}
-          </div>
-          <div className='names-div'>
+          </div> */}
+          {/* <div className='names-div'>
             {!isTrading && currentTime == 0 && (
               <div>
                 <h2>Bot execution time: </h2>
@@ -335,14 +373,18 @@ const Dashboard = () => {
                 <p className='text-m emailinheader2 opacity-90'>{formatDuration(currentTime)}</p>
               </div>
             )}
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
         <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
           <SupersetDashboard />
         </div>
 
         <div className={`hidden-content ${activeLink === 'settings' ? 'settings-div' : ''}`}>
           <SettingsPage />
+        </div>
+        {/* trading view charts */}
+        <div className={`hidden-content ${activeLink === 'charts' ? 'settings-div' : ''}`}>
+          <StockChart />
         </div>
       </div>
 

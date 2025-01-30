@@ -21,7 +21,7 @@
 /* Make iframe take the full page */
 iframe {
   width: 100%;
-  height: 50vh;
+  height: 90vh;
   border: none;
 }
 

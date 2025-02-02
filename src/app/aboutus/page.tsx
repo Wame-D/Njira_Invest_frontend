@@ -63,7 +63,7 @@ export default function Page() {
                     <div className="about-section">
                         <h3>Why Choose Us?</h3>
                         <ul>
-                            <li>✔ AI-driven trading algorithms</li>
+                            <li>✔ Machine learning trading algorithms</li>
                             <li>✔ Real-time market analysis</li>
                             <li>✔ Secure and reliable transactions</li>
                             <li>✔ User-friendly interface</li>

@@ -73,13 +73,6 @@ export default function Page() {
 
                     {/* How It Works */}
                     <div className="about-section">
-                        <h3>How It Works</h3>
-                        <p>
-                            1. **Sign Up** – Create an account in minutes. <br />
-                            2. **Connect a Broker** – Link your preferred broker securely. <br />
-                            3. **Set Your Strategy** – Choose between automated or manual trading. <br />
-                            4. **Start Trading** – Watch the bot execute trades in real-time.
-                        </p>
                     </div>
                 </div>
             </div>

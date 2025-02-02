@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import Header from '../header/page'; // Adjust the path to your header file
+import Header from '../header/page'; // Adjust the path if necessary
 import './aboutus.css';
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
             <Header />
             <div className="about-container">
                 <header className="about-header">
-                    About Our Service
+                    About Us
                 </header>
                 <div className="about-content">
                     <p>
@@ -20,10 +20,6 @@ export default function Page() {
                         Whether you are a seasoned trader or just starting, our tools are designed to support your trading journey.
                         We value transparency, innovation, and your success in the Forex market.
                     </p>
-                </div>
-                <div className="about-links">
-                    <a href="/contact" className="about-button">Contact Us</a>
-                    <a href="/platform" className="about-button">Explore Platform</a>
                 </div>
             </div>
         </>

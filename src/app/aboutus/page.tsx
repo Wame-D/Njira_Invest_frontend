@@ -28,11 +28,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
                     )}
                 </h3>
             </div>
-            {isOpen && (
-                <div className="pl-2 text-m text-black opacity-65">
-                    {answer}
-                </div>
-            )}
+            {isOpen && <div className="faq-answer">{answer}</div>}
         </div>
     );
 };

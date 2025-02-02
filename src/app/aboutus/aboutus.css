@@ -42,33 +42,39 @@
     background-color: aliceblue;
     width: 100%;
     padding: 3rem 0;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .faqpage h2 {
     font-size: 30px;
     color: rgba(12, 38, 61, 0.9);
+    text-align: center;
 }
 
 .faq-components {
     width: 80%;
-    margin: 0 auto;
+    text-align: left;
 }
 
 .faq-components h3 {
     font-size: 20px;
     cursor: pointer;
+    color: rgba(12, 38, 61, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-@media screen and (max-width: 1024px) {
-    .about-content {
-        width: 90%;
-        font-size: 1rem;
-        padding: 1.5rem;
-    }
+.faq-answer {
+    padding-left: 1rem;
+    font-size: 16px;
+    color: rgba(12, 38, 61, 0.8);
+    line-height: 1.5;
 }
 
-@media screen and (max-width: 820px) {
+@media only screen and (max-width: 820px) {
     .faqpage h2 {
         font-size: 25px;
     }

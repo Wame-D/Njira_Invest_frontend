@@ -42,30 +42,6 @@ export default function Page() {
         {
             question: "How does your platform work?",
             answer: "Our platform connects to various forex markets and uses advanced algorithms to analyze market data, identify trading opportunities, and execute trades on your behalf. Users can monitor their accounts and track performance in real time.",
-        },
-        {
-            question: "Do I need to have prior trading experience to use your platform?",
-            answer: "No, prior trading experience is not required. Our platform is designed for both beginners and experienced traders. We provide user-friendly tools and resources to help you understand the trading process.",
-        },
-        {
-            question: "Which brokers can I connect with your platform?",
-            answer: "We support a range of trusted brokers. You can choose your preferred broker from our list and connect your account securely through our platform.",
-        },
-        {
-            question: "How do I get started with trading?",
-            answer: "Simply create an account, choose a broker, connect your trading account, and set up your trading preferences. Our algorithm will then start trading based on your settings.",
-        },
-        {
-            question: "Can I customize the trading strategies?",
-            answer: "Yes, you can customize your trading preferences, including risk levels and strategy types. Our platform offers several strategy options, so you can tailor the experience to meet your trading goals.",
-        },
-        {
-            question: "Is my money safe on this platform?",
-            answer: "Yes, your funds remain with your broker, not on our platform. We prioritize security and partner with brokers that offer secure account management and comply with industry regulations.",
-        },
-        {
-            question: "Can I stop the automated trading at any time?",
-            answer: "Yes, you can pause or stop automated trading at any time through your account dashboard. Your settings will be saved for when you wish to resume.",
         }
     ];
 
@@ -81,10 +57,30 @@ export default function Page() {
                         Welcome to FX Trading! Our goal is to revolutionize the Forex trading experience through cutting-edge technology and user-friendly tools.
                         Our platform empowers traders by providing reliable data, real-time analytics, and automated trading features.
                     </p>
-                    <p>
-                        Whether you are a seasoned trader or just starting, our tools are designed to support your trading journey.
-                        We value transparency, innovation, and your success in the Forex market.
-                    </p>
+
+                    {/* Our Mission */}
+                    <div className="about-section">
+                        <h3>Our Mission</h3>
+                        <p>
+                            Our mission is to simplify forex trading for everyone by providing intelligent trading solutions that reduce risks and maximize profits.
+                        </p>
+                    </div>
+
+                    {/* Why Choose Us */}
+                    <div className="about-section">
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li>✔ Machine learning trading algorithms</li>
+                            <li>✔ Real-time market analysis</li>
+                            <li>✔ Secure and reliable transactions</li>
+                            <li>✔ User-friendly interface</li>
+                            <li>✔ 24/7 customer support</li>
+                        </ul>
+                    </div>
+
+                    {/* How It Works */}
+                    <div className="about-section">
+                    </div>
                 </div>
             </div>
 

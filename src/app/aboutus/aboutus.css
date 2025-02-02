@@ -33,6 +33,16 @@
     padding: 2rem;
     border-radius: 0.5rem;
     background-color: rgb(253, 250, 246);
+    margin-bottom: 4rem; /* Ensures equal spacing between content and footer */
+}
+
+/* About Us Subsections */
+.about-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 0 9px rgba(115, 162, 250, 0.2);
+    border-radius: 0.5rem;
 }
 
 /* FAQ Section */

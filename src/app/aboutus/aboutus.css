@@ -35,7 +35,31 @@
     background-color: rgb(253, 250, 246);
 }
 
-/* Responsive Design */
+/* FAQ Section */
+.faqpage {
+    min-height: 50vh;
+    max-height: fit-content;
+    background-color: aliceblue;
+    width: 100%;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.faqpage h2 {
+    font-size: 30px;
+    color: rgba(12, 38, 61, 0.9);
+}
+
+.faq-components {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.faq-components h3 {
+    font-size: 20px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1024px) {
     .about-content {
         width: 90%;
@@ -44,14 +68,17 @@
     }
 }
 
-@media screen and (max-width: 768px) {
-    .about-header {
-        font-size: 1.8rem;
+@media screen and (max-width: 820px) {
+    .faqpage h2 {
+        font-size: 25px;
     }
 
-    .about-content {
-        width: 95%;
-        font-size: 0.95rem;
-        padding: 1.2rem;
+    .faq-components {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .faq-components h3 {
+        font-size: 17px;
     }
 }

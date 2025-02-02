@@ -33,16 +33,21 @@
     padding: 2rem;
     border-radius: 0.5rem;
     background-color: rgb(253, 250, 246);
-    margin-bottom: 4rem; /* Ensures equal spacing between content and footer */
+    margin-bottom: 4rem; /* Adds spacing before the FAQ section */
 }
 
-/* About Us Subsections */
+/* About Us Subsections (Our Mission, Why Choose Us) */
 .about-section {
     margin-top: 2rem;
     padding: 1.5rem;
     background-color: white;
     box-shadow: 0 0 9px rgba(115, 162, 250, 0.2);
     border-radius: 0.5rem;
+}
+
+/* Remove empty sections (like removed "How It Works") */
+.about-section:empty {
+    display: none;
 }
 
 /* FAQ Section */
@@ -82,6 +87,19 @@
     font-size: 16px;
     color: rgba(12, 38, 61, 0.8);
     line-height: 1.5;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1024px) {
+    .about-content {
+        width: 90%;
+        font-size: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .faq-components {
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width: 820px) {

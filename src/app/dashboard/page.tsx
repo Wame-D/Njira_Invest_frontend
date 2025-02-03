@@ -329,8 +329,6 @@ const Dashboard = () => {
 
         {/* trading history */}
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'settings-div' : ''}`}>
-          <h1>hy there</h1>
-          {/* <TradeDashboard /> */}
           <LiveTradeChart/>
         </div>
       </div>

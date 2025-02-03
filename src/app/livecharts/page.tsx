@@ -187,10 +187,13 @@ const StockChart = () => {
                     <button className="dropdownButton flex flex-row items-center justify-center">Instrument <span className="ml-2 down-arrow"><FiChevronDown /></span></button>
                     {isOpen && (
                         <div className="dropdownContent">
-                            <div onClick={() => handleOptionClick("us30_candles", "EURUSD")}>US30 <span>EURUSD</span></div>
+                            <div onClick={() => handleOptionClick("austraila200_candles", "AUSTRALIAN200")}>AUSTRALIAN200 <span>OTC_AS51</span></div>
                             <div onClick={() => handleOptionClick("v75_candles", "V75")}>V75 <span>R_75</span></div>
-                            <div onClick={() => handleOptionClick("eurousd", "EURO/USD ")}>EURO/USD <span>EURUSD</span></div>
+                            <div onClick={() => handleOptionClick("eurousd_candles", "EURO/USD ")}>EURO/USD <span>EURUSD</span></div>
                             <div onClick={() => handleOptionClick("gold_candles", "GOLD/USD ")}>GOLD/USD <span>XAUUSD</span></div>
+                            <div onClick={() => handleOptionClick("gbpusd_candles", "GBPUSD ")}>GBP/USD <span>GBPUSD</span></div>
+                            <div onClick={() => handleOptionClick("us500_candles", "US500 ")}>US500 <span>OTC_SPC</span></div>
+                            <div onClick={() => handleOptionClick("usdjpy_candles", "USDJPY ")}>USD/JPY <span>USDJPY</span></div>
                         </div>
                     )}
                 </div>

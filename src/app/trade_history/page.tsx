@@ -220,10 +220,10 @@ const userEmail = getCookie('userEmail');
 import { useEffect, useRef, useState } from 'react';
 import { createChart, IChartApi, ISeriesApi, BaselineSeriesPartialOptions, Time, ColorType } from 'lightweight-charts';
 
-interface TradeData {
-  value: number;
-  time: Time;
-}
+// interface TradeData {
+//   value: number;
+//   time: Time;
+// }
 
 interface TradeConfig {
   entryPrice: number;
@@ -313,7 +313,7 @@ const LiveTradeChart: React.FC = () => {
     // Fetch new data every 5 seconds
     const interval = setInterval(async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/testContract/', {
+        const response = await fetch('https://api.xhed.net/testContract/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userEmail }), // Replace with your userEmail

@@ -14,6 +14,8 @@ import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import SettingsPage from '../settings/page';
 import StockChart from '../livecharts/page';
+import LiveTradeChart from '../trade_history/page';
+// import TradeDashboard from '../trade_history/page';
 
 interface UserAccount {
   account: string;
@@ -313,68 +315,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        {/* <div className='accounts-info'> */}
-          {/* <div className='names-div'>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-
-            {(
-              // If authorization data is present, display dashboard
-              authorizeData ? (
-                <div>
-                  <h2>Personal Info.</h2>
-                  <h1 className='fulname'>{authorizeData.authorize.authorize.fullname}</h1>
-                  <p className='text-m emailinheader2 opacity-90'>{authorizeData.authorize.authorize.email}</p>
-
-                </div>
-              ) : (
-                <p className='text-center'>Loading authorization...</p>
-              )
-            )}
-          </div> */}
-          {/* <div className='names-div'>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-
-            {(
-              // If authorization data is present, display dashboard
-              authorizeData ? (
-                <div>
-                  <h2>My Balance</h2>
-                  <h1>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
-                </div>
-              ) : (
-                <p className='text-center'>Getting Balances...</p>
-              )
-            )}
-          </div> */}
-          {/* <div className='names-div'>
-            {!isTrading && currentTime == 0 && (
-              <div>
-                <h2>Bot execution time: </h2>
-                <h1>0.0.0</h1>
-              </div>
-            )}
-
-            {isTrading && (
-              <div>
-                <h2>Bot is running for: </h2>
-                <h1 id='runing-time'>{formatDuration(currentTime)}</h1>
-              </div>
-            )}
-
-            {startTime > 0 && (
-              <div>
-                <p className='text-m emailinheader2 opacity-90'>Started at: {new Date(startTime).toLocaleString()}</p>
-              </div>
-            )}
-
-            {!isTrading && currentTime > 0 && (
-              <div>
-                <h2>Stopped after: </h2>
-                <p className='text-m emailinheader2 opacity-90'>{formatDuration(currentTime)}</p>
-              </div>
-            )}
-          </div> */}
-        {/* </div> */}
         <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
           <SupersetDashboard />
         </div>
@@ -385,6 +325,13 @@ const Dashboard = () => {
         {/* trading view charts */}
         <div className={`hidden-content ${activeLink === 'charts' ? 'settings-div' : ''}`}>
           <StockChart />
+        </div>
+
+        {/* trading history */}
+        <div className={`hidden-content ${activeLink === 'trade-history' ? 'settings-div' : ''}`}>
+          <h1>hy there</h1>
+          {/* <TradeDashboard /> */}
+          <LiveTradeChart/>
         </div>
       </div>
 

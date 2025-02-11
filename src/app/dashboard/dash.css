@@ -150,30 +150,6 @@ small header styles
     flex-direction: row;
 }
 
-/* 
-personal information container and 
-small divs styles
- */
-
-/* .accounts-info {
-    width: 80vw;
-    height: 10rem;
-    /display: flex; 
-    flex-direction: row;
-    align-items: center;
-    display: none;
-} */
-
-/* .names-div {
-    width: 15vw;
-    height: 12vh;
-    border-radius: 5px;
-    align-items: center;
-    padding-left: 2rem;
-    margin-right: 2rem;
-    box-shadow: 0 0 9px rgba(115, 162, 250, 0.5);
-} */
-
 .fulname,
 #runing-time {
     font-weight: bold;
@@ -197,11 +173,6 @@ small divs styles
     opacity: 1;
 }
 
-/* .names-div h2 {
-    color: rgb(4, 155, 214);
-    font-weight: bold;
-    margin-top: 0.5rem;
-} */
 
 /* hiding alll content unless clicked */
 .hidden-content{

@@ -1,5 +1,5 @@
 #dashboard-wrapper {
-  width: 80.5vw;
+  width: 100%;
   height: fit-content;
   overflow: hidden;
   display: flex;
@@ -10,7 +10,7 @@
 
 #app,
 #superset-dashboard-container {
-  width: 80.7vw !important;
+  width: 100% !important;
   height: fit-content;
   display: flex;
   flex-direction: column;

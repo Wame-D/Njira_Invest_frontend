@@ -17,6 +17,9 @@ import StockChart from '../livecharts/page';
 import LiveTradeChart from '../trade_history/page';
 // import TradeDashboard from '../trade_history/page';
 
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
+import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+
 interface UserAccount {
   account: string;
   token: string;
@@ -195,13 +198,24 @@ const Dashboard = () => {
   const handleClick = (link: string) => {
     setActiveLink(link);
   };
+
+  // State to control visibility of nav-bar
+  const [isNavVisible, setIsNavVisible] = useState(true);  
+  const toggleNav = () => {
+    setIsNavVisible(prevState => !prevState);  // Toggle visibility
+  };
+
   return (
     <div className='dashoard'>
+      {/* nav bar */}
       <div id='nav-bar'>
-        <Link href="/">
-          <h1 className='logo'>FX TRADING</h1>
-        </Link>
-
+        <button className='toggle-nav-btn mt-4 ml-4' onClick={toggleNav}>
+          {isNavVisible ? (
+            <TbLayoutSidebarLeftCollapseFilled className='toggle-icon' />
+          ) : (
+            <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
+          )}
+        </button>
         <div className='links-in-nav-bar'>
           <Link
             href="/dashboard"
@@ -250,9 +264,23 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className='dashboard-conntent'>
+
+      {/* main dashboard content */}
+      <div
+        className={`dashboard-content ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}
+      >
         <div className='small-header'>
-          <h3>Main Dashboard</h3>
+          <div className='flex flex-row '>
+            <button className='toggle-nav-btn ml-8' onClick={toggleNav}>
+              {!isNavVisible && (
+                <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
+              )}
+            </button>
+
+            <Link href="/">
+              <h1 className='logo'>FX TRADING</h1>
+            </Link>
+          </div>
           {/* account balance div */}
           <div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -329,10 +357,9 @@ const Dashboard = () => {
 
         {/* trading history */}
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'settings-div' : ''}`}>
-          <LiveTradeChart/>
+          <LiveTradeChart />
         </div>
       </div>
-
     </div>
   )
 };

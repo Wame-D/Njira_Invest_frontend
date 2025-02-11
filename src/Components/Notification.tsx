@@ -23,10 +23,92 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ target_role }) 
   // Sample notifications
   useEffect(() => {
     const sampleData: Notification[] = [
-      { id: 1, message: "New comment on your post!", is_read: false, created_at: "2025-02-10T12:00:00Z", target_role: "user" },
-      { id: 2, message: "System maintenance scheduled.", is_read: false, created_at: "2025-02-09T15:30:00Z", target_role: "admin" },
-      { id: 3, message: "Your password was changed successfully.", is_read: true, created_at: "2025-02-08T10:00:00Z", target_role: "user" },
+      { 
+        id: 1, 
+        message: "Trade placed successfully!", 
+        is_read: false, 
+        created_at: "2025-02-10T12:00:00Z", 
+        target_role: "admin" 
+      },
+      { 
+        id: 2, 
+        message: "System maintenance scheduled.", 
+        is_read: false, 
+        created_at: "2025-02-09T15:30:00Z", 
+        target_role: "admin" 
+      },
+      { 
+        id: 3, 
+        message: "Your password was changed successfully.", 
+        is_read: true, 
+        created_at: "2025-02-08T10:00:00Z", 
+        target_role: "admin" 
+      },
+      { 
+        id: 4, 
+        message: "Algorithmic trading successfully activated for your account.", 
+        is_read: false, 
+        created_at: "2025-02-11T09:00:00Z", 
+        target_role: "admin" 
+      },
+      { 
+        id: 5, 
+        message: "New trading algorithm has been deployed. It's expected to optimize trading strategies and maximize returns.", 
+        is_read: false, 
+        created_at: "2025-02-11T09:30:00Z", 
+        target_role: "admin" 
+      },
+      { 
+        id: 6, 
+        message: "Trading bot executed an automatic buy order for asset X. Current value: $1200.", 
+        is_read: false, 
+        created_at: "2025-02-10T16:00:00Z", 
+        target_role: "user" 
+      },
+      { 
+        id: 7, 
+        message: "Your algorithmic trading strategy has been updated with new parameters. Review your settings.", 
+        is_read: false, 
+        created_at: "2025-02-10T17:15:00Z", 
+        target_role: "user" 
+      },
+      { 
+        id: 8, 
+        message: "Automated trading failed for a certain trade due to market conditions. Please review the trade logs for more details.", 
+        is_read: false, 
+        created_at: "2025-02-10T18:00:00Z", 
+        target_role: "user" 
+      },
+      { 
+        id: 9, 
+        message: "Your trading bot encountered a network error while placing an order. Please verify your network connection.", 
+        is_read: false, 
+        created_at: "2025-02-09T20:00:00Z", 
+        target_role: "user" 
+      },
+      { 
+        id: 10, 
+        message: "Auto-trading strategy successfully paused. Manual trading will be enabled until you resume automation.", 
+        is_read: false, 
+        created_at: "2025-02-08T14:45:00Z", 
+        target_role: "user" 
+      },
+      { 
+        id: 11, 
+        message: "New algorithm parameters detected. Backtesting is recommended before deploying the algorithm to live trading.", 
+        is_read: false, 
+        created_at: "2025-02-07T11:00:00Z", 
+        target_role: "admin" 
+      },
+      { 
+        id: 12, 
+        message: "Auto trading bot achieved a new high profit margin for this trading cycle. Keep monitoring the performance.", 
+        is_read: false, 
+        created_at: "2025-02-06T10:15:00Z", 
+        target_role: "user" 
+      }
     ];
+    
     setNotifications(sampleData.filter((n) => n.target_role === target_role));
   }, [target_role]);
 

@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
-import closeSideBarIcon from '@/public/images/sidebar/close.png';
-import openSideBarIcon from '@/public/images/sidebar/open.png';
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
+import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+
 import NotificationCenter from '../../Components/Notification';
 import { FiLogOut } from 'react-icons/fi';
 import SupersetDashboard from '@/app/charts/page';
@@ -317,9 +318,13 @@ const [activeLink, setActiveLink] = useState('overview');
       <div className="flex-1 flex flex-col">
         <header className="fixed top-0 left-0 right-0 bg-[#0c263d] text-white z-20 flex items-center justify-between p-4 shadow-lg">
           {/* Sidebar Toggle */}
-          <button onClick={() => setIsSidebarOpen((prev) => !prev)} className="bg-white p-2 rounded-full shadow-md">
-            <Image src={isSidebarOpen ? closeSideBarIcon : openSideBarIcon} alt="Toggle Sidebar" width={24} height={24} />
-          </button>
+          <button onClick={() => setIsSidebarOpen((prev) => !prev)} className=" p-2 rounded-full shadow-md">
+  {isSidebarOpen ? (
+    <TbLayoutSidebarLeftCollapseFilled size={34} />
+  ) : (
+    <TbLayoutSidebarLeftExpandFilled size={34} />
+  )}
+</button>
 
           {/* Header Title */}
           {/* Balance & Trading Info */}

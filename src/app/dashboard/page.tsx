@@ -17,6 +17,8 @@ import TradingViewWidget from '../livecharts/page';
 import LiveTradeChart from '../trade_history/page';
 // import TradeDashboard from '../trade_history/page';
 
+import NotificationCenter from '../notification/Notification';
+
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 
@@ -78,10 +80,10 @@ const Dashboard = () => {
       ];
       setCookie('userToken', accounts[0].token, {
         // secure: true,
-        secure: window.location.protocol === 'https:', 
+        secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        domain: 'xhed.net', 
+        domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {
@@ -202,7 +204,7 @@ const Dashboard = () => {
   };
 
   // State to control visibility of nav-bar
-  const [isNavVisible, setIsNavVisible] = useState(true);  
+  const [isNavVisible, setIsNavVisible] = useState(true);
   const toggleNav = () => {
     setIsNavVisible(prevState => !prevState);  // Toggle visibility
   };
@@ -323,25 +325,29 @@ const Dashboard = () => {
             )}
           </div>
           {/* div for personal information */}
-          <div className='flex flex-row items-center justify-center'>
-            <div>
-              <FaUserCircle className='face-icon' />
-            </div>
-            <div className='flex flex-col mr-8 '>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
+          <div className='flex flex-row items-center justify-center gap-8'>
+            <NotificationCenter target_role={'admin'} />
+            <div className='flex flex-row items-center justify-center'>
+              <div>
+                <FaUserCircle className='face-icon' />
+              </div>
+              <div className='flex flex-col mr-8 '>
 
-              {(
-                // If authorization data is present, display dashboard
-                authorizeData ? (
-                  <div>
-                    <h1 className='fulname '>{authorizeData.authorize.authorize.fullname}</h1>
-                    <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{authorizeData.authorize.authorize.email}</p>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
 
-                  </div>
-                ) : (
-                  <p className='text-center'>Loading authorization...</p>
-                )
-              )}
+                {(
+                  // If authorization data is present, display dashboard
+                  authorizeData ? (
+                    <div>
+                      <h1 className='fulname '>{authorizeData.authorize.authorize.fullname}</h1>
+                      <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{authorizeData.authorize.authorize.email}</p>
+
+                    </div>
+                  ) : (
+                    <p className='text-center'>Loading authorization...</p>
+                  )
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -356,7 +362,7 @@ const Dashboard = () => {
         <div className={`hidden-content ${activeLink === 'charts' ? 'settings-divv' : ''}`}>
           {/* <StockChart /> */}
 
-          <TradingViewWidget/>
+          <TradingViewWidget />
         </div>
 
         {/* trading history */}

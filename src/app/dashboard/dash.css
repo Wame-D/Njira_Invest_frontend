@@ -151,7 +151,7 @@ small header styles
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-right: 2rem;
+    padding-right: 4vw;
     padding-left: 1rem;
     color: white;
     position: fixed;

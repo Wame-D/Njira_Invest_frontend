@@ -3,19 +3,29 @@ import './top.css';
 import React, { useState, useEffect } from 'react';
 import Login from '../login/page';
 import anime from 'animejs/lib/anime.es.js';
-// import { useRouter } from 'next/navigation';
-import {  getCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 
 export default function TopSection() {
     const [showChatbot, setShowChatbot] = useState(false);
-    // const router = useRouter();
+
+    useEffect(() => {
+        const query = new URLSearchParams(window.location.search);
+        const autoLogin = query.get('autoLogin');
+
+        if (autoLogin && !token) {
+            setShowChatbot(true); // Simulates opening the login modal
+        } else if (autoLogin && token) {
+            window.location.href = '/dashboard'; // Redirect to dashboard if already logged in
+        }
+    }, []);
+
 
     useEffect(() => {
         // Anime.js for dir-normal element with opacity change
         anime({
             targets: '.dir-normal',
             translateX: 500,
-            opacity: [1, 0.3], 
+            opacity: [1, 0.3],
             direction: 'alternate',
             easing: 'easeInOutSine',
         });
@@ -24,7 +34,7 @@ export default function TopSection() {
         anime({
             targets: '.dir-reverse',
             translateX: -250,
-            opacity: [1, 0.3], 
+            opacity: [1, 0.3],
             direction: 'alternate',
             easing: 'easeInOutSine',
         });
@@ -33,13 +43,13 @@ export default function TopSection() {
         anime({
             targets: '.dir-alternate',
             translateX: 250,
-            opacity: [1, 0.3], 
+            opacity: [1, 0.3],
             direction: 'alternate',
             easing: 'easeInOutSine',
         });
-    }, []); 
+    }, []);
 
-    const  token = getCookie('userToken');
+    const token = getCookie('userToken');
     const openLogin = () => {
         if (token) {
             window.location.href = '/dashboard';

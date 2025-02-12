@@ -66,7 +66,7 @@
 .logout-icon,
 .logout-text {
     display: inline;
-    color: rgb(226, 124, 7);
+    color: rgb(255, 2, 2);
 }
 
 .logout-icon {
@@ -108,6 +108,8 @@
     top: 0;
     overflow-y: scroll;
     scrollbar-width: none;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-hidden {
@@ -120,6 +122,8 @@
     align-items: center !important;
     align-self: flex-end;
     position: absolute;
+    padding: 0;
+    margin: 0;
     right: 0;
     top: 0;
     overflow-y: scroll;
@@ -248,4 +252,12 @@ superset chart div
     color: white;
     font-weight: bold;
     opacity: 1 !important;
+}
+
+.settings-divv{
+    display: flex;
+    width: 100% ;
+    height: 100vh;
+    align-self: center;
+    padding-top: 6rem !important;
 }

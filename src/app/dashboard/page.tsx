@@ -13,7 +13,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import SettingsPage from '../settings/page';
-import StockChart from '../livecharts/page';
+import TradingViewWidget from '../livecharts/page';
 import LiveTradeChart from '../trade_history/page';
 // import TradeDashboard from '../trade_history/page';
 
@@ -351,8 +351,10 @@ const Dashboard = () => {
           <SettingsPage />
         </div>
         {/* trading view charts */}
-        <div className={`hidden-content ${activeLink === 'charts' ? 'settings-div' : ''}`}>
-          <StockChart />
+        <div className={`hidden-content ${activeLink === 'charts' ? 'settings-divv' : ''}`}>
+          {/* <StockChart /> */}
+
+          <TradingViewWidget/>
         </div>
 
         {/* trading history */}

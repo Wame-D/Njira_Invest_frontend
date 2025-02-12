@@ -45,7 +45,7 @@ export default function Header() {
       <div className='nav-links'>
         <a className="links" href="../">HOME  &gt;</a>
         <a className="links" href="/aboutus">ABOUT &gt;</a>
-        <a className="links" href="/aboutus">PLARTFORM &gt;</a>
+        <a className="links" href="https://charts.xhed.net/">CHARTS &gt;</a>
         <a className="links" href="/aboutus">TRADING &gt;</a>
         <a className="links" href="/aboutus">CONTACT US &gt;</a>
       </div>

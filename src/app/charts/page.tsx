@@ -46,7 +46,7 @@ const SupersetDashboard = () => {
             },
             dashboardUiConfig: {
               hideTitle:true,
-              hideChartControls: false,
+              hideChartControls: true,
               filters: {
                 expanded: false,
               },

@@ -14,8 +14,8 @@ import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import SettingsPage from '../settings/page';
 import TradingViewWidget from '../livecharts/page';
-import LiveTradeChart from '../trade_history/page';
-// import TradeDashboard from '../trade_history/page';
+// import LiveTradeChart from '../trade_history/page';
+import TradeDashboard from '../trade_history/page';
 
 import NotificationCenter from '../notification/Notification';
 
@@ -241,7 +241,7 @@ const Dashboard = () => {
             className={`nav-links mt-8 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
             onClick={() => handleClick('trade-history')}
           >
-            <AiOutlineHistory className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Trade History</p>
+            <AiOutlineHistory className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Trades</p>
           </Link>
           <Link
             href="/dashboard"
@@ -365,16 +365,16 @@ const Dashboard = () => {
         <div className={`hidden-content ${activeLink === 'settings' ? 'settings-div' : ''}`}>
           <SettingsPage />
         </div>
+        
         {/* trading view charts */}
         <div className={`hidden-content ${activeLink === 'charts' ? 'settings-divv' : ''}`}>
-          {/* <StockChart /> */}
-
-          <TradingViewWidget />
+              <TradingViewWidget />
         </div>
 
         {/* trading history */}
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'settings-div' : ''}`}>
-          <LiveTradeChart />
+          {/* <LiveTradeChart /> */}
+          <TradeDashboard/>
         </div>
       </div>
     </div>

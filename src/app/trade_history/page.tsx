@@ -1,223 +1,93 @@
 'use client';
-// import React, { useEffect } from "react";
-// import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
-// import './history.css';
+import React, { useEffect } from "react";
+import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
+import './history.css';
 import { getCookie } from 'cookies-next';
-
-// const TradeDashboard = () => {
-//   const supersetDomain = "https://superset.xhed.net";
-//   const embeddedDashboardId = "fa733f1c-698c-47e8-9eeb-b4ab38f0adcf";
 const userEmail = getCookie('userEmail');
 
-//   const fetchGuestToken = async () => {
-//     try {
-//       const response = await fetch('https://api.xhed.net/generate-guest-token/'); 
+const TradeDashboard = () => {
+  const supersetDomain = "https://superset.xhed.net";
+  const embeddedDashboardId = "fa733f1c-698c-47e8-9eeb-b4ab38f0adcf";
+  const userEmail = "wamedaniel9@gmai.com";
 
-//       if (!response.ok) {
-//         throw new Error('Failed to fetch guest token');
-//       }
+  const fetchGuestToken = async () => {
+    try {
+      const response = await fetch('https://api.xhed.net/generate-guest-token/');
 
-//       const data = await response.json();
-//       return data.guest_token;
-//     } catch (error) {
-//       console.error('Error fetching guest token:', error);
-//       throw error;
-//     }
-//   };
+      if (!response.ok) {
+        throw new Error('Failed to fetch guest token');
+      }
 
-//   useEffect(() => {
-//     const mountPoint = document.getElementById("superset-dashboard-container");
+      const data = await response.json();
+      return data.guest_token;
+    } catch (error) {
+      console.error('Error fetching guest token:', error);
+      throw error;
+    }
+  };
 
-//     if (mountPoint) { 
-//       const initializeDashboard = async () => {
-//         try {
-//           // Fetch the guest token from the backend
-//           const guestToken = await fetchGuestToken();
+  useEffect(() => {
+    const mountPoint = document.getElementById("trade-dashboard-container");
 
-//           console.log("Fetched guest token:", guestToken); // Debug the token
+    if (mountPoint) {
+      const initializeDashboard = async () => {
+        try {
+          // Fetch the guest token from the backend
+          const guestToken = await fetchGuestToken();
 
-//           // Embed the dashboard with the guest token and user email filter
-//           await embedDashboard({
-//             id: embeddedDashboardId,
-//             supersetDomain,
-//             mountPoint,
-//             fetchGuestToken: () => {
-//               console.log("Fetching guest token for embedDashboard");
-//               console.log("Guest Token:", guestToken); // Log the token for debugging
-//               return guestToken;
-//             },
-//             dashboardUiConfig: {
-//               hideTitle: true,
-//               hideChartControls: false,
-//               filters: {
-//                 expanded: false,
-//               },
-//             },
-//             // Pass the user email as a filter
-//             extraFilters: [
-//               {
-//                 col: 'email', // Replace 'email' with the actual column name in your dataset
-//                 op: '==',
-//                 value: userEmail,
-//               },
-//             ],
-//             iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
-//           } as unknown as EmbedDashboardParams);
-//         } catch (error) {
-//           console.error('Error initializing dashboard:', error);
-//         }
-//       };
+          console.log("Fetched guest token:", guestToken); // Debug the token
 
-//       initializeDashboard();
-//     }
-//   }, [embeddedDashboardId, supersetDomain, userEmail]); // Add userEmail to the dependency array
+          // Embed the dashboard with the guest token and user email filter
+          await embedDashboard({
+            id: embeddedDashboardId,
+            supersetDomain,
+            mountPoint,
+            fetchGuestToken: () => {
+              console.log("Fetching guest token for embedDashboard");
+              console.log("Guest Token:", guestToken); // Log the token for debugging
+              return guestToken;
+            },
+            dashboardUiConfig: {
+              // hideFilters: true,
+              hideTitle: true,
+              hideChartControls: true,
+              filters: {
+                expanded: false,
+              },
+            },
+            // Pass the user email as a filter
+            extraFilters: [
+              {
+                col: 'email',
+                op: '==',
+                value: "wamedaniel9@gmai.com",
+              },
+            ],
+            iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
+          } as unknown as EmbedDashboardParams);
+        } catch (error) {
+          console.error('Error initializing dashboard:', error);
+        }
+      };
 
-//   return (
-//     <>
-//       <div id="dashboard-wrapper">
-//         <div id="superset-dashboard-container" className="w-screen h-screen">
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
+      initializeDashboard();
+    }
+  }, [embeddedDashboardId, supersetDomain, userEmail]); // Add userEmail to the dependency array
 
-// export default TradeDashboard;
+  return (
+    <>
+      <div id="trade-dashboard-wrapper">
+        <div id="trade-dashboard-container" className="w-screen h-screen">
+        </div>
+      </div>
+    </>
+  );
+};
 
-// import { useEffect, useRef, useState } from 'react';
-// import { createChart, IChartApi, ISeriesApi, BaselineSeriesPartialOptions, Time } from 'lightweight-charts';
-
-// interface TradeData {
-//   value: number;
-//   time: Time; // Use the `Time` type from lightweight-charts
-// }
-
-// interface TradeConfig {
-//   entryPrice: number;
-//   stopLoss: number;
-//   takeProfit: number;
-// }
-
-// const LiveTradeChart: React.FC = () => {
-//   const chartContainerRef = useRef<HTMLDivElement | null>(null);
-//   const [tradeConfig, setTradeConfig] = useState<TradeConfig | null>(null);
-//   const [currentPrice, setCurrentPrice] = useState<number | null>(null);
-//   const chartRef = useRef<IChartApi | null>(null);
-//   const baselineSeriesRef = useRef<ISeriesApi<'Baseline'> | null>(null);
-
-//   function getCSRFToken() {
-//     const cookies = document.cookie.split("; ");
-//     for (let cookie of cookies) {
-//       if (cookie.startsWith("csrftoken=")) {
-//         return cookie.split("=")[1];
-//       }
-//     }
-//     return "";
-//   }
-
-//   useEffect(() => {
-//     const fetchTradeConfig = async () => {
-//       try {
-//         const response = await fetch('http://127.0.0.1:8000/testContract/', {
-//           method: "POST",
-//           headers: { 'Content-Type': 'application/json' },
-//           body: JSON.stringify({ userEmail }),
-//         });
-
-//         const config = await response.json();
-//         console.log("Trade Config:", config);
-
-//         setTradeConfig({
-//           entryPrice: config.entryPrice,
-//           stopLoss: config.stopLoss,
-//           takeProfit: config.takeProfit,
-//         });
-
-//         setCurrentPrice(config.currentPrice); // Set initial price
-
-//       } catch (error) {
-//         console.error('Failed to fetch trade configuration:', error);
-//       }
-//     };
-
-//     fetchTradeConfig();
-//   }, []);
+export default TradeDashboard;
 
 
-//   useEffect(() => {
-//     if (!chartContainerRef.current || !tradeConfig) return;
-
-//     // Initialize the chart
-//     const chart = createChart(chartContainerRef.current, {
-//       layout: {
-//         textColor: 'black',
-//         background: { color: 'white' },
-//       },
-//     });
-//     chartRef.current = chart;
-
-//     // Add a baseline series
-//     const baselineSeries = chart.addBaselineSeries({
-//       baseValue: { type: 'price', price: tradeConfig.entryPrice },
-//       topLineColor: 'rgba(38, 166, 154, 1)', // Green for TP
-//       bottomLineColor: 'rgba(239, 83, 80, 1)', // Red for SL
-//     });
-//     baselineSeriesRef.current = baselineSeries;
-
-//     // Initial Data
-//     baselineSeries.setData([{ value: tradeConfig.entryPrice, time: Math.floor(Date.now() / 1000) as Time }]);
-
-//     // Fetch new data every 2 seconds
-//     const interval = setInterval(async () => {
-//       try {
-//         const response = await fetch('http://127.0.0.1:8000/testContract/', {
-//           method: "POST",
-//           headers: { 'Content-Type': 'application/json' },
-//           body: JSON.stringify({ userEmail }),
-//         });
-
-//         const data = await response.json();
-//         setCurrentPrice(data.currentPrice);
-//         console.log(data.currentPrice),
-//         baselineSeries.update({
-
-//           value: data.currentPrice,
-//           time: Math.floor(Date.now() / 1000) as Time,
-//         });
-
-//         // Change colors based on trade direction
-//         if (data.currentPrice >= tradeConfig.takeProfit) {
-//           baselineSeries.applyOptions({
-//             topLineColor: 'rgba(0, 255, 0, 1)', // Green for TP
-//             bottomLineColor: 'rgba(0, 255, 0, 1)',
-//           } as BaselineSeriesPartialOptions);
-//         } else if (data.currentPrice <= tradeConfig.stopLoss) {
-//           baselineSeries.applyOptions({
-//             topLineColor: 'rgba(255, 0, 0, 1)', // Red for SL
-//             bottomLineColor: 'rgba(255, 0, 0, 1)',
-//           } as BaselineSeriesPartialOptions);
-//         }
-//       } catch (error) {
-//         console.error('Failed to fetch trade data:', error);
-//       }
-//     }, 2000);
-
-//     return () => {
-//       clearInterval(interval);
-//       if (chartRef.current) {
-//         chartRef.current.remove();
-//       }
-//     };
-//   }, [tradeConfig]);
-
-//   if (!tradeConfig || currentPrice === null) {
-//     return <div>Loading trade configuration...</div>;
-//   }
-
-//   return <div id='livetrade' ref={chartContainerRef} style={{ width: '100%', height: '400px' }} />;
-// };
-
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { createChart, IChartApi, ISeriesApi, BaselineSeriesPartialOptions, Time, ColorType } from 'lightweight-charts';
 
 // interface TradeData {
@@ -374,4 +244,4 @@ const LiveTradeChart: React.FC = () => {
   );
 };
 
-export default LiveTradeChart;
+// export default LiveTradeChart;

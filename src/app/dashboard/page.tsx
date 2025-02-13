@@ -21,6 +21,7 @@ import NotificationCenter from '../notification/Notification';
 
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+import SignalsDashboard from '../signals/signal';
 
 interface UserAccount {
   account: string;
@@ -244,10 +245,10 @@ const Dashboard = () => {
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'risk-analysis' ? 'active-link' : ''}`}
-            onClick={() => handleClick('risk-analysis')}
+            className={`nav-links mt-8 ${activeLink === 'signals' ? 'active-link' : ''}`}
+            onClick={() => handleClick('signals')}
           >
-            <FaExclamationTriangle className={`link-icon ${activeLink === 'risk-analysis' ? 'active-link' : ''}`} /> <p className='link-text'>Risk Analysis</p>
+            <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Signals</p>
           </Link>
           <Link
             href="/dashboard"
@@ -355,6 +356,12 @@ const Dashboard = () => {
           <SupersetDashboard />
         </div>
 
+        {/* trading signals div */}
+        <div id="over" className={`hidden-content ${activeLink === 'signals' ? 'superset-chatrs-div' : ''}`}>
+          <SignalsDashboard/>
+        </div>
+
+        {/* settiings div */}
         <div className={`hidden-content ${activeLink === 'settings' ? 'settings-div' : ''}`}>
           <SettingsPage />
         </div>

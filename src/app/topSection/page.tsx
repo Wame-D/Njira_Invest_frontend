@@ -81,13 +81,18 @@ export default function TopSection() {
                         <p className='text-m text-white opacity-60 text-center dir-reverse'>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
 
                         <div className='w-fit h-fit flex mt-20 top-links dir-alternate'>
-                            <button className="links-in-top flex flex row justify-items-center items-center inside-utton" onClick={openLogin}>
-                                Login &gt;
-                            </button>
+                            {token ? (
 
-                            <a className="links-in-top flex flex row justify-items-center items-center inside-utton2" onClick={handleDashboardClick}>
-                                Your dashboard &gt;
-                            </a>
+                                <a className="links-in-top flex flex row justify-items-center items-center inside-utton2" onClick={handleDashboardClick}>
+                                    Your dashboard &gt;
+                                </a>
+                            ) : (
+                                <button className="links-in-top flex flex row justify-items-center items-center inside-utton" onClick={openLogin}>
+                                    Start trading with us &gt;
+                                </button>
+                            )}
+
+
                         </div>
                     </div>
                 </div>

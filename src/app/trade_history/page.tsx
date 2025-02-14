@@ -3,13 +3,12 @@ import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import './history.css';
 import { getCookie } from 'cookies-next';
-// const userEmail = getCookie('userEmail');
-const userEmail = "newnew@xhed.com";
+const userEmail = getCookie('userEmail');
 
 const TradeDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
   const embeddedDashboardId = "fa733f1c-698c-47e8-9eeb-b4ab38f0adcf";
-  const userEmail = "newnew@xhed.com";
+ 
 
   const fetchGuestToken = async () => {
     try {

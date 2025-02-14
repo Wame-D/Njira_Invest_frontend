@@ -82,8 +82,8 @@ const TradeDashboard = () => {
 export default TradeDashboard;
 
 
-import { useRef, useState } from 'react';
-import { createChart, IChartApi, ISeriesApi, BaselineSeriesPartialOptions, Time, ColorType } from 'lightweight-charts';
+// import { useRef, useState } from 'react';
+// import { createChart, IChartApi, ISeriesApi, BaselineSeriesPartialOptions, Time, ColorType } from 'lightweight-charts';
 
 // interface TradeData {
 //   value: number;

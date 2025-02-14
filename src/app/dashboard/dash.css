@@ -10,6 +10,17 @@
     margin: 0;
     padding: 0;
     position: relative;
+
+    /* Hide scrollbar for modern browsers */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+}
+
+.dashboard::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }
 
 .logo {
@@ -254,9 +265,9 @@ superset chart div
     opacity: 1 !important;
 }
 
-.settings-divv{
+.settings-divv {
     display: flex;
-    width: 100% ;
+    width: 100%;
     height: 100vh;
     align-self: center;
     padding-top: 6rem !important;

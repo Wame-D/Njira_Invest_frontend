@@ -1,4 +1,5 @@
 #dashboard-wrapper,
+#trade-dashboard-wrapper,
 #signals_wrapper {
   width: 100%;
   height: fit-content;
@@ -11,6 +12,7 @@
 
 #app,
 #signals-dashboard-container,
+#trade-dashboard-container,
 #superset-dashboard-container {
   width: 100% !important;
   height: fit-content;

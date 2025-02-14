@@ -48,7 +48,6 @@ const TradeDashboard = () => {
               return guestToken;
             },
             dashboardUiConfig: {
-              // hideFilters: true,
               hideTitle: true,
               hideChartControls: false,
               filters: {

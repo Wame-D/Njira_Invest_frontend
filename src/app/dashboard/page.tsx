@@ -372,7 +372,7 @@ const Dashboard = () => {
         </div>
 
         {/* trading history */}
-        <div className={`hidden-content ${activeLink === 'trade-history' ? 'settings-div' : ''}`}>
+        <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
           {/* <LiveTradeChart /> */}
           <TradeDashboard/>
         </div>

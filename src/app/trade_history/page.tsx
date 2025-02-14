@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import './history.css';
 import { getCookie } from 'cookies-next';
-const userEmail = getCookie('userEmail');
+// const userEmail = getCookie('userEmail');
+const userEmail = "newnew@xhed.com";
 
 const TradeDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
   const embeddedDashboardId = "fa733f1c-698c-47e8-9eeb-b4ab38f0adcf";
-  const userEmail = "wamedaniel9@gmai.com";
+  const userEmail = "newnew@xhed.com";
 
   const fetchGuestToken = async () => {
     try {
@@ -36,7 +37,6 @@ const TradeDashboard = () => {
           const guestToken = await fetchGuestToken();
 
           console.log("Fetched guest token:", guestToken); // Debug the token
-
           // Embed the dashboard with the guest token and user email filter
           await embedDashboard({
             id: embeddedDashboardId,
@@ -50,19 +50,16 @@ const TradeDashboard = () => {
             dashboardUiConfig: {
               // hideFilters: true,
               hideTitle: true,
-              hideChartControls: true,
+              hideChartControls: false,
               filters: {
+                visible: false,
                 expanded: false,
               },
-            },
-            // Pass the user email as a filter
-            extraFilters: [
-              {
-                col: 'email',
-                op: '==',
-                value: "wamedaniel9@gmai.com",
+
+              urlParams: {
+                email: userEmail,
               },
-            ],
+            },
             iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
           } as unknown as EmbedDashboardParams);
         } catch (error) {

@@ -38,13 +38,14 @@
 
 
 .links {
+  font-size: medium;
   color: rgb(3, 151, 177);
   font-weight: bold;
   border-color: rgba(73, 44, 44, 0);
 }
 
 .links:hover {
-  color: rgb(17, 1, 107);
+  color: rgb(255, 0, 0);
 }
 
 .links:active {
@@ -58,19 +59,17 @@
 
 /*menu icon*/
 #copyright {
-  bottom: 3%;
+  bottom: 5%;
   left: 35%;
   position: absolute;
-  color: rgb(7, 163, 190);
+  color: rgb(7, 163, 190) !important;
 }
 
 .my-icon11 {
   margin-right: 0.3rem;
-  color: rgb(7, 163, 190);
   margin-top: 5px;
   margin-left: 0.5rem;
-  height: 1rem;
-  width: 1rem;
+  font-size: medium;
 }
 
 .bar1,

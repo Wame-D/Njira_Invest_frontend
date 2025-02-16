@@ -5,6 +5,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
 import { getCookie } from 'cookies-next';
 import { FaUserCircle } from "react-icons/fa";
+import { TbExternalLink } from "react-icons/tb";
 
 interface AuthorizeResponse {
   authorize: {
@@ -93,7 +94,7 @@ export default function Header() {
 
   return (
     <div className='header'>
-      <h1 className='logo'>FOREX <strong className='trading'>TRADING</strong></h1>
+      <h1 className='logo'>FX <strong className='trading'>AUTO</strong></h1>
       <div className={`menu-icon ${showLinks ? 'change' : ''}`} onClick={toggleLinks}>
         <span id='menu'>
           <div className="bar bar1"></div>
@@ -103,27 +104,27 @@ export default function Header() {
       </div>
       {showLinks && (
         <div className='new-links'>
-          <a className="links" href="/">
-            <FontAwesomeIcon icon={faAngleRight} className="my-icon11" />Home
+          <a className="links flex flex-row" href="/">
+            Home <TbExternalLink className="my-icon11" />
           </a>
-          <a className="links" href="/Contact">
-            <FontAwesomeIcon icon={faAngleRight} className="my-icon11" />Contacts
+          <a className="links flex flex-row" href="/Contact">
+            Contacts <TbExternalLink className="my-icon11" />
           </a>
-          <a className="links" href="/aboutus">
-            <FontAwesomeIcon icon={faAngleRight} className="my-icon11" />About Us
+          <a className="links flex flex-row" href="/aboutus">
+            About Us <TbExternalLink className="my-icon11" />
           </a>
-          <a className="links" href="https://charts.xhed.net/">
-            <FontAwesomeIcon icon={faAngleRight} className="my-icon11" />Charts
+          <a className="links flex flex-row" href="https://charts.xhed.net/">
+            Charts <TbExternalLink className="my-icon11" />
           </a>
           <p id='copyright'>&#169;JED 2024</p>
         </div>
       )}
       <div className='nav-links'>
-        <a className="links" href="../">HOME  &gt;</a>
-        <a className="links" href="/aboutus">ABOUT &gt;</a>
-        <a className="links" href="https://charts.xhed.net/">CHARTS &gt;</a>
-        <a className="links" href="/aboutus">TRADING &gt;</a>
-        <a className="links" href="/aboutus">CONTACT US &gt;</a>
+        <a className="links flex flex-row" href="../">Home  <TbExternalLink className="my-icon11" /></a>
+        <a className="links flex flex-row" href="/aboutus">About <TbExternalLink className="my-icon11" /></a>
+        <a className="links flex flex-row" href="https://charts.xhed.net/">Charts <TbExternalLink className="my-icon11" /></a>
+        <a className="links flex flex-row" href="/aboutus">Trading <TbExternalLink className="my-icon11" /></a>
+        <a className="links flex flex-row" href="/contactus">Contact us <TbExternalLink className="my-icon11" /></a>
       </div>
 
       <div className="flex flex-row items-center justify-center btn-on-header">

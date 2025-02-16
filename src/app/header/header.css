@@ -156,6 +156,11 @@
     font-size: 1rem;
     margin-left: 10px;
   }
+
+  .btn-on-header{
+    display: none;
+    width: 0 ;
+  }
 }
 
 .btn-start-trading {
@@ -190,3 +195,4 @@
   margin-right: 0.8vw;
   opacity: 1;
 }
+

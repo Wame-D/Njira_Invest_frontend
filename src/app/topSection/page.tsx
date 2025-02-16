@@ -78,12 +78,12 @@ export default function TopSection() {
                 <div className='w-full items-center flex flex-col justify-center inner-div'>
                     <div className='h-fit flex items-center justify-center flex-col text-div'>
                         <h1 className='text-center dir-normal'>TRADE FOREX WITH <strong className='automated'>AUTOMATED</strong> PRECISION</h1>
-                        <p className='text-m text-white opacity-60 text-center dir-reverse'>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
+                        <p className='text-m text-white opacity-60 text-center '>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
 
                         <div className='w-fit h-fit flex mt-20 top-links dir-alternate'>
                             {token ? (
 
-                                <a className="links-in-top flex flex row justify-items-center items-center inside-utton2" onClick={handleDashboardClick}>
+                                <a className="links-in-top flex flex row justify-items-center items-center inside-utton" onClick={handleDashboardClick}>
                                     Your dashboard &gt;
                                 </a>
                             ) : (

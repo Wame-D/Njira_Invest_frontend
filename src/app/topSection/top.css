@@ -33,7 +33,7 @@
     justify-content: space-between;
 }
 
-.inside-utton2 {
+/* .inside-utton2 {
     background-color: rgb(226, 124, 7);
     width: 15rem;
     height: 3rem;
@@ -41,7 +41,7 @@
     justify-content: center;
     color: white;
     margin-left: 1rem;
-}
+} */
 
 
 .inside-utton {
@@ -85,8 +85,7 @@
         margin-top: 4rem;
     }
 
-    .inside-utton,
-    .inside-utton2 {
+    .inside-utton {
         width: 48%;
     }
 
@@ -103,6 +102,7 @@
 .links-in-top {
     font-weight: bold;
     font-size: 16px;
+    margin-top: 2rem;
 }
 
 .overlay {

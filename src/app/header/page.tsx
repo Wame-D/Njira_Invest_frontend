@@ -112,6 +112,9 @@ export default function Header() {
           <a className="links" href="/aboutus">
             <FontAwesomeIcon icon={faAngleRight} className="my-icon11" />About Us
           </a>
+          <a className="links" href="https://charts.xhed.net/">
+            <FontAwesomeIcon icon={faAngleRight} className="my-icon11" />Charts
+          </a>
           <p id='copyright'>&#169;JED 2024</p>
         </div>
       )}
@@ -123,7 +126,7 @@ export default function Header() {
         <a className="links" href="/aboutus">CONTACT US &gt;</a>
       </div>
 
-      <div className="flex flex-row items-center justify-center">
+      <div className="flex flex-row items-center justify-center btn-on-header">
         {authorizeData && (
           <div>
             <FaUserCircle className="face-icon" />

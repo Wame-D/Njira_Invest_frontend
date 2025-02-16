@@ -77,8 +77,8 @@ export default function TopSection() {
             <div className="items-center flex flex-col justify-center w-full topsection">
                 <div className='w-full items-center flex flex-col justify-center inner-div'>
                     <div className='h-fit flex items-center justify-center flex-col text-div'>
-                        <h1 className='text-center dir-normal'>TRADE FOREX WITH <strong className='automated'>AUTOMATED</strong> PRECISION</h1>
-                        <p className='text-m text-white opacity-60 text-center '>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
+                        <h1 className='text-center'>TRADE FOREX WITH <strong className='automated'>AUTOMATED</strong> PRECISION</h1>
+                        <p className='text-m text-white opacity-70 text-center '>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
 
                         <div className='w-fit h-fit flex mt-20 top-links dir-alternate'>
                             {token ? (

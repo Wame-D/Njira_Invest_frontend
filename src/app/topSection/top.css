@@ -20,7 +20,7 @@
 
 .text-div h1 {
     color: white;
-    font-size: 55px;
+    font-size: 50vw;
     font-weight: bold;
 }
 
@@ -32,17 +32,6 @@
     flex-direction: row;
     justify-content: space-between;
 }
-
-/* .inside-utton2 {
-    background-color: rgb(226, 124, 7);
-    width: 15rem;
-    height: 3rem;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    margin-left: 1rem;
-} */
-
 
 .inside-utton {
     background-color: #0ba2da;

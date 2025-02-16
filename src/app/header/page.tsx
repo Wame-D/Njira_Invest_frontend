@@ -1,7 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
 import { getCookie } from 'cookies-next';
 import { FaUserCircle } from "react-icons/fa";

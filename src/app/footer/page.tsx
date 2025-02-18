@@ -18,9 +18,9 @@ const Footer = () => {
             <h4 className="font-semibold">Quick Links</h4>
             <ul className="text-gray-400 mt-2 space-y-1">
               <li>About</li>
-              <li>Services</li>
-              <li>Contact</li>
-              <li>Team</li>
+              <li>Charts</li>
+              <li>Trading</li>
+              <li>Contact us</li>
             </ul>
           </div>
   

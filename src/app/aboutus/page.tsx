@@ -29,7 +29,7 @@ export default function About(){
             Forex Trading with AI-Powered Bots!</h1>
         </div>
         <div  className="bg-white p-3 m-3 w-[26vw]">
-          <h1>At autofx, we use AI-powered automation to make Forex trading smarter and faster. Our bot analyzes real-time market trends and executes trades with precision, keeping you ahead 24/7.</h1>
+          <h1>At Auto-FX, we use AI-powered automation to make Forex trading smarter and faster. Our bot analyzes real-time market trends and executes trades with precision, keeping you ahead 24/7.</h1>
         </div>
         <div className="bg-white p-3 m-3 w-[26vw]">
           <h1>Built with advanced algorithms, it adapts to market changes and makes data-driven decisions. Whether you aim to maximize profits, manage risk, or automate trading, our bot has you covered.</h1>
@@ -66,9 +66,25 @@ export default function About(){
       </div>
 
       <div className="flex flex-row ml-[10vw]">
-        <div className="w-[40vw] h-[50vh]  bg-black m-8 rounded-lg"></div>
-        <div className="w-[40vw] h-[40vh]  bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] "></div>
-      </div>
+  {/* Image Section */}
+  <div className="w-[40vw] h-[50vh] bg-black m-8 rounded-lg overflow-hidden">
+    <img 
+      src="/path-to-your-image.jpg" 
+      alt="Forex Trading Bot" 
+      className="w-full h-full object-cover rounded-lg"
+    />
+  </div>
+
+  {/* Video Section */}
+  <div className="w-[40vw] h-[40vh] bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] overflow-hidden">
+    <video 
+      src="/path-to-your-video.mp4" 
+      controls 
+      className="w-full h-full object-cover rounded-lg"
+    />
+  </div>
+</div>
+
 
       <div className="bg-stone-100 h-[120vh] w-[100vw] mt-10 pb-10">
         <h1 className=" font-bold text-2xl text-center pt-20">
@@ -102,7 +118,7 @@ export default function About(){
       <div className="h-[60vh] w-[100%] bg-stone-800 grid grid-cols-4 flex pl-20 gap-4">
         
         <div className=" justify-center ">
-          <p className="flex justify-center gap-7 p-3 text-sky-300">AUTOFX</p>
+          <p className="flex justify-center gap-7 p-3 text-sky-300">AUTO-FX</p>
           <p className="flex text-center p-3 text-gray-300">Trade forex with automated precision</p>
           <div className="flex justify-center gap-7 p-3 text-gray-500">
             <FaFacebookF className="hover:text-blue-600 cursor-pointer" />

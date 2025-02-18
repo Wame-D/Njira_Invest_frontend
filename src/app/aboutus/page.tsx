@@ -69,7 +69,7 @@ export default function About(){
   {/* Image Section */}
   <div className="w-[40vw] h-[50vh] bg-black m-8 rounded-lg overflow-hidden">
     <img 
-      src="/path-to-your-image.jpg" 
+      src="https://nielseniq.com/wp-content/uploads/sites/4/2021/12/GettyImages-887882750-1201x801-d21b45d.jpg" 
       alt="Forex Trading Bot" 
       className="w-full h-full object-cover rounded-lg"
     />
@@ -78,7 +78,7 @@ export default function About(){
   {/* Video Section */}
   <div className="w-[40vw] h-[40vh] bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] overflow-hidden">
     <video 
-      src="/path-to-your-video.mp4" 
+      src="https://www.youtube.com/watch?v=5iEHsRja8u0" 
       controls 
       className="w-full h-full object-cover rounded-lg"
     />

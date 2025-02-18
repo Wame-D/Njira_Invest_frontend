@@ -103,7 +103,7 @@ export default function About(){
         
         <div className=" justify-center ">
           <p className="flex justify-center gap-7 p-3 text-sky-300">AUTOFX</p>
-          <p className="flex text-center p-3 text-gray-300">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+          <p className="flex text-center p-3 text-gray-300">Trade forex with automated precision</p>
           <div className="flex justify-center gap-7 p-3 text-gray-500">
             <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
             <FaTwitter className="hover:text-blue-400 cursor-pointer" />

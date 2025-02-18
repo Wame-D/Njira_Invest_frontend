@@ -43,32 +43,25 @@ const Contact = () => {
             {/* Address */}
             <div className="flex items-center space-x-3 bg-gray-200 p-3 rounded-md">
               <span className="text-xl">📍</span>
-              <p className="font-semibold">Jl. Raya Kuta No. 121</p>
+              <p className="font-semibold">University Of Malawi</p>
             </div>
             {/* Mobile */}
             <div className="flex items-center space-x-3 bg-gray-200 p-3 rounded-md">
               <span className="text-xl">📞</span>
-              <p className="font-semibold">(+021) 789 345</p>
+              <p className="font-semibold">(+265) 990 000 000</p>
             </div>
             {/* Availability */}
             <div className="flex items-center space-x-3 bg-gray-200 p-3 rounded-md">
               <span className="text-xl">⏰</span>
-              <p className="font-semibold">Daily 09 am - 05 pm</p>
+              <p className="font-semibold">Daily 07 am - 05 pm</p>
             </div>
             {/* Email */}
             <div className="flex items-center space-x-3 bg-gray-200 p-3 rounded-md">
               <span className="text-xl">📧</span>
-              <p className="font-semibold">admin@support.com</p>
+              <p className="font-semibold">support@autofx.com</p>
             </div>
           </div>
 
-          {/* Social Media Icons */}
-          <div className="mt-4 flex space-x-4">
-            <span className="text-xl">🔵</span>
-            <span className="text-xl">⚫</span>
-            <span className="text-xl">🔷</span>
-            <span className="text-xl">💼</span>
-          </div>
         </div>
       </section>
 
@@ -79,16 +72,12 @@ const Contact = () => {
           <div>
           <h2 className="text-2xl font-semibold mb-4 text-center">
   Your Common Queries Answered <br />
-  <span className="underline decoration-teal-500">with Additional FAQs</span>
+  <span className="underline decoration-sky-500">with Additional FAQs</span>
 </h2>
-<p className="text-gray-500 max-w-lg mx-auto text-center">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</p>
-
             {/* FAQ Accordion */}
             <div className="mt-6 space-y-4">
-              {["How can I benefit from your startup?", "How can I get in touch with customer support?", 
-                "How do you ensure data security and privacy?", "How do I get started with your offerings?"].map((faq, index) => (
+              {["What is algorithmic trading?", "How does your platform work?", 
+                "Do I need to have prior trading experience to use your platform?", "Which brokers can I connect with your platform? ", "How do I get started with trading?", "Can I customize the trading strategies?", "Is my money safe on this platform?", "Can I stop the automated trading at any time?"].map((faq, index) => (
                 <details key={index} className="bg-white shadow-md p-4 rounded-md cursor-pointer">
                   <summary className="font-medium">{faq}</summary>
                   <p className="mt-2 text-gray-500">
@@ -101,7 +90,7 @@ const Contact = () => {
 
           {/* Right - Image */}
           <div className="flex justify-center">
-            <img src="https://via.placeholder.com/400" alt="Support Team" className="rounded-md shadow-md" />
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1blONU.img" alt="Support Team" className="rounded-md shadow-md" />
           </div>
         </div>
       </section>

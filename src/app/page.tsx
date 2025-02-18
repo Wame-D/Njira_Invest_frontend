@@ -2,7 +2,6 @@
 import Header from "./header/page";
 import TopSection from "./topSection/page";
 import Services from "./services/page";
-import FAQPage from "./faq/page";
 import HowItWork from "./how/page";
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';  
@@ -30,7 +29,6 @@ export default function Home() {
         <div id="how-it-work">
           <HowItWork />
         </div>
-        < FAQPage />
         <div className=' flex justify-center items-center fixedwhatsappdiv'>
             <p className='fixedwhatsapp'>
               <Link href="https://wa.me/265990024684">

@@ -409,7 +409,6 @@ const Dashboard = () => {
           <SettingsPage />
         </div>
       </div>
-
     </div>
   )
 };

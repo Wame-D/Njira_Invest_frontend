@@ -4,9 +4,13 @@ const Footer = () => {
         <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
           {/* Contact Information */}
           <div>
-            <h4 className="font-semibold">Contact Information</h4>
-            <p className="text-gray-400 mt-2">Jl. Raya Kuta No. 121, Badung - Bali, Indonesia.</p>
-            <p className="text-gray-400">(+62)-822-4545-2882</p>
+          <h4 className="font-semibold">Contact information</h4>
+            <ul className="text-gray-400 mt-2 space-y-1">
+              <li>University Of Malawi</li>
+              <li>P.O Box 280</li>
+              <li>Zomba</li>
+              <li>Malawi</li>
+            </ul>
           </div>
   
           {/* Quick Links */}

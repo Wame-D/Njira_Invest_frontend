@@ -47,7 +47,7 @@ export default function Header() {
         <a className="links" href="/aboutus">ABOUT &gt;</a>
         <a className="links" href="/aboutus">PLARTFORM &gt;</a>
         <a className="links" href="/aboutus">TRADING &gt;</a>
-        <a className="links" href="/aboutus">CONTACT US &gt;</a>
+        <a className="links" href="/contactus">CONTACT US &gt;</a>
       </div>
     </div>
   );

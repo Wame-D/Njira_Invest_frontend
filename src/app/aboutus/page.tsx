@@ -78,7 +78,7 @@ export default function About(){
             <h3 className="text-lg font-bold">{member.name}</h3>
             {/* <p className="text-sm text-gray-500">{member.position}</p> */}
           </div>
-          <div className="bg-red-500 text-white p-3 rounded-b-2xl">
+          <div className="bg-sky-500 text-white p-3 rounded-b-2xl">
             {member.position}
           </div>
           <div className="flex justify-center gap-7 p-3 text-gray-500">

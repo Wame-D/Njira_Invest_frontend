@@ -19,8 +19,8 @@ export default function About(){
       <div className="grid grid-cols-3 h-[20%] bg-white h-[30vh] mr-2 items-center mt-10">
         <div  className="bg-white p-3 m-3">
           <h1 className="font-bold text-4xl">
-            <span className="text-red-500">Introduction </span>
-             To the best Digital Agency!</h1>
+            <span className="text-sky-500">Revolutionizing </span>
+            Forex Trading with AI-Powered Bots!</h1>
         </div>
         <div  className="bg-white p-3 m-3 w-[26vw]">
           <h1>Harum quisquam amet debitis pariatur quas? Nemo excepturi duis minim nostrud officiis dolorem fugit itaque, fugiat excepturi modi, porta.</h1>

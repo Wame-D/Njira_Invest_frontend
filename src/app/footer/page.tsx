@@ -1,53 +1,53 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <div>
-      <div className="h-[60vh] w-[100%] bg-stone-800 grid grid-cols-4 flex pl-20 gap-4">
-        <div className="justify-center">
-          <p className="flex justify-center gap-7 p-3 text-gray-300 font-bold font-sans">AUTO-FX</p>
-          <p className="flex text-center p-3 text-gray-300">Trade forex with automated precision</p>
-          <div className="flex justify-center gap-7 p-3 text-gray-500">
-            <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-            <FaTwitter className="hover:text-blue-400 cursor-pointer" />
-            <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
-            <FaInstagram className="hover:text-pink-600 cursor-pointer" />
+    return (
+      <footer className="bg-black text-white py-12">
+        <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
+          {/* Contact Information */}
+          <div>
+            <h4 className="font-semibold">Contact Information</h4>
+            <p className="text-gray-400 mt-2">Jl. Raya Kuta No. 121, Badung - Bali, Indonesia.</p>
+            <p className="text-gray-400">(+62)-822-4545-2882</p>
+          </div>
+  
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold">Quick Links</h4>
+            <ul className="text-gray-400 mt-2 space-y-1">
+              <li>About</li>
+              <li>Services</li>
+              <li>Contact</li>
+              <li>Team</li>
+            </ul>
+          </div>
+  
+          {/* Our Services */}
+          <div>
+            <h4 className="font-semibold">Our Services</h4>
+            <ul className="text-gray-400 mt-2 space-y-1">
+              <li>UI/UX Design</li>
+              <li>Mobile App Dev</li>
+              <li>Web Dev</li>
+              <li>Cloud Services</li>
+            </ul>
+          </div>
+  
+          {/* Newsletter */}
+          <div>
+            <h4 className="font-semibold">Get Latest Update</h4>
+            <p className="text-gray-400 mt-2">Lorem ipsum dolor sit amet elit.</p>
+            <div className="mt-4 flex">
+              <input
+                type="email"
+                placeholder="Enter Your Email"
+                className="p-2 w-full border-none text-black rounded-l-md"
+              />
+              <button className="bg-teal-500 px-4 py-2 rounded-r-md">Subscribe</button>
+            </div>
           </div>
         </div>
-
-        <div className="justify-center text-gray-300">
-          <h1 className="font-bold p-3">Useful links</h1>
-          <h1 className="pt-3 hover:text-gray-500">About us</h1>
-          <h1 className="pt-3 hover:text-gray-500">Charts</h1>
-          <h1 className="pt-3 hover:text-gray-500">Trading</h1>
-          <h1 className="pt-3 hover:text-gray-500">How it works</h1>
-        </div>
-
-        <div className="justify-center text-gray-300">
-          <h1 className="font-bold p-3">Support</h1>
-          <h1 className="pt-3 hover:text-gray-500">Help Center</h1>
-          <h1 className="pt-3 hover:text-gray-500">Contact Us</h1>
-          <h1 className="pt-3 hover:text-gray-500">Terms & Conditions</h1>
-          <h1 className="pt-3 hover:text-gray-500">Resources</h1>
-        </div>
-
-        <div className="justify-center text-gray-300">
-          <h1 className="font-bold t p-3">Contact Information</h1>
-          <h1 className="pt-3 hover:text-gray-500">Feel free to contact and reach us!</h1>
-          <h1 className="pt-3 hover:text-gray-500">University of Malawi</h1>
-          <h1 className="pt-3 hover:text-gray-500">P.O.Box 280, Zomba</h1>
-          <h1 className="pt-3 hover:text-gray-500">info@autofx.com</h1>
-        </div>
-      </div>
-
-      {/* Footer Copyright */}
-      <div className="w-full bg-gray-800 text-gray-300 text-center py-3">
-        <p>&copy; FXAUTO {currentYear}</p>
-      </div>
-    </div>
-  );
-};
-
-export default Footer;
+      </footer>
+    );
+  };
+  
+  export default Footer;
+  

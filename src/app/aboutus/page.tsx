@@ -96,7 +96,7 @@ export default function About(){
       <div className="h-[60vh] w-[100%] bg-stone-800 grid grid-cols-4 flex pl-20 gap-4">
         
         <div className=" justify-center ">
-          <p className="flex justify-center gap-7 p-3 text-gray-300">AGENCE</p>
+          <p className="flex justify-center gap-7 p-3 text-sky-300">AUTOFX</p>
           <p className="flex text-center p-3 text-gray-300">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
           <div className="flex justify-center gap-7 p-3 text-gray-500">
             <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
@@ -120,7 +120,7 @@ export default function About(){
           <h1 className="pt-3 hover:text-gray-500">Contact Us</h1>
           <h1 className="pt-3 hover:text-gray-500">Terms & Conditions
 </h1>
-          <h1 className="pt-3 hover:text-gray-500">Educational Resources</h1>
+          <h1 className="pt-3 hover:text-gray-500">Resources</h1>
         </div>
 
         <div className="justify-center text-gray-300">

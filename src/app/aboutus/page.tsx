@@ -152,6 +152,7 @@ export default function About(){
           <h1 className="pt-3 hover:text-gray-500">P.O.Box 280, Zomba</h1>
           <h1 className="pt-3 hover:text-gray-500">info@autofx.com</h1>
         </div>
+        
       </div>
     
     </div>

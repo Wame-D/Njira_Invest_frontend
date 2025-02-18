@@ -13,6 +13,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import SettingsPage from '../settings/page';
+import Footer from '../footer/page';
 
 interface UserAccount {
   account: string;

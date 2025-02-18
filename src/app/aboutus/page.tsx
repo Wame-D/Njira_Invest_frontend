@@ -23,10 +23,10 @@ export default function About(){
             Forex Trading with AI-Powered Bots!</h1>
         </div>
         <div  className="bg-white p-3 m-3 w-[26vw]">
-          <h1>Harum quisquam amet debitis pariatur quas? Nemo excepturi duis minim nostrud officiis dolorem fugit itaque, fugiat excepturi modi, porta.</h1>
+          <h1>At autofx, we use AI-powered automation to make Forex trading smarter and faster. Our bot analyzes real-time market trends and executes trades with precision, keeping you ahead 24/7.</h1>
         </div>
         <div className="bg-white p-3 m-3 w-[26vw]">
-          <h1>Odio velit, odit, est, euismod aliquid luctus pharetra vero, condimentum, nostrum mi venenatis, mollit odio mi, unde semper adipiscing aut...</h1>
+          <h1>Built with advanced algorithms, it adapts to market changes and makes data-driven decisions. Whether you aim to maximize profits, manage risk, or automate trading, our bot has you covered.</h1>
         </div>
       </div>
     
@@ -34,7 +34,7 @@ export default function About(){
       <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh]">
           <div className="text-red-500 text-3xl">{<FaCheckCircle />}</div>
           <div>
-            <h3 className="font-bold">Best Financial Analysis</h3>
+            <h3 className="font-bold">Automated Trading 24/7</h3>
             <p className="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
           </div>
         </div>

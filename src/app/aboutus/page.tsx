@@ -118,7 +118,7 @@ export default function About(){
       <div className="h-[60vh] w-[100%] bg-stone-800 grid grid-cols-4 flex pl-20 gap-4">
         
         <div className=" justify-center ">
-          <p className="flex justify-center gap-7 p-3 text-sky-300">AUTO-FX</p>
+        <p className="flex justify-center gap-7 p-3 text-gray-300 font-bold font-sans">AUTO-FX</p>
           <p className="flex text-center p-3 text-gray-300">Trade forex with automated precision</p>
           <div className="flex justify-center gap-7 p-3 text-gray-500">
             <FaFacebookF className="hover:text-blue-600 cursor-pointer" />

@@ -66,7 +66,7 @@ export default function About(){
 
       <div className="bg-stone-100 h-[120vh] w-[100vw] mt-10 pb-10">
         <h1 className=" font-bold text-2xl text-center pt-20">
-          <span className="text-red-500 font-bold text-2xl"> Team</span>
+          <span className="text-sky-500 font-bold text-2xl"> Team </span>
           Members
         </h1>
         <p className="mt-10 mb-10 text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>

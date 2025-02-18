@@ -125,9 +125,9 @@ export default function About(){
         <div className="justify-center text-gray-300">
           <h1 className="font-bold t p-3"> Contact Information</h1>
           <h1 className="pt-3 hover:text-gray-500">Feel free to contact and reach us!</h1>
-          <h1 className="pt-3 hover:text-gray-500">3557 Derek Drive, Florida</h1>
-          <h1 className="pt-3 hover:text-gray-500">+1(456)657-887, +01 2599 12</h1>
-          <h1 className="pt-3 hover:text-gray-500">info@domain.com</h1>
+          <h1 className="pt-3 hover:text-gray-500">University of Malawi</h1>
+          <h1 className="pt-3 hover:text-gray-500">P.O.Box 280, Zomba</h1>
+          <h1 className="pt-3 hover:text-gray-500">info@autofx.com</h1>
         </div>
       </div>
     

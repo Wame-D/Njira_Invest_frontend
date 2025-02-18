@@ -118,8 +118,9 @@ export default function About(){
           <h1 className="font-bold p-3"> Support</h1>
           <h1 className="pt-3 hover:text-gray-500">Help Center</h1>
           <h1 className="pt-3 hover:text-gray-500">Contact Us</h1>
-          <h1 className="pt-3 hover:text-gray-500">Payment Center</h1>
-          <h1 className="pt-3 hover:text-gray-500">Parent Community</h1>
+          <h1 className="pt-3 hover:text-gray-500">Terms & Conditions
+</h1>
+          <h1 className="pt-3 hover:text-gray-500">Educational Resources</h1>
         </div>
 
         <div className="justify-center text-gray-300">

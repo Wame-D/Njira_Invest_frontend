@@ -28,24 +28,24 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold">Our Services</h4>
             <ul className="text-gray-400 mt-2 space-y-1">
-              <li>UI/UX Design</li>
-              <li>Mobile App Dev</li>
-              <li>Web Dev</li>
-              <li>Cloud Services</li>
+              <li>Automated Trading </li>
+              <li>AI Market Analysis</li>
+              <li>Risk Management</li>
+              <li>Secure Execution</li>
             </ul>
           </div>
   
           {/* Newsletter */}
           <div>
             <h4 className="font-semibold">Get Latest Update</h4>
-            <p className="text-gray-400 mt-2">Lorem ipsum dolor sit amet elit.</p>
+            <p className="text-gray-400 mt-2">Get real-time updates on your trades and market trends.</p>
             <div className="mt-4 flex">
               <input
                 type="email"
                 placeholder="Enter Your Email"
-                className="p-2 w-full border-none text-black rounded-l-md"
+                className="p-2 w-full border-none text-black rounded-l-md text-sm"
               />
-              <button className="bg-teal-500 px-4 py-2 rounded-r-md">Subscribe</button>
+              <button className="bg-sky-500 px-4 py-2 rounded-r-md">Subscribe</button>
             </div>
           </div>
         </div>

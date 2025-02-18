@@ -109,9 +109,9 @@ export default function About(){
         <div className="justify-center text-gray-300">
           <h1 className="font-bold  p-3"> Useful links</h1>
           <h1 className="pt-3 hover:text-gray-500">About us</h1>
-          <h1 className="pt-3 hover:text-gray-500">Careers</h1>
-          <h1 className="pt-3 hover:text-gray-500">News and Articles</h1>
-          <h1 className="pt-3 hover:text-gray-500">Legal Notice</h1>
+          <h1 className="pt-3 hover:text-gray-500">Charts</h1>
+          <h1 className="pt-3 hover:text-gray-500">Trading</h1>
+          <h1 className="pt-3 hover:text-gray-500">How it works</h1>
         </div>
 
         <div className="justify-center text-gray-300">

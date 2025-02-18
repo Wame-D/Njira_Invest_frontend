@@ -12,9 +12,15 @@ export default function About(){
   return(
     <div>
       <Header/>
-      <div className="flex text-xl h-[30vh] bg-stone-600 text-white text-2xl font-bold mt-14">
-        <h1 className="pl-[45vw] pt-[14vh]">About Us</h1>
-      </div>
+      <div className="relative flex items-center justify-center h-[30vh] bg-stone-600 text-white text-2xl font-bold mt-14 overflow-hidden">
+  <img 
+    src="https://www.seputarforex.com/sf2016materi/post/2015-06/long-term-4h-dengan-persilangan-ema-8-dan-ema-20-236801-1.jpg" 
+    alt="About us background" 
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  <h1 className="relative z-10">About Us</h1>
+</div>
+
 
       <div className="grid grid-cols-3 h-[20%] bg-white h-[30vh] mr-2 items-center mt-10">
         <div  className="bg-white p-3 m-3">

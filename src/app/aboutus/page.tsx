@@ -4,10 +4,10 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/f
 
 export default function About(){
   const members = [
-    { name: "Sonny Maddison", position: "CEO, Director", image: "/placeholder.jpg" },
-    { name: "Hary Warth", position: "Head Manager", image: "/placeholder.jpg" },
-    { name: "Henny Habb", position: "Branch Manager", image: "/placeholder.jpg" },
-    { name: "Johny Smith", position: "Supervisor", image: "/placeholder.jpg" },
+    { name: "Peter Kayira", position: "Front-End Developer", image: "/placeholder.jpg" },
+    { name: "Richard Mlambuzi", position: "Trading Strategist", image: "/placeholder.jpg" },
+    { name: "Daniel Wame", position: "Market Analyst", image: "/placeholder.jpg" },
+    { name: "Melvin Kalidozo", position: "Trade Execution Specialist", image: "/placeholder.jpg" },
   ];
   return(
     <div>
@@ -90,7 +90,7 @@ export default function About(){
         </div>
         ))}
         </div>
-        <p className="text-black font-bold text-2xl text-center">www.DownloadNew.Themes.com</p>
+        
       </div>
       
       <div className="h-[60vh] w-[100%] bg-stone-800 grid grid-cols-4 flex pl-20 gap-4">

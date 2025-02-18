@@ -1,15 +1,19 @@
 import React from "react";
+import Header from "../header/page";
 
 const Contact = () => {
   return (
     <div className="font-sans text-gray-900">
+      <Header/>
+      <br></br>
+      <br></br>
       {/* Hero Section */}
       <section className="text-center py-16">
         <h2 className="text-3xl font-semibold">
-          <span className="underline decoration-teal-500">Connect</span> with Our Team
+          <span className="underline decoration-sky-500">Connect</span> with Our Team
         </h2>
         <p className="mt-2 text-gray-500 max-w-lg mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut spelataras tellus luctus neullamcorper mattis.
+          Have questions about our Forex trading bot? Our team is here to help with setup, strategies, and support. Reach out today!
         </p>
       </section>
 
@@ -33,7 +37,7 @@ const Contact = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Contact Details</h3>
           <p className="text-gray-500 mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Taras tellus nisl.
+            Reach us for inquiries about our Forex trading bot, account setup, or technical support. We're here to assist you!
           </p>
           <div className="space-y-4">
             {/* Address */}

@@ -32,26 +32,28 @@ export default function About(){
     
       <div className="grid grid-cols-3 pl-12 mt-20 mb-20">
       <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh]">
-          <div className="text-red-500 text-3xl">{<FaCheckCircle />}</div>
+          <div className="text-sky-500 text-3xl">{<FaCheckCircle />}</div>
           <div>
             <h3 className="font-bold">Automated Trading 24/7</h3>
-            <p className="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+            <p className="text-gray-600 text-sm">Trades automatically, ensuring you never miss an opportunity.
+
+</p>
           </div>
         </div>
 
         <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh]">
-          <div className="text-red-500 text-3xl">{<FaChartLine/>}</div>
+          <div className="text-sky-500 text-3xl">{<FaChartLine/>}</div>
           <div>
-            <h3 className="font-bold">Financial Analysis</h3>
-            <p className="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+            <h3 className="font-bold">Smart Market Insights</h3>
+            <p className="text-gray-600 text-sm">Analyzes trends and key indicators for informed decisions.</p>
           </div>
         </div>
 
         <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh] ">
-          <div className="text-red-500 text-3xl">{<FaUsers />}</div>
+          <div className="text-sky-500 text-3xl">{<FaUsers />}</div>
           <div>
             <h3 className="font-bold">Professional Team</h3>
-            <p className="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+            <p className="text-gray-600 text-sm">Experts continuously refine algorithms for reliability.</p>
           </div>
         </div>
 

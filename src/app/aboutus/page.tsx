@@ -69,7 +69,7 @@ export default function About(){
           <span className="text-sky-500 font-bold text-2xl"> Team </span>
           Members
         </h1>
-        <p className="mt-10 mb-10 text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+        <p className="mt-10 mb-10 text-center">Meet the experts behind our AI-powered trading bot, dedicated to innovation and success in Forex trading.</p>
         <div className="flex justify-center gap-6 p-10 bg-gray-100">
           {members.map((member, index) => (
           <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden w-64 text-center">

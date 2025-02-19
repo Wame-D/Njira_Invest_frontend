@@ -24,19 +24,6 @@ import SignalsDashboard from '../signals/signal';
 
 import dynamic from 'next/dynamic';
 
-const LazyTradeDashboard = dynamic(() => import('../trade_history/page'), {
-  loading: () => <p>Loading trade dashboard...</p>, // Optional loading indicator
-});
-
-const LazySettingsPage = dynamic(() => import('../settings/page'), {
-  loading: () => <p>Loading settings...</p>,
-});
-
-const LazyTradingViewWidget = dynamic(() => import('../livecharts/page'), {
-  loading: () => <p>Loading live charts...</p>,
-});
-
-
 interface UserAccount {
   account: string;
   token: string;
@@ -386,15 +373,10 @@ const Dashboard = () => {
         </div>
 
         {/* trading history */}
-        {/* <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
-         
-          <TradeDashboard isScrolled={activeLink === 'trade-history'} />
-        </div> */}
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
-          {activeLink === 'trade-history' && <LazyTradeDashboard isScrolled={activeLink === 'trade-history'} />}
+          <TradeDashboard isScrolled={activeLink === 'trade-history'} />
         </div>
-
-      </div>
+           </div>
     </div>
   )
 };

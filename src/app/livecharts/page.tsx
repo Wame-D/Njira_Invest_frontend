@@ -1,18 +1,24 @@
 "use client";
 import { useEffect, useRef } from "react";
 import React, { memo } from 'react';
-
-function TradingViewWidget() {
-    const container = useRef<HTMLDivElement>(null); 
+// Define the prop types for Scroller
+interface ScrollerProps {
+    isScrolled: boolean;
+}
+const TradingViewWidget: React.FC<ScrollerProps> = ({ isScrolled }) => {
+    ``
+    
+    const container = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-        script.type = "text/javascript";
-        script.async = true;
+        if (isScrolled) {
+            const script = document.createElement("script");
+            script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+            script.type = "text/javascript";
+            script.async = true;
 
-        // Fixing the JSON structure: wrap the object in a string
-        script.innerHTML = `
+            // Fixing the JSON structure: wrap the object in a string
+            script.innerHTML = `
             {
                 "autosize": true,
                 "symbol": "EIGHTCAP:XAUUSD",
@@ -31,11 +37,12 @@ function TradingViewWidget() {
             }
         `;
 
-        // Append the script to the container
-        if (container.current) {
-            container.current.appendChild(script);
+            // Append the script to the container
+            if (container.current) {
+                container.current.appendChild(script);
+            }
         }
-    }, []);
+    }, [isScrolled]);
 
     return (
         <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>

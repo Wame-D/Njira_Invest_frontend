@@ -3,64 +3,72 @@ import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import './charts.css';
 
-const SupersetDashboard = () => {
+// Define the prop types for Scroller
+interface ScrollerProps {
+  isScrolled: boolean;
+}
+const SupersetDashboard: React.FC<ScrollerProps> = ({ isScrolled }) => {
   const supersetDomain = "https://superset.xhed.net";
   const embeddedDashboardId = "81429aff-ef7f-45a7-b31b-2eb06d86c1ce";
 
   const fetchGuestToken = async () => {
-    try {
-      const response = await fetch('https://api.xhed.net/generate-guest-token/'); 
+    if (isScrolled) {
+      try {
+        const response = await fetch('https://api.xhed.net/generate-guest-token/');
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch guest token');
+        if (!response.ok) {
+          throw new Error('Failed to fetch guest token');
+        }
+
+        const data = await response.json();
+        return data.guest_token;
+      } catch (error) {
+        console.error('Error fetching guest token:', error);
+        throw error;
       }
-
-      const data = await response.json();
-      return data.guest_token;
-    } catch (error) {
-      console.error('Error fetching guest token:', error);
-      throw error;
     }
   };
 
   useEffect(() => {
-    const mountPoint = document.getElementById("superset-dashboard-container");
+    if (isScrolled) {
+      const mountPoint = document.getElementById("superset-dashboard-container");
 
-    if (mountPoint) { 
-      const initializeDashboard = async () => {
-        try {
-          // Fetch the guest token from the backend
-          const guestToken = await fetchGuestToken();
-          
-          console.log("Fetched guest token:", guestToken); // Debug the token
+      if (mountPoint) {
+        const initializeDashboard = async () => {
+          try {
+            // Fetch the guest token from the backend
+            const guestToken = await fetchGuestToken();
 
-          // Embed the dashboard with the guest token
-          await embedDashboard({
-            id: embeddedDashboardId,
-            supersetDomain,
-            mountPoint,
-            fetchGuestToken: () => {
-              console.log("Fetching guest token for embedDashboard");
-              console.log("Guest Token:", guestToken); // Log the token for debugging
-              return guestToken;
-            },
-            dashboardUiConfig: {
-              hideTitle:true,
-              hideChartControls: true,
-              filters: {
-                expanded: false,
+            console.log("Fetched guest token:", guestToken); // Debug the token
+
+            // Embed the dashboard with the guest token
+            await embedDashboard({
+              id: embeddedDashboardId,
+              supersetDomain,
+              mountPoint,
+              fetchGuestToken: () => {
+                console.log("Fetching guest token for embedDashboard");
+                console.log("Guest Token:", guestToken); // Log the token for debugging
+                return guestToken;
               },
-            },
-            iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
-          } as unknown as EmbedDashboardParams);
-        } catch (error) {
-          console.error('Error initializing dashboard:', error);
-        }
-      };
+              dashboardUiConfig: {
+                hideTitle: true,
+                hideChartControls: true,
+                filters: {
+                  expanded: false,
+                },
+              },
+              iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
+            } as unknown as EmbedDashboardParams);
+          } catch (error) {
+            console.error('Error initializing dashboard:', error);
+          }
+        };
 
-      initializeDashboard();
-    };
-  }, [embeddedDashboardId, supersetDomain]);
+        initializeDashboard();
+      };
+    }
+  }, [embeddedDashboardId, supersetDomain, isScrolled]);
 
   return (
     <>

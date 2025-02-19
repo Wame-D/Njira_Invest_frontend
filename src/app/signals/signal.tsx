@@ -3,13 +3,18 @@ import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import '../charts/charts.css';
 
-const SignalsDashboard = () => {
+// Define the prop types for Scroller
+interface ScrollerProps {
+  isScrolled: boolean;
+}
+
+const SignalsDashboard: React.FC<ScrollerProps> = ({ isScrolled }) => {
   const supersetDomain = "https://superset.xhed.net";
   const embeddedDashboardId = "b1fb63ec-24b8-4204-849d-082da09b2a5c";
 
   const fetchGuestToken = async () => {
     try {
-      const response = await fetch('https://api.xhed.net/generate-guest-token/'); 
+      const response = await fetch('https://api.xhed.net/generate-guest-token/');
 
       if (!response.ok) {
         throw new Error('Failed to fetch guest token');
@@ -24,43 +29,45 @@ const SignalsDashboard = () => {
   };
 
   useEffect(() => {
-    const mountPoint = document.getElementById("signals-dashboard-container");
+    if (isScrolled) {
+      const mountPoint = document.getElementById("signals-dashboard-container");
 
-    if (mountPoint) { 
-      const initializeDashboard = async () => {
-        try {
-          // Fetch the guest token from the backend
-          const guestToken = await fetchGuestToken();
-          
-          console.log("Fetched guest token:", guestToken); // Debug the token
+      if (mountPoint) {
+        const initializeDashboard = async () => {
+          try {
+            // Fetch the guest token from the backend
+            const guestToken = await fetchGuestToken();
 
-          // Embed the dashboard with the guest token
-          await embedDashboard({
-            id: embeddedDashboardId,
-            supersetDomain,
-            mountPoint,
-            fetchGuestToken: () => {
-              console.log("Fetching guest token for embedDashboard");
-              console.log("Guest Token:", guestToken); // Log the token for debugging
-              return guestToken;
-            },
-            dashboardUiConfig: {
-              hideTitle:true,
-              hideChartControls: false,
-              filters: {
-                expanded: false,
+            console.log("Fetched guest token:", guestToken); // Debug the token
+
+            // Embed the dashboard with the guest token
+            await embedDashboard({
+              id: embeddedDashboardId,
+              supersetDomain,
+              mountPoint,
+              fetchGuestToken: () => {
+                console.log("Fetching guest token for embedDashboard");
+                console.log("Guest Token:", guestToken); // Log the token for debugging
+                return guestToken;
               },
-            },
-            iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
-          } as unknown as EmbedDashboardParams);
-        } catch (error) {
-          console.error('Error initializing dashboard:', error);
-        }
-      };
+              dashboardUiConfig: {
+                hideTitle: true,
+                hideChartControls: false,
+                filters: {
+                  expanded: false,
+                },
+              },
+              iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
+            } as unknown as EmbedDashboardParams);
+          } catch (error) {
+            console.error('Error initializing dashboard:', error);
+          }
+        };
 
-      initializeDashboard();
+        initializeDashboard();
+      }
     };
-  }, [embeddedDashboardId, supersetDomain]);
+  }, [embeddedDashboardId, supersetDomain, isScrolled]);
 
   return (
     <>

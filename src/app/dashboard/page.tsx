@@ -14,7 +14,6 @@ import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import SettingsPage from '../settings/page';
 import TradingViewWidget from '../livecharts/page';
-// import LiveTradeChart from '../trade_history/page';
 import TradeDashboard from '../trade_history/page';
 
 import NotificationCenter from '../notification/Notification';
@@ -22,6 +21,21 @@ import NotificationCenter from '../notification/Notification';
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import SignalsDashboard from '../signals/signal';
+
+import dynamic from 'next/dynamic';
+
+const LazyTradeDashboard = dynamic(() => import('../trade_history/page'), {
+  loading: () => <p>Loading trade dashboard...</p>, // Optional loading indicator
+});
+
+const LazySettingsPage = dynamic(() => import('../settings/page'), {
+  loading: () => <p>Loading settings...</p>,
+});
+
+const LazyTradingViewWidget = dynamic(() => import('../livecharts/page'), {
+  loading: () => <p>Loading live charts...</p>,
+});
+
 
 interface UserAccount {
   account: string;
@@ -80,11 +94,11 @@ const Dashboard = () => {
         { account: acct1, token: token1, currency: cur1 },
       ];
       setCookie('userToken', accounts[0].token, {
-        // secure: true,
-        secure: window.location.protocol === 'https:',
+        secure: true,
+        // secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        domain: 'xhed.net',
+        // domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {
@@ -353,29 +367,33 @@ const Dashboard = () => {
           </div>
         </div>
         <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
-          <SupersetDashboard />
+          <SupersetDashboard isScrolled={activeLink === 'overview'} />
         </div>
 
         {/* trading signals div */}
         <div id="over" className={`hidden-content ${activeLink === 'signals' ? 'superset-chatrs-div' : ''}`}>
-          <SignalsDashboard/>
+          <SignalsDashboard isScrolled={activeLink === 'signals'} />
         </div>
 
         {/* settiings div */}
         <div className={`hidden-content ${activeLink === 'settings' ? 'settings-div' : ''}`}>
-          <SettingsPage />
+          <SettingsPage isScrolled={activeLink === 'settings'} />
         </div>
-        
+
         {/* trading view charts */}
         <div className={`hidden-content ${activeLink === 'charts' ? 'settings-divv' : ''}`}>
-              <TradingViewWidget />
+          <TradingViewWidget isScrolled={activeLink === 'charts'} />
         </div>
 
         {/* trading history */}
+        {/* <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
+         
+          <TradeDashboard isScrolled={activeLink === 'trade-history'} />
+        </div> */}
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
-          {/* <LiveTradeChart /> */}
-          <TradeDashboard/>
+          {activeLink === 'trade-history' && <LazyTradeDashboard isScrolled={activeLink === 'trade-history'} />}
         </div>
+
       </div>
     </div>
   )

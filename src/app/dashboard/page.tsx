@@ -22,8 +22,6 @@ import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import SignalsDashboard from '../signals/signal';
 
-import dynamic from 'next/dynamic';
-
 interface UserAccount {
   account: string;
   token: string;

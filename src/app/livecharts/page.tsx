@@ -6,7 +6,6 @@ interface ScrollerProps {
     isScrolled: boolean;
 }
 const TradingViewWidget: React.FC<ScrollerProps> = ({ isScrolled }) => {
-    ``
     
     const container = useRef<HTMLDivElement>(null);
 

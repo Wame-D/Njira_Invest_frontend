@@ -3,10 +3,12 @@ import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import './charts.css';
 
-// Define the prop types for Scroller
+// Ensure the type definition is correct
 interface ScrollerProps {
   isScrolled: boolean;
 }
+
+// Ensure you are using React.FC properly and the default export matches expectations
 const SupersetDashboard: React.FC<ScrollerProps> = ({ isScrolled }) => {
   const supersetDomain = "https://superset.xhed.net";
   const embeddedDashboardId = "81429aff-ef7f-45a7-b31b-2eb06d86c1ce";

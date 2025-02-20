@@ -3,18 +3,14 @@ import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
 import './charts.css';
 
-// Ensure the type definition is correct
-interface ScrollerProps {
-  isScrolled: boolean;
-}
 
-// Ensure you are using React.FC properly and the default export matches expectations
-const SupersetDashboard: React.FC<ScrollerProps> = ({ isScrolled }) => {
+
+const SupersetDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
   const embeddedDashboardId = "81429aff-ef7f-45a7-b31b-2eb06d86c1ce";
 
   const fetchGuestToken = async () => {
-    if (isScrolled) {
+
       try {
         const response = await fetch('https://api.xhed.net/generate-guest-token/');
 
@@ -28,11 +24,11 @@ const SupersetDashboard: React.FC<ScrollerProps> = ({ isScrolled }) => {
         console.error('Error fetching guest token:', error);
         throw error;
       }
-    }
+    
   };
 
   useEffect(() => {
-    if (isScrolled) {
+
       const mountPoint = document.getElementById("superset-dashboard-container");
 
       if (mountPoint) {
@@ -69,8 +65,8 @@ const SupersetDashboard: React.FC<ScrollerProps> = ({ isScrolled }) => {
 
         initializeDashboard();
       };
-    }
-  }, [embeddedDashboardId, supersetDomain, isScrolled]);
+    
+  }, [embeddedDashboardId, supersetDomain]);
 
   return (
     <>

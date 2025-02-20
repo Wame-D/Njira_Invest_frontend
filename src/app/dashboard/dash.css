@@ -59,6 +59,11 @@
     color: white;
 }
 
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 .links-in-nav-bar {
     width: 100%;
@@ -99,7 +104,6 @@
 .link-icon,
 .link-text {
     color: rgb(4, 155, 214);
-    display: inline;
 }
 
 .dashboard-conntent {

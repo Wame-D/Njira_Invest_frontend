@@ -4,14 +4,17 @@ import './dash.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
+import dynamic from 'next/dynamic';
 
-// importing pages
-import SupersetDashboard from '../charts/page';
-import SettingsPage from '../settings/page';
-import TradingViewWidget from '../livecharts/page';
-import TradeDashboard from '../trade_history/page';
 import NotificationCenter from '../notification/Notification';
-import SignalsDashboard from '../signals/signal';
+
+// Lazy load components
+const SupersetDashboard = dynamic(() => import('../charts/page'), { ssr: false });
+const SignalsDashboard = dynamic(() => import('../signals/signal'), { ssr: false });
+const SettingsPage = dynamic(() => import('../settings/page'), { ssr: false });
+const TradingViewWidget = dynamic(() => import('../livecharts/page'), { ssr: false });
+const TradeDashboard = dynamic(() => import('../trade_history/page'), { ssr: false });
+
 
 // importing react icons
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
@@ -86,11 +89,11 @@ const Dashboard = () => {
         { account: acct1, token: token1, currency: cur1 },
       ];
       setCookie('userToken', accounts[0].token, {
-        secure: true,
-        // secure: window.location.protocol === 'https:',
+        // secure: true,
+        secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        // domain: 'xhed.net',
+        domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {
@@ -268,11 +271,38 @@ const Dashboard = () => {
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'profile' ? 'active-link' : ''}`}
+            className={`nav-links mt-8 mb-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
             onClick={() => handleClick('profile')}
           >
             <FaUserCircle className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
           </Link>
+
+          <hr className='mt-4 mb-8 opacity-50 '></hr>
+          <p className='link-text'>Account Statistics</p>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
+            onClick={() => handleClick('charts')}
+          >
+            <MdDashboard className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Overview</p>
+          </Link>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
+            onClick={() => handleClick('charts')}
+          >
+            <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By instrument</p>
+          </Link>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
+            onClick={() => handleClick('charts')}
+          >
+            <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By strategy</p>
+          </Link>
+
+
+
           <button className='logout-link mt-4' onClick={handleLogout}>
             <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
           </button>
@@ -292,7 +322,7 @@ const Dashboard = () => {
             </button>
 
             <Link href="/">
-              <h1 className='logo'>FX TRADING</h1>
+              <h1 className='logo'>FX AUTO</h1>
             </Link>
           </div>
 
@@ -381,28 +411,25 @@ const Dashboard = () => {
           </div>
         </div>
         <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
-          <SupersetDashboard isScrolled={activeLink === 'overview'} />
+          {activeLink === 'overview' && <SupersetDashboard />}
         </div>
 
-        {/* trading signals div */}
         <div id="over" className={`hidden-content ${activeLink === 'signals' ? 'superset-chatrs-div' : ''}`}>
-          <SignalsDashboard isScrolled={activeLink === 'signals'} />
+          {activeLink === 'signals' && <SignalsDashboard />}
         </div>
 
-        {/* settiings div */}
         <div className={`hidden-content ${activeLink === 'settings' ? 'settings-div' : ''}`}>
-          <SettingsPage isScrolled={activeLink === 'settings'} />
+          {activeLink === 'settings' && <SettingsPage />}
         </div>
 
-        {/* trading view charts */}
         <div className={`hidden-content ${activeLink === 'charts' ? 'settings-divv' : ''}`}>
-          <TradingViewWidget isScrolled={activeLink === 'charts'} />
+          {activeLink === 'charts' && <TradingViewWidget />}
         </div>
 
-        {/* trading history */}
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
-          <TradeDashboard isScrolled={activeLink === 'trade-history'} />
+          {activeLink === 'trade-history' && <TradeDashboard />}
         </div>
+
       </div>
     </div>
   )

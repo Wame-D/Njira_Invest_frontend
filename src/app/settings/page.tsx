@@ -5,12 +5,7 @@ import { getCookie } from 'cookies-next';
 import { useEffect } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 
-// Define the prop types for Scroller
-interface ScrollerProps {
-    isScrolled: boolean;
-}
-
-const SettingsPage: React.FC<ScrollerProps> = ({ isScrolled }) => {
+const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
     const email = getCookie('userEmail');
     const token = getCookie('userToken');
@@ -114,58 +109,58 @@ const SettingsPage: React.FC<ScrollerProps> = ({ isScrolled }) => {
     // Fetch the strategy when the page loads
     const [strategy, setStrategy] = useState('');
     useEffect(() => {
-        if (isScrolled) {
-            const fetchStartStrategy = async () => {
-                try {
-                    const response = await fetch(`${domain}/choosen-strategy/?email=${email}`)
 
-                    const data = await response.json();
+        const fetchStartStrategy = async () => {
+            try {
+                const response = await fetch(`${domain}/choosen-strategy/?email=${email}`)
 
-                    if (response.ok) {
-                        const strategy = data.strategy;
-                        setStrategy(strategy);
-                        setSucces1("");
-                        setError1("");
-                        console.log(strategy);
-                    } else {
-                        console.error('Error:', data);
-                    }
-                } catch (error) {
-                    console.error('Fetch error:', error);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const strategy = data.strategy;
+                    setStrategy(strategy);
+                    setSucces1("");
+                    setError1("");
+                    console.log(strategy);
+                } else {
+                    console.error('Error:', data);
                 }
-            };
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
 
-            fetchStartStrategy();
-        }
-    }, [token, changed, isScrolled]);
+        fetchStartStrategy();
+
+    }, [token, changed]);
 
     const [symbols, setSymbols] = useState<string[]>([]);
     useEffect(() => {
-        if (isScrolled) {
-            const fetchSymbols = async () => {
-                try {
-                    const response = await fetch(`${domain}/get_symbols/?email=${email}`)
 
-                    const data = await response.json();
+        const fetchSymbols = async () => {
+            try {
+                const response = await fetch(`${domain}/get_symbols/?email=${email}`)
 
-                    if (response.ok) {
-                        const symbol = data.symbol;
-                        console.log(symbols);
-                        setSymbols(symbol);
-                        setSuccess("")
-                        setSucces2("")
-                        setError("")
-                    } else {
-                        console.error('Error:', data);
-                    }
-                } catch (error) {
-                    console.error('Fetch error:', error);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const symbol = data.symbol;
+                    console.log(symbols);
+                    setSymbols(symbol);
+                    setSuccess("")
+                    setSucces2("")
+                    setError("")
+                } else {
+                    console.error('Error:', data);
                 }
-            };
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
 
-            fetchSymbols();
-        }
-    }, [email, save_symbol, isScrolled]);
+        fetchSymbols();
+
+    }, [email, save_symbol]);
 
     // Function to delete an item
     const [error, setError] = useState<string>("")
@@ -245,30 +240,30 @@ const SettingsPage: React.FC<ScrollerProps> = ({ isScrolled }) => {
     // fetch risks data when page loads or when there is a change
     const [risk, setRisk] = useState<string[]>([]);
     useEffect(() => {
-        if (isScrolled) {
-            const fetchRisk = async () => {
-                try {
-                    const response = await fetch(`${domain}/get_risks/?email=${email}`)
 
-                    const data = await response.json();
+        const fetchRisk = async () => {
+            try {
+                const response = await fetch(`${domain}/get_risks/?email=${email}`)
 
-                    if (response.ok) {
-                        const risk_data = data.risks;
-                        console.log(risk_data);
-                        setRisk(risk_data)
-                        setSuccess3("")
-                        setError3("")
-                    } else {
-                        console.error('Error:', data);
-                    }
-                } catch (error) {
-                    console.error('Fetch error:', error);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const risk_data = data.risks;
+                    console.log(risk_data);
+                    setRisk(risk_data)
+                    setSuccess3("")
+                    setError3("")
+                } else {
+                    console.error('Error:', data);
                 }
-            };
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
 
-            fetchRisk();
-        }
-    }, [email, saved_risk, isScrolled]);
+        fetchRisk();
+
+    }, [email, saved_risk]);
 
     // method to save profit loss margin to database
     const [maxLossPerDay, setMaxLossPerDay] = useState<number | null>(null);
@@ -357,32 +352,32 @@ const SettingsPage: React.FC<ScrollerProps> = ({ isScrolled }) => {
 
     const [margins, setMargin] = useState<string[]>([]);
     useEffect(() => {
-        if (isScrolled) {
-            const fetchMargins = async () => {
-                try {
-                    const response = await fetch(`${domain}/get_profit_and_loss/?email=${email} `)
 
-                    const data = await response.json();
+        const fetchMargins = async () => {
+            try {
+                const response = await fetch(`${domain}/get_profit_and_loss/?email=${email} `)
 
-                    if (response.ok) {
-                        const margin_data = data.data;
-                        console.log(margin_data);
-                        setMargin(margin_data)
-                        setSuccess4("")
-                        setError4("")
+                const data = await response.json();
 
-                        console.log(margins)
-                    } else {
-                        console.error('Error:', data);
-                    }
-                } catch (error) {
-                    console.error('Fetch error:', error);
+                if (response.ok) {
+                    const margin_data = data.data;
+                    console.log(margin_data);
+                    setMargin(margin_data)
+                    setSuccess4("")
+                    setError4("")
+
+                    console.log(margins)
+                } else {
+                    console.error('Error:', data);
                 }
-            };
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
 
-            fetchMargins();
-        }
-    }, [email, saved_margins, isScrolled]);
+        fetchMargins();
+
+    }, [email, saved_margins]);
 
     const [isTrading, setIsTrading] = useState(false);
     // const [isComplete, setIsComplete] = useState(false);
@@ -429,33 +424,33 @@ const SettingsPage: React.FC<ScrollerProps> = ({ isScrolled }) => {
 
     // Fetch the start_time when the page loads
     useEffect(() => {
-        if (isScrolled) {
-            const fetchStartTime = async () => {
-                try {
-                    const response = await fetch(`${domain}/Get-start-time/?email=${email}`)
 
-                    const data = await response.json();
+        const fetchStartTime = async () => {
+            try {
+                const response = await fetch(`${domain}/Get-start-time/?email=${email}`)
 
-                    if (response.ok) {
-                        const startTime = new Date(data.start_time).getTime();
-                        const trading = data.trading;
-                        const targetDate = new Date('2025-01-06T10:00:00').getTime();
-                        if (startTime >= targetDate) {
-                            if (trading == 1) {
-                                setIsTrading(true);
-                            }
+                const data = await response.json();
+
+                if (response.ok) {
+                    const startTime = new Date(data.start_time).getTime();
+                    const trading = data.trading;
+                    const targetDate = new Date('2025-01-06T10:00:00').getTime();
+                    if (startTime >= targetDate) {
+                        if (trading == 1) {
+                            setIsTrading(true);
                         }
-                    } else {
-                        console.error('Error:', data);
                     }
-                } catch (error) {
-                    console.error('Fetch error:', error);
+                } else {
+                    console.error('Error:', data);
                 }
-            };
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
 
-            fetchStartTime();
-        }
-    }, [token, isScrolled]);
+        fetchStartTime();
+
+    }, [token]);
 
 
     const handleStop = async () => {

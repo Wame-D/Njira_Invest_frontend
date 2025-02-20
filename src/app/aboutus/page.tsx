@@ -77,13 +77,14 @@ export default function About(){
   </div>
 
   {/* Video Section */}
-  <div className="w-[40vw] h-[40vh] bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] overflow-hidden">
-    <video 
-      src="https://www.youtube.com/watch?v=5iEHsRja8u0" 
-      controls 
-      className="w-full h-full object-cover rounded-lg"
-    />
-  </div>
+<div className="w-[40vw] h-[40vh] bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] overflow-hidden">
+  <iframe 
+    src="https://www.youtube.com/embed/5iEHsRja8u0?autoplay=1&loop=1&mute=1&playlist=5iEHsRja8u0"  
+    className="w-full h-full object-cover rounded-lg"
+    allow="autoplay"
+  />
+</div>
+
 </div>
 
 

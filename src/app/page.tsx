@@ -8,6 +8,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { MdChat } from 'react-icons/md'; 
 import Link from 'next/link';
 import AiPage from "./chatot/page";
+import Footer from "./footer/page";
 
 export default function Home() {
 
@@ -57,6 +58,8 @@ export default function Home() {
             </div>
           )}
       </div>
+
+      <Footer/>
     </>
   );
 }

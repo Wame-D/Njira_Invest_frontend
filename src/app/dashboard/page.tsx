@@ -1,26 +1,30 @@
 'use client';
 import { useEffect, useState } from 'react';
 import './dash.css';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
+
+// importing pages
 import SupersetDashboard from '../charts/page';
+import SettingsPage from '../settings/page';
+import TradingViewWidget from '../livecharts/page';
+import TradeDashboard from '../trade_history/page';
+import NotificationCenter from '../notification/Notification';
+import SignalsDashboard from '../signals/signal';
+
+// importing react icons
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
+import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+import { GrFormView } from "react-icons/gr";
+import { GrFormViewHide } from "react-icons/gr";
+import { FaExclamationTriangle } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
 import { FaChartPie } from "react-icons/fa";
 import { AiOutlineHistory } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { MdDashboard } from "react-icons/md";
-import Link from 'next/link';
-import { FaCog } from "react-icons/fa";
-import { FaExclamationTriangle } from "react-icons/fa";
-import { useRouter } from 'next/navigation';
-import { setCookie, getCookie, deleteCookie } from 'cookies-next';
-import SettingsPage from '../settings/page';
-import TradingViewWidget from '../livecharts/page';
-import TradeDashboard from '../trade_history/page';
-
-import NotificationCenter from '../notification/Notification';
-
-import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
-import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
-import SignalsDashboard from '../signals/signal';
 
 interface UserAccount {
   account: string;
@@ -72,6 +76,9 @@ const Dashboard = () => {
   const token1 = searchParams?.get('token1');
   const cur1 = searchParams?.get('cur1');
   const cookietoken = getCookie('userToken');
+  const email = getCookie('userEmail');
+  const userName = getCookie('userName');
+  const [showBalance, setShowBalance] = useState(false);
 
   useEffect(() => {
     if (acct1 && token1 && cur1) {
@@ -79,20 +86,21 @@ const Dashboard = () => {
         { account: acct1, token: token1, currency: cur1 },
       ];
       setCookie('userToken', accounts[0].token, {
-        // secure: true,
-        secure: window.location.protocol === 'https:',
+        secure: true,
+        // secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        domain: 'xhed.net',
+        // domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {
       if (typeof cookietoken === 'string') {
-        console.log(cookietoken)
-        authorizeUser(cookietoken);
+        if (showBalance == true) {
+          authorizeUser(cookietoken);
+        }
       }
     }
-  }, [acct1, token1, cur1]);
+  }, [acct1, token1, cur1, showBalance]);
 
   const authorizeUser = async (token: string) => {
     console.log("Sending token:", token);
@@ -124,12 +132,14 @@ const Dashboard = () => {
   };
 
   if (authorizeData) {
+    setCookie('userName', authorizeData.authorize.authorize.fullname);
     setCookie('userEmail', authorizeData.authorize.authorize.email);
   }
 
   const handleLogout = () => {
     deleteCookie('userToken');
     deleteCookie('userEmail');
+    deleteCookie('userName');
     router.replace('/');
     console.log("User token  and email cleared from this pc.");
   };
@@ -138,7 +148,7 @@ const Dashboard = () => {
   const [startTime, setStartTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const token = getCookie('userToken');
-  const email = getCookie('userEmail');
+
 
   // Fetch the start_time when the page loads
   useEffect(() => {
@@ -285,22 +295,41 @@ const Dashboard = () => {
               <h1 className='logo'>FX TRADING</h1>
             </Link>
           </div>
-          {/* account balance div */}
+
           <div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
+            <div className="flex items-center space-x-2">
+              {/* Balance Label */}
+              <div>
+                <p className="text-sm emailinheader2 opacity-80">Balance</p>
+                {/* Show Balance or Masked Data */}
+                <div className='flex flex-row items-center justify-center'>
+                  <p className="fulname">
+                    {showBalance
+                      ? (authorizeData ? (`${authorizeData.authorize.authorize.balance} ${authorizeData.authorize.authorize.currency}`
+                      ) : (
+                        <div role="status" className="max-w-sm animate-pulse">
+                          <div className="h-8 bg-gray-200 dark:bg-gray-700 w-32 mb-2 mt-2"></div>
+                        </div>
+                      )
+                      ) : '########'}
+                  </p>
+                  <button
+                    onClick={() => setShowBalance((prev) => !prev)}
+                    className="p-1  "
+                  >
+                    {showBalance ? (
+                      <GrFormViewHide className="text-white text-2xl fulname" />
+                    ) : (
+                      <GrFormView className="text-white text-2xl" />
+                    )}
 
-            {(
-              // If authorization data is present, display dashboard
-              authorizeData ? (
-                <div>
-                  <h1 className='fulname '>{authorizeData.authorize.authorize.balance} {authorizeData.authorize.authorize.currency}</h1>
-                  <p className='text-sm emailinheader2 opacity-80'>Balance</p>
+                  </button>
                 </div>
-              ) : (
-                <p className='text-center'>Getting Balances...</p>
-              )
-            )}
+              </div>
+            </div>
           </div>
+
           {/* div for execution time */}
           <div className='flex flex-row'>
             {!isTrading && currentTime == 0 && (
@@ -337,14 +366,14 @@ const Dashboard = () => {
 
                 {(
                   // If authorization data is present, display dashboard
-                  authorizeData ? (
+                  email ? (
                     <div>
-                      <h1 className='fulname '>{authorizeData.authorize.authorize.fullname}</h1>
-                      <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{authorizeData.authorize.authorize.email}</p>
+                      <h1 className='fulname '>{userName}</h1>
+                      <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{email}</p>
 
                     </div>
                   ) : (
-                    <p className='text-center'>Loading authorization...</p>
+                    <div className="w-3/4 h-4 bg-gray-200 rounded animate-pulse"></div>
                   )
                 )}
               </div>
@@ -374,7 +403,7 @@ const Dashboard = () => {
         <div className={`hidden-content ${activeLink === 'trade-history' ? 'superset-chatrs-div' : ''}`}>
           <TradeDashboard isScrolled={activeLink === 'trade-history'} />
         </div>
-           </div>
+      </div>
     </div>
   )
 };

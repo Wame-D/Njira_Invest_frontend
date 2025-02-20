@@ -1,38 +1,14 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import './header.css';
 import { getCookie } from 'cookies-next';
 import { FaUserCircle } from "react-icons/fa";
 import { TbExternalLink } from "react-icons/tb";
 
-interface AuthorizeResponse {
-  authorize: {
-    authorize: {
-      account_list: {
-        account_type: string;
-        loginid: string;
-        currency: string;
-        is_virtual: number;
-        trading: Record<string, unknown>;
-        account_category: string;
-      }[];
-      balance: number;
-      email: string;
-      currency: string;
-      fullname: string;
-      loginid: string;
-      scopes: string[];
-      country: string;
-      local_currencies: { [key: string]: unknown };
-      user_id: number;
-      landing_company_fullname: string;
-      account_category: string;
-    };
-  };
-}
-
 export default function Header() {
   const [showLinks, setShowLinks] = useState(false);
+  const email = getCookie('userEmail');
+  const userName = getCookie('userName');
 
   const toggleLinks = () => {
     setShowLinks(!showLinks);
@@ -43,51 +19,6 @@ export default function Header() {
       menuIcon.classList.toggle("change");
     }
     bars.forEach(bar => bar.classList.toggle("change"));
-  };
-
-  // authorizing user
-  const [authorizeData, setAuthorizeData] = useState<AuthorizeResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const domain = "https://api.xhed.net";
-
-  const cookietoken = getCookie('userToken');
-
-  useEffect(() => {
-    if (cookietoken) {
-      if (typeof cookietoken === 'string') {
-        console.log(cookietoken)
-        authorizeUser(cookietoken);
-      }
-    }
-  }, [cookietoken]);
-
-  const authorizeUser = async (token: string) => {
-    console.log("Sending token:", token);
-
-    try {
-      const response = await fetch(`${domain}/authorize/`, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Authorization failed:', errorData);
-        throw new Error(`Authorization failed with status ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('Authorization successful:', data);
-
-      setAuthorizeData(data);
-    } catch (error) {
-      setError('Error during authorization');
-      console.error('Authorization error:', error);
-      // alert(error);
-    }
   };
 
   return (
@@ -126,34 +57,31 @@ export default function Header() {
       </div>
 
       <div className="flex flex-row items-center justify-center btn-on-header">
-        {authorizeData && (
+        {email && (
           <div>
             <FaUserCircle className="face-icon" />
           </div>
         )}
         <div className="flex flex-col mr-8">
-          {error && <p style={{ color: 'red' }}>{error}</p>}
+          {          // If authorization data is present, display dashboard
+            email ? (
+              <div>
+                <h1 className='fulname '>{userName}</h1>
+                <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{email}</p>
 
-          {authorizeData ? (
-            // Show user info if authorized
-            <div>
-              <h1 className="fullname">{authorizeData.authorize.authorize.fullname}</h1>
-              <p className="text-sm emailinheader2 opacity-90 m-0 p-0">
-                {authorizeData.authorize.authorize.email}
-              </p>
-            </div>
-          ) : (
-            // Show "Start Trading with Us" button if not authorized
-            <button
-              className="btn-start-trading"
-              onClick={() => {
-                // Redirect to forex.xhed.net and simulate login button click
-                window.location.href = "/?autoLogin=true";
-              }}
-            >
-              Start Trading with Us
-            </button>
-          )}
+              </div>
+            ) : (
+              // Show "Start Trading with Us" button if not authorized
+              <button
+                className="btn-start-trading"
+                onClick={() => {
+                  // Redirect to forex.xhed.net and simulate login button click
+                  window.location.href = "/?autoLogin=true";
+                }}
+              >
+                Start Trading with Us
+              </button>
+            )}
         </div>
       </div>
     </div>

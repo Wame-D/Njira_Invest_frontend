@@ -27,7 +27,7 @@ export default function About(){
         <div  className="bg-white p-3 m-3">
           <h1 className="font-bold text-4xl">
             
-            T <span className="text-sky-500">automated</span> precision!</h1>
+            TRADE FOREX WITH <span className="text-sky-500">AUTOMATED</span> PRECISION!</h1>
         </div>
         <div  className="bg-white p-3 m-3 w-[26vw]">
           <h1>At Auto-FX, we use AI-powered automation to make Forex trading smarter and faster. Our bot analyzes real-time market trends and executes trades with precision, keeping you ahead 24/7.</h1>

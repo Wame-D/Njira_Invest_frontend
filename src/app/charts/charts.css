@@ -1,5 +1,7 @@
-#dashboard-wrapper {
-  width: 80.5vw;
+#dashboard-wrapper,
+#trade-dashboard-wrapper,
+#signals_wrapper {
+  width: 100%;
   height: fit-content;
   overflow: hidden;
   display: flex;
@@ -9,8 +11,10 @@
 }
 
 #app,
+#signals-dashboard-container,
+#trade-dashboard-container,
 #superset-dashboard-container {
-  width: 80.7vw !important;
+  width: 100% !important;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -21,7 +25,7 @@
 /* Make iframe take the full page */
 iframe {
   width: 100%;
-  height: 50vh;
+  height: 90vh;
   border: none;
 }
 

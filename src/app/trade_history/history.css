@@ -1,0 +1,10 @@
+/* live  chart trade*/
+#livetrade {
+    width: 100% !important;
+    height: 70vh !important;
+    /* border: 2px solid black; */
+    margin: 0;
+    /* background-color: aqua; */
+    position: relative;
+    background-color: #20a7c9;
+}

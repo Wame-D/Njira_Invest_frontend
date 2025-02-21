@@ -10,26 +10,27 @@ export default function About(){
     { name: "Daniel Wame", position: "Market Analyst", image: "https://avatars.githubusercontent.com/u/119085857?v=4" },
     { name: "Melvin Kalidozo", position: "Trade Execution Specialist", image: "https://scontent.fblz2-1.fna.fbcdn.net/v/t39.30808-6/462695211_2592965444207395_5286495986513675172_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGjFMce3hsLDMNFeCpNI7l3LmthFglfzY0ua2EWCV_NjZseAGNSeVU3RqVq7rbAcqf-qmBtFEgkfb8UUXbeb3PO&_nc_ohc=w9ixIDtdlyMQ7kNvgFsO4tn&_nc_zt=23&_nc_ht=scontent.fblz2-1.fna&_nc_gid=A9aamcndbYpz_XpxMtP2-en&oh=00_AYA_h9g_0rzjkf5FiMf7O-1Pd5qUVv6aGiWPCgsAL1qSMg&oe=67B9E18A" },
   ];
+
   return(
     <div>
-      <Header/>
+      <Header />
+      
       <div className="relative flex items-center justify-center h-[30vh] bg-stone-600 text-white text-2xl font-bold mt-14 overflow-hidden">
-  <img 
-    src="https://www.seputarforex.com/sf2016materi/post/2015-06/long-term-4h-dengan-persilangan-ema-8-dan-ema-20-236801-1.jpg" 
-    alt="About us background" 
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-  <h1 className="relative z-10">About Us</h1>
-</div>
-
+        <img 
+          src="https://www.seputarforex.com/sf2016materi/post/2015-06/long-term-4h-dengan-persilangan-ema-8-dan-ema-20-236801-1.jpg" 
+          alt="About us background" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <h1 className="relative z-10">About Us</h1>
+      </div>
 
       <div className="grid grid-cols-3 h-[20%] bg-white h-[30vh] mr-2 items-center mt-10">
-        <div  className="bg-white p-3 m-3">
+        <div className="bg-white p-3 m-3">
           <h1 className="font-bold text-4xl">
-            
-            TRADE FOREX WITH <span className="text-sky-500">AUTOMATED</span> PRECISION!</h1>
+            TRADE FOREX WITH <span className="text-sky-500">AUTOMATED</span> PRECISION!
+          </h1>
         </div>
-        <div  className="bg-white p-3 m-3 w-[26vw]">
+        <div className="bg-white p-3 m-3 w-[26vw]">
           <h1>At Auto-FX, we use AI-powered automation to make Forex trading smarter and faster. Our bot analyzes real-time market trends and executes trades with precision, keeping you ahead 24/7.</h1>
         </div>
         <div className="bg-white p-3 m-3 w-[26vw]">
@@ -38,87 +39,79 @@ export default function About(){
       </div>
     
       <div className="grid grid-cols-3 pl-12 mt-20 mb-20">
-      <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh]">
+        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh]">
           <div className="text-sky-500 text-3xl">{<FaCheckCircle />}</div>
           <div>
             <h3 className="font-bold">Automated Trading 24/7</h3>
-            <p className="text-gray-600 text-sm">Trades automatically, ensuring you never miss an opportunity.
-
-</p>
+            <p className="text-gray-600 text-sm">Trades automatically, ensuring you never miss an opportunity.</p>
           </div>
         </div>
 
         <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh]">
-          <div className="text-sky-500 text-3xl">{<FaChartLine/>}</div>
+          <div className="text-sky-500 text-3xl">{<FaChartLine />}</div>
           <div>
             <h3 className="font-bold">Smart Market Insights</h3>
             <p className="text-gray-600 text-sm">Analyzes trends and key indicators for informed decisions.</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh] ">
+        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh]">
           <div className="text-sky-500 text-3xl">{<FaUsers />}</div>
           <div>
             <h3 className="font-bold">Professional Team</h3>
             <p className="text-gray-600 text-sm">Experts continuously refine algorithms for reliability.</p>
           </div>
         </div>
-
       </div>
 
       <div className="flex flex-row ml-[10vw]">
-  {/* Image Section */}
-  <div className="w-[40vw] h-[50vh] bg-black m-8 rounded-lg overflow-hidden">
-    <img 
-      src="https://nielseniq.com/wp-content/uploads/sites/4/2021/12/GettyImages-887882750-1201x801-d21b45d.jpg" 
-      alt="Forex Trading Bot" 
-      className="w-full h-full object-cover rounded-lg"
-    />
-  </div>
+        {/* Image Section */}
+        <div className="w-[40vw] h-[50vh] bg-black m-8 rounded-lg overflow-hidden">
+          <img 
+            src="https://nielseniq.com/wp-content/uploads/sites/4/2021/12/GettyImages-887882750-1201x801-d21b45d.jpg" 
+            alt="Forex Trading Bot" 
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
 
-  {/* Video Section */}
-<div className="w-[40vw] h-[40vh] bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] overflow-hidden border-4 border-white">
-  <iframe 
-    src="https://www.youtube.com/embed/5iEHsRja8u0?autoplay=1&loop=1&mute=1&playlist=5iEHsRja8u0"  
-    className="w-full h-full object-cover rounded-lg"
-    allow="autoplay"
-  />
-</div>
-
-
-</div>
-
+        {/* Video Section */}
+        <div className="w-[40vw] h-[40vh] bg-stone-600 rounded-lg mt-[10vh] ml-[-20vh] overflow-hidden border-4 border-white">
+          <iframe 
+            src="https://www.youtube.com/embed/5iEHsRja8u0?autoplay=1&loop=1&mute=1&playlist=5iEHsRja8u0"  
+            className="w-full h-full object-cover rounded-lg"
+            allow="autoplay"
+          />
+        </div>
+      </div>
 
       <div className="bg-stone-100 h-[120vh] w-[100vw] mt-10 pb-10">
-        <h1 className=" font-bold text-2xl text-center pt-20">
-          <span className="text-sky-500 font-bold text-2xl"> Team </span>
-          Members
+        <h1 className="font-bold text-2xl text-center pt-20">
+          <span className="text-sky-500 font-bold text-2xl"> Team </span> Members
         </h1>
         <p className="mt-10 mb-10 text-center">Meet the experts behind our AI-powered trading bot, dedicated to innovation and success in Forex trading.</p>
         <div className="flex justify-center gap-6 p-10 bg-gray-100">
           {members.map((member, index) => (
-          <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden w-64 text-center">
-          <img src={member.image} alt={member.name} className="w-full h-48 object-cover" />
-          <div className="p-4">
-            <h3 className="text-lg font-bold">{member.name}</h3>
-            {/* <p className="text-sm text-gray-500">{member.position}</p> */}
-          </div>
-          <div className="bg-sky-500 text-white p-3 rounded-b-2xl">
-            {member.position}
-          </div>
-          <div className="flex justify-center gap-7 p-3 text-gray-500">
-            <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-            <FaTwitter className="hover:text-blue-400 cursor-pointer" />
-            <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
-            <FaInstagram className="hover:text-pink-600 cursor-pointer" />
-          </div>
+            <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden w-64 text-center relative">
+              <div className="relative">
+                <img src={member.image} alt={member.name} className="w-full h-48 object-cover" />
+                {/* Overlaying div */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-sky-500 text-white p-3 rounded-t-2xl rounded-b-2xl w-60 text-center shadow-lg">
+                  <div className="font-bold">{member.name}</div>
+                  <div>{member.position}</div>
+                </div>
+              </div>
+              <div className="flex justify-center gap-7 p-3 text-gray-500 mt-10">
+                <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+                <FaTwitter className="hover:text-blue-400 cursor-pointer" />
+                <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
+                <FaInstagram className="hover:text-pink-600 cursor-pointer" />
+              </div>
+            </div>
+          ))}
         </div>
-        ))}
-        </div>
-        
       </div>
-      <Footer/>
-     
+
+      <Footer />
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function About(){
       </div>
     
       <div className="grid grid-cols-3 pl-12 mt-20 mb-20">
-      <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh]">
+      <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh]">
           <div className="text-sky-500 text-3xl">{<FaCheckCircle />}</div>
           <div>
             <h3 className="font-bold">Automated Trading 24/7</h3>
@@ -48,7 +48,7 @@ export default function About(){
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh]">
+        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh]">
           <div className="text-sky-500 text-3xl">{<FaChartLine/>}</div>
           <div>
             <h3 className="font-bold">Smart Market Insights</h3>
@@ -56,7 +56,7 @@ export default function About(){
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-white shadow-2xl rounded-lg w-[25vw] h-[20vh] ">
+        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg w-[25vw] h-[20vh] ">
           <div className="text-sky-500 text-3xl">{<FaUsers />}</div>
           <div>
             <h3 className="font-bold">Professional Team</h3>

@@ -36,8 +36,8 @@ export default function Header() {
           <a className="links flex flex-row" href="/">
             Home <TbExternalLink className="my-icon11" />
           </a>
-          <a className="links flex flex-row" href="/Contact">
-            Contacts <TbExternalLink className="my-icon11" />
+          <a className="links flex flex-row" href="/contactus">
+            Contact Us <TbExternalLink className="my-icon11" />
           </a>
           <a className="links flex flex-row" href="/aboutus">
             About Us <TbExternalLink className="my-icon11" />

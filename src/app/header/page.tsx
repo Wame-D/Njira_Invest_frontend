@@ -36,8 +36,8 @@ export default function Header() {
           <a className="links flex flex-row" href="/">
             Home <TbExternalLink className="my-icon11" />
           </a>
-          <a className="links flex flex-row" href="/Contact">
-            Contacts <TbExternalLink className="my-icon11" />
+          <a className="links flex flex-row" href="/contactus">
+            Contact Us <TbExternalLink className="my-icon11" />
           </a>
           <a className="links flex flex-row" href="/aboutus">
             About Us <TbExternalLink className="my-icon11" />
@@ -52,7 +52,7 @@ export default function Header() {
         <a className="links flex flex-row" href="../">Home  <TbExternalLink className="my-icon11" /></a>
         <a className="links flex flex-row" href="/aboutus">About <TbExternalLink className="my-icon11" /></a>
         <a className="links flex flex-row" href="https://charts.xhed.net/">Charts <TbExternalLink className="my-icon11" /></a>
-        <a className="links flex flex-row" href="/aboutus">Trading <TbExternalLink className="my-icon11" /></a>
+        
         <a className="links flex flex-row" href="/contactus">Contact us <TbExternalLink className="my-icon11" /></a>
       </div>
 

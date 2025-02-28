@@ -14,15 +14,17 @@ const Footer = () => {
           </div>
   
           {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold">Quick Links</h4>
-            <ul className="text-gray-400 mt-2 space-y-1">
-              <li>About</li>
-              <li>Charts</li>
-              <li>Trading</li>
-              <li>Contact us</li>
-            </ul>
-          </div>
+<div>
+  <h4 className="font-semibold">Quick Links</h4>
+  <ul className="text-gray-400 mt-2 space-y-1">
+    <li><a href="/aboutus" className="hover:text-white">About</a></li>
+    <li><a href="/charts" className="hover:text-white">Charts</a></li>
+    
+    <li><a href="/contactus" className="hover:text-white">Contact us</a></li>
+    <li><a href="/login" className="hover:text-white">Start trading with us</a></li>
+  </ul>
+</div>
+
   
           {/* Our Services */}
           <div>

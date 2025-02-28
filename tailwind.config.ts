@@ -11,9 +11,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        darkBlue: "rgba(12, 38, 61, 1)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

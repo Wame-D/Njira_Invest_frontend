@@ -38,7 +38,7 @@ const Contact = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Contact Details</h3>
           <p className="text-gray-500 mb-4">
-            Reach us for inquiries about our Forex trading bot, account setup, or technical support. We're here to assist you!
+            Reach us for inquiries about our Forex trading bot, account setup, or technical support. We&apos;re here to assist you!
           </p>
           <div className="space-y-4">
             {/* Address */}

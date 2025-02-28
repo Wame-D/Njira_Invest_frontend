@@ -14,6 +14,8 @@ const SignalsDashboard = dynamic(() => import('../signals/signal'), { ssr: false
 const SettingsPage = dynamic(() => import('../settings/page'), { ssr: false });
 const TradingViewWidget = dynamic(() => import('../livecharts/page'), { ssr: false });
 const TradeDashboard = dynamic(() => import('../trade_history/page'), { ssr: false });
+const AccountDashboard = dynamic(() => import('../account_overview/page'), { ssr: false });
+const StrategyDashboard = dynamic(() => import('../strategy_comparizon/page'), { ssr: false });
 
 
 // importing react icons
@@ -89,11 +91,11 @@ const Dashboard = () => {
         { account: acct1, token: token1, currency: cur1 },
       ];
       setCookie('userToken', accounts[0].token, {
-        // secure: true,
-        secure: window.location.protocol === 'https:',
+        secure: true,
+        // secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        domain: 'xhed.net',
+        // domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {
@@ -281,10 +283,17 @@ const Dashboard = () => {
           <p className='link-text'>Account Statistics</p>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            className={`nav-links mt-4 ${activeLink === 'account-overview' ? 'active-link' : ''}`}
+            onClick={() => handleClick('account-overview')}
           >
-            <MdDashboard className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Overview</p>
+            <MdDashboard className={`link-icon text-m ${activeLink === 'account-overview' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Overview</p>
+          </Link>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-4 ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`}
+            onClick={() => handleClick('strategy_comparizon')}
+          >
+            <FaChartPie className={`link-icon text-m ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By strategy</p>
           </Link>
           <Link
             href="/dashboard"
@@ -292,13 +301,6 @@ const Dashboard = () => {
             onClick={() => handleClick('charts')}
           >
             <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By instrument</p>
-          </Link>
-          <Link
-            href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
-          >
-            <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By strategy</p>
           </Link>
 
 
@@ -430,6 +432,15 @@ const Dashboard = () => {
           {activeLink === 'trade-history' && <TradeDashboard />}
         </div>
 
+        {/* account overview dashboard */}
+        <div className={`hidden-content ${activeLink === 'account-overview' ? 'superset-chatrs-div' : ''}`}>
+          {activeLink === 'account-overview' && < AccountDashboard />}
+        </div>
+
+        {/* strategy comparizon */}
+        <div className={`hidden-content ${activeLink === 'strategy_comparizon' ? 'superset-chatrs-div' : ''}`}>
+          {activeLink === 'strategy_comparizon' && <StrategyDashboard  />}
+        </div>
       </div>
     </div>
   )

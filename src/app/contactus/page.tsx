@@ -5,7 +5,7 @@ import Footer from "../footer/page";
 const Contact = () => {
   return (
     <div className="font-sans text-gray-900">
-      <Header/>
+      <Header />
       <br></br>
       <br></br>
       {/* Hero Section */}
@@ -71,51 +71,51 @@ const Contact = () => {
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
           {/* Left - FAQ */}
           <div>
-          <h2 className="text-2xl font-semibold mb-4 text-center">
-  Your Common Queries Answered <br />
-  <span className="underline decoration-sky-500">with Additional FAQs</span>
-</h2>
- {/* FAQ Accordion */}
-<div className="mt-6 space-y-4">
-  {[
-    {
-      question: "What is algorithmic trading?",
-      answer: "Algorithmic trading involves using computer algorithms to automatically execute trades based on predefined criteria. This method allows for faster and more efficient trading without the need for manual intervention.",
-    },
-    {
-      question: "How does your platform work?",
-      answer: "Our platform connects to various forex markets and uses advanced algorithms to analyze market data, identify trading opportunities, and execute trades on your behalf. Users can monitor their accounts and track performance in real time.",
-    },
-    {
-      question: "Can I customize the trading strategies?",
-      answer: "Yes, you can customize your trading preferences, including risk levels and strategy types. Our platform offers several strategy options, so you can tailor the experience to meet your trading goals.",
-    },
-    {
-      question: "Is my money safe on this platform?",
-      answer: "Yes, your funds remain with your broker, not on our platform. We prioritize security and partner with brokers that offer secure account management and comply with industry regulations.",
-    },
-    {
-      question: "Can I stop the automated trading at any time?",
-      answer: "Yes, you can pause or stop automated trading at any time through your account dashboard. Your settings will be saved for when you wish to resume.",
-    },
-  ].map((faq, index) => (
-    <details key={index} className="bg-white shadow-md p-4 rounded-md cursor-pointer">
-      <summary className="font-medium">{faq.question}</summary>
-      <p className="mt-2 text-gray-500">{faq.answer}</p>
-    </details>
-  ))}
-</div>
+            <h2 className="text-2xl font-semibold mb-4 text-center">
+              Your Common Queries Answered <br />
+              <span className="underline decoration-sky-500">with Additional FAQs</span>
+            </h2>
+            {/* FAQ Accordion */}
+            <div className="mt-6 space-y-4">
+              {[
+                {
+                  question: "What is algorithmic trading?",
+                  answer: "Algorithmic trading involves using computer algorithms to automatically execute trades based on predefined criteria. This method allows for faster and more efficient trading without the need for manual intervention.",
+                },
+                {
+                  question: "How does your platform work?",
+                  answer: "Our platform connects to various forex markets and uses advanced algorithms to analyze market data, identify trading opportunities, and execute trades on your behalf. Users can monitor their accounts and track performance in real time.",
+                },
+                {
+                  question: "Can I customize the trading strategies?",
+                  answer: "Yes, you can customize your trading preferences, including risk levels and strategy types. Our platform offers several strategy options, so you can tailor the experience to meet your trading goals.",
+                },
+                {
+                  question: "Is my money safe on this platform?",
+                  answer: "Yes, your funds remain with your broker, not on our platform. We prioritize security and partner with brokers that offer secure account management and comply with industry regulations.",
+                },
+                {
+                  question: "Can I stop the automated trading at any time?",
+                  answer: "Yes, you can pause or stop automated trading at any time through your account dashboard. Your settings will be saved for when you wish to resume.",
+                },
+              ].map((faq, index) => (
+                <details key={index} className="bg-white shadow-md p-4 rounded-md cursor-pointer">
+                  <summary className="font-medium">{faq.question}</summary>
+                  <p className="mt-2 text-gray-500">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
 
           </div>
 
           {/* Right - Image */}
           <div className="flex justify-center mt-20">
-            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1blONU.img" alt="Support Team" className="rounded-md shadow-md"  />
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1blONU.img" alt="Support Team" className="rounded-md shadow-md" />
           </div>
         </div>
       </section>
-      <Footer/>
-      
+      <Footer />
+
     </div>
   );
 };

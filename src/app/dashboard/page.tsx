@@ -344,7 +344,7 @@ const Dashboard = () => {
                           <div className="h-8 bg-gray-200 dark:bg-gray-700 w-32 mb-2 mt-2"></div>
                         </div>
                       )
-                      ) : '########'}
+                      ) : 'XXX,XXX,XXX'}
                   </p>
                   <button
                     onClick={() => setShowBalance((prev) => !prev)}

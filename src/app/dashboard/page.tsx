@@ -91,11 +91,11 @@ const Dashboard = () => {
         { account: acct1, token: token1, currency: cur1 },
       ];
       setCookie('userToken', accounts[0].token, {
-        // secure: true,
-        secure: window.location.protocol === 'https:',
+        secure: true,
+        // secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        domain: 'xhed.net',
+        // domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {

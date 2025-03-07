@@ -16,6 +16,7 @@ const TradingViewWidget = dynamic(() => import('../livecharts/page'), { ssr: fal
 const TradeDashboard = dynamic(() => import('../trade_history/page'), { ssr: false });
 const AccountDashboard = dynamic(() => import('../account_overview/page'), { ssr: false });
 const StrategyDashboard = dynamic(() => import('../strategy_comparizon/page'), { ssr: false });
+const StrategySymbolDashboard = dynamic(() => import('../strategy_vs_symbol/page'), { ssr: false });
 
 
 // importing react icons
@@ -297,10 +298,10 @@ const Dashboard = () => {
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            className={`nav-links mt-4 ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`}
+            onClick={() => handleClick('strategt_vs_symbol')}
           >
-            <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By instrument</p>
+            <FaChartPie className={`link-icon text-m ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Strategy vs instrument</p>
           </Link>
 
 
@@ -439,7 +440,12 @@ const Dashboard = () => {
 
         {/* strategy comparizon */}
         <div className={`hidden-content ${activeLink === 'strategy_comparizon' ? 'superset-chatrs-div' : ''}`}>
-          {activeLink === 'strategy_comparizon' && <StrategyDashboard  />}
+          {activeLink === 'strategy_comparizon' && <StrategyDashboard />}
+        </div>
+
+        {/* strategy vs symbol comparizon */}
+        <div className={`hidden-content ${activeLink === 'strategt_vs_symbol' ? 'superset-chatrs-div' : ''}`}>
+          {activeLink === 'strategt_vs_symbol' && <StrategySymbolDashboard />}
         </div>
       </div>
     </div>

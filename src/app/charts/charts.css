@@ -2,6 +2,7 @@
 #account-dashboard-wrapper,
 #trade-dashboard-wrapper,
 #strategy-dashboard-wrapper,
+#strategy-symbol-dashboard-wrapper,
 #signals_wrapper {
   width: 100%;
   height: fit-content;
@@ -17,6 +18,7 @@
 #signals-dashboard-container,
 #trade-dashboard-container,
 #strategy-dashboard-container,
+#strategy-symbol-dashboard-container,
 #superset-dashboard-container {
   width: 100% !important;
   height: fit-content;

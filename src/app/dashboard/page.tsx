@@ -32,6 +32,8 @@ import { FaMoneyCheckAlt } from "react-icons/fa";
 import { IoBarChartSharp } from "react-icons/io5";
 import { MdSettingsApplications } from "react-icons/md";
 import { MdAccountBox } from "react-icons/md";
+import { TfiMenu } from "react-icons/tfi";
+import { FaRegWindowClose } from "react-icons/fa";
 
 interface UserAccount {
   account: string;
@@ -244,7 +246,7 @@ const Dashboard = () => {
       <div id='nav-bar'>
         <button className='toggle-nav-btn mt-4 ml-4' onClick={toggleNav}>
           {isNavVisible ? (
-            <TbLayoutSidebarLeftCollapseFilled className='toggle-icon' />
+            <FaRegWindowClose className='toggle-icon' />
           ) : (
             <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
           )}
@@ -333,18 +335,17 @@ const Dashboard = () => {
       >
         <div className='small-header'>
           <div className='flex flex-row '>
-            <button className='toggle-nav-btn ml-8' onClick={toggleNav}>
-              {!isNavVisible && (
-                <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
-              )}
+            <button className='toggle-nav-btn ml-8 sm:ml-2 xs:ml-2' onClick={toggleNav}>
+              {!isNavVisible && <TfiMenu className='toggle-icon' />}
             </button>
+
 
             <Link href="/">
               <h1 className='logo'>FX AUTO</h1>
             </Link>
           </div>
 
-          <div>
+          <div className='balance_div_in_hearder'>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className="flex items-center space-x-2">
               {/* Balance Label */}
@@ -379,7 +380,7 @@ const Dashboard = () => {
           </div>
 
           {/* div for execution time */}
-          <div className='flex flex-row'>
+          <div className='flex flex-row excution_time'>
             {!isTrading && currentTime == 0 && (
               <div>
                 <h2>Bot execution time: </h2>
@@ -404,11 +405,12 @@ const Dashboard = () => {
           {/* div for personal information */}
           <div className='flex flex-row items-center justify-center gap-8'>
             <NotificationCenter target_role={'admin'} />
-            <div className='flex flex-row items-center justify-center'>
+            <div className='flex flex-row items-center justify-center names_and_email'>
               <div>
                 <FaUserCircle className='face-icon' />
+
               </div>
-              <div className='flex flex-col mr-8 '>
+              <div className='flex flex-col mr-8  '>
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -426,8 +428,45 @@ const Dashboard = () => {
                 )}
               </div>
             </div>
+
+            {/* Mobile content */}
+            <div className="relative mobile-drop_down">
+              {/* Hidden Checkbox for Toggling */}
+              <input type="checkbox" id="dropdown-toggle" className="peer hidden" />
+
+              {/* Dropdown Button */}
+              <label
+                htmlFor="dropdown-toggle"
+                className="cursor-pointer text-white inline-flex items-center px-3 py-2"
+              >
+                <FaUserCircle className='face-icon' />
+                <svg className="w-2.5 h-2.5 ml-1 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                </svg>
+              </label>
+
+              {/* Dropdown Menu */}
+              <div className="absolute right-2 top-12 mt-2 w-44 bg-white rounded shadow-md opacity-100 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-200">
+                <div className="px-4 py-3 text-sm text-gray-900">
+                  <div>{userName}</div>
+                  <div className="font-medium truncate">{email}</div>
+                </div>
+                <ul className="py-2 text-sm text-gray-700">
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                  </li>
+                </ul>
+                <div className="py-2">
+                  <button onClick={handleLogout} className="block px-4 text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
         <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
           {activeLink === 'overview' && <SupersetDashboard />}
         </div>

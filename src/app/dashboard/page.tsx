@@ -25,12 +25,13 @@ import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { GrFormView } from "react-icons/gr";
 import { GrFormViewHide } from "react-icons/gr";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FaCog } from "react-icons/fa";
-import { FaChartPie } from "react-icons/fa";
-import { AiOutlineHistory } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { MdDashboard } from "react-icons/md";
+import { FaMoneyCheckAlt } from "react-icons/fa";
+import { IoBarChartSharp } from "react-icons/io5";
+import { MdSettingsApplications } from "react-icons/md";
+import { MdAccountBox } from "react-icons/md";
 
 interface UserAccount {
   account: string;
@@ -138,8 +139,20 @@ const Dashboard = () => {
   };
 
   if (authorizeData) {
-    setCookie('userName', authorizeData.authorize.authorize.fullname);
-    setCookie('userEmail', authorizeData.authorize.authorize.email);
+    setCookie('userName', authorizeData.authorize.authorize.fullname, {
+      // secure: true,
+      secure: window.location.protocol === 'https:',
+      maxAge: 60 * 60 * 24 * 7, // 7 days 
+      sameSite: 'none',
+      domain: 'xhed.net',
+    });
+    setCookie('userEmail', authorizeData.authorize.authorize.email, {
+      // secure: true,
+      secure: window.location.protocol === 'https:',
+      maxAge: 60 * 60 * 24 * 7, // 7 days 
+      sameSite: 'none',
+      domain: 'xhed.net',
+    });
   }
 
   const handleLogout = () => {
@@ -237,74 +250,76 @@ const Dashboard = () => {
           )}
         </button>
         <div className='links-in-nav-bar'>
+          <p className='text-white font-bold opacity-100  mt-4 link-text'>General</p>
+
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'overview' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'overview' ? 'active-link' : ''}`}
             onClick={() => handleClick('overview')}
           >
             <MdDashboard className={`link-icon ${activeLink === 'overview' ? 'active-link' : ''}`} /> <p className='link-text'>Overview</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'charts' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
             onClick={() => handleClick('charts')}
           >
-            <FaChartPie className={`link-icon ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text'>Charts</p>
+            < IoBarChartSharp className={`link-icon ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text '>Charts</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
-            onClick={() => handleClick('trade-history')}
-          >
-            <AiOutlineHistory className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Trades</p>
-          </Link>
-          <Link
-            href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'signals' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'signals' ? 'active-link' : ''}`}
             onClick={() => handleClick('signals')}
           >
-            <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Signals</p>
+            <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Trading Signals</p>
           </Link>
+
+          <p className='text-white font-bold opacity-100  mt-8 link-text'>User Details</p>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'settings' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'settings' ? 'active-link' : ''}`}
             onClick={() => handleClick('settings')}
           >
-            <FaCog className={`link-icon ${activeLink === 'settings' ? 'active-link' : ''}`} /> <p className='link-text'>Settings</p>
+            <MdSettingsApplications className={`link-icon ${activeLink === 'settings' ? 'active-link' : ''}`} /> <p className='link-text'>Acount Settings</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 mb-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
             onClick={() => handleClick('profile')}
           >
-            <FaUserCircle className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
+            <MdAccountBox className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
           </Link>
 
-          <hr className='mt-4 mb-8 opacity-50 '></hr>
-          <p className='link-text'>Account Statistics</p>
+          {/* <hr className='mt-4 mb-8 opacity-50 '></hr> */}
+          <p className='text-white font-bold opacity-100  mt-8 link-text'>Account Perfomance</p>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'account-overview' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
+            onClick={() => handleClick('trade-history')}
+          >
+            <FaMoneyCheckAlt className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Your Trades</p>
+          </Link>
+          <Link
+            href="/dashboard"
+            className={`nav-links mt-4 ml-4 ${activeLink === 'account-overview' ? 'active-link' : ''}`}
             onClick={() => handleClick('account-overview')}
           >
-            <MdDashboard className={`link-icon text-m ${activeLink === 'account-overview' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Overview</p>
+            <MdDashboard className={`link-icon text-m ${activeLink === 'account-overview' ? 'active-link' : ''}`} /> <p className='link-text'>Account Overview</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`}
             onClick={() => handleClick('strategy_comparizon')}
           >
-            <FaChartPie className={`link-icon text-m ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By strategy</p>
+            < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`} /> <p className='link-text '>Strategy Analysis</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`}
+            className={`nav-links mt-4 ml-4 ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`}
             onClick={() => handleClick('strategt_vs_symbol')}
           >
-            <FaChartPie className={`link-icon text-m ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Strategy vs instrument</p>
+            < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`} /> <p className='link-text'>Strategy & Symbol</p>
           </Link>
-
-
 
           <button className='logout-link mt-4' onClick={handleLogout}>
             <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
@@ -345,7 +360,7 @@ const Dashboard = () => {
                           <div className="h-8 bg-gray-200 dark:bg-gray-700 w-32 mb-2 mt-2"></div>
                         </div>
                       )
-                      ) : 'XXX,XXX,XXX'}
+                      ) : '##,###,###'}
                   </p>
                   <button
                     onClick={() => setShowBalance((prev) => !prev)}

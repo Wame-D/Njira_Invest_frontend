@@ -91,7 +91,7 @@
 }
 
 .link-icon {
-    /* font-size: 18px; */
+
     margin-right: 0.5vw;
     /* opacity: 0.5; */
 }
@@ -147,7 +147,7 @@
     scrollbar-width: none;
 }
 
-.mobile-drop_down{
+.mobile-drop_down {
     display: none;
 }
 
@@ -175,7 +175,7 @@
     .logout-link,
     .excution_time,
     .balance_div_in_hearder,
-    .names_and_email{
+    .names_and_email {
         display: none;
     }
 
@@ -185,13 +185,22 @@
         opacity: 1;
     }
 
-    .mobile-drop_down{
+    .mobile-drop_down {
         display: flex;
         flex-direction: column;
     }
 
     .small-header {
         padding-left: 0rem !important;
+    }
+
+    .link-icon,
+    .link-text {
+        font-size: 1rem;
+    }
+
+    .link-icon {
+        margin-right: 0.5rem;
     }
 }
 

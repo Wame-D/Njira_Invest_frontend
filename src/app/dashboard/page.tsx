@@ -20,7 +20,6 @@ const StrategySymbolDashboard = dynamic(() => import('../strategy_vs_symbol/page
 
 
 // importing react icons
-import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { GrFormView } from "react-icons/gr";
 import { GrFormViewHide } from "react-icons/gr";
@@ -142,18 +141,18 @@ const Dashboard = () => {
 
   if (authorizeData) {
     setCookie('userName', authorizeData.authorize.authorize.fullname, {
-      // secure: true,
-      secure: window.location.protocol === 'https:',
+      secure: true,
+      // secure: window.location.protocol === 'https:',
       maxAge: 60 * 60 * 24 * 7, // 7 days 
       sameSite: 'none',
-      domain: 'xhed.net',
+      // domain: 'xhed.net',
     });
     setCookie('userEmail', authorizeData.authorize.authorize.email, {
-      // secure: true,
-      secure: window.location.protocol === 'https:',
+      secure: true,
+      // secure: window.location.protocol === 'https:',
       maxAge: 60 * 60 * 24 * 7, // 7 days 
       sameSite: 'none',
-      domain: 'xhed.net',
+      // domain: 'xhed.net',
     });
   }
 
@@ -229,7 +228,7 @@ const Dashboard = () => {
   };
 
   // variable to keep track  of active link setting default to overveiw
-  const [activeLink, setActiveLink] = useState('overview');
+  const [activeLink, setActiveLink] = useState('settings');
   const handleClick = (link: string) => {
     setActiveLink(link);
   };
@@ -338,8 +337,6 @@ const Dashboard = () => {
             <button className='toggle-nav-btn ml-8 sm:ml-2 xs:ml-2' onClick={toggleNav}>
               {!isNavVisible && <TfiMenu className='toggle-icon' />}
             </button>
-
-
             <Link href="/">
               <h1 className='logo'>FX AUTO</h1>
             </Link>

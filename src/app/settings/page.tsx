@@ -484,7 +484,7 @@ const SettingsPage = () => {
     };
 
     return (
-        <div className='settings-div'>
+        <div className='pl-4 pr-4 settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
             <p className='text-m description-text opacity-90'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
             {/* strategy analysis setting */}
@@ -719,7 +719,7 @@ const SettingsPage = () => {
             </div>
 
             {/* start and stop buttons */}
-            <div className='strategy-div mb-8'>
+            <div className=' flex justify-center items-center strategy-div mb-8'>
                 <div className='small-divs flex flex-col '>
                     <h2>You are all set</h2>
                     <p className='text-m description-text opacity-90'>You have set up all the neccessary information needed, you can now press the start trading button to authorise the bot to trade on your account</p>
@@ -729,14 +729,14 @@ const SettingsPage = () => {
                     <button
                         onClick={handleStart}
                         disabled={isTrading}
-                        className={`button ${isTrading ? "disabled" : ""}`}
+                        className={`button1 ${isTrading ? "disabled" : ""}`}
                     >
                         Start Trading
                     </button>
                     <button
                         onClick={handleStop}
                         disabled={!isTrading}
-                        className={`button ${!isTrading ? "disabled" : ""}`}
+                        className={`button1 ${!isTrading ? "disabled" : ""}`}
                     >
                         Stop Trading
                     </button>

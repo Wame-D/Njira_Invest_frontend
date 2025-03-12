@@ -145,6 +145,7 @@
     top: 0;
     overflow-y: scroll;
     scrollbar-width: none;
+    background-color: #007bff;
 }
 
 .mobile-drop_down {
@@ -172,6 +173,7 @@
         overflow-y: scroll;
     }
 
+    .logo,
     .logout-link,
     .excution_time,
     .balance_div_in_hearder,

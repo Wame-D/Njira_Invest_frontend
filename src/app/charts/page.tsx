@@ -54,6 +54,7 @@ const SupersetDashboard = () => {
                 hideChartControls: true,
                 filters: {
                   expanded: false,
+              
                 },
               },
               iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']

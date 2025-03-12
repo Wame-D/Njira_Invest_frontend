@@ -51,7 +51,7 @@ const StrategySymbolDashboard = () => {
             },
             dashboardUiConfig: {
               hideTitle: true,
-              hideChartControls: false,
+              hideChartControls: true,
               filters: {
                 visible: false,
                 expanded: false,

@@ -228,16 +228,33 @@ const Dashboard = () => {
   };
 
   // variable to keep track  of active link setting default to overveiw
-  const [activeLink, setActiveLink] = useState('settings');
+  const [activeLink, setActiveLink] = useState('overview');
   const handleClick = (link: string) => {
     setActiveLink(link);
   };
 
-  // State to control visibility of nav-bar
-  const [isNavVisible, setIsNavVisible] = useState(true);
+  // // State to control visibility of nav-bar
+  // const [isNavVisible, setIsNavVisible] = useState(true);
+  // const toggleNav = () => {
+  //   setIsNavVisible(prevState => !prevState);  // Toggle visibility
+  // };
+  const [isNavVisible, setIsNavVisible] = useState(
+    typeof window !== "undefined" ? window.innerWidth > 768 : true
+  );
+  
   const toggleNav = () => {
-    setIsNavVisible(prevState => !prevState);  // Toggle visibility
+    setIsNavVisible((prevState) => !prevState); // Toggle visibility
   };
+  
+  // Optional: Handle resizing to update state dynamically
+  useEffect(() => {
+    const handleResize = () => {
+      setIsNavVisible(window.innerWidth > 768);
+    };
+  
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className='dashoard'>

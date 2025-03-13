@@ -20,9 +20,11 @@ export default function Services() {
 
                 {/* Text Section */}
                 <div className="w-1/2">
-                    <h3 className="text-2xl font-bold mb-4">Welcome to FxAuto</h3>
+                <h3 className="text-2xl font-bold mb-4">
+    New <span className="text-sky-500">Features</span>
+</h3>
                     <p className="text-gray-600">
-                        FxAuto is your ultimate solution for automated trading, real-time analytics, and robust risk management. Our platform is designed to help you achieve your financial goals with ease and precision.
+                    A commercial website offering an automated forex trading robot that trades currency pairs, providing real-time insights, executing trades, and optimizing strategies for seamless currency exchange management.
                     </p>
                 </div>
             </div>

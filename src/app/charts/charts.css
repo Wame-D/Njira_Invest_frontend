@@ -28,6 +28,13 @@
   flex-grow: 1;
 }
 
+/* hiding filter bar */
+#app > div > div.css-z133oh,
+.dashboard-filter-container {
+  display: none !important;
+}
+
+
 /* Make iframe take the full page */
 iframe {
   width: 100%;

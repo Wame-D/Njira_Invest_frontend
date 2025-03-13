@@ -141,18 +141,18 @@ const Dashboard = () => {
 
   if (authorizeData) {
     setCookie('userName', authorizeData.authorize.authorize.fullname, {
-      secure: true,
-      // secure: window.location.protocol === 'https:',
+      // secure: true,
+      secure: window.location.protocol === 'https:',
       maxAge: 60 * 60 * 24 * 7, // 7 days 
       sameSite: 'none',
-      // domain: 'xhed.net',
+      domain: 'xhed.net',
     });
     setCookie('userEmail', authorizeData.authorize.authorize.email, {
-      secure: true,
-      // secure: window.location.protocol === 'https:',
+      // secure: true,
+      secure: window.location.protocol === 'https:',
       maxAge: 60 * 60 * 24 * 7, // 7 days 
       sameSite: 'none',
-      // domain: 'xhed.net',
+      domain: 'xhed.net',
     });
   }
 
@@ -233,25 +233,20 @@ const Dashboard = () => {
     setActiveLink(link);
   };
 
-  // // State to control visibility of nav-bar
-  // const [isNavVisible, setIsNavVisible] = useState(true);
-  // const toggleNav = () => {
-  //   setIsNavVisible(prevState => !prevState);  // Toggle visibility
-  // };
   const [isNavVisible, setIsNavVisible] = useState(
     typeof window !== "undefined" ? window.innerWidth > 768 : true
   );
-  
+
   const toggleNav = () => {
     setIsNavVisible((prevState) => !prevState); // Toggle visibility
   };
-  
+
   // Optional: Handle resizing to update state dynamically
   useEffect(() => {
     const handleResize = () => {
       setIsNavVisible(window.innerWidth > 768);
     };
-  
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -273,21 +268,28 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'overview' ? 'active-link' : ''}`}
-            onClick={() => handleClick('overview')}
+            onClick={() => {
+              handleClick('overview'); // First function call
+              toggleNav(); // Second function call
+            }}
           >
-            <MdDashboard className={`link-icon ${activeLink === 'overview' ? 'active-link' : ''}`} /> <p className='link-text'>Overview</p>
+            <MdDashboard className={`link-icon ${activeLink === 'overview' ? 'active-link' : ''}`} />
+            <p className='link-text'>Overview</p>
           </Link>
+
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            onClick={() => {handleClick('charts'),
+              toggleNav(); 
+            }}
           >
             < IoBarChartSharp className={`link-icon ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text '>Charts</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'signals' ? 'active-link' : ''}`}
-            onClick={() => handleClick('signals')}
+            onClick={() =>{  toggleNav() , handleClick('signals');}}
           >
             <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Trading Signals</p>
           </Link>
@@ -296,14 +298,18 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'settings' ? 'active-link' : ''}`}
-            onClick={() => handleClick('settings')}
+            onClick={() => {handleClick('settings'),
+              toggleNav(); 
+            }}
           >
             <MdSettingsApplications className={`link-icon ${activeLink === 'settings' ? 'active-link' : ''}`} /> <p className='link-text'>Acount Settings</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
-            onClick={() => handleClick('profile')}
+            onClick={() =>{ handleClick('profile'),
+              toggleNav(); }
+            }
           >
             <MdAccountBox className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
           </Link>
@@ -313,28 +319,28 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
-            onClick={() => handleClick('trade-history')}
+            onClick={() => { handleClick('trade-history'), toggleNav(); }}
           >
             <FaMoneyCheckAlt className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Your Trades</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'account-overview' ? 'active-link' : ''}`}
-            onClick={() => handleClick('account-overview')}
+            onClick={() => {handleClick('account-overview'), toggleNav(); }}
           >
             <MdDashboard className={`link-icon text-m ${activeLink === 'account-overview' ? 'active-link' : ''}`} /> <p className='link-text'>Account Overview</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`}
-            onClick={() => handleClick('strategy_comparizon')}
+            onClick={() => {handleClick('strategy_comparizon'), toggleNav(); }}
           >
             < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`} /> <p className='link-text '>Strategy Analysis</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`}
-            onClick={() => handleClick('strategt_vs_symbol')}
+            onClick={() => {handleClick('strategt_vs_symbol'), toggleNav(); }}
           >
             < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`} /> <p className='link-text'>Strategy & Symbol</p>
           </Link>

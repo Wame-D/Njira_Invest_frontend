@@ -104,8 +104,8 @@
 .link-icon,
 .link-text {
     color: rgb(4, 155, 214);
-    font-size: 15px;
-    /* font-weight: bold; */
+    /* font-size: 15px; */
+    font-weight: bold;
 }
 
 .dashboard-conntent {
@@ -145,7 +145,6 @@
     top: 0;
     overflow-y: scroll;
     scrollbar-width: none;
-    background-color: #007bff;
 }
 
 .mobile-drop_down {

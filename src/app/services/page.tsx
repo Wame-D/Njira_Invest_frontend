@@ -7,9 +7,32 @@ import { AiOutlineRobot } from 'react-icons/ai';  // Automated Trading
 export default function Services() {
     return (
         <div className="flex flex-col items-center justify-center pt-20 mb-20 w-full">
+            {/* Image and Text Section */}
+            <div className="flex items-center justify-center gap-8 mb-10 max-w-6xl w-full">
+                {/* Image Slot */}
+                <div className="w-1/2">
+                    <img
+                        src="https://news.store.rambler.ru/img/dbcbbad4e514c45bbe20f130be3f8cac?img-format=auto&img-1-resize=height:350,fit:max&img-2-filter=sharpen" // Replace with your image link
+                        alt="Placeholder"
+                        className="rounded-lg"
+                    />
+                </div>
+
+                {/* Text Section */}
+                <div className="w-1/2">
+                    <h3 className="text-2xl font-bold mb-4">Welcome to FxAuto</h3>
+                    <p className="text-gray-600">
+                        FxAuto is your ultimate solution for automated trading, real-time analytics, and robust risk management. Our platform is designed to help you achieve your financial goals with ease and precision.
+                    </p>
+                </div>
+            </div>
+
+            {/* Title */}
             <h2 className="text-3xl font-bold mb-10">
-    Fx<span className="text-sky-500">Auto</span> Key Features
-</h2>
+                Fx<span className="text-sky-500">Auto</span> Key Features
+            </h2>
+
+            {/* Key Features Grid */}
             <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full">
                 {/* Automated Trading */}
                 <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
@@ -32,30 +55,6 @@ export default function Services() {
                     </p>
                     <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                         View Analytics and Reporting &gt;
-                    </a>
-                </div>
-
-                {/* Risk Management Tools */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
-                    <MdSecurity size={50} className="text-sky-500" />
-                    <h2 className="mt-4 text-xl font-semibold">Risk Management Tools</h2>
-                    <p className="mt-4 text-gray-600">
-                        We prioritize capital protection with robust risk management systems. Customize your risk levels to match your trading strategy. Built-in stop loss and take profit functionality and etc.
-                    </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Get Started &gt;
-                    </a>
-                </div>
-
-                {/* Risk Management Tools */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
-                    <MdSecurity size={50} className="text-sky-500" />
-                    <h2 className="mt-4 text-xl font-semibold">Risk Management Tools</h2>
-                    <p className="mt-4 text-gray-600">
-                        We prioritize capital protection with robust risk management systems. Customize your risk levels to match your trading strategy. Built-in stop loss and take profit functionality and etc.
-                    </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Get Started &gt;
                     </a>
                 </div>
 

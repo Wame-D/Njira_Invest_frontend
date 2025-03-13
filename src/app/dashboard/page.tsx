@@ -280,7 +280,7 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('charts'),
+            onClick={() => {handleClick('charts');
               toggleNav(); 
             }}
           >
@@ -289,7 +289,7 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'signals' ? 'active-link' : ''}`}
-            onClick={() =>{  toggleNav() , handleClick('signals');}}
+            onClick={() =>{  toggleNav(); handleClick('signals');}}
           >
             <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Trading Signals</p>
           </Link>
@@ -298,7 +298,7 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'settings' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('settings'),
+            onClick={() => {handleClick('settings');
               toggleNav(); 
             }}
           >
@@ -307,7 +307,7 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
-            onClick={() =>{ handleClick('profile'),
+            onClick={() =>{ handleClick('profile');
               toggleNav(); }
             }
           >
@@ -319,28 +319,28 @@ const Dashboard = () => {
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
-            onClick={() => { handleClick('trade-history'), toggleNav(); }}
+            onClick={() => { handleClick('trade-history'); toggleNav(); }}
           >
             <FaMoneyCheckAlt className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Your Trades</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'account-overview' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('account-overview'), toggleNav(); }}
+            onClick={() => {handleClick('account-overview'); toggleNav(); }}
           >
             <MdDashboard className={`link-icon text-m ${activeLink === 'account-overview' ? 'active-link' : ''}`} /> <p className='link-text'>Account Overview</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('strategy_comparizon'), toggleNav(); }}
+            onClick={() => {handleClick('strategy_comparizon'); toggleNav(); }}
           >
             < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`} /> <p className='link-text '>Strategy Analysis</p>
           </Link>
           <Link
             href="/dashboard"
             className={`nav-links mt-4 ml-4 ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('strategt_vs_symbol'), toggleNav(); }}
+            onClick={() => {handleClick('strategt_vs_symbol'); toggleNav(); }}
           >
             < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`} /> <p className='link-text'>Strategy & Symbol</p>
           </Link>

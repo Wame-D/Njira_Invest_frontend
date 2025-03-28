@@ -2,13 +2,17 @@ import React from 'react';
 import { 
   AiOutlineLineChart, 
   AiOutlineRobot, 
-  AiOutlineBulb 
-} from 'react-icons/ai';  // Profit and Loss Tracking, Automated Trading, AI-Powered Market Predictions
+  AiOutlineBulb,
+  AiOutlineRight 
+} from 'react-icons/ai';
 import { 
   FiShield, 
   FiPieChart,
-  FiDollarSign
-} from 'react-icons/fi';  // Risk Management Tools, Real-time Analytics, Multi-Asset Trading
+  FiDollarSign,
+  FiHelpCircle,
+  FiBookOpen,
+  FiPhone // Added phone icon
+} from 'react-icons/fi';
 
 export default function Services() {
     return (
@@ -19,7 +23,7 @@ export default function Services() {
                 <div className="w-1/2">
                     <img
                         src="https://news.store.rambler.ru/img/dbcbbad4e514c45bbe20f130be3f8cac?img-format=auto&img-1-resize=height:350,fit:max&img-2-filter=sharpen"
-                        alt="Placeholder"
+                        alt="Trading Platform Overview"
                         className="rounded-lg"
                     />
                 </div>
@@ -86,7 +90,7 @@ export default function Services() {
                         Get access to real-time market insights, analytics, and trade execution reports.
                     </p>
                     <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        View Analytics and Reporting &gt;
+                        View Analytics &gt;
                     </a>
                 </div>
 
@@ -136,6 +140,56 @@ export default function Services() {
                     <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                         Learn More &gt;
                     </a>
+                </div>
+            </div>
+
+            {/* Need Help Section */}
+            <div className="mt-16 w-full max-w-6xl">
+                <h3 className="text-2xl font-bold mb-6 text-center">
+                    Need <span className="text-sky-500">Help?</span>
+                </h3>
+                <div className="flex justify-center gap-8 p-6 bg-white rounded-lg shadow-md">
+                    {/* Phone Support */}
+                    <div className="flex items-start w-64">
+                        <FiPhone size={80} className="text-sky-500 mr-4" />
+                        <div>
+                            <h4 className="text-lg font-semibold">24/7 Phone Support</h4>
+                            <p className="mt-2 text-gray-600 text-sm">
+                                Call our customer service team anytime for immediate assistance.
+                            </p>
+                            <a href="tel:+1234567890" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Call Now <AiOutlineRight className="ml-1" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* FAQs */}
+                    <div className="flex items-start w-64">
+                        <FiHelpCircle size={80} className="text-sky-500 mr-4" />
+                        <div>
+                            <h4 className="text-lg font-semibold">FAQs</h4>
+                            <p className="mt-2 text-gray-600 text-sm">
+                                View FAQs for detailed instructions on specific features.
+                            </p>
+                            <a href="/faq" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Learn More <AiOutlineRight className="ml-1" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Blog */}
+                    <div className="flex items-start w-64">
+                        <FiBookOpen size={80} className="text-sky-500 mr-4" />
+                        <div>
+                            <h4 className="text-lg font-semibold">Blog</h4>
+                            <p className="mt-2 text-gray-600 text-sm">
+                                Stay up to date with the latest stories and commentary.
+                            </p>
+                            <a href="/blog" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Learn More <AiOutlineRight className="ml-1" />
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

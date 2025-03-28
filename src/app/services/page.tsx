@@ -18,14 +18,39 @@ export default function Services() {
                     />
                 </div>
 
-                {/* Text Section */}
+                {/* New Features Section */}
                 <div className="w-1/2">
-                <h3 className="text-2xl font-bold mb-4">
-    New <span className="text-sky-500">Features</span>
-</h3>
+                    <h3 className="text-2xl font-bold mb-4">
+                        New <span className="text-sky-500">Features</span>
+                    </h3>
                     <p className="text-gray-600">
-                    A commercial website offering an automated forex trading robot that trades currency pairs, providing real-time insights, executing trades, and optimizing strategies for seamless currency exchange management.
-                    </p>
+                    Explore our enhanced trading platform with integrated wallets, exchanges, and essential instruments market insights.
+                            </p>
+                            <br></br>
+
+                    <div className="flex items-start">
+                        {/* Left Section */}
+                        <div className="w-1/2 pr-4">
+                            <h4 className="text-lg font-semibold mb-2">Automated Indices Trading</h4>
+                            <p className="text-gray-600">
+                            Enjoy automated trading on selected indices.
+                            </p>
+                            <button className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition">
+                                Learn More
+                            </button>
+                        </div>
+
+                        {/* Shorter Vertical Divider */}
+                        <div className="w-px bg-gray-300 h-20 mx-4"></div>
+
+                        {/* Right Section */}
+                        <div className="w-1/2 pl-4">
+                            <h4 className="text-lg font-semibold mb-2">Automated Currency Trading</h4>
+                            <p className="text-gray-600">
+                            Trade currency pairs effortlessly with our automated system now!
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

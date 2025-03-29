@@ -11,7 +11,9 @@ import {
   FiDollarSign,
   FiHelpCircle,
   FiBookOpen,
-  FiPhone // Added phone icon
+  FiPhone,
+  FiLock,
+  FiUsers
 } from 'react-icons/fi';
 
 export default function Services() {
@@ -189,6 +191,75 @@ export default function Services() {
                                 Learn More <AiOutlineRight className="ml-1" />
                             </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Trusted Crypto Exchange Section */}
+            <div className="mt-16 w-full max-w-6xl">
+                <div className="flex items-center justify-center gap-8">
+                    {/* Left Side - Text Content */}
+                    <div className="w-1/2">
+                        <h3 className="text-2xl font-bold mb-4">
+                            Your <span className="text-sky-500">trusted</span> forex bot
+                        </h3>
+                        <p className="text-gray-600 mb-8">
+                            Here at FxAuto, we are committed to user protection with strict protocol and industry-leading technical measures.
+                        </p>
+                        
+                        {/* Three Feature Blocks with Icons on Left */}
+                        <div className="space-y-6">
+                            {/* Secure Asset Fund */}
+                            <div className="flex items-start gap-4">
+                                <FiDollarSign size={24} className="text-sky-500 mt-1 flex-shrink-0" />
+                                <div className="border-l-4 border-sky-500 pl-4 w-full">
+                                    <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">Secure Asset Fund for Users (SAFU)</h4>
+                                    <p className="mt-2 text-gray-600 text-sm">
+                                    Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
+                                    </p>
+                                    <a href="/secure-fund" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {/* Personalized Access Control */}
+                            <div className="flex items-start gap-4">
+                                <FiLock size={24} className="text-sky-500 mt-1 flex-shrink-0" />
+                                <div className="border-l-4 border-sky-500 pl-4 w-full">
+                                    <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">Personalized Access Control</h4>
+                                    <p className="mt-2 text-gray-600 text-sm">
+                                    Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
+                                    </p>
+                                    <a href="/access-control" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {/* Secure Asset Fund for All */}
+                            <div className="flex items-start gap-4">
+                                <FiUsers size={24} className="text-sky-500 mt-1 flex-shrink-0" />
+                                <div className="border-l-4 border-sky-500 pl-4 w-full">
+                                    <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">End-to-End Encryption</h4>
+                                    <p className="mt-2 text-gray-600 text-sm">
+                                    Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
+                                    </p>
+                                    <a href="/universal-protection" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side - Image */}
+                    <div className="w-1/2">
+                        <img
+                            src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                            alt="Secure Crypto Exchange"
+                            className="rounded-lg shadow-md w-full h-auto"
+                        />
                     </div>
                 </div>
             </div>

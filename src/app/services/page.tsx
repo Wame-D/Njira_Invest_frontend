@@ -256,9 +256,9 @@ export default function Services() {
                     {/* Right Side - Image */}
                     <div className="w-1/2">
                         <img
-                            src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                            src="https://www.fingramota.by/files/images/2015/7/2/635714311701708846.jpg"
                             alt="Secure Crypto Exchange"
-                            className="rounded-lg shadow-md w-full h-auto"
+                            className="w-full h-auto"
                         />
                     </div>
                 </div>

@@ -38,37 +38,37 @@ export default function Header() {
           <a className="links flex flex-row" href="/">
             Home <TbExternalLink className="my-icon11" />
           </a>
+          <a className="links flex flex-row" href="https://charts.xhed.net/">
+            Charts <TbExternalLink className="my-icon11" />
+          </a>
+          <a className="links flex flex-row" href="/producttour">
+            Product Tour <TbExternalLink className="my-icon11" />
+          </a>
           <a className="links flex flex-row" href="/contactus">
             Contact Us <TbExternalLink className="my-icon11" />
           </a>
           <a className="links flex flex-row" href="/aboutus">
             About Us <TbExternalLink className="my-icon11" />
           </a>
-          <a className="links flex flex-row" href="/producttour">
-            Product Tour <TbExternalLink className="my-icon11" />
-          </a>
-          <a className="links flex flex-row" href="https://charts.xhed.net/">
-            Charts <TbExternalLink className="my-icon11" />
-          </a>
           <p id='copyright'>&#169;JED 2024</p>
         </div>
       )}
 
       <div className='nav-links'>
-        <a className="links flex flex-row" href="../">
+        <a className="links flex flex-row" href="/">
           Home <TbExternalLink className="my-icon11" />
-        </a>
-        <a className="links flex flex-row" href="/aboutus">
-          About <TbExternalLink className="my-icon11" />
-        </a>
-        <a className="links flex flex-row" href="/producttour">
-          Product Tour <TbExternalLink className="my-icon11" />
         </a>
         <a className="links flex flex-row" href="https://charts.xhed.net/">
           Charts <TbExternalLink className="my-icon11" />
         </a>
+        <a className="links flex flex-row" href="/producttour">
+          Product tour <TbExternalLink className="my-icon11" />
+        </a>
         <a className="links flex flex-row" href="/contactus">
           Contact us <TbExternalLink className="my-icon11" />
+        </a>
+        <a className="links flex flex-row" href="/aboutus">
+          About <TbExternalLink className="my-icon11" />
         </a>
       </div>
 

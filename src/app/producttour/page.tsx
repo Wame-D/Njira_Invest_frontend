@@ -27,6 +27,8 @@ export default function ProductTour() {
   return (
     <div className="min-h-screen bg-white text-gray-800 p-6">
       <Header/>
+      <br></br>
+      <br></br>
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-bold mb-4 text-sky-700">FxAuto Product Tour</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">

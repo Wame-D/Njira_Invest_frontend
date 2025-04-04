@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Header from '../header/page';
+import Footer from '../footer/page';
 
 export default function ProductTour() {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -25,7 +26,7 @@ export default function ProductTour() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 p-6">
+    <div className="font-sans text-gray-900">
       <Header/>
       <br></br>
       <br></br>
@@ -342,16 +343,9 @@ export default function ProductTour() {
           )}
         </div>
       </div>
-
-      <footer className="mt-16 text-center text-gray-600 pb-8">
-        <p>© {new Date().getFullYear()} FxAuto. All rights reserved.</p>
-        <div className="flex justify-center space-x-6 mt-4">
-          <a href="#" className="hover:text-sky-700">Terms of Service</a>
-          <a href="#" className="hover:text-sky-700">Privacy Policy</a>
-          <a href="#" className="hover:text-sky-700">Security</a>
-          <a href="#" className="hover:text-sky-700">Contact Us</a>
-        </div>
-      </footer>
+      <br></br>
+      <br></br>
+      <Footer/>
     </div>
   );
 }

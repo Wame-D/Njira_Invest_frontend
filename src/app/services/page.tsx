@@ -186,7 +186,7 @@ export default function Services() {
                         <div>
                             <h4 className="text-lg font-semibold">Product Tour</h4>
                             <p className="mt-2 text-gray-600 text-sm">
-                            Stay up to date with the latest robot information.
+                            Stay informed with the latest updates and developments in FxAuto.
                             </p>
                             <a href="/blog" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                 Learn More <AiOutlineRight className="ml-1" />

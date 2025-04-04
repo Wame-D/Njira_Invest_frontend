@@ -29,8 +29,13 @@ export default function ProductTour() {
       <Header/>
       <br></br>
       <br></br>
+      <br></br>
+      <br></br>
       <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4 text-sky-700">FxAuto Product Tour</h1>
+      <h2 className="text-3xl font-semibold">
+          <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
+        </h2>
+        <br></br>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Discover how our advanced trading platform can enhance your trading experience with automation, AI, and top-tier security.
         </p>

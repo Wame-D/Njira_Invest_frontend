@@ -37,7 +37,7 @@ export default function ProductTour() {
         </h2>
         <br></br>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Discover how our advanced trading platform can enhance your trading experience with automation, AI, and top-tier security.
+        Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
         </p>
       </header>
 

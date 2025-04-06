@@ -9,6 +9,7 @@ import { MdChat } from 'react-icons/md';
 import Link from 'next/link';
 import AiPage from "./chatot/page";
 import Footer from "./footer/page";
+import BeginTrading from "./begintrading/page";
 
 export default function Home() {
 
@@ -28,6 +29,7 @@ export default function Home() {
         <TopSection />
         <Services />
         <div id="how-it-work">
+          <BeginTrading/>
           <HowItWork />
         </div>
         <div className=' flex justify-center items-center fixedwhatsappdiv'>

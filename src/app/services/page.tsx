@@ -1,59 +1,269 @@
-import "./services.css";
 import React from 'react';
-
-import { AiOutlineLineChart } from 'react-icons/ai';  // Profit and Loss Tracking
-import { MdSecurity } from 'react-icons/md';  // Risk Management Tools
-import { FaChartLine } from 'react-icons/fa';  // Real-time Analytics and Reporting
-import { AiOutlineRobot } from 'react-icons/ai';
-
+import { 
+  AiOutlineLineChart, 
+  AiOutlineRobot, 
+  AiOutlineBulb,
+  AiOutlineRight 
+} from 'react-icons/ai';
+import { 
+  FiShield, 
+  FiPieChart,
+  FiDollarSign,
+  FiHelpCircle,
+  FiBookOpen,
+  FiPhone,
+  FiLock,
+  FiUsers
+} from 'react-icons/fi';
+import BeginTrading from '../begintrading/page';
 
 export default function Services() {
     return (
-        <>
-            <div className=" items-center flex flex-col justify-center pt-20 h-fit mb-20 w-full  servicesdive">
-                <h2 className="what-we-offer">WHAT WE OFFER</h2>
-                <div className="items-center flex justify-center servicesdive1">
-                    <div className="flex flex-col p-4 m-4 servicescards">
-                        <h1> <AiOutlineRobot size={50} /></h1>
-                        <h2 className="mt-4 text-bd text-xl">Automated Trading</h2>
-                        <p className='text-m text-black opacity-65 mt-4'>Our trading app is fully automated, designed to place trades on your behalf based on deep market analysis. The algorithm handles everything from data analysis to execution.</p>
-                        <a className=" flex flex row  justify-items-center items-center " href="/">
-                            Trade &gt;
+        <div className="flex flex-col items-center justify-center pt-20 mb-20 w-full">
+            {/* Image and Text Section */}
+            <div className="flex items-center justify-center gap-8 mb-10 max-w-6xl w-full">
+                {/* Image Slot */}
+                <div className="w-1/2">
+                    <img
+                        src="https://news.store.rambler.ru/img/dbcbbad4e514c45bbe20f130be3f8cac?img-format=auto&img-1-resize=height:350,fit:max&img-2-filter=sharpen"
+                        alt="Trading Platform Overview"
+                        className="rounded-lg"
+                    />
+                </div>
 
-                        </a>
-                    </div>
+                {/* New Features Section */}
+                <div className="w-1/2">
+                    <h3 className="text-2xl font-bold mb-4">
+                        New <span className="text-sky-500">Features</span>
+                    </h3>
+                    <p className="text-gray-600">
+                        Explore our enhanced trading platform with integrated wallets, exchanges, and essential market insights.
+                    </p>
+                    <br />
+                    <div className="flex items-start">
+                        {/* Left Section */}
+                        <div className="w-1/2 pr-4">
+                            <h4 className="text-lg font-semibold mb-2">Automated Indices Trading</h4>
+                            <p className="text-gray-600">
+                                Enjoy automated trading on selected indices.
+                            </p>
+                            <button className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition">
+                                Learn More
+                            </button>
+                        </div>
 
-                    <div className="flex flex-col p-4 m-4 servicescards">
-                        <h1><FaChartLine size={50} /></h1>
-                        <h2 className="mt-4 text-bd text-xl">Real-time Analytics and Reporting</h2>
-                        <p className='text-m text-black opacity-65 mt-4'>Get access to real-time market insights, analytics, and trade execution reports. See how the algorithm is performing and the reasons behind every trade.</p>
-                        <a className=" flex flex row  justify-items-center items-center " href="/">
-                            View Analytics and Reporting  &gt;
+                        {/* Shorter Vertical Divider */}
+                        <div className="w-px bg-gray-300 h-20 mx-4"></div>
 
-                        </a>
-                    </div>
-
-                    <div className="flex flex-col p-4 m-4 servicescards">
-                        <h1><MdSecurity size={50} /></h1>
-                        <h2 className="mt-4 text-bd text-xl">Risk Management Tools</h2>
-                        <p className='text-m text-black opacity-65 mt-4'>We prioritize capital protection with robust risk management systems. Customize your risk levels to match your trading strategy. Built-in stop loss and take profit functionality and etc</p>
-                        <a className=" flex flex row  justify-items-center items-center " href="/">
-                            Get Started &gt;
-
-                        </a>
-                    </div>
-
-                    <div className="flex flex-col p-4 m-4 servicescards">
-                        <h1>  <AiOutlineLineChart size={50} /></h1>
-                        <h2 className="mt-4 text-bd text-xl">Profit and Loss Tracking</h2>
-                        <p className='text-m text-black opacity-65 mt-4'>Our platform provides detailed insights into your trading performance, helping you understand trends, optimize strategies, and stay on top of your financial goals.</p>
-                        <a className=" flex flex row  justify-items-center items-center " href="/">
-                            Track &gt;
-
-                        </a>
+                        {/* Right Section */}
+                        <div className="w-1/2 pl-4">
+                            <h4 className="text-lg font-semibold mb-2">Automated Currency Trading</h4>
+                            <p className="text-gray-600">
+                                Trade currency pairs effortlessly with our automated system now!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
+
+            {/* Title */}
+            <h2 className="text-3xl font-bold mb-10">
+                Fx<span className="text-sky-500">Auto</span> Key Features
+            </h2>
+
+            {/* Key Features Grid */}
+            <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full">
+                {/* Automated Trading */}
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                    <AiOutlineRobot size={50} className="text-sky-500" />
+                    <h2 className="mt-4 text-xl font-semibold">Automated Trading</h2>
+                    <p className="mt-4 text-gray-600">
+                        Our trading app is fully automated, designed to place trades on your behalf based on deep market analysis.
+                    </p>
+                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                        Trade &gt;
+                    </a>
+                </div>
+
+                {/* Real-time Analytics and Reporting */}
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                    <FiPieChart size={50} className="text-sky-500" />
+                    <h2 className="mt-4 text-xl font-semibold">Real-time Analytics and Reporting</h2>
+                    <p className="mt-4 text-gray-600">
+                        Get access to real-time market insights, analytics, and trade execution reports.
+                    </p>
+                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                        View Analytics &gt;
+                    </a>
+                </div>
+
+                {/* Risk Management Tools */}
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                    <FiShield size={50} className="text-sky-500" />
+                    <h2 className="mt-4 text-xl font-semibold">Risk Management Tools</h2>
+                    <p className="mt-4 text-gray-600">
+                        We prioritize capital protection with robust risk management systems.
+                    </p>
+                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                        Get Started &gt;
+                    </a>
+                </div>
+
+                {/* Profit and Loss Tracking */}
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                    <AiOutlineLineChart size={50} className="text-sky-500" />
+                    <h2 className="mt-4 text-xl font-semibold">Profit and Loss Tracking</h2>
+                    <p className="mt-4 text-gray-600">
+                        Our platform provides detailed insights into your trading performance.
+                    </p>
+                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                        Track &gt;
+                    </a>
+                </div>
+
+                {/* Multi-Asset Trading Support */}
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                    <FiDollarSign size={50} className="text-sky-500" />
+                    <h2 className="mt-4 text-xl font-semibold">Multi-Asset Trading Support</h2>
+                    <p className="mt-4 text-gray-600">
+                        Trade across multiple asset classes, including forex, stocks, indices, and commodities.
+                    </p>
+                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                        Explore Assets &gt;
+                    </a>
+                </div>
+
+                {/* AI-Powered Market Predictions */}
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                    <AiOutlineBulb size={50} className="text-sky-500" />
+                    <h2 className="mt-4 text-xl font-semibold">AI-Powered Market Predictions</h2>
+                    <p className="mt-4 text-gray-600">
+                        Leverage AI-driven market forecasts to make informed trading decisions.
+                    </p>
+                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                        Learn More &gt;
+                    </a>
+                </div>
+            </div>
+
+            {/* Need Help Section */}
+            <div className="mt-16 w-full max-w-6xl">
+                <h3 className="text-2xl font-bold mb-6 text-center">
+                    Need <span className="text-sky-500">Help?</span>
+                </h3>
+                <div className="flex justify-center gap-8 p-6 bg-white rounded-lg shadow-md">
+                    {/* Phone Support */}
+                    <div className="flex items-start w-64">
+                        <FiPhone size={80} className="text-sky-500 mr-4" />
+                        <div>
+                            <h4 className="text-lg font-semibold">24/7 Phone Support</h4>
+                            <p className="mt-2 text-gray-600 text-sm">
+                                Call our customer service team anytime for immediate assistance.
+                            </p>
+                            <a href="tel:+1234567890" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Call Now <AiOutlineRight className="ml-1" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* FAQs */}
+                    <div className="flex items-start w-64">
+                        <FiHelpCircle size={80} className="text-sky-500 mr-4" />
+                        <div>
+                            <h4 className="text-lg font-semibold">FAQs</h4>
+                            <p className="mt-2 text-gray-600 text-sm">
+                                View FAQs for detailed instructions on specific features.
+                            </p>
+                            <a href="/faq" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Learn More <AiOutlineRight className="ml-1" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Blog */}
+                    <div className="flex items-start w-64">
+                        <FiBookOpen size={80} className="text-sky-500 mr-4" />
+                        <div>
+                            <h4 className="text-lg font-semibold">Product Tour</h4>
+                            <p className="mt-2 text-gray-600 text-sm">
+                            Stay informed with the latest updates and developments in FxAuto.
+                            </p>
+                            <a href="/blog" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Learn More <AiOutlineRight className="ml-1" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Trusted Crypto Exchange Section */}
+            <div className="mt-16 w-full max-w-6xl">
+                <div className="flex items-center justify-center gap-8">
+                    {/* Left Side - Text Content */}
+                    <div className="w-1/2">
+                        <h3 className="text-2xl font-bold mb-4">
+                            Your <span className="text-sky-500">trusted</span> forex bot
+                        </h3>
+                        <p className="text-gray-600 mb-8">
+                            Here at FxAuto, we are committed to user protection with strict protocol and industry-leading technical measures.
+                        </p>
+                        
+                        {/* Three Feature Blocks with Icons on Left */}
+                        <div className="space-y-6">
+                            {/* Secure Asset Fund */}
+                            <div className="flex items-start gap-4">
+                                <FiDollarSign size={24} className="text-sky-500 mt-1 flex-shrink-0" />
+                                <div className="border-l-4 border-sky-500 pl-4 w-full">
+                                    <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">Secure Asset Fund for Users (SAFU)</h4>
+                                    <p className="mt-2 text-gray-600 text-sm">
+                                    Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
+                                    </p>
+                                    <a href="/secure-fund" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {/* Personalized Access Control */}
+                            <div className="flex items-start gap-4">
+                                <FiLock size={24} className="text-sky-500 mt-1 flex-shrink-0" />
+                                <div className="border-l-4 border-sky-500 pl-4 w-full">
+                                    <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">Personalized Access Control</h4>
+                                    <p className="mt-2 text-gray-600 text-sm">
+                                    Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
+                                    </p>
+                                    <a href="/access-control" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {/* Secure Asset Fund for All */}
+                            <div className="flex items-start gap-4">
+                                <FiUsers size={24} className="text-sky-500 mt-1 flex-shrink-0" />
+                                <div className="border-l-4 border-sky-500 pl-4 w-full">
+                                    <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">End-to-End Encryption</h4>
+                                    <p className="mt-2 text-gray-600 text-sm">
+                                    Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
+                                    </p>
+                                    <a href="/universal-protection" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side - Image */}
+                    <div className="w-1/2">
+                        <img
+                            src="https://www.fingramota.by/files/images/2015/7/2/635714311701708846.jpg"
+                            alt="Secure Crypto Exchange"
+                            className="w-full h-auto"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }

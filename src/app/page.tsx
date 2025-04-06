@@ -56,11 +56,15 @@ export default function Home() {
         }}
       />
       <Head>
-        <title>Forex trading | FX AUTO</title>
+        <title>Xhed FX | Forex Trading App - FX AUTO</title>
         <meta
           name="description"
-          content="Our trading app is fully automated, designed to place trades on your behalf based on deep market analysis."
+          content="Trade forex automatically with Xhed FX. Our AI-powered app places trades for you using deep market analysis. Trusted by traders globally."
         />
+        <meta name="keywords" content="xhed fx, forex trading, automated forex trading, fx auto, forex Malawi, forex robot" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Xhed Technologies" />
+        <link rel="canonical" href="https://forex.xhed.net" />
       </Head>
       <div className=" items-center justify-items-center h-fit w-full ">
         <Header />

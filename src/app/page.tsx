@@ -32,7 +32,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "FX AUTO",
+            "name": "FX-auto-malawi",
             "url": "https://forex.xhed.net",
             "logo": "https://forex.xhed.net/_next/image?url=%2Fflyer-xhed-on-desk-no-res.png&w=640&q=75",
             "contactPoint": {
@@ -56,7 +56,7 @@ export default function Home() {
         }}
       />
       <Head>
-        <title>Xhed FX | Forex Trading App - FX AUTO</title>
+        <title>FX-auto-malawi</title>
         <meta
           name="description"
           content="Trade forex automatically with Xhed FX. Our AI-powered app places trades for you using deep market analysis. Trusted by traders globally."

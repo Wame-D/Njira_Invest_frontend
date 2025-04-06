@@ -1,7 +1,7 @@
-import Header from "../header/page";
+import Header from "../../components/header/page";
 import { FaCheckCircle, FaChartLine, FaUsers } from "react-icons/fa";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import Footer from "../footer/page";
+import Footer from "../../components/footer/page";
 
 export default function About() {
   const members = [

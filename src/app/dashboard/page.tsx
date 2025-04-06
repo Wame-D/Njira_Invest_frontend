@@ -6,17 +6,17 @@ import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import dynamic from 'next/dynamic';
 
-import NotificationCenter from '../notification/Notification';
+import NotificationCenter from '../../components/notification/Notification';
 
 // Lazy load components
-const SupersetDashboard = dynamic(() => import('../charts/page'), { ssr: false });
-const SignalsDashboard = dynamic(() => import('../signals/signal'), { ssr: false });
-const SettingsPage = dynamic(() => import('../settings/page'), { ssr: false });
-const TradingViewWidget = dynamic(() => import('../livecharts/page'), { ssr: false });
-const TradeDashboard = dynamic(() => import('../trade_history/page'), { ssr: false });
-const AccountDashboard = dynamic(() => import('../account_overview/page'), { ssr: false });
-const StrategyDashboard = dynamic(() => import('../strategy_comparizon/page'), { ssr: false });
-const StrategySymbolDashboard = dynamic(() => import('../strategy_vs_symbol/page'), { ssr: false });
+const SupersetDashboard = dynamic(() => import('../../components/charts/page'), { ssr: false });
+const SignalsDashboard = dynamic(() => import('../../components/signals/signal'), { ssr: false });
+const SettingsPage = dynamic(() => import('../../components/settings/page'), { ssr: false });
+const TradingViewWidget = dynamic(() => import('../../components/livecharts/page'), { ssr: false });
+const TradeDashboard = dynamic(() => import('../../components/trade_history/page'), { ssr: false });
+const AccountDashboard = dynamic(() => import('../../components/account_overview/page'), { ssr: false });
+const StrategyDashboard = dynamic(() => import('../../components/strategy_comparizon/page'), { ssr: false });
+const StrategySymbolDashboard = dynamic(() => import('../../components/strategy_vs_symbol/page'), { ssr: false });
 
 
 // importing react icons

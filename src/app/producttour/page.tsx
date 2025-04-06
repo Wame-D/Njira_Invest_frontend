@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import Header from '../header/page';
-import Footer from '../footer/page';
+import Header from '../../components/header/page';
+import Footer from '../../components/footer/page';
 
 export default function ProductTour() {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -26,7 +26,7 @@ export default function ProductTour() {
   };
 
   return (
-    <div className="font-sans text-gray-900">
+    <div className="font-sans text-gray-900 py-16">
       <Header/>
       <br></br>
       <br></br>

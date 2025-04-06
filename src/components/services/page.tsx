@@ -15,7 +15,7 @@ import {
   FiLock,
   FiUsers
 } from 'react-icons/fi';
-import BeginTrading from '../begintrading/page';
+import '../../app/globals.css';
 
 export default function Services() {
     return (

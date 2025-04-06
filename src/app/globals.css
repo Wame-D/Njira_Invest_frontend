@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   margin: 0; /* Removes default margins from the body */
   overflow-x: hidden; /* Prevents horizontal scrolling */
@@ -11,14 +12,14 @@ body {
 
 @font-face {
   font-family: 'CustomFont';
-  src: url('./fonts/1Robotech Regular.ttf') format('truetype');
+  src: url('../components/fonts/1Robotech Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MontserratAlternates-Light';
-  src: url('./fonts/MontserratAlternates-Medium.otf') format('opentype');
+  src: url('../components/fonts/MontserratAlternates-Medium.otf') format('opentype');
 
 }
 

@@ -1,15 +1,15 @@
 'use client';
-import Header from "./header/page";
-import TopSection from "./topSection/page";
-import Services from "./services/page";
-import HowItWork from "./how/page";
+import Header from "../components/header/page";
+import TopSection from "../components/topSection/page";
+import Services from "../components/services/page";
+import HowItWork from "../components/how/page";
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';  
 import { MdChat } from 'react-icons/md'; 
 import Link from 'next/link';
-import AiPage from "./chatot/page";
-import Footer from "./footer/page";
-import BeginTrading from "./begintrading/page";
+import AiPage from "../components/chatot/page";
+import Footer from "../components/footer/page";
+import BeginTrading from "../components/begintrading/page";
 
 export default function Home() {
 
@@ -29,8 +29,9 @@ export default function Home() {
         <TopSection />
         <Services />
         <div id="how-it-work">
-          <BeginTrading/>
+         
           <HowItWork />
+          <BeginTrading/>
         </div>
         <div className=' flex justify-center items-center fixedwhatsappdiv'>
             <p className='fixedwhatsapp'>

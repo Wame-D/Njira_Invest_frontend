@@ -1,11 +1,12 @@
 'use client';
+import Head from 'next/head';
 import Header from "../components/header/page";
 import TopSection from "../components/topSection/page";
 import Services from "../components/services/page";
 import HowItWork from "../components/how/page";
 import React, { useState } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';  
-import { MdChat } from 'react-icons/md'; 
+import { FaWhatsapp } from 'react-icons/fa';
+import { MdChat } from 'react-icons/md';
 import Link from 'next/link';
 import AiPage from "../components/chatot/page";
 import Footer from "../components/footer/page";
@@ -24,45 +25,82 @@ export default function Home() {
   };
   return (
     <>
+      {/* SEO Configuration */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "FX AUTO",
+            "url": "https://forex.xhed.net",
+            "logo": "https://forex.xhed.net/_next/image?url=%2Fflyer-xhed-on-desk-no-res.png&w=640&q=75",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+265990024684",
+              "contactType": "Customer Support",
+              "areaServed": "Global",
+              "availableLanguage": "English",
+            },
+            "sameAs": [
+              "https://web.facebook.com/profile.php?id=61556746648275",
+              "https://www.linkedin.com/in/daniel-wame-163718256",
+              "https://wa.me/265990024684",
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "Zomba",
+              "addressCountry": "Malawi",
+            },
+          }),
+        }}
+      />
+      <Head>
+        <title>Forex trading | FX AUTO</title>
+        <meta
+          name="description"
+          content="Our trading app is fully automated, designed to place trades on your behalf based on deep market analysis."
+        />
+      </Head>
       <div className=" items-center justify-items-center h-fit w-full ">
         <Header />
         <TopSection />
         <Services />
         <div id="how-it-work">
-         
+
           <HowItWork />
-          <BeginTrading/>
+          <BeginTrading />
         </div>
         <div className=' flex justify-center items-center fixedwhatsappdiv'>
-            <p className='fixedwhatsapp'>
-              <Link href="https://wa.me/265990024684">
-                
-                <FaWhatsapp color="#25D366" className="my-ico"/>
-              </Link>
+          <p className='fixedwhatsapp'>
+            <Link href="https://wa.me/265990024684">
+
+              <FaWhatsapp color="#25D366" className="my-ico" />
+            </Link>
+          </p>
+        </div>
+        <div className="flex justify-center items-center  flex-col fixed-buttondiv" >
+          <button className="flex justify-center items-center fixed-button" onClick={openChatbot}>
+            <p >
+              <MdChat className="my-ico" />
             </p>
-          </div>
-          <div className="flex justify-center items-center  flex-col fixed-buttondiv" >
-            <button className="flex justify-center items-center fixed-button" onClick={openChatbot}>
-              <p >
-                 <MdChat className="my-ico" />
-              </p>
-            </button>
-            <p className='text-sm text-white opacity-100 mt-1'>Ask AI</p>
-          </div>
+          </button>
+          <p className='text-sm text-white opacity-100 mt-1'>Ask AI</p>
+        </div>
 
 
-          {/* Conditional rendering for the chatbot overlay */}
-          {showChatbot && (
-            <div className="overlay1">
-              <div className="modal1">
-                <span className="close1" onClick={closeChatbot}>&times;</span>
-                <AiPage />
-              </div>
+        {/* Conditional rendering for the chatbot overlay */}
+        {showChatbot && (
+          <div className="overlay1">
+            <div className="modal1">
+              <span className="close1" onClick={closeChatbot}>&times;</span>
+              <AiPage />
             </div>
-          )}
+          </div>
+        )}
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -1,8 +1,8 @@
 'use client';
 import "./login.css";
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from "firebase/app";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { initializeApp } from "firebase/app";
 // import firebaseConfig from '../../app/firebase/config';
 
 // Initialize Firebase app
@@ -10,7 +10,7 @@ import { initializeApp } from "firebase/app";
 // const auth = getAuth(app);
 
 export default function Login() {
-    const [error, setError] = useState<string>("");
+    // const [error, setError] = useState<string>("");
     const [selectedBroker, setSelectedBroker] = useState<string>(""); // State for selected broker
 
     const handleBrokerChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -23,6 +23,9 @@ export default function Login() {
         const formData = new FormData(event.currentTarget);
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
+
+        console.log(email)
+        console.log(password)
 
         // signInWithEmailAndPassword(auth, email, password)
         //     .then((userCredential) => {
@@ -81,7 +84,7 @@ export default function Login() {
                                     <button className='aplyfs' type="submit" id="submit" name="submit">
                                         <p>Login</p>
                                     </button><br />
-                                    {error && <p>{error}</p>} {/* Display error message if authentication fails */}
+                                    {/* {error && <p>{error}</p>} Display error message if authentication fails */}
                                 </form>
                             )}
                         </div>

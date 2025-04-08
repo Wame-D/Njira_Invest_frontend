@@ -67,7 +67,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-100 py-16 mt-12">
+      <section className="py-16 mt-12">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
           {/* Left - FAQ */}
           <div>

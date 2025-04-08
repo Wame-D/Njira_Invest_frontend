@@ -151,7 +151,7 @@ export default function Services() {
                 <h3 className="text-2xl font-bold mb-6 text-center">
                     Need <span className="text-sky-500">Help?</span>
                 </h3>
-                <div className="flex justify-center gap-8 p-6 bg-white rounded-lg shadow-md">
+                <div className="flex justify-center gap-8 p-6 bg-white">
                     {/* Phone Support */}
                     <div className="flex items-start w-64">
                         <FiPhone size={80} className="text-sky-500 mr-4" />

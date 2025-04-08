@@ -110,7 +110,7 @@ const Contact = () => {
 
           {/* Right - Image */}
           <div className="flex justify-center mt-20">
-            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1blONU.img" alt="Support Team" className="rounded-md shadow-md" />
+            <img src="https://efsol.ru/wp-content/uploads/2024/02/girl-1.png" alt="Support Team"/>
           </div>
         </div>
       </section>

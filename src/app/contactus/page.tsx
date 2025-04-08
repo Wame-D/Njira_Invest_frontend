@@ -99,7 +99,7 @@ const Contact = () => {
                   answer: "Yes, you can pause or stop automated trading at any time through your account dashboard. Your settings will be saved for when you wish to resume.",
                 },
               ].map((faq, index) => (
-                <details key={index} className="bg-white shadow-md p-4 rounded-md cursor-pointer">
+                <details key={index} className="bg-white border border-sky-400 p-4 rounded-md cursor-pointer">
                   <summary className="font-medium">{faq.question}</summary>
                   <p className="mt-2 text-gray-500">{faq.answer}</p>
                 </details>

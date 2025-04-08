@@ -46,7 +46,7 @@ export default function ProductTour() {
 
       <div className="max-w-6xl mx-auto space-y-8">
         {/* New Features Section */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">New Features</h2>
             <button
@@ -156,7 +156,7 @@ export default function ProductTour() {
         </div>
 
         {/* AI-Powered Market Predictions */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">AI-Powered Market Predictions</h2>
             <button
@@ -193,7 +193,7 @@ export default function ProductTour() {
         </div>
 
         {/* 24/7 Phone Support */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">24/7 Phone Support</h2>
             <button
@@ -228,7 +228,7 @@ export default function ProductTour() {
         </div>
 
         {/* FAQs */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">FAQs</h2>
             <button
@@ -259,7 +259,7 @@ export default function ProductTour() {
         </div>
 
         {/* Secure Asset Fund for Users (SAFU) */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">Secure Asset Fund for Users (SAFU)</h2>
             <button
@@ -288,7 +288,7 @@ export default function ProductTour() {
         </div>
 
         {/* Personalized Access Control */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">Personalized Access Control</h2>
             <button
@@ -317,7 +317,7 @@ export default function ProductTour() {
         </div>
 
         {/* End-to-End Encryption */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
+        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold text-sky-800">End-to-End Encryption</h2>
             <button

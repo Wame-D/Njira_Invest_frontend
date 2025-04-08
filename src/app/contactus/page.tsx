@@ -21,7 +21,7 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="container mx-auto px-6 grid md:grid-cols-2 gap-8">
         {/* Form Section */}
-        <div className="bg-sky-200 p-6 rounded-lg shadow-md">
+        <div className="bg-sky-200 p-6 rounded-lg">
           <h3 className="text-lg font-semibold mb-4">Get in Touch with Us</h3>
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">

@@ -42,7 +42,7 @@ export default function About() {
 
       {/* Features Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 mt-10">
-        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg">
+        <div className="flex items-center gap-4 p-4 bg-white border border-sky-400 rounded-lg">
           <div className="text-sky-500 text-3xl">{<FaCheckCircle />}</div>
           <div>
             <h3 className="font-bold">Automated Trading 24/7</h3>
@@ -50,7 +50,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg">
+        <div className="flex items-center gap-4 p-4 bg-white border border-sky-400 rounded-lg">
           <div className="text-sky-500 text-3xl">{<FaChartLine />}</div>
           <div>
             <h3 className="font-bold">Smart Market Insights</h3>
@@ -58,7 +58,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-white shadow rounded-lg">
+        <div className="flex items-center gap-4 p-4 bg-white border border-sky-400 rounded-lg">
           <div className="text-sky-500 text-3xl">{<FaUsers />}</div>
           <div>
             <h3 className="font-bold">Professional Team</h3>
@@ -96,7 +96,7 @@ export default function About() {
         <p className="mt-4 mb-10 text-center">Meet the experts behind our AI-powered trading bot, dedicated to innovation and success in Forex trading.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
           {members.map((member, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden text-center">
+            <div key={index} className="bg-white rounded-2xl overflow-hidden text-center">
               <div className="relative">
                 <img src={member.image} alt={member.name} className="w-full h-48 object-cover" />
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-sky-500 text-white p-3 rounded-t-2xl rounded-b-2xl w-60 text-center shadow-lg">

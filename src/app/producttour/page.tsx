@@ -29,16 +29,16 @@ export default function ProductTour() {
     <div className="font-sans text-gray-900 py-16">
       <Header/>
       
-      <header className="relative overflow-hidden bg-cover bg-center bg-no-repeat mb-12 text-center py-16"
+      <header className="relative overflow-hidden bg-cover bg-center bg-no-repeat mb-8 text-center py-12"
   style={{ 
-    backgroundImage: "url('https://www.aeaweb.org/content/file?id=7175')",
+    backgroundImage: "url('https://pic.rutubelist.ru/video/72/65/726509244160c9cad6c8236c95379019.jpg')",
   }}>
-  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-  <div className="relative z-10 py-12">
+  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div className="relative z-10">
     <h2 className="text-3xl font-semibold text-white">
       <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
     </h2>
-    <p className="mt-4 text-gray-300 max-w-3xl mx-auto">
+    <p className="mt-3 text-gray-300 max-w-3xl mx-auto">
       Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
     </p>
   </div>

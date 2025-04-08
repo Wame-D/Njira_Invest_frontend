@@ -18,7 +18,7 @@ export default function About() {
       {/* Hero Section */}
       <div className="relative flex items-center justify-center h-[30vh] bg-stone-600 text-white text-2xl font-bold mt-14 overflow-hidden">
         <img
-          src="https://www.seputarforex.com/sf2016materi/post/2015-06/long-term-4h-dengan-persilangan-ema-8-dan-ema-20-236801-1.jpg"
+          src="https://i.ytimg.com/vi/OlWUn5M0xNI/maxresdefault.jpg"
           alt="About us background"
           className="absolute inset-0 w-full h-full object-cover"
         />

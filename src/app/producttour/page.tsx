@@ -32,6 +32,7 @@ export default function ProductTour() {
       <br></br>
       <br></br>
       <br></br>
+      <br></br>
       <header className="mb-12 text-center">
       <h2 className="text-3xl font-semibold">
           <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading

@@ -20,7 +20,7 @@ const StrategySymbolDashboard = dynamic(() => import('../../components/strategy_
 
 
 // importing react icons
-import { TbDivide, TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { GrFormView } from "react-icons/gr";
 import { GrFormViewHide } from "react-icons/gr";
 import { FaExclamationTriangle } from "react-icons/fa";

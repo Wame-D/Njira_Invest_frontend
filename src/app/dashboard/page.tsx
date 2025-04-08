@@ -33,6 +33,7 @@ import { MdSettingsApplications } from "react-icons/md";
 import { MdAccountBox } from "react-icons/md";
 import { TfiMenu } from "react-icons/tfi";
 import { FaRegWindowClose } from "react-icons/fa";
+import { useRef } from "react";
 
 interface UserAccount {
   account: string;
@@ -251,10 +252,17 @@ const Dashboard = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const dropdownToggleRef = useRef<HTMLInputElement>(null);
+  const closeDropdown = () => {
+    if (dropdownToggleRef.current) {
+      dropdownToggleRef.current.checked = false;
+    }
+  };
+
   return (
     <div className='dashoard'>
       {/* nav bar */}
-      <div id='nav-bar'>
+      <div id='nav-bar' className='p-2'>
         <button className='toggle-nav-btn mt-4 ml-4' onClick={toggleNav}>
           {isNavVisible ? (
             <FaRegWindowClose className='toggle-icon' />
@@ -262,87 +270,92 @@ const Dashboard = () => {
             <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
           )}
         </button>
-        <div className='links-in-nav-bar'>
-          <p className='text-white font-bold opacity-100  mt-4 link-text'>General</p>
-
+        <div className=' w-full flex flex-col mt-[40px] relative h-[80vh] '>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'overview' ? 'active-link' : ''}`}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'overview' ? 'bg-sky-700/70 w-full text-white' : ''}`}
             onClick={() => {
               handleClick('overview'); // First function call
               toggleNav(); // Second function call
             }}
           >
-            <MdDashboard className={`link-icon ${activeLink === 'overview' ? 'active-link' : ''}`} />
-            <p className='link-text'>Overview</p>
+            <MdDashboard className={`text-xl ${activeLink === 'overview' ? '' : ''}`} />
+            <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Overview</p>
           </Link>
-
+          {/* charts */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('charts');
-              toggleNav(); 
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'charts' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => {
+              handleClick('charts');
+              toggleNav();
             }}
           >
-            < IoBarChartSharp className={`link-icon ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text '>Charts</p>
+            < IoBarChartSharp className={`text-xl ${activeLink === 'charts' ? '' : ''}`} />
+            <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Charts</p>
           </Link>
+          {/* signals */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'signals' ? 'active-link' : ''}`}
-            onClick={() =>{  toggleNav(); handleClick('signals');}}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'signals' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { toggleNav(); handleClick('signals'); }}
           >
-            <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Trading Signals</p>
+            <FaExclamationTriangle className={`text-xl ${activeLink === 'signals' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '> Signals</p>
           </Link>
-
-          <p className='text-white font-bold opacity-100  mt-8 link-text'>User Details</p>
+          {/* settings */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'settings' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('settings');
-              toggleNav(); 
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full hidden md:flex items-center gap-4 px-4 capitalize ${activeLink === 'settings' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => {
+              handleClick('settings');
+              toggleNav();
             }}
           >
-            <MdSettingsApplications className={`link-icon ${activeLink === 'settings' ? 'active-link' : ''}`} /> <p className='link-text'>Acount Settings</p>
+            <MdSettingsApplications className={`text-xl ${activeLink === 'settings' ? 'active-link' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Bot Settings</p>
           </Link>
+          {/* profile */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
-            onClick={() =>{ handleClick('profile');
-              toggleNav(); }
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full hidden md:flex items-center gap-4 px-4 capitalize${activeLink === 'profile' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => {
+              handleClick('profile');
+              toggleNav();
+            }
             }
           >
-            <MdAccountBox className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
+            <MdAccountBox className={`text-xl ${activeLink === 'profile' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Profile</p>
           </Link>
 
-          {/* <hr className='mt-4 mb-8 opacity-50 '></hr> */}
-          <p className='text-white font-bold opacity-100  mt-8 link-text'>Account Perfomance</p>
+          <hr className='mt-2 mb-2 opacity-10 '></hr>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'trade-history' ? 'bg-sky-700/70 w-full text-white' : ''}`}
             onClick={() => { handleClick('trade-history'); toggleNav(); }}
           >
-            <FaMoneyCheckAlt className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Your Trades</p>
+            <FaMoneyCheckAlt className={`text-xl ${activeLink === 'trade-history' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Trades</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'account-overview' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('account-overview'); toggleNav(); }}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'account-overview' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('account-overview'); toggleNav(); }}
           >
-            <MdDashboard className={`link-icon text-m ${activeLink === 'account-overview' ? 'active-link' : ''}`} /> <p className='link-text'>Account Overview</p>
+            <MdDashboard className={`text-xl ${activeLink === 'account-overview' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Account Stat</p>
           </Link>
+          {/* strategy analysis */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('strategy_comparizon'); toggleNav(); }}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'strategy_comparizon' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('strategy_comparizon'); toggleNav(); }}
           >
-            < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategy_comparizon' ? 'active-link' : ''}`} /> <p className='link-text '>Strategy Analysis</p>
+            < IoBarChartSharp className={`text-xl ${activeLink === 'strategy_comparizon' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Strategy Analysis</p>
           </Link>
+          {/* strate symbol */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ml-4 ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`}
-            onClick={() => {handleClick('strategt_vs_symbol'); toggleNav(); }}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize${activeLink === 'strategt_vs_symbol' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('strategt_vs_symbol'); toggleNav(); }}
           >
-            < IoBarChartSharp className={`link-icon text-m ${activeLink === 'strategt_vs_symbol' ? 'active-link' : ''}`} /> <p className='link-text'>Strategy & Symbol</p>
+            < IoBarChartSharp className={`text-xl ${activeLink === 'strategt_vs_symbol' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Strategy & Symbol</p>
           </Link>
 
           <button className='logout-link mt-4' onClick={handleLogout}>
@@ -355,7 +368,7 @@ const Dashboard = () => {
       <div
         className={`dashboard-content ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}
       >
-        <div className='small-header'>
+        <div className={`small-header flex flex-row justify-between items-center pr-4 h-[6rem] ${isNavVisible ? 'w-[85vw]' : 'w-full px-4'} `}>
           <div className='flex flex-row '>
             <button className='toggle-nav-btn ml-8 sm:ml-2 xs:ml-2' onClick={toggleNav}>
               {!isNavVisible && <TfiMenu className='toggle-icon' />}
@@ -365,7 +378,7 @@ const Dashboard = () => {
             </Link>
           </div>
 
-          <div className='balance_div_in_hearder'>
+          <div className=' balance_div_in_hearder'>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className="flex items-center space-x-2">
               {/* Balance Label */}
@@ -400,7 +413,7 @@ const Dashboard = () => {
           </div>
 
           {/* div for execution time */}
-          <div className='flex flex-row excution_time'>
+          <div className='  flex flex-row excution_time'>
             {!isTrading && currentTime == 0 && (
               <div>
                 <h2>Bot execution time: </h2>
@@ -423,7 +436,7 @@ const Dashboard = () => {
             )}
           </div>
           {/* div for personal information */}
-          <div className='flex flex-row items-center justify-center gap-8'>
+          <div className=' flex flex-row items-center justify-center gap-8'>
             <NotificationCenter target_role={'admin'} />
             <div className='flex flex-row items-center justify-center names_and_email'>
               <div>
@@ -452,7 +465,7 @@ const Dashboard = () => {
             {/* Mobile content */}
             <div className="relative mobile-drop_down">
               {/* Hidden Checkbox for Toggling */}
-              <input type="checkbox" id="dropdown-toggle" className="peer hidden" />
+              <input type="checkbox" id="dropdown-toggle" className="peer hidden" ref={dropdownToggleRef} />
 
               {/* Dropdown Button */}
               <label
@@ -473,14 +486,37 @@ const Dashboard = () => {
                 </div>
                 <ul className="py-2 text-sm text-gray-700">
                   <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                    <Link
+                      href="/dashboard"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => {
+                        handleClick('settings');
+                        closeDropdown(); // Close on click
+                      }}
+                    >
+                      Settings
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={closeDropdown}
+                    >
+                      Profile
+                    </a>
                   </li>
                 </ul>
                 <div className="py-2">
-                  <button onClick={handleLogout} className="block px-4 text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      closeDropdown(); // Close on logout
+                    }}
+                    className="block px-4 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Sign out
+                  </button>
                 </div>
               </div>
             </div>

@@ -9,14 +9,22 @@ const Contact = () => {
       <br></br>
       <br></br>
       {/* Hero Section */}
-      <section className="text-center py-16">
-        <h2 className="text-3xl font-semibold">
-          <span className="underline decoration-sky-500">Connect</span> with Our Team
-        </h2>
-        <p className="mt-2 text-gray-500 max-w-lg mx-auto">
-          Have questions about our Forex trading bot? Our team is here to help with setup, strategies, and support. Reach out today!
-        </p>
-      </section>
+      <section className="relative overflow-hidden">
+  <img 
+    src="https://www.aeaweb.org/content/file?id=7175" 
+    alt="Background"
+    className="absolute w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div className="relative z-10 text-center py-16">
+    <h2 className="text-3xl font-semibold text-white">
+      <span className="underline decoration-sky-500">Connect</span> with Our Team
+    </h2>
+    <p className="mt-2 text-gray-300 max-w-lg mx-auto">
+      Have questions about our Forex trading bot? Our team is here to help with setup, strategies, and support. Reach out today!
+    </p>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section className="container mx-auto px-6 grid md:grid-cols-2 gap-8">

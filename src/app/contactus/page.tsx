@@ -93,7 +93,7 @@ const Contact = () => {
                   answer: "Algorithmic trading involves using computer algorithms to automatically execute trades based on predefined criteria. This method allows for faster and more efficient trading without the need for manual intervention.",
                 },
                 {
-                  question: "How does your platform work?",
+                  question: "How does our platform work?",
                   answer: "Our platform connects to various forex markets and uses advanced algorithms to analyze market data, identify trading opportunities, and execute trades on your behalf. Users can monitor their accounts and track performance in real time.",
                 },
                 {

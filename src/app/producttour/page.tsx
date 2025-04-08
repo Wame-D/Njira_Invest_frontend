@@ -198,7 +198,7 @@ export default function ProductTour() {
             </svg>
           </div>
           <p className="mt-3 text-gray-700">
-            Call our customer service team anytime for immediate assistance.
+            Chat our customer service team anytime for immediate assistance.
           </p>
           
           {expandedSections.phoneSupport && (
@@ -209,13 +209,13 @@ export default function ProductTour() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-gray-700">Dedicated support lines in 15 languages</p>
+                <p className="text-gray-700">Dedicated support lines in 2 languages</p>
               </div>
               <button className="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg flex items-center justify-center text-white">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call Now: +1 (800) 123-4567
+                Chat Now: +265880000000
               </button>
             </div>
           )}
@@ -238,12 +238,12 @@ export default function ProductTour() {
               <div className="space-y-2">
                 <h3 className="font-medium text-sky-700">Getting Started</h3>
                 <div className="ml-4 space-y-2 text-gray-600">
-                  <p>• How do I create an account?</p>
-                  <p>• What are the minimum deposit requirements?</p>
+                  <p>• What is algorithmic trading?</p>
+                  <p>• How does our platform work?</p>
                 </div>
               </div>
               <button className="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg text-white">
-                View Full FAQ Database
+                View Full FAQ
               </button>
             </div>
           )}

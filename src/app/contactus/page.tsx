@@ -25,7 +25,9 @@ const Contact = () => {
     </p>
   </div>
 </section>
-
+<br></br>
+      <br></br>
+      <br></br>
       {/* Contact Section */}
       <section className="container mx-auto px-6 grid md:grid-cols-2 gap-8">
         {/* Form Section */}

@@ -26,35 +26,33 @@ export default function ProductTour() {
   };
 
   return (
-    <div className="font-sans text-gray-900 py-16">
+    <div className="font-sans text-gray-900">
+      
       <Header/>
       
       <header className="relative overflow-hidden bg-cover bg-center bg-no-repeat mb-8 text-center py-12"
-  style={{ 
-    backgroundImage: "url('https://pic.rutubelist.ru/video/72/65/726509244160c9cad6c8236c95379019.jpg')",
-  }}>
-  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-  <div className="relative z-10">
-    <h2 className="text-3xl font-semibold text-white">
-      <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
-    </h2>
-    <p className="mt-3 text-gray-300 max-w-3xl mx-auto">
-      Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
-    </p>
-  </div>
-</header>
+        style={{ 
+          backgroundImage: "url('https://pic.rutubelist.ru/video/72/65/726509244160c9cad6c8236c95379019.jpg')",
+        }}>
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="relative z-10">
+          <h2 className="text-3xl font-semibold text-white">
+            <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
+          </h2>
+          <p className="mt-3 text-gray-300 max-w-3xl mx-auto">
+            Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
+          </p>
+        </div>
+      </header>
 
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8 pb-8">
         {/* New Features Section */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('newFeatures')}>
             <h2 className="text-2xl font-semibold text-sky-800">New Features</h2>
-            <button
-              onClick={() => toggleSection('newFeatures')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.newFeatures ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.newFeatures ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Explore our enhanced trading platform with integrated wallets, exchanges, and essential market insights.
@@ -157,14 +155,11 @@ export default function ProductTour() {
 
         {/* AI-Powered Market Predictions */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('aiPredictions')}>
             <h2 className="text-2xl font-semibold text-sky-800">AI-Powered Market Predictions</h2>
-            <button
-              onClick={() => toggleSection('aiPredictions')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.aiPredictions ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.aiPredictions ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Leverage AI-driven market forecasts to make informed trading decisions.
@@ -194,14 +189,11 @@ export default function ProductTour() {
 
         {/* 24/7 Phone Support */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('phoneSupport')}>
             <h2 className="text-2xl font-semibold text-sky-800">24/7 Phone Support</h2>
-            <button
-              onClick={() => toggleSection('phoneSupport')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.phoneSupport ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.phoneSupport ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Call our customer service team anytime for immediate assistance.
@@ -229,14 +221,11 @@ export default function ProductTour() {
 
         {/* FAQs */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('faqs')}>
             <h2 className="text-2xl font-semibold text-sky-800">FAQs</h2>
-            <button
-              onClick={() => toggleSection('faqs')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.faqs ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.faqs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             View FAQs for detailed instructions on specific features.
@@ -260,14 +249,11 @@ export default function ProductTour() {
 
         {/* Secure Asset Fund for Users (SAFU) */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('safu')}>
             <h2 className="text-2xl font-semibold text-sky-800">Secure Asset Fund for Users (SAFU)</h2>
-            <button
-              onClick={() => toggleSection('safu')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.safu ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.safu ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
@@ -289,14 +275,11 @@ export default function ProductTour() {
 
         {/* Personalized Access Control */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('accessControl')}>
             <h2 className="text-2xl font-semibold text-sky-800">Personalized Access Control</h2>
-            <button
-              onClick={() => toggleSection('accessControl')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.accessControl ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.accessControl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
@@ -318,14 +301,11 @@ export default function ProductTour() {
 
         {/* End-to-End Encryption */}
         <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('encryption')}>
             <h2 className="text-2xl font-semibold text-sky-800">End-to-End Encryption</h2>
-            <button
-              onClick={() => toggleSection('encryption')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.encryption ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.encryption ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
@@ -345,8 +325,7 @@ export default function ProductTour() {
           )}
         </div>
       </div>
-      <br></br>
-      <br></br>
+      
       <Footer/>
     </div>
   );

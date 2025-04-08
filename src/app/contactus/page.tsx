@@ -78,7 +78,7 @@ const Contact = () => {
 
       {/* FAQ Section */}
       <section className="py-16 mt-12">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center rounded-lg shadow-md border border-sky-400">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center rounded-lg border-4 border-sky-100">
           {/* Left - FAQ */}
           <div>
             <h2 className="text-2xl font-semibold mb-4 text-center">

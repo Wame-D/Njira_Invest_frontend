@@ -28,22 +28,17 @@ export default function ProductTour() {
   return (
     <div className="font-sans text-gray-900 py-16">
       <Header/>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      
       <header className="relative overflow-hidden bg-cover bg-center bg-no-repeat mb-12 text-center py-16"
   style={{ 
     backgroundImage: "url('https://www.aeaweb.org/content/file?id=7175')",
   }}>
   <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-  <div className="relative z-10">
+  <div className="relative z-10 py-12">
     <h2 className="text-3xl font-semibold text-white">
       <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
     </h2>
-    <br></br>
-    <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+    <p className="mt-4 text-gray-300 max-w-3xl mx-auto">
       Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
     </p>
   </div>

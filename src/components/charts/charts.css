@@ -1,5 +1,8 @@
 #dashboard-wrapper,
+#account-dashboard-wrapper,
 #trade-dashboard-wrapper,
+#strategy-dashboard-wrapper,
+#strategy-symbol-dashboard-wrapper,
 #signals_wrapper {
   width: 100%;
   height: fit-content;
@@ -11,8 +14,11 @@
 }
 
 #app,
+#account-dashboard-container,
 #signals-dashboard-container,
 #trade-dashboard-container,
+#strategy-dashboard-container,
+#strategy-symbol-dashboard-container,
 #superset-dashboard-container {
   width: 100% !important;
   height: fit-content;
@@ -21,6 +27,13 @@
   align-self: center !important;
   flex-grow: 1;
 }
+
+/* hiding filter bar */
+#app > div > div.css-z133oh,
+.dashboard-filter-container {
+  display: none !important;
+}
+
 
 /* Make iframe take the full page */
 iframe {
@@ -37,7 +50,7 @@ iframe {
 .css-1c5yb7h,
 .dragdroppable-column {
   background-color: black !important;
-  width: 90vw !important;
+  width: 100vw !important;
 }
 
 .css-886qwq {

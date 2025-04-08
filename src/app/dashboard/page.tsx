@@ -6,28 +6,34 @@ import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import dynamic from 'next/dynamic';
 
-import NotificationCenter from '../notification/Notification';
+import NotificationCenter from '../../components/notification/Notification';
 
 // Lazy load components
-const SupersetDashboard = dynamic(() => import('../charts/page'), { ssr: false });
-const SignalsDashboard = dynamic(() => import('../signals/signal'), { ssr: false });
-const SettingsPage = dynamic(() => import('../settings/page'), { ssr: false });
-const TradingViewWidget = dynamic(() => import('../livecharts/page'), { ssr: false });
-const TradeDashboard = dynamic(() => import('../trade_history/page'), { ssr: false });
+const SupersetDashboard = dynamic(() => import('../../components/charts/page'), { ssr: false });
+const SignalsDashboard = dynamic(() => import('../../components/signals/signal'), { ssr: false });
+const SettingsPage = dynamic(() => import('../../components/settings/page'), { ssr: false });
+const TradingViewWidget = dynamic(() => import('../../components/livecharts/page'), { ssr: false });
+const TradeDashboard = dynamic(() => import('../../components/trade_history/page'), { ssr: false });
+const AccountDashboard = dynamic(() => import('../../components/account_overview/page'), { ssr: false });
+const StrategyDashboard = dynamic(() => import('../../components/strategy_comparizon/page'), { ssr: false });
+const StrategySymbolDashboard = dynamic(() => import('../../components/strategy_vs_symbol/page'), { ssr: false });
 
 
 // importing react icons
-import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { GrFormView } from "react-icons/gr";
 import { GrFormViewHide } from "react-icons/gr";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FaCog } from "react-icons/fa";
-import { FaChartPie } from "react-icons/fa";
-import { AiOutlineHistory } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { MdDashboard } from "react-icons/md";
+import { FaMoneyCheckAlt } from "react-icons/fa";
+import { IoBarChartSharp } from "react-icons/io5";
+import { MdSettingsApplications } from "react-icons/md";
+import { MdAccountBox } from "react-icons/md";
+import { TfiMenu } from "react-icons/tfi";
+import { FaRegWindowClose } from "react-icons/fa";
+import { useRef } from "react";
 
 interface UserAccount {
   account: string;
@@ -135,8 +141,20 @@ const Dashboard = () => {
   };
 
   if (authorizeData) {
-    setCookie('userName', authorizeData.authorize.authorize.fullname);
-    setCookie('userEmail', authorizeData.authorize.authorize.email);
+    setCookie('userName', authorizeData.authorize.authorize.fullname, {
+      // secure: true,
+      secure: window.location.protocol === 'https:',
+      maxAge: 60 * 60 * 24 * 7, // 7 days 
+      sameSite: 'none',
+      domain: 'xhed.net',
+    });
+    setCookie('userEmail', authorizeData.authorize.authorize.email, {
+      // secure: true,
+      secure: window.location.protocol === 'https:',
+      maxAge: 60 * 60 * 24 * 7, // 7 days 
+      sameSite: 'none',
+      domain: 'xhed.net',
+    });
   }
 
   const handleLogout = () => {
@@ -216,92 +234,134 @@ const Dashboard = () => {
     setActiveLink(link);
   };
 
-  // State to control visibility of nav-bar
-  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [isNavVisible, setIsNavVisible] = useState(
+    typeof window !== "undefined" ? window.innerWidth > 768 : true
+  );
+
   const toggleNav = () => {
-    setIsNavVisible(prevState => !prevState);  // Toggle visibility
+    setIsNavVisible((prevState) => !prevState); // Toggle visibility
+  };
+
+  // Optional: Handle resizing to update state dynamically
+  useEffect(() => {
+    const handleResize = () => {
+      setIsNavVisible(window.innerWidth > 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // mobile profile dropdown
+  const dropdownToggleRef = useRef<HTMLInputElement>(null);
+  const closeDropdown = () => {
+    if (dropdownToggleRef.current) {
+      dropdownToggleRef.current.checked = false;
+    }
   };
 
   return (
     <div className='dashoard'>
       {/* nav bar */}
-      <div id='nav-bar'>
+      <div id='nav-bar' className='p-2'>
         <button className='toggle-nav-btn mt-4 ml-4' onClick={toggleNav}>
           {isNavVisible ? (
-            <TbLayoutSidebarLeftCollapseFilled className='toggle-icon' />
+            <FaRegWindowClose className='toggle-icon' />
           ) : (
             <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
           )}
         </button>
-        <div className='links-in-nav-bar'>
+        <div className=' w-full flex flex-col mt-[40px] relative h-[80vh] '>
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'overview' ? 'active-link' : ''}`}
-            onClick={() => handleClick('overview')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'overview' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => {
+              handleClick('overview'); // First function call
+              toggleNav(); // Second function call
+            }}
           >
-            <MdDashboard className={`link-icon ${activeLink === 'overview' ? 'active-link' : ''}`} /> <p className='link-text'>Overview</p>
+            <MdDashboard className={`text-xl ${activeLink === 'overview' ? '' : ''}`} />
+            <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Overview</p>
           </Link>
+          {/* charts */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'charts' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => {
+              handleClick('charts');
+              toggleNav();
+            }}
           >
-            <FaChartPie className={`link-icon ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text'>Charts</p>
+            < IoBarChartSharp className={`text-xl ${activeLink === 'charts' ? '' : ''}`} />
+            <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Charts</p>
           </Link>
+          {/* signals */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'trade-history' ? 'active-link' : ''}`}
-            onClick={() => handleClick('trade-history')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'signals' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { toggleNav(); handleClick('signals'); }}
           >
-            <AiOutlineHistory className={`link-icon ${activeLink === 'trade-history' ? 'active-link' : ''}`} /> <p className='link-text'>Trades</p>
+            <FaExclamationTriangle className={`text-xl ${activeLink === 'signals' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '> Signals</p>
           </Link>
-          <Link
+          {/* settings */}
+     <span className=' hidden2'>
+     <Link
             href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'signals' ? 'active-link' : ''}`}
-            onClick={() => handleClick('signals')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'settings' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => {
+              handleClick('settings');
+              toggleNav();
+            }}
           >
-            <FaExclamationTriangle className={`link-icon ${activeLink === 'signals' ? 'active-link' : ''}`} /> <p className='link-text'>Signals</p>
+            <MdSettingsApplications className={`text-xl ${activeLink === 'settings' ? 'active-link' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Bot Settings</p>
           </Link>
-          <Link
-            href="/dashboard"
-            className={`nav-links mt-8 ${activeLink === 'settings' ? 'active-link' : ''}`}
-            onClick={() => handleClick('settings')}
-          >
-            <FaCog className={`link-icon ${activeLink === 'settings' ? 'active-link' : ''}`} /> <p className='link-text'>Settings</p>
-          </Link>
-          <Link
-            href="/dashboard"
-            className={`nav-links mt-8 mb-4 ${activeLink === 'profile' ? 'active-link' : ''}`}
-            onClick={() => handleClick('profile')}
-          >
-            <FaUserCircle className={`link-icon ${activeLink === 'profile' ? 'active-link' : ''}`} /> <p className='link-text'>Profile</p>
-          </Link>
+     </span>
+          {/* profile */}
+          <div className=' hidden2'>
+            <Link
+              href="/dashboard"
+              className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'profile' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+              onClick={() => {
+                handleClick('profile');
+                toggleNav();
+              }
+              }
+            >
+              <MdAccountBox className={`text-xl ${activeLink === 'profile' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Profile</p>
+            </Link>
+          </div>
 
-          <hr className='mt-4 mb-8 opacity-50 '></hr>
-          <p className='link-text'>Account Statistics</p>
+          <hr className='mt-2 mb-2 opacity-10 '></hr>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'trade-history' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('trade-history'); toggleNav(); }}
           >
-            <MdDashboard className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>Overview</p>
+            <FaMoneyCheckAlt className={`text-xl ${activeLink === 'trade-history' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Trades</p>
           </Link>
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'account-overview' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('account-overview'); toggleNav(); }}
           >
-            <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By instrument</p>
+            <MdDashboard className={`text-xl ${activeLink === 'account-overview' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Account Stat</p>
           </Link>
+          {/* strategy analysis */}
           <Link
             href="/dashboard"
-            className={`nav-links mt-4 ${activeLink === 'charts' ? 'active-link' : ''}`}
-            onClick={() => handleClick('charts')}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'strategy_comparizon' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('strategy_comparizon'); toggleNav(); }}
           >
-            <FaChartPie className={`link-icon text-m ${activeLink === 'charts' ? 'active-link' : ''}`} /> <p className='link-text text-sm'>By strategy</p>
+            < IoBarChartSharp className={`text-xl ${activeLink === 'strategy_comparizon' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Strategy Analysis</p>
           </Link>
-
-
+          {/* strate symbol */}
+          <Link
+            href="/dashboard"
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize${activeLink === 'strategt_vs_symbol' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            onClick={() => { handleClick('strategt_vs_symbol'); toggleNav(); }}
+          >
+            < IoBarChartSharp className={`text-xl ${activeLink === 'strategt_vs_symbol' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Strategy & Symbol</p>
+          </Link>
 
           <button className='logout-link mt-4' onClick={handleLogout}>
             <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
@@ -313,20 +373,17 @@ const Dashboard = () => {
       <div
         className={`dashboard-content ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}
       >
-        <div className='small-header'>
+        <div className={`small-header flex flex-row justify-between items-center pr-4 h-[6rem] ${isNavVisible ? 'w-[85vw]' : 'w-full px-4'} `}>
           <div className='flex flex-row '>
-            <button className='toggle-nav-btn ml-8' onClick={toggleNav}>
-              {!isNavVisible && (
-                <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
-              )}
+            <button className='toggle-nav-btn ml-8 sm:ml-2 xs:ml-2' onClick={toggleNav}>
+              {!isNavVisible && <TfiMenu className='toggle-icon' />}
             </button>
-
             <Link href="/">
               <h1 className='logo'>FX AUTO</h1>
             </Link>
           </div>
 
-          <div>
+          <div className=' balance_div_in_hearder'>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className="flex items-center space-x-2">
               {/* Balance Label */}
@@ -342,7 +399,7 @@ const Dashboard = () => {
                           <div className="h-8 bg-gray-200 dark:bg-gray-700 w-32 mb-2 mt-2"></div>
                         </div>
                       )
-                      ) : '########'}
+                      ) : '##,###,###'}
                   </p>
                   <button
                     onClick={() => setShowBalance((prev) => !prev)}
@@ -361,7 +418,7 @@ const Dashboard = () => {
           </div>
 
           {/* div for execution time */}
-          <div className='flex flex-row'>
+          <div className='  flex flex-row excution_time'>
             {!isTrading && currentTime == 0 && (
               <div>
                 <h2>Bot execution time: </h2>
@@ -384,13 +441,14 @@ const Dashboard = () => {
             )}
           </div>
           {/* div for personal information */}
-          <div className='flex flex-row items-center justify-center gap-8'>
-            <NotificationCenter target_role={'admin'} />
-            <div className='flex flex-row items-center justify-center'>
+          <div className=' flex flex-row items-center justify-center md:gap-8'>
+
+            <div className='flex flex-row items-center justify-center names_and_email'>
               <div>
                 <FaUserCircle className='face-icon' />
+
               </div>
-              <div className='flex flex-col mr-8 '>
+              <div className='flex flex-col mr-8  '>
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -408,8 +466,68 @@ const Dashboard = () => {
                 )}
               </div>
             </div>
+            {/* Mobile content */}
+            <div className="relative mobile-drop_down">
+              {/* Hidden Checkbox for Toggling */}
+              <input type="checkbox" id="dropdown-toggle" className="peer hidden" ref={dropdownToggleRef} />
+
+              {/* Dropdown Button */}
+              <label
+                htmlFor="dropdown-toggle"
+                className="cursor-pointer text-white inline-flex items-center px-1 md:px-3 py-2"
+              >
+                <FaUserCircle className='face-icon' />
+                <svg className="w-2.5 h-2.5 ml-1 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                </svg>
+              </label>
+
+              {/* Dropdown Menu */}
+              <div className="absolute right-2 top-12 mt-2 w-44 bg-white rounded shadow-md opacity-100 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-200">
+                <div className="px-4 py-3 text-sm text-gray-900">
+                  <div>{userName}</div>
+                  <div className="font-medium truncate">{email}</div>
+                </div>
+                <ul className="py-2 text-sm text-gray-700">
+                  <li>
+                    <Link
+                      href="/dashboard"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => {
+                        handleClick('settings');
+                        closeDropdown(); // Close on click
+                      }}
+                    >
+                      Settings
+                    </Link>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={closeDropdown}
+                    >
+                      Profile
+                    </a>
+                  </li>
+                </ul>
+                <div className="py-2">
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      closeDropdown(); // Close on logout
+                    }}
+                    className="block px-4 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Sign out
+                  </button>
+                </div>
+              </div>
+            </div>
+            <NotificationCenter target_role={'admin'} />
           </div>
         </div>
+
         <div id="over" className={`hidden-content ${activeLink === 'overview' ? 'superset-chatrs-div' : ''}`}>
           {activeLink === 'overview' && <SupersetDashboard />}
         </div>
@@ -430,6 +548,20 @@ const Dashboard = () => {
           {activeLink === 'trade-history' && <TradeDashboard />}
         </div>
 
+        {/* account overview dashboard */}
+        <div className={`hidden-content ${activeLink === 'account-overview' ? 'superset-chatrs-div' : ''}`}>
+          {activeLink === 'account-overview' && < AccountDashboard />}
+        </div>
+
+        {/* strategy comparizon */}
+        <div className={`hidden-content ${activeLink === 'strategy_comparizon' ? 'superset-chatrs-div' : ''}`}>
+          {activeLink === 'strategy_comparizon' && <StrategyDashboard />}
+        </div>
+
+        {/* strategy vs symbol comparizon */}
+        <div className={`hidden-content ${activeLink === 'strategt_vs_symbol' ? 'superset-chatrs-div' : ''}`}>
+          {activeLink === 'strategt_vs_symbol' && <StrategySymbolDashboard />}
+        </div>
       </div>
     </div>
   )

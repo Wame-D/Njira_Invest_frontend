@@ -484,14 +484,14 @@ const SettingsPage = () => {
     };
 
     return (
-        <div className='settings-div'>
+        <div className='pl-4 pr-4 settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
-            <p className='text-m description-text opacity-90'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
+            <p className='text-m m-0 text-gray-700'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
             {/* strategy analysis setting */}
             <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Strategy</h2>
-                    <p className='text-m description-text opacity-90'>Choose a strategy that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
+                    <p className='text-m m-0 text-gray-700'>Choose a strategy that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
                     <h3>Your current strategy:</h3>
                     <p className='text-m strategy' >{strategy}</p>
                 </div>
@@ -503,21 +503,21 @@ const SettingsPage = () => {
                                 checked={selectedStrategy === 'Moving_averages'}
                                 value="Moving_averages"
                                 onChange={handleRadioChange}></input>
-                            <label className='text-m description-text opacity-90 '>Moving averages</label>
+                            <label className='text-m m-0 text-gray-700'>Moving averages</label>
                         </div>
                         <div className='flex flex-row items-center '>
                             <input className='boxes-str mr-2' name='mal' id='mal' type="radio"
                                 checked={selectedStrategy === 'malysian'}
                                 value="malysian"
                                 onChange={handleRadioChange}></input>
-                            <label htmlFor='mal' className='text-m description-text opacity-90 ml-2'>Malysian strategy</label>
+                            <label htmlFor='mal' className='text-m m-0 text-gray-700 ml-2'>Malysian strategy</label>
                         </div>
                         <div className='flex flex-row items-center '>
                             <input className='boxes-str mr-2 ' name='mal' id='mal' type="radio"
                                 checked={selectedStrategy === 'both'}
                                 value="both"
                                 onChange={handleRadioChange}></input>
-                            <label htmlFor='mal' className='text-m description-text opacity-90'>Both</label>
+                            <label htmlFor='mal' className='text-m m-0 text-gray-700'>Both</label>
                         </div>
                         <input className='submitt mt-4' type='Submit'></input>
                         {error1 && <p style={{ color: "red" }}>{error1}</p>}
@@ -529,11 +529,11 @@ const SettingsPage = () => {
             <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Symbols</h2>
-                    <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
+                    <p className='text-m m-0 text-gray-700'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
                     <h3>Your current selected symbols:</h3>
                     <ul className=" mt-4 ml-6">
                         {symbols.map((item, index) => (
-                            <li key={index} className="text-m description-text opacity-90">
+                            <li key={index} className='text-m m-0 text-gray-700'>
                                 <button
                                     onClick={() => deleteItem(item[0])}
                                     className=" mr-4"
@@ -557,7 +557,7 @@ const SettingsPage = () => {
                                 type="checkbox"
                                 value="Gold"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-label' : ''}`}>Gold</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-label' : ''}`}>Gold</label>
                         </div>
 
                         <div className='flex flex-row items-center '>
@@ -566,7 +566,7 @@ const SettingsPage = () => {
                                 type="checkbox"
                                 value="US_30"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
                         </div>
 
                         <div className='flex flex-row items-center'>
@@ -575,7 +575,7 @@ const SettingsPage = () => {
                                 type="checkbox"
                                 value="frxEURUSD"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
                         </div>
 
                         <div className='flex flex-row items-center '>
@@ -584,7 +584,7 @@ const SettingsPage = () => {
                                 type="checkbox"
                                 value="V_75"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m description-text opacity-90 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
                         </div>
 
                         <input className='submitt mt-4' type='Submit'></input>
@@ -597,17 +597,17 @@ const SettingsPage = () => {
             <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Risk Analysis</h2>
-                    <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
+                    <p className='text-m m-0 text-gray-700'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
                     <h3>Your current settings:</h3>
-                    <p className='text-m description-text opacity-90'>Risk amount per trade: <span className='text-m strategy'>{risk[0]}%</span></p>
-                    <p className='text-m description-text opacity-90'>Risk amount per trade: <span className='text-m strategy'>{risk[1]}%</span></p>
+                    <p className='text-m m-0 text-gray-700'>Risk amount per trade: <span className='text-m strategy'>{risk[0]}%</span></p>
+                    <p className='text-m m-0 text-gray-700'>Risk amount per trade: <span className='text-m strategy'>{risk[1]}%</span></p>
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}
                 </div>
                 <div className='small-divs flex flex-col'>
                     <h2>Enter risk details below</h2>
                     <form className='w-full h-fit mt-4 flex flex-col' onSubmit={saveRiskData}>
-                        <label className='text-m description-text opacity-70 mb-2'>Risk per trade, Max 3%</label>
+                        <label className='text-m m-0 text-gray-700 mb-2'>Risk per trade, Max 3%</label>
                         <input
                             className="risk_boxes  mb-2"
                             type="number"
@@ -615,7 +615,7 @@ const SettingsPage = () => {
                             max={3}
                             onChange={(e) => setPerTrade(Number(e.target.value))}
                         />
-                        <label className='text-m description-text opacity-70 mt-4 mb-2'>Risk per Day, max 30% </label>
+                        <label className='text-m m-0 text-gray-700 mt-4 mb-2'>Risk per Day, max 30% </label>
                         <input
                             className="risk_boxes"
                             type="number"
@@ -634,20 +634,20 @@ const SettingsPage = () => {
             <div className='strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Start and stop Settings</h2>
-                    <p className='text-m description-text opacity-90'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
+                    <p className='text-m m-0 text-gray-700'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
                     <h3>Your settings:</h3>
 
                     <h3>Loss margin:</h3>
-                    <p className='text-m description-text opacity-90'>Max loss per day: <span className='text-m strategy'>{margins[2]}%</span></p>
-                    <p className='text-m description-text opacity-90'>Max overall loss: <span className='text-m strategy'>{margins[3]}%</span></p>
+                    <p className='text-m m-0 text-gray-700'>Max loss per day: <span className='text-m strategy'>{margins[2]}%</span></p>
+                    <p className='text-m m-0 text-gray-700'>Max overall loss: <span className='text-m strategy'>{margins[3]}%</span></p>
 
                     <h3>Win margin:</h3>
-                    <p className='text-m description-text opacity-90'>Max Win per dat: <span className='text-m strategy'>{margins[4]}%</span></p>
-                    <p className='text-m description-text opacity-90'>Max overall win: <span className='text-m strategy'>{margins[5]}%</span></p>
+                    <p className='text-m m-0 text-gray-700'>Max Win per dat: <span className='text-m strategy'>{margins[4]}%</span></p>
+                    <p className='text-m m-0 text-gray-700'>Max overall win: <span className='text-m strategy'>{margins[5]}%</span></p>
 
                     <h3>Time Frame:</h3>
-                    <p className='text-m description-text opacity-90'>Start Date: <span className='text-m strategy'>{margins[0]}</span></p>
-                    <p className='text-m description-text opacity-90'>Stop Date: <span className='text-m strategy'>{margins[1]}</span></p>
+                    <p className='text-m m-0 text-gray-700'>Start Date: <span className='text-m strategy'>{margins[0]}</span></p>
+                    <p className='text-m m-0 text-gray-700'>Stop Date: <span className='text-m strategy'>{margins[1]}</span></p>
 
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}
@@ -656,7 +656,7 @@ const SettingsPage = () => {
                     <h2>Enter your choices below</h2>
                     <form className="w-full h-fit mt-4 flex flex-col" onSubmit={saveProfitLossMargin}>
                         <h3>Maximum percentage loss margin</h3>
-                        <label className='text-m mt-4 description-text opacity-70'>Max percentage loss per day</label>
+                        <label className='text-m mt-4 m-0 text-gray-700'>Max percentage loss per day</label>
                         <input
                             className="risk_boxes mb-4"
                             type="number"
@@ -664,7 +664,7 @@ const SettingsPage = () => {
                             max={5}
                             onChange={(e) => setMaxLossPerDay(Number(e.target.value))}
                         />
-                        <label className='text-m mt-2 description-text opacity-70'>Max percentage overall loss</label>
+                        <label className='text-m mt-2 m-0 text-gray-700'>Max percentage overall loss</label>
                         <input
                             className="risk_boxes"
                             type="number"
@@ -673,7 +673,7 @@ const SettingsPage = () => {
                             onChange={(e) => setOverallLoss(Number(e.target.value))}
                         />
                         <h3>Maximum percentage win margin</h3>
-                        <label className='text-m mt-2 description-text opacity-70'>Max percentage win per day</label>
+                        <label className='text-m mt-2 m-0 text-gray-700'>Max percentage win per day</label>
                         <input
                             className="risk_boxes mb-4"
                             type="number"
@@ -681,7 +681,7 @@ const SettingsPage = () => {
                             max={30}
                             onChange={(e) => setMaxWinPerDay(Number(e.target.value))}
                         />
-                        <label className='text-m mt-2 description-text opacity-70'>Max percentage overall win</label>
+                        <label className='text-m mt-2 m-0 text-gray-700'>Max percentage overall win</label>
                         <input
                             className="risk_boxes mt-2"
                             type="number"
@@ -690,7 +690,7 @@ const SettingsPage = () => {
                             onChange={(e) => setOverallWin(Number(e.target.value))}
                         />
                         <h3>When should the bot start/stop trading on your account?</h3>
-                        <label className='text-m mt-2 description-text opacity-70'>Start Date</label>
+                        <label className='text-m mt-2 m-0 text-gray-700'>Start Date</label>
                         <input
                             className="risk_boxes mb-4"
                             type="date"
@@ -699,7 +699,7 @@ const SettingsPage = () => {
                             onChange={handleStartDateChange}
                             min={today}
                         />
-                        <label className='text-m mt-2 description-text opacity-70'>Stop Date</label>
+                        <label className='text-m mt-2 m-0 text-gray-700'>Stop Date</label>
                         <input
                             className="risk_boxes mt-2"
                             type="date"
@@ -719,24 +719,24 @@ const SettingsPage = () => {
             </div>
 
             {/* start and stop buttons */}
-            <div className='strategy-div mb-8'>
+            <div className=' flex justify-center items-center strategy-div mb-8'>
                 <div className='small-divs flex flex-col '>
                     <h2>You are all set</h2>
-                    <p className='text-m description-text opacity-90'>You have set up all the neccessary information needed, you can now press the start trading button to authorise the bot to trade on your account</p>
-                    <p className='text-m description-text opacity-90'>You can modify these settings anytime you want and they will be effective immediately, you can also stop the bot anytime you want y pressing stop trading button</p>
+                    <p className='text-m m-0 text-gray-700'>You have set up all the neccessary information needed, you can now press the start trading button to authorise the bot to trade on your account</p>
+                    <p className='text-m m-0 text-gray-700'>You can modify these settings anytime you want and they will be effective immediately, you can also stop the bot anytime you want y pressing stop trading button</p>
                 </div>
                 <div className='small-divss flex flex-row '>
                     <button
                         onClick={handleStart}
                         disabled={isTrading}
-                        className={`button ${isTrading ? "disabled" : ""}`}
+                        className={`button1 ${isTrading ? "disabled" : ""}`}
                     >
                         Start Trading
                     </button>
                     <button
                         onClick={handleStop}
                         disabled={!isTrading}
-                        className={`button ${!isTrading ? "disabled" : ""}`}
+                        className={`button1 ${!isTrading ? "disabled" : ""}`}
                     >
                         Stop Trading
                     </button>

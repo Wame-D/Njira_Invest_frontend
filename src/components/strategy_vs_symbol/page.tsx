@@ -1,13 +1,17 @@
 'use client';
 import React, { useEffect } from "react";
 import { embedDashboard, EmbedDashboardParams } from "@preset-sdk/embedded";
-import '../charts/charts.css';
+// import './history.css';
+import { getCookie } from 'cookies-next';
+const userEmail = getCookie('userEmail');
 
-const SignalsDashboard = () => {
+const StrategySymbolDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
-  const embeddedDashboardId = "b1fb63ec-24b8-4204-849d-082da09b2a5c";
+  const embeddedDashboardId = "461fc274-2d7e-4084-ba54-1671d425479b";
+
 
   const fetchGuestToken = async () => {
+
     try {
       const response = await fetch('https://api.xhed.net/generate-guest-token/');
 
@@ -21,11 +25,12 @@ const SignalsDashboard = () => {
       console.error('Error fetching guest token:', error);
       throw error;
     }
+
   };
 
   useEffect(() => {
 
-    const mountPoint = document.getElementById("signals-dashboard-container");
+    const mountPoint = document.getElementById("strategy-symbol-dashboard-container");
 
     if (mountPoint) {
       const initializeDashboard = async () => {
@@ -34,8 +39,7 @@ const SignalsDashboard = () => {
           const guestToken = await fetchGuestToken();
 
           console.log("Fetched guest token:", guestToken); // Debug the token
-
-          // Embed the dashboard with the guest token
+          // Embed the dashboard with the guest token and user email filter
           await embedDashboard({
             id: embeddedDashboardId,
             supersetDomain,
@@ -47,9 +51,14 @@ const SignalsDashboard = () => {
             },
             dashboardUiConfig: {
               hideTitle: true,
-              hideChartControls: false,
+              hideChartControls: true,
               filters: {
+                visible: false,
                 expanded: false,
+              },
+
+              urlParams: {
+                email: userEmail
               },
             },
             iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
@@ -60,18 +69,18 @@ const SignalsDashboard = () => {
       };
 
       initializeDashboard();
+    }
 
-    };
-  }, [embeddedDashboardId, supersetDomain]);
+  }, [embeddedDashboardId, supersetDomain, userEmail]); // Add userEmail to the dependency array
 
   return (
     <>
-      <div id="signals_wrapper">
-        <div id="signals-dashboard-container" className="w-screen h-screen">
+      <div id="strategy-symbol-dashboard-wrapper">
+        <div id="strategy-symbol-dashboard-container" className="w-screen h-screen">
         </div>
       </div>
     </>
   );
 };
 
-export default SignalsDashboard;
+export default StrategySymbolDashboard;

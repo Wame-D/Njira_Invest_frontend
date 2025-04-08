@@ -20,7 +20,7 @@ const StrategySymbolDashboard = dynamic(() => import('../../components/strategy_
 
 
 // importing react icons
-import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+import { TbDivide, TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { GrFormView } from "react-icons/gr";
 import { GrFormViewHide } from "react-icons/gr";
 import { FaExclamationTriangle } from "react-icons/fa";
@@ -252,6 +252,7 @@ const Dashboard = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // mobile profile dropdown
   const dropdownToggleRef = useRef<HTMLInputElement>(null);
   const closeDropdown = () => {
     if (dropdownToggleRef.current) {
@@ -303,9 +304,10 @@ const Dashboard = () => {
             <FaExclamationTriangle className={`text-xl ${activeLink === 'signals' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '> Signals</p>
           </Link>
           {/* settings */}
-          <Link
+     <span className=' hidden2'>
+     <Link
             href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full hidden md:flex items-center gap-4 px-4 capitalize ${activeLink === 'settings' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'settings' ? 'bg-sky-700/70 w-full text-white' : ''}`}
             onClick={() => {
               handleClick('settings');
               toggleNav();
@@ -313,18 +315,21 @@ const Dashboard = () => {
           >
             <MdSettingsApplications className={`text-xl ${activeLink === 'settings' ? 'active-link' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Bot Settings</p>
           </Link>
+     </span>
           {/* profile */}
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full hidden md:flex items-center gap-4 px-4 capitalize${activeLink === 'profile' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => {
-              handleClick('profile');
-              toggleNav();
-            }
-            }
-          >
-            <MdAccountBox className={`text-xl ${activeLink === 'profile' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Profile</p>
-          </Link>
+          <div className=' hidden2'>
+            <Link
+              href="/dashboard"
+              className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'profile' ? 'bg-sky-700/70 w-full text-white' : ''}`}
+              onClick={() => {
+                handleClick('profile');
+                toggleNav();
+              }
+              }
+            >
+              <MdAccountBox className={`text-xl ${activeLink === 'profile' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Profile</p>
+            </Link>
+          </div>
 
           <hr className='mt-2 mb-2 opacity-10 '></hr>
           <Link
@@ -436,8 +441,8 @@ const Dashboard = () => {
             )}
           </div>
           {/* div for personal information */}
-          <div className=' flex flex-row items-center justify-center gap-8'>
-            <NotificationCenter target_role={'admin'} />
+          <div className=' flex flex-row items-center justify-center md:gap-8'>
+
             <div className='flex flex-row items-center justify-center names_and_email'>
               <div>
                 <FaUserCircle className='face-icon' />
@@ -461,7 +466,6 @@ const Dashboard = () => {
                 )}
               </div>
             </div>
-
             {/* Mobile content */}
             <div className="relative mobile-drop_down">
               {/* Hidden Checkbox for Toggling */}
@@ -470,7 +474,7 @@ const Dashboard = () => {
               {/* Dropdown Button */}
               <label
                 htmlFor="dropdown-toggle"
-                className="cursor-pointer text-white inline-flex items-center px-3 py-2"
+                className="cursor-pointer text-white inline-flex items-center px-1 md:px-3 py-2"
               >
                 <FaUserCircle className='face-icon' />
                 <svg className="w-2.5 h-2.5 ml-1 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -520,6 +524,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+            <NotificationCenter target_role={'admin'} />
           </div>
         </div>
 

@@ -74,7 +74,7 @@ export default function Services() {
             {/* Key Features Grid */}
             <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full">
                 {/* Automated Trading */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <AiOutlineRobot size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Automated Trading</h2>
                     <p className="mt-4 text-gray-600">
@@ -86,7 +86,7 @@ export default function Services() {
                 </div>
 
                 {/* Real-time Analytics and Reporting */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <FiPieChart size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Real-time Analytics and Reporting</h2>
                     <p className="mt-4 text-gray-600">
@@ -98,7 +98,7 @@ export default function Services() {
                 </div>
 
                 {/* Risk Management Tools */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <FiShield size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Risk Management Tools</h2>
                     <p className="mt-4 text-gray-600">
@@ -110,7 +110,7 @@ export default function Services() {
                 </div>
 
                 {/* Profit and Loss Tracking */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <AiOutlineLineChart size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Profit and Loss Tracking</h2>
                     <p className="mt-4 text-gray-600">
@@ -122,7 +122,7 @@ export default function Services() {
                 </div>
 
                 {/* Multi-Asset Trading Support */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <FiDollarSign size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Multi-Asset Trading Support</h2>
                     <p className="mt-4 text-gray-600">
@@ -134,7 +134,7 @@ export default function Services() {
                 </div>
 
                 {/* AI-Powered Market Predictions */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg shadow-md w-80">
+                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <AiOutlineBulb size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">AI-Powered Market Predictions</h2>
                     <p className="mt-4 text-gray-600">

@@ -36,11 +36,26 @@ const Contact = () => {
           <h3 className="text-lg font-semibold mb-4">Get in Touch with Us</h3>
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="Input your name" className="p-2 w-full border rounded-md" />
-              <input type="email" placeholder="Input your email" className="p-2 w-full border rounded-md" />
+            <input
+  type="text"
+  placeholder="Input your name"
+  className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md"
+/>
+<input
+  type="email"
+  placeholder="Input your email"
+  className="p-2 w-full border border-sky-500 rounded-md"
+/>
             </div>
-            <input type="text" placeholder="Subject" className="p-2 w-full border rounded-md" />
-            <textarea placeholder="Submit your message request" className="p-2 w-full border rounded-md h-24"></textarea>
+            <input
+  type="text"
+  placeholder="Subject"
+  className="p-2 w-full border border-sky-500 rounded-md"
+/>
+<textarea
+  placeholder="Submit your message request"
+  className="p-2 w-full border border-sky-500 rounded-md h-24"
+/>
             <button className="bg-darkBlue text-white px-4 py-2 rounded-md">Send message</button>
           </form>
         </div >

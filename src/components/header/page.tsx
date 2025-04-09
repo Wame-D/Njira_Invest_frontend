@@ -22,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <div className='px-4 header'>
+    <div className='px-[5%] header'>
       <h1 className='logo'>FX <strong className='trading'>AUTO</strong></h1>
 
       <div className={`menu-icon ${showLinks ? 'change' : ''}`} onClick={toggleLinks}>

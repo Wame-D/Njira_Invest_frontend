@@ -1,28 +1,28 @@
 import React from 'react';
-import { 
-  AiOutlineLineChart, 
-  AiOutlineRobot, 
-  AiOutlineBulb,
-  AiOutlineRight 
+import {
+    AiOutlineLineChart,
+    AiOutlineRobot,
+    AiOutlineBulb,
+    AiOutlineRight
 } from 'react-icons/ai';
-import { 
-  FiShield, 
-  FiPieChart,
-  FiDollarSign,
-  FiHelpCircle,
-  FiBookOpen,
-  FiPhone,
-  FiLock,
-  FiUsers
+import {
+    FiShield,
+    FiPieChart,
+    FiDollarSign,
+    FiHelpCircle,
+    FiBookOpen,
+    FiPhone,
+    FiLock,
+    FiUsers
 } from 'react-icons/fi';
 import '../../app/globals.css';
 import Link from 'next/link';
 
 export default function Services() {
     return (
-        <div className="flex flex-col items-center justify-center pt-20 mb-20 w-full">
+        <div className="flex flex-col items-center justify-center pt-20 mb-20 w-full px-4">
             {/* Image and Text Section */}
-            <div className="flex items-center justify-center gap-8 mb-10 max-w-6xl w-full">
+            <div className="flex items-center justify-center gap-8 mb-16  w-full md:w-[90%] ">
                 {/* Image Slot */}
                 <div className="w-1/2">
                     <img
@@ -74,7 +74,7 @@ export default function Services() {
             </h2>
 
             {/* Key Features Grid */}
-            <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full">
+            <div className="flex flex-wrap justify-center gap-6 w-full md:w-[90%]">
                 {/* Automated Trading */}
                 <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
                     <AiOutlineRobot size={50} className="text-sky-500" />
@@ -149,11 +149,11 @@ export default function Services() {
             </div>
 
             {/* Need Help Section */}
-            <div className="mt-16 w-full max-w-6xl">
+            <div className="mt-16 w-full md:w-[90%]">
                 <h3 className="text-2xl font-bold mb-6 text-center">
                     Need <span className="text-sky-500">Help?</span>
                 </h3>
-                <div className="flex justify-center gap-8 p-6 bg-white">
+                <div className="flex justify-center lg:justify-between gap-8 p-6 bg-white w-full ">
                     {/* Phone Support */}
                     <div className="flex items-start w-64">
                         <FiPhone size={80} className="text-sky-500 mr-4" />
@@ -188,7 +188,7 @@ export default function Services() {
                         <div>
                             <h4 className="text-lg font-semibold">Product Tour</h4>
                             <p className="mt-2 text-gray-600 text-sm">
-                            Stay informed with the latest updates and developments in FxAuto.
+                                Stay informed with the latest updates and developments in FxAuto.
                             </p>
                             <a href="/producttour" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                 Learn More <AiOutlineRight className="ml-1" />
@@ -199,7 +199,7 @@ export default function Services() {
             </div>
 
             {/* Trusted Crypto Exchange Section */}
-            <div className="mt-16 w-full max-w-6xl">
+            <div className="mt-16 w-full md:w-[90%]">
                 <div className="flex items-center justify-center gap-8">
                     {/* Left Side - Text Content */}
                     <div className="w-1/2">
@@ -209,7 +209,7 @@ export default function Services() {
                         <p className="text-gray-600 mb-8">
                             Here at FxAuto, we are committed to user protection with strict protocol and industry-leading technical measures.
                         </p>
-                        
+
                         {/* Three Feature Blocks with Icons on Left */}
                         <div className="space-y-6">
                             {/* Secure Asset Fund */}
@@ -218,39 +218,39 @@ export default function Services() {
                                 <div className="border-l-4 border-sky-500 pl-4 w-full">
                                     <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">Secure Asset Fund for Users (SAFU)</h4>
                                     <p className="mt-2 text-gray-600 text-sm">
-                                    Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
+                                        Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
                                     </p>
                                     <a href="/producttour#safu-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                         Learn More <AiOutlineRight className="ml-1" />
                                     </a>
                                 </div>
                             </div>
-                            
+
                             {/* Personalized Access Control */}
                             <div className="flex items-start gap-4">
                                 <FiLock size={24} className="text-sky-500 mt-1 flex-shrink-0" />
                                 <div className="border-l-4 border-sky-500 pl-4 w-full">
                                     <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">Personalized Access Control</h4>
                                     <p className="mt-2 text-gray-600 text-sm">
-                                    Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
+                                        Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
                                     </p>
                                     <a href="/producttour#accesscontrol-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                         Learn More <AiOutlineRight className="ml-1" />
                                     </a>
                                 </div>
                             </div>
-                            
+
                             {/* Secure Asset Fund for All */}
                             <div className="flex items-start gap-4">
                                 <FiUsers size={24} className="text-sky-500 mt-1 flex-shrink-0" />
                                 <div className="border-l-4 border-sky-500 pl-4 w-full">
                                     <h4 className="text-lg font-semibold pb-2 border-b border-gray-200">End-to-End Encryption</h4>
                                     <p className="mt-2 text-gray-600 text-sm">
-                                    Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
+                                        Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
                                     </p>
                                     <a href="/producttour#endtoend-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-    Learn More <AiOutlineRight className="ml-1" />
-</a>
+                                        Learn More <AiOutlineRight className="ml-1" />
+                                    </a>
                                 </div>
                             </div>
                         </div>

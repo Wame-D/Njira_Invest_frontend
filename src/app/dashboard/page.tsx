@@ -155,9 +155,9 @@ const Dashboard = () => {
   }
 
   const handleLogout = () => {
-    deleteCookie('userToken');
-    deleteCookie('userEmail');
-    deleteCookie('userName');
+    deleteCookie('userToken', { domain: 'xhed.net', path: '/' });
+    deleteCookie('userEmail', { domain: 'xhed.net', path: '/' });
+    deleteCookie('userName', { domain: 'xhed.net', path: '/' });
     router.replace('/');
     console.log("User token  and email cleared from this pc.");
   };

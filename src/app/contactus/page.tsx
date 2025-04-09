@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../components/header/page";
 import Footer from "../../components/footer/page";
+import { FaClock, FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
 const Contact = () => {
   return (
@@ -52,25 +53,25 @@ const Contact = () => {
           </p>
           <div className="space-y-4">
             {/* Address */}
-            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
-              <span className="text-xl">📍</span>
-              <p className="font-semibold">University Of Malawi</p>
-            </div>
+<div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
+  <FaMapMarkerAlt className="text-sky-500 text-xl" />
+  <p className="font-semibold">University Of Malawi</p>
+</div>
             {/* Mobile */}
-            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
-              <span className="text-xl">📞</span>
-              <p className="font-semibold">(+265) 990 000 000</p>
-            </div>
+<div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
+  <FaPhone className="text-sky-500 text-xl" />
+  <p className="font-semibold">(+265) 990 000 000</p>
+</div>
             {/* Availability */}
-            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
-              <span className="text-xl">⏰</span>
-              <p className="font-semibold">Daily 07 am - 05 pm</p>
-            </div>
+<div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
+  <FaClock className="text-sky-500 text-xl" />  
+  <p className="font-semibold">Daily 07 am - 05 pm</p>
+</div>
             {/* Email */}
-            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
-              <span className="text-xl">📧</span>
-              <p className="font-semibold">support@autofx.com</p>
-            </div>
+<div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
+  <FaEnvelope className="text-sky-500 text-xl" />
+  <p className="font-semibold">support@autofx.com</p>
+</div>
           </div>
 
         </div>

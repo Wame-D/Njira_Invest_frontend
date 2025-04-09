@@ -269,35 +269,6 @@ export default function ProductTour() {
           )}
         </div>
 
-        
-        {/* FAQs */}
-        <div id='faqs' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('faqs')}>
-            <h2 className="text-2xl font-semibold text-sky-800">FAQs</h2>
-            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.faqs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-          <p className="mt-3 text-gray-700">
-            View FAQs for detailed instructions on specific features.
-          </p>
-          
-          {expandedSections.faqs && (
-            <div className="mt-6 space-y-4 pl-6 border-l-2 border-sky-500">
-              <div className="space-y-2">
-                <h3 className="font-medium text-sky-700">Getting Started</h3>
-                <div className="ml-4 space-y-2 text-gray-600">
-                  <p>• What is algorithmic trading?</p>
-                  <p>• How does our platform work?</p>
-                </div>
-              </div>
-              <button className="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg text-white">
-                View Full FAQ
-              </button>
-            </div>
-          )}
-        </div>
-
         {/* Secure Asset Fund for Users (SAFU) */}
         <div id='safu' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('safu')}>

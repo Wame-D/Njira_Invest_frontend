@@ -42,10 +42,10 @@ const Contact = () => {
             <textarea placeholder="Submit your message request" className="p-2 w-full border rounded-md h-24"></textarea>
             <button className="bg-black text-white px-4 py-2 rounded-md">Send message</button>
           </form>
-        </div>
+        </div >
 
         {/* Contact Details Section */}
-        <div>
+        <div id="chatnow">
           <h3 className="text-lg font-semibold mb-4">Contact Details</h3>
           <p className="text-gray-500 mb-4">
             Reach us for inquiries about our Forex trading bot, account setup, or technical support. We&apos;re here to assist you!
@@ -77,7 +77,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 mt-12">
+      <section id="faqs" className="py-16 mt-12">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center rounded-lg border-4 border-sky-100">
           {/* Left - FAQ */}
           <div>

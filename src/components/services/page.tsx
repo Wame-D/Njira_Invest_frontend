@@ -48,6 +48,7 @@ export default function Services() {
                             <p className="text-gray-600">
                                 Enjoy automated trading on selected indices.
                             </p>
+                            <br></br>
                             <Link href="/producttour#newfeatures-expand" className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition">
                                 Learn More
                             </Link>
@@ -159,10 +160,10 @@ export default function Services() {
                         <div>
                             <h4 className="text-lg font-semibold">24/7 Phone Support</h4>
                             <p className="mt-2 text-gray-600 text-sm">
-                                Chat our customer service team anytime for immediate assistance.
+                                Contact our customer service team anytime for immediate assistance.
                             </p>
-                            <a href="/producttour#phonesupport-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                                Learn More <AiOutlineRight className="ml-1" />
+                            <a href="/contactus#chatnow" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Contact Now <AiOutlineRight className="ml-1" />
                             </a>
                         </div>
                     </div>
@@ -175,7 +176,7 @@ export default function Services() {
                             <p className="mt-2 text-gray-600 text-sm">
                                 View FAQs for detailed instructions on specific features.
                             </p>
-                            <a href="/producttour#faqs-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                            <a href="/contactus#faqs" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                 Learn More <AiOutlineRight className="ml-1" />
                             </a>
                         </div>

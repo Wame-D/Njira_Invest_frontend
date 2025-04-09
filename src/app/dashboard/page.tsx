@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import dynamic from 'next/dynamic';
-
 import NotificationCenter from '../../components/notification/Notification';
 
 // Lazy load components
@@ -18,19 +17,16 @@ const AccountDashboard = dynamic(() => import('../../components/account_overview
 const StrategyDashboard = dynamic(() => import('../../components/strategy_comparizon/page'), { ssr: false });
 const StrategySymbolDashboard = dynamic(() => import('../../components/strategy_vs_symbol/page'), { ssr: false });
 
-
 // importing react icons
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { GrFormView } from "react-icons/gr";
 import { GrFormViewHide } from "react-icons/gr";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
 import { MdDashboard } from "react-icons/md";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { IoBarChartSharp } from "react-icons/io5";
 import { MdSettingsApplications } from "react-icons/md";
-import { MdAccountBox } from "react-icons/md";
 import { TfiMenu } from "react-icons/tfi";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useRef } from "react";
@@ -95,11 +91,11 @@ const Dashboard = () => {
         { account: acct1, token: token1, currency: cur1 },
       ];
       setCookie('userToken', accounts[0].token, {
-        // secure: true,
-        secure: window.location.protocol === 'https:',
+        secure: true,
+        // secure: window.location.protocol === 'https:',
         maxAge: 60 * 60 * 24 * 7, // 7 days 
         sameSite: 'none',
-        domain: 'xhed.net',
+        // domain: 'xhed.net',
       });
       authorizeUser(accounts[0].token);
     } else if (cookietoken) {
@@ -128,7 +124,6 @@ const Dashboard = () => {
         console.error('Authorization failed:', errorData);
         throw new Error(`Authorization failed with status ${response.status}`);
       }
-
       const data = await response.json();
       console.log('Authorization successful:', data);
 
@@ -149,11 +144,11 @@ const Dashboard = () => {
       domain: 'xhed.net',
     });
     setCookie('userEmail', authorizeData.authorize.authorize.email, {
-      // secure: true,
-      secure: window.location.protocol === 'https:',
+      secure: true,
+      // secure: window.location.protocol === 'https:',
       maxAge: 60 * 60 * 24 * 7, // 7 days 
       sameSite: 'none',
-      domain: 'xhed.net',
+      // domain: 'xhed.net',
     });
   }
 
@@ -169,7 +164,6 @@ const Dashboard = () => {
   const [startTime, setStartTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const token = getCookie('userToken');
-
 
   // Fetch the start_time when the page loads
   useEffect(() => {
@@ -199,7 +193,6 @@ const Dashboard = () => {
 
     fetchStartTime();
   }, [token]);
-
 
   // Update the current time every second when trading is active
   useEffect(() => {
@@ -260,8 +253,60 @@ const Dashboard = () => {
     }
   };
 
+  const navLinks = [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: <MdDashboard className="text-xl" />,
+      hidden: false,
+    },
+    {
+      id: 'charts',
+      label: 'Charts',
+      icon: <IoBarChartSharp className="text-xl" />,
+      hidden: false,
+    },
+    {
+      id: 'signals',
+      label: 'Signals',
+      icon: <FaExclamationTriangle className="text-xl" />,
+      hidden: false,
+    },
+    {
+      id: 'settings',
+      label: 'Bot Settings',
+      icon: <MdSettingsApplications className="text-xl" />,
+      hidden: true,
+    },
+    {
+      id: 'trade-history',
+      label: 'Trades',
+      icon: <FaMoneyCheckAlt className="text-xl" />,
+      hidden: false,
+    },
+    {
+      id: 'account-overview',
+      label: 'Account Stat',
+      icon: <MdDashboard className="text-xl" />,
+      hidden: false,
+    },
+    {
+      id: 'strategy_comparizon',
+      label: 'Strategy Analysis',
+      icon: <IoBarChartSharp className="text-xl" />,
+      hidden: false,
+    },
+    {
+      id: 'strategt_vs_symbol',
+      label: 'Strategy & Symbol',
+      icon: <IoBarChartSharp className="text-xl" />,
+      hidden: false,
+    },
+  ];
+
   return (
     <div className='dashoard'>
+
       {/* nav bar */}
       <div id='nav-bar' className='p-2'>
         <button className='toggle-nav-btn mt-4 ml-4' onClick={toggleNav}>
@@ -271,108 +316,36 @@ const Dashboard = () => {
             <TbLayoutSidebarLeftExpandFilled className='toggle-icon' />
           )}
         </button>
-        <div className=' w-full flex flex-col mt-[40px] relative h-[80vh] '>
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'overview' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => {
-              handleClick('overview'); // First function call
-              toggleNav(); // Second function call
-            }}
-          >
-            <MdDashboard className={`text-xl ${activeLink === 'overview' ? '' : ''}`} />
-            <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Overview</p>
-          </Link>
-          {/* charts */}
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'charts' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => {
-              handleClick('charts');
-              toggleNav();
-            }}
-          >
-            < IoBarChartSharp className={`text-xl ${activeLink === 'charts' ? '' : ''}`} />
-            <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Charts</p>
-          </Link>
-          {/* signals */}
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'signals' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => { toggleNav(); handleClick('signals'); }}
-          >
-            <FaExclamationTriangle className={`text-xl ${activeLink === 'signals' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '> Signals</p>
-          </Link>
-          {/* settings */}
-     <span className=' hidden2'>
-     <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'settings' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => {
-              handleClick('settings');
-              toggleNav();
-            }}
-          >
-            <MdSettingsApplications className={`text-xl ${activeLink === 'settings' ? 'active-link' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Bot Settings</p>
-          </Link>
-     </span>
-          {/* profile */}
-          <div className=' hidden2'>
-            <Link
-              href="/dashboard"
-              className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'profile' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-              onClick={() => {
-                handleClick('profile');
-                toggleNav();
-              }
-              }
-            >
-              <MdAccountBox className={`text-xl ${activeLink === 'profile' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Profile</p>
-            </Link>
-          </div>
 
-          <hr className='mt-2 mb-2 opacity-10 '></hr>
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'trade-history' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => { handleClick('trade-history'); toggleNav(); }}
-          >
-            <FaMoneyCheckAlt className={`text-xl ${activeLink === 'trade-history' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Trades</p>
-          </Link>
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'account-overview' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => { handleClick('account-overview'); toggleNav(); }}
-          >
-            <MdDashboard className={`text-xl ${activeLink === 'account-overview' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Account Stat</p>
-          </Link>
-          {/* strategy analysis */}
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${activeLink === 'strategy_comparizon' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => { handleClick('strategy_comparizon'); toggleNav(); }}
-          >
-            < IoBarChartSharp className={`text-xl ${activeLink === 'strategy_comparizon' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Strategy Analysis</p>
-          </Link>
-          {/* strate symbol */}
-          <Link
-            href="/dashboard"
-            className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize${activeLink === 'strategt_vs_symbol' ? 'bg-sky-700/70 w-full text-white' : ''}`}
-            onClick={() => { handleClick('strategt_vs_symbol'); toggleNav(); }}
-          >
-            < IoBarChartSharp className={`text-xl ${activeLink === 'strategt_vs_symbol' ? '' : ''}`} />  <p className='block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize '>Strategy & Symbol</p>
-          </Link>
-
-          <button className='logout-link mt-4' onClick={handleLogout}>
-            <FiLogOut className='logout-icon' /> <p className='logout-text'>Logout  </p>
-          </button>
+        {/* links */}
+        <div className="w-full flex flex-col mt-[40px] relative h-[80vh] gap-2">
+          {navLinks.map(({ id, label, icon, hidden }) => {
+            const isActive = activeLink === id;
+            const linkClasses = `middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-sky-600 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize ${isActive ? 'bg-sky-700/70 w-full text-white' : ''
+              }`;
+            const content = (
+              <Link
+                key={id}
+                href="/dashboard"
+                className={linkClasses}
+                onClick={() => {
+                  handleClick(id);
+                  toggleNav();
+                }}
+              >
+                {icon}
+                <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize ">
+                  {label}
+                </p>
+              </Link>
+            );
+            return hidden ? <div key={id} className="hidden2">{content}</div> : content;
+          })}
+          <hr className="mt-2 mb-2 opacity-10" />
         </div>
       </div>
-
       {/* main dashboard content */}
-      <div
-        className={`dashboard-content ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}
-      >
+      <div className={`dashboard-content ${isNavVisible ? 'nav-visible' : 'nav-hidden'}`}>
         <div className={`small-header flex flex-row justify-between items-center pr-4 h-[6rem] ${isNavVisible ? 'w-[85vw]' : 'w-full px-4'} `}>
           <div className='flex flex-row '>
             <button className='toggle-nav-btn ml-8 sm:ml-2 xs:ml-2' onClick={toggleNav}>
@@ -410,7 +383,6 @@ const Dashboard = () => {
                     ) : (
                       <GrFormView className="text-white text-2xl" />
                     )}
-
                   </button>
                 </div>
               </div>
@@ -442,32 +414,8 @@ const Dashboard = () => {
           </div>
           {/* div for personal information */}
           <div className=' flex flex-row items-center justify-center md:gap-8'>
-
-            <div className='flex flex-row items-center justify-center names_and_email'>
-              <div>
-                <FaUserCircle className='face-icon' />
-
-              </div>
-              <div className='flex flex-col mr-8  '>
-
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-
-                {(
-                  // If authorization data is present, display dashboard
-                  email ? (
-                    <div>
-                      <h1 className='fulname '>{userName}</h1>
-                      <p className='text-sm emailinheader2 opacity-90 m-0 p-0'>{email}</p>
-
-                    </div>
-                  ) : (
-                    <div className="w-3/4 h-4 bg-gray-200 rounded animate-pulse"></div>
-                  )
-                )}
-              </div>
-            </div>
             {/* Mobile content */}
-            <div className="relative mobile-drop_down">
+            <div className="relative flex flex-col z-2001 mobile-drop_down">
               {/* Hidden Checkbox for Toggling */}
               <input type="checkbox" id="dropdown-toggle" className="peer hidden" ref={dropdownToggleRef} />
 

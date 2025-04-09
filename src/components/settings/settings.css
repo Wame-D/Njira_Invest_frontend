@@ -1,17 +1,8 @@
-.settings-div {
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    height: fit-content;
-}
-
 .tittle-set {
     font-weight: bold;
     font-size: 2rem;
     color: rgb(4, 155, 214);
 }
-
 
 .disabled-label {
     color: rgba(150, 150, 150, 0.8);
@@ -24,34 +15,10 @@
 }
 
 .strategy-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 1rem;
-    margin-top: 2rem !important;
-    width: 70vw;
-    height: fit-content !important;
     box-shadow: 0 0 1px rgba(12, 38, 61, 0.9);
-    border-radius: 0.3rem;
 }
 
 @media only screen and (max-width: 820px) {
-    .settings-div {
-        padding-top: 0.5rem;
-        margin-top: 1rem;
-        width: 100vw;
-        flex-direction: column !important;
-        align-items: center;
-    }
-
-    .strategy-div {
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 95vw;
-        padding: 1rem;
-    }
-
     .small-divs {
         width: 100% !important;
         padding: 0.5rem;
@@ -62,26 +29,6 @@
     .submitt,
     .risk_boxes {
         width: 100% !important;
-    }
-
-    .button1 {
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: white;
-        background-color: #007bff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: opacity 0.3s ease;
-        width: 40vw !important;
-    }
-
-    .small-divss {
-        justify-content: space-between;
-        width: 100% !important;
-        padding: 1vw;
-        margin-top: 1rem;
     }
 }
 
@@ -109,13 +56,6 @@
     padding: 1vw;
 }
 
-.small-divss {
-    justify-content: space-between;
-    width: 40vw;
-    height: 100%;
-    padding: 1vw;
-}
-
 /* Disabled Button Style */
 .disabled {
     background-color: #007bff;
@@ -125,17 +65,9 @@
 }
 
 .button1 {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
     background-color: #007bff;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
     transition: opacity 0.3s ease;
-    width: 15vw;
-    height: 3rem;
 }
 
 .boxes-str {

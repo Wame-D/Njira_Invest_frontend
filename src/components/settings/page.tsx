@@ -191,7 +191,6 @@ const SettingsPage = () => {
         }
     };
 
-
     // method to save risks data
     const [perTrade, setPerTrade] = useState<number | null>(null);
     const [perDay, setPerDay] = useState<number | null>(null);
@@ -424,7 +423,6 @@ const SettingsPage = () => {
 
     // Fetch the start_time when the page loads
     useEffect(() => {
-
         const fetchStartTime = async () => {
             try {
                 const response = await fetch(`${domain}/Get-start-time/?email=${email}`)
@@ -452,10 +450,8 @@ const SettingsPage = () => {
 
     }, [token]);
 
-
     const handleStop = async () => {
         setIsTrading(false);
-
         try {
             const response = await fetch(`${domain}/update-trading/`, {
                 method: 'PUT',
@@ -469,7 +465,6 @@ const SettingsPage = () => {
             });
 
             const data = await response.json();
-
             if (response.ok) {
                 console.log('Response:', data);
                 alert('stoped trading successfully!');
@@ -484,11 +479,11 @@ const SettingsPage = () => {
     };
 
     return (
-        <div className='pl-4 pr-4 settings-div'>
+        <div className='pl-4 pr-4 pt-[0.5rem] lg:pt-[2rem] flex flex-col w-full h-fit mx-auto items-center bg-green-500 settings-div'>
             <h1 className='tittle-set'>Customise your Bot</h1>
-            <p className='text-m m-0 text-gray-700'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
+            <p className=' m-0 text-gray-700 lg:w-[60%] text-center'>Tailor your trading experience to suit your goals and risk tolerance. Adjust key parameters and preferences to align with your trading strategy. Your customized settings will help the app operate exactly how you want it to.</p>
             {/* strategy analysis setting */}
-            <div className='strategy-div'>
+            <div className=' flex flex-col lg:flex-row lg:justify-between justify-center items-center lg:items-start  w-[95%] lg:w-[90%] h-fit rounded-lg py-8 px-4 mt-8 lg:mt-8 strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Strategy</h2>
                     <p className='text-m m-0 text-gray-700'>Choose a strategy that best fits your trading goals. Each strategy is designed with specific objectives and market conditions in mind.</p>
@@ -526,7 +521,7 @@ const SettingsPage = () => {
                 </div>
             </div>
             {/* symbols analysing settings */}
-            <div className='strategy-div'>
+            <div className=' flex flex-col lg:flex-row lg:justify-between justify-center items-center lg:items-start  w-[95%] lg:w-[90%] h-fit rounded-lg py-8 px-4 mt-8 lg:mt-8 strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Symbols</h2>
                     <p className='text-m m-0 text-gray-700'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
@@ -594,7 +589,7 @@ const SettingsPage = () => {
                 </div>
             </div>
             {/* Risk analysis settings */}
-            <div className='strategy-div'>
+            <div className=' flex flex-col lg:flex-row lg:justify-between justify-center items-center lg:items-start  w-[95%] lg:w-[90%] h-fit rounded-lg py-8 px-4 mt-8 lg:mt-8 strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Risk Analysis</h2>
                     <p className='text-m m-0 text-gray-700'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
@@ -631,7 +626,7 @@ const SettingsPage = () => {
             </div>
 
             {/* start and stop setting settings */}
-            <div className='strategy-div'>
+            <div className=' flex flex-col lg:flex-row lg:justify-between justify-center items-center lg:items-start  w-[95%] lg:w-[90%] h-fit rounded-lg py-8 px-4 mt-8 lg:mt-8 strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>Start and stop Settings</h2>
                     <p className='text-m m-0 text-gray-700'>Each symbol represents a currency pair designed to operate under specific market conditions and trading goals.</p>
@@ -719,27 +714,30 @@ const SettingsPage = () => {
             </div>
 
             {/* start and stop buttons */}
-            <div className=' flex justify-center items-center strategy-div mb-8'>
+            <div className=' flex flex-col lg:flex-row lg:justify-between justify-center items-center lg:items-start  w-[98%] lg:w-[90%] h-fit rounded-lg py-8 px-4 mt-8 lg:mt-8 strategy-div'>
                 <div className='small-divs flex flex-col '>
                     <h2>You are all set</h2>
                     <p className='text-m m-0 text-gray-700'>You have set up all the neccessary information needed, you can now press the start trading button to authorise the bot to trade on your account</p>
                     <p className='text-m m-0 text-gray-700'>You can modify these settings anytime you want and they will be effective immediately, you can also stop the bot anytime you want y pressing stop trading button</p>
                 </div>
-                <div className='small-divss flex flex-row '>
-                    <button
-                        onClick={handleStart}
-                        disabled={isTrading}
-                        className={`button1 ${isTrading ? "disabled" : ""}`}
-                    >
-                        Start Trading
-                    </button>
-                    <button
-                        onClick={handleStop}
-                        disabled={!isTrading}
-                        className={`button1 ${!isTrading ? "disabled" : ""}`}
-                    >
-                        Stop Trading
-                    </button>
+                <div className='small-divs flex flex-col gap-4'>
+                    <h2>Actions</h2>
+                    <div className='h-fit w-full flex flex-col gap-4'>
+                        <button
+                            onClick={handleStart}
+                            disabled={isTrading}
+                            className={`px-8 py-4 font-bold text-white rounded-lg w-full lg:w-[50%] h-[3rem] button1  ${isTrading ? "disabled" : ""}`}
+                        >
+                            Start Trading
+                        </button>
+                        <button
+                            onClick={handleStop}
+                            disabled={!isTrading}
+                            className={`px-8 py-4 font-bold text-white rounded-lg w-full lg:w-[50%]  h-[3rem] button1 ${!isTrading ? "disabled" : ""}`}
+                        >
+                            Stop Trading
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

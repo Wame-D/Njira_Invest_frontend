@@ -269,38 +269,7 @@ export default function ProductTour() {
           )}
         </div>
 
-        {/* 24/7 Phone Support */}
-        <div id='phonesupport' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
-          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('phoneSupport')}>
-            <h2 className="text-2xl font-semibold text-sky-800">24/7 Phone Support</h2>
-            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.phoneSupport ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-          <p className="mt-3 text-gray-700">
-            Chat our customer service team anytime for immediate assistance.
-          </p>
-          
-          {expandedSections.phoneSupport && (
-            <div className="mt-6 space-y-4 pl-6 border-l-2 border-sky-500">
-              <div className="flex items-start">
-                <div className="bg-sky-500 rounded-full p-1 mr-3 mt-1 flex-shrink-0">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-gray-700">Dedicated support lines in 2 languages</p>
-              </div>
-              <button className="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg flex items-center justify-center text-white">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Chat Now: +265880000000
-              </button>
-            </div>
-          )}
-        </div>
-
+        
         {/* FAQs */}
         <div id='faqs' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('faqs')}>

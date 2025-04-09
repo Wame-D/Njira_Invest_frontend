@@ -104,6 +104,8 @@ const Dashboard = () => {
           authorizeUser(cookietoken);
         }
       }
+    } else {
+      router.replace('/');
     }
   }, [acct1, token1, cur1, showBalance]);
 

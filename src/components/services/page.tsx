@@ -16,6 +16,7 @@ import {
   FiUsers
 } from 'react-icons/fi';
 import '../../app/globals.css';
+import Link from 'next/link';
 
 export default function Services() {
     return (
@@ -47,9 +48,9 @@ export default function Services() {
                             <p className="text-gray-600">
                                 Enjoy automated trading on selected indices.
                             </p>
-                            <button className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition">
+                            <Link href="/producttour#newfeatures-expand" className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition">
                                 Learn More
-                            </button>
+                            </Link>
                         </div>
 
                         {/* Shorter Vertical Divider */}
@@ -140,7 +141,7 @@ export default function Services() {
                     <p className="mt-4 text-gray-600">
                         Leverage AI-driven market forecasts to make informed trading decisions.
                     </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                    <a href="/producttour#aipredictions-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                         Learn More &gt;
                     </a>
                 </div>
@@ -158,10 +159,10 @@ export default function Services() {
                         <div>
                             <h4 className="text-lg font-semibold">24/7 Phone Support</h4>
                             <p className="mt-2 text-gray-600 text-sm">
-                                Call our customer service team anytime for immediate assistance.
+                                Chat our customer service team anytime for immediate assistance.
                             </p>
-                            <a href="tel:+1234567890" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                                Call Now <AiOutlineRight className="ml-1" />
+                            <a href="/producttour#phonesupport-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                Learn More <AiOutlineRight className="ml-1" />
                             </a>
                         </div>
                     </div>
@@ -174,7 +175,7 @@ export default function Services() {
                             <p className="mt-2 text-gray-600 text-sm">
                                 View FAQs for detailed instructions on specific features.
                             </p>
-                            <a href="/faq" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                            <a href="/producttour#faqs-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                 Learn More <AiOutlineRight className="ml-1" />
                             </a>
                         </div>
@@ -188,7 +189,7 @@ export default function Services() {
                             <p className="mt-2 text-gray-600 text-sm">
                             Stay informed with the latest updates and developments in FxAuto.
                             </p>
-                            <a href="/blog" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                            <a href="/producttour" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                 Learn More <AiOutlineRight className="ml-1" />
                             </a>
                         </div>
@@ -218,7 +219,7 @@ export default function Services() {
                                     <p className="mt-2 text-gray-600 text-sm">
                                     Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
                                     </p>
-                                    <a href="/secure-fund" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                    <a href="/producttour#safu-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                         Learn More <AiOutlineRight className="ml-1" />
                                     </a>
                                 </div>
@@ -232,7 +233,7 @@ export default function Services() {
                                     <p className="mt-2 text-gray-600 text-sm">
                                     Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
                                     </p>
-                                    <a href="/access-control" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+                                    <a href="/producttour#accesscontrol-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
                                         Learn More <AiOutlineRight className="ml-1" />
                                     </a>
                                 </div>
@@ -246,9 +247,9 @@ export default function Services() {
                                     <p className="mt-2 text-gray-600 text-sm">
                                     Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
                                     </p>
-                                    <a href="/universal-protection" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                                        Learn More <AiOutlineRight className="ml-1" />
-                                    </a>
+                                    <a href="/producttour#endtoend-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
+    Learn More <AiOutlineRight className="ml-1" />
+</a>
                                 </div>
                             </div>
                         </div>

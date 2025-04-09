@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../../components/header/page';
 import Footer from '../../components/footer/page';
 
@@ -18,11 +18,91 @@ export default function ProductTour() {
     encryption: false
   });
 
+  useEffect(() => {
+    // Check URL hash when component mounts
+    const handleHash = () => {
+      const hash = window.location.hash;
+      const sectionMap: Record<string, string> = {
+        '#newfeatures-expand': 'newFeatures',
+        '#aipredictions-expand': 'aiPredictions',
+        '#phonesupport-expand': 'phoneSupport',
+        '#faqs-expand': 'faqs',
+        '#safu-expand': 'safu',
+        '#accesscontrol-expand': 'accessControl',
+        '#endtoend-expand': 'encryption'
+      };
+
+      if (hash in sectionMap) {
+        const section = sectionMap[hash];
+        setExpandedSections(prev => ({
+          ...prev,
+          [section]: true,
+        }));
+        
+        // Scroll to the section after a slight delay to allow expansion
+        setTimeout(() => {
+          const element = document.getElementById(hash.substring(1, hash.indexOf('-expand')));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            // Clean up the URL
+            window.history.replaceState(null, '', `/producttour#${hash.substring(1, hash.indexOf('-expand'))}`);
+          }
+        }, 100);
+      } else if (hash === '#newfeatures' || 
+                 hash === '#aipredictions' || 
+                 hash === '#phonesupport' || 
+                 hash === '#faqs' || 
+                 hash === '#safu' || 
+                 hash === '#accesscontrol' || 
+                 hash === '#endtoend') {
+        // Just scroll to the section if the hash is present
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    handleHash();
+
+    // Also handle hash changes if they occur while on the page
+    const hashChangeHandler = () => {
+      handleHash();
+    };
+
+    window.addEventListener('hashchange', hashChangeHandler);
+    return () => window.removeEventListener('hashchange', hashChangeHandler);
+  }, []);
+
   const toggleSection = (section: string) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
+    setExpandedSections(prev => {
+      const newState = !prev[section];
+      if (newState) {
+        setTimeout(() => {
+          const element = document.getElementById(getSectionId(section));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+      return {
+        ...prev,
+        [section]: newState,
+      };
+    });
+  };
+
+  const getSectionId = (section: string): string => {
+    const sectionMap: Record<string, string> = {
+      newFeatures: 'newfeatures',
+      aiPredictions: 'aipredictions',
+      phoneSupport: 'phonesupport',
+      faqs: 'faqs',
+      safu: 'safu',
+      accessControl: 'accesscontrol',
+      encryption: 'endtoend'
+    };
+    return sectionMap[section] || '';
   };
 
   return (
@@ -49,7 +129,7 @@ export default function ProductTour() {
 
       <div className="max-w-6xl mx-auto space-y-8 pb-8">
         {/* New Features Section */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='newfeatures' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('newFeatures')}>
             <h2 className="text-2xl font-semibold text-sky-800">New Features</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.newFeatures ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -156,7 +236,7 @@ export default function ProductTour() {
         </div>
 
         {/* AI-Powered Market Predictions */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='aipredictions' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('aiPredictions')}>
             <h2 className="text-2xl font-semibold text-sky-800">AI-Powered Market Predictions</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.aiPredictions ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -190,7 +270,7 @@ export default function ProductTour() {
         </div>
 
         {/* 24/7 Phone Support */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='phonesupport' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('phoneSupport')}>
             <h2 className="text-2xl font-semibold text-sky-800">24/7 Phone Support</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.phoneSupport ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -222,7 +302,7 @@ export default function ProductTour() {
         </div>
 
         {/* FAQs */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='faqs' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('faqs')}>
             <h2 className="text-2xl font-semibold text-sky-800">FAQs</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.faqs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -250,7 +330,7 @@ export default function ProductTour() {
         </div>
 
         {/* Secure Asset Fund for Users (SAFU) */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='safu' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('safu')}>
             <h2 className="text-2xl font-semibold text-sky-800">Secure Asset Fund for Users (SAFU)</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.safu ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -276,7 +356,7 @@ export default function ProductTour() {
         </div>
 
         {/* Personalized Access Control */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='accesscontrol' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('accessControl')}>
             <h2 className="text-2xl font-semibold text-sky-800">Personalized Access Control</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.accessControl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -302,7 +382,7 @@ export default function ProductTour() {
         </div>
 
         {/* End-to-End Encryption */}
-        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+        <div id='endtoend' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('encryption')}>
             <h2 className="text-2xl font-semibold text-sky-800">End-to-End Encryption</h2>
             <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.encryption ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -322,6 +402,22 @@ export default function ProductTour() {
                   </svg>
                 </div>
                 <p className="text-gray-700">AES-256 encryption for all data in transit and at rest</p>
+              </div>
+              <div className="flex items-start">
+                <div className="bg-sky-500 rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-gray-700">Perfect forward secrecy for all communications</p>
+              </div>
+              <div className="flex items-start">
+                <div className="bg-sky-500 rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-gray-700">Regular third-party security audits</p>
               </div>
             </div>
           )}

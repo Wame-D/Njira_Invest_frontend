@@ -31,7 +31,7 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="container mx-auto px-6 grid md:grid-cols-2 gap-8">
         {/* Form Section */}
-        <div className="bg-sky-100 p-6 rounded-lg">
+        <div className="border border-sky-500 p-6 rounded-lg bg-transparent">
           <h3 className="text-lg font-semibold mb-4">Get in Touch with Us</h3>
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -52,22 +52,22 @@ const Contact = () => {
           </p>
           <div className="space-y-4">
             {/* Address */}
-            <div className="flex items-center space-x-3 bg-sky-100 p-3 rounded-md">
+            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
               <span className="text-xl">📍</span>
               <p className="font-semibold">University Of Malawi</p>
             </div>
             {/* Mobile */}
-            <div className="flex items-center space-x-3 bg-sky-100 p-3 rounded-md">
+            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
               <span className="text-xl">📞</span>
               <p className="font-semibold">(+265) 990 000 000</p>
             </div>
             {/* Availability */}
-            <div className="flex items-center space-x-3 bg-sky-100 p-3 rounded-md">
+            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
               <span className="text-xl">⏰</span>
               <p className="font-semibold">Daily 07 am - 05 pm</p>
             </div>
             {/* Email */}
-            <div className="flex items-center space-x-3 bg-sky-100 p-3 rounded-md">
+            <div className="flex items-center space-x-3 border border-sky-500 p-3 rounded-md bg-transparent">
               <span className="text-xl">📧</span>
               <p className="font-semibold">support@autofx.com</p>
             </div>

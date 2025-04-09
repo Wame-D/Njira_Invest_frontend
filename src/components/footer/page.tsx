@@ -1,8 +1,9 @@
 import '../../app/globals.css';
+
 const Footer = () => {
   return (
-    <footer className="bg-darkBlue text-white py-12">
-      <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
+    <footer className="bg-darkBlue text-white py-12 px-4">
+      <div className="grid md:grid-cols-4 gap-8 max-w-screen-xl mx-auto">
         {/* Contact Information */}
         <div>
           <h4 className="font-semibold">Contact information</h4>
@@ -37,7 +38,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter */}
-        <div>
+        <div className="md:pl-4">
           <h4 className="font-semibold">Get Latest Update</h4>
           <p className="text-gray-400 mt-2">Get real-time updates on your trades and market trends.</p>
           <div className="mt-4 flex">

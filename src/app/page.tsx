@@ -4,25 +4,25 @@ import Header from "../components/header/page";
 import TopSection from "../components/topSection/page";
 import Services from "../components/services/page";
 import HowItWork from "../components/how/page";
-import React, { useState } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
-import { MdChat } from 'react-icons/md';
-import Link from 'next/link';
-import AiPage from "../components/chatot/page";
+import React from 'react';
+// import { FaWhatsapp } from 'react-icons/fa';
+// import { MdChat } from 'react-icons/md';
+// import Link from 'next/link';
+// import AiPage from "../components/chatot/page";
 import Footer from "../components/footer/page";
 import BeginTrading from "../components/begintrading/page";
 
 export default function Home() {
 
-  const [showChatbot, setShowChatbot] = useState(false);
+  // const [showChatbot, setShowChatbot] = useState(false);
 
-  const openChatbot = () => {
-    setShowChatbot(true);
-  };
+  // const openChatbot = () => {
+  //   setShowChatbot(true);
+  // };
 
-  const closeChatbot = () => {
-    setShowChatbot(false);
-  };
+  // const closeChatbot = () => {
+  //   setShowChatbot(false);
+  // };
   return (
     <>
       {/* SEO Configuration */}
@@ -75,7 +75,7 @@ export default function Home() {
           <HowItWork />
           <BeginTrading />
         </div>
-        <div className=' flex justify-center items-center fixedwhatsappdiv'>
+        {/* <div className=' flex justify-center items-center fixedwhatsappdiv'>
           <p className='fixedwhatsapp'>
             <Link href="https://wa.me/265990024684">
 
@@ -90,18 +90,18 @@ export default function Home() {
             </p>
           </button>
           <p className='text-sm text-white opacity-100 mt-1'>Ask AI</p>
-        </div>
+        </div> */}
 
 
         {/* Conditional rendering for the chatbot overlay */}
-        {showChatbot && (
+        {/* {showChatbot && (
           <div className="overlay1">
             <div className="modal1">
               <span className="close1" onClick={closeChatbot}>&times;</span>
               <AiPage />
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
       <Footer />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../../components/header/page';
 import Footer from '../../components/footer/page';
 
@@ -18,41 +18,123 @@ export default function ProductTour() {
     encryption: false
   });
 
+  useEffect(() => {
+    // Check URL hash when component mounts
+    const handleHash = () => {
+      const hash = window.location.hash;
+      const sectionMap: Record<string, string> = {
+        '#newfeatures-expand': 'newFeatures',
+        '#aipredictions-expand': 'aiPredictions',
+        '#phonesupport-expand': 'phoneSupport',
+        '#faqs-expand': 'faqs',
+        '#safu-expand': 'safu',
+        '#accesscontrol-expand': 'accessControl',
+        '#endtoend-expand': 'encryption'
+      };
+
+      if (hash in sectionMap) {
+        const section = sectionMap[hash];
+        setExpandedSections(prev => ({
+          ...prev,
+          [section]: true,
+        }));
+        
+        // Scroll to the section after a slight delay to allow expansion
+        setTimeout(() => {
+          const element = document.getElementById(hash.substring(1, hash.indexOf('-expand')));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            // Clean up the URL
+            window.history.replaceState(null, '', `/producttour#${hash.substring(1, hash.indexOf('-expand'))}`);
+          }
+        }, 100);
+      } else if (hash === '#newfeatures' || 
+                 hash === '#aipredictions' || 
+                 hash === '#phonesupport' || 
+                 hash === '#faqs' || 
+                 hash === '#safu' || 
+                 hash === '#accesscontrol' || 
+                 hash === '#endtoend') {
+        // Just scroll to the section if the hash is present
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    handleHash();
+
+    // Also handle hash changes if they occur while on the page
+    const hashChangeHandler = () => {
+      handleHash();
+    };
+
+    window.addEventListener('hashchange', hashChangeHandler);
+    return () => window.removeEventListener('hashchange', hashChangeHandler);
+  }, []);
+
   const toggleSection = (section: string) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
+    setExpandedSections(prev => {
+      const newState = !prev[section];
+      if (newState) {
+        setTimeout(() => {
+          const element = document.getElementById(getSectionId(section));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+      return {
+        ...prev,
+        [section]: newState,
+      };
+    });
+  };
+
+  const getSectionId = (section: string): string => {
+    const sectionMap: Record<string, string> = {
+      newFeatures: 'newfeatures',
+      aiPredictions: 'aipredictions',
+      phoneSupport: 'phonesupport',
+      faqs: 'faqs',
+      safu: 'safu',
+      accessControl: 'accesscontrol',
+      encryption: 'endtoend'
+    };
+    return sectionMap[section] || '';
   };
 
   return (
-    <div className="font-sans text-gray-900 py-16">
+    <div className="font-sans text-gray-900">
+      <br></br>
+      <br></br>
+      <br></br>
       <Header/>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <header className="mb-12 text-center">
-      <h2 className="text-3xl font-semibold">
-          <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
-        </h2>
-        <br></br>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
-        </p>
+      
+      <header className="relative overflow-hidden bg-cover bg-center bg-no-repeat mb-8 text-center py-12"
+        style={{ 
+          backgroundImage: "url('https://pic.rutubelist.ru/video/72/65/726509244160c9cad6c8236c95379019.jpg')",
+        }}>
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="relative z-10">
+          <h2 className="text-3xl font-semibold text-white">
+            <span className="underline decoration-sky-500">Discover</span> FxAuto: Smarter Automated Trading
+          </h2>
+          <p className="mt-3 text-gray-300 max-w-3xl mx-auto">
+            Explore how FxAuto merges automation, AI, and top-tier security to redefine your trading success.
+          </p>
+        </div>
       </header>
 
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8 pb-8">
         {/* New Features Section */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
+        <div id='newfeatures' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('newFeatures')}>
             <h2 className="text-2xl font-semibold text-sky-800">New Features</h2>
-            <button
-              onClick={() => toggleSection('newFeatures')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.newFeatures ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.newFeatures ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Explore our enhanced trading platform with integrated wallets, exchanges, and essential market insights.
@@ -154,15 +236,12 @@ export default function ProductTour() {
         </div>
 
         {/* AI-Powered Market Predictions */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
+        <div id='aipredictions' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('aiPredictions')}>
             <h2 className="text-2xl font-semibold text-sky-800">AI-Powered Market Predictions</h2>
-            <button
-              onClick={() => toggleSection('aiPredictions')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.aiPredictions ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.aiPredictions ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Leverage AI-driven market forecasts to make informed trading decisions.
@@ -190,82 +269,13 @@ export default function ProductTour() {
           )}
         </div>
 
-        {/* 24/7 Phone Support */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-semibold text-sky-800">24/7 Phone Support</h2>
-            <button
-              onClick={() => toggleSection('phoneSupport')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.phoneSupport ? 'Show Less' : 'Learn More'}
-            </button>
-          </div>
-          <p className="mt-3 text-gray-700">
-            Call our customer service team anytime for immediate assistance.
-          </p>
-          
-          {expandedSections.phoneSupport && (
-            <div className="mt-6 space-y-4 pl-6 border-l-2 border-sky-500">
-              <div className="flex items-start">
-                <div className="bg-sky-500 rounded-full p-1 mr-3 mt-1 flex-shrink-0">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-gray-700">Dedicated support lines in 15 languages</p>
-              </div>
-              <button className="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg flex items-center justify-center text-white">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Call Now: +1 (800) 123-4567
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* FAQs */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-semibold text-sky-800">FAQs</h2>
-            <button
-              onClick={() => toggleSection('faqs')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.faqs ? 'Show Less' : 'Learn More'}
-            </button>
-          </div>
-          <p className="mt-3 text-gray-700">
-            View FAQs for detailed instructions on specific features.
-          </p>
-          
-          {expandedSections.faqs && (
-            <div className="mt-6 space-y-4 pl-6 border-l-2 border-sky-500">
-              <div className="space-y-2">
-                <h3 className="font-medium text-sky-700">Getting Started</h3>
-                <div className="ml-4 space-y-2 text-gray-600">
-                  <p>• How do I create an account?</p>
-                  <p>• What are the minimum deposit requirements?</p>
-                </div>
-              </div>
-              <button className="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg text-white">
-                View Full FAQ Database
-              </button>
-            </div>
-          )}
-        </div>
-
         {/* Secure Asset Fund for Users (SAFU) */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
+        <div id='safu' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('safu')}>
             <h2 className="text-2xl font-semibold text-sky-800">Secure Asset Fund for Users (SAFU)</h2>
-            <button
-              onClick={() => toggleSection('safu')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.safu ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.safu ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Our trading bot allocates 10% of platform fees to a secure asset fund, providing an additional layer of protection for user funds.
@@ -286,15 +296,12 @@ export default function ProductTour() {
         </div>
 
         {/* Personalized Access Control */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
+        <div id='accesscontrol' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('accessControl')}>
             <h2 className="text-2xl font-semibold text-sky-800">Personalized Access Control</h2>
-            <button
-              onClick={() => toggleSection('accessControl')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.accessControl ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.accessControl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Advanced security features allow you to restrict device and IP address access, ensuring only authorized users can control your trading bot.
@@ -315,15 +322,12 @@ export default function ProductTour() {
         </div>
 
         {/* End-to-End Encryption */}
-        <div className="bg-sky-50 rounded-xl p-6 shadow-lg border border-sky-100">
-          <div className="flex justify-between items-center">
+        <div id='endtoend' className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleSection('encryption')}>
             <h2 className="text-2xl font-semibold text-sky-800">End-to-End Encryption</h2>
-            <button
-              onClick={() => toggleSection('encryption')}
-              className="px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg transition-colors text-white"
-            >
-              {expandedSections.encryption ? 'Show Less' : 'Learn More'}
-            </button>
+            <svg className={`w-6 h-6 text-sky-600 transition-transform ${expandedSections.encryption ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
           <p className="mt-3 text-gray-700">
             Your transaction data is safeguarded with industry-leading encryption, ensuring complete privacy and security for all your trading activities.
@@ -339,12 +343,27 @@ export default function ProductTour() {
                 </div>
                 <p className="text-gray-700">AES-256 encryption for all data in transit and at rest</p>
               </div>
+              <div className="flex items-start">
+                <div className="bg-sky-500 rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-gray-700">Perfect forward secrecy for all communications</p>
+              </div>
+              <div className="flex items-start">
+                <div className="bg-sky-500 rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-gray-700">Regular third-party security audits</p>
+              </div>
             </div>
           )}
         </div>
       </div>
-      <br></br>
-      <br></br>
+      
       <Footer/>
     </div>
   );

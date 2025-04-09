@@ -22,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <div className='header'>
+    <div className='px-4 header'>
       <h1 className='logo'>FX <strong className='trading'>AUTO</strong></h1>
 
       <div className={`menu-icon ${showLinks ? 'change' : ''}`} onClick={toggleLinks}>
@@ -78,7 +78,7 @@ export default function Header() {
             <FaUserCircle className="face-icon" />
           </div>
         )}
-        <div className="flex flex-col mr-8">
+        <div className="flex flex-col">
           {email ? (
             <div>
               <h1 className='fulname'>{userName}</h1>

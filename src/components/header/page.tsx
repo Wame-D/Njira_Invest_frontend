@@ -72,7 +72,7 @@ export default function Header() {
         </a>
       </div>
 
-      <div className="flex flex-row items-center justify-center btn-on-header">
+      <div className="hidden flg:lex flex-row items-center justify-center ">
         {email && (
           <div>
             <FaUserCircle className="face-icon" />

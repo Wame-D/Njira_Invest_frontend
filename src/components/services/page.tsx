@@ -20,20 +20,20 @@ import Link from 'next/link';
 
 export default function Services() {
     return (
-        <div className="flex flex-col items-center justify-center pt-20 mb-20 w-full px-4">
+        <div className="flex flex-col items-center justify-center pt-20 mb-20 w-full px-4 sm:px-6 lg:px-8">
             {/* Image and Text Section */}
-            <div className="flex items-center justify-center gap-8 mb-16  w-full md:w-[90%] ">
-                {/* Image Slot */}
-                <div className="w-1/2">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-10 w-full lg:w-[90%]">
+                {/* Image Slot - Full width on mobile, half on desktop */}
+                <div className="w-full lg:w-[50%] mb-8 lg:mb-0">
                     <img
                         src="https://news.store.rambler.ru/img/dbcbbad4e514c45bbe20f130be3f8cac?img-format=auto&img-1-resize=height:350,fit:max&img-2-filter=sharpen"
                         alt="Trading Platform Overview"
-                        className="rounded-lg"
+                        className="rounded-lg w-full h-auto"
                     />
                 </div>
 
-                {/* New Features Section */}
-                <div className="w-1/2">
+                {/* New Features Section - Full width on mobile, half on desktop */}
+                <div className="w-full w-[50%]">
                     <h3 className="text-2xl font-bold mb-4">
                         New <span className="text-sky-500">Features</span>
                     </h3>
@@ -41,24 +41,24 @@ export default function Services() {
                         Explore our enhanced trading platform with integrated wallets, exchanges, and essential market insights.
                     </p>
                     <br />
-                    <div className="flex items-start">
+                    <div className="flex flex-col md:flex-row items-start">
                         {/* Left Section */}
-                        <div className="w-1/2 pr-4">
+                        <div className="w-full md:w-1/2 md:pr-4 mb-6 md:mb-0">
                             <h4 className="text-lg font-semibold mb-2">Automated Indices Trading</h4>
                             <p className="text-gray-600">
                                 Enjoy automated trading on selected indices.
                             </p>
-                            <br></br>
-                            <Link href="/producttour#newfeatures-expand" className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition">
+                            <br />
+                            <Link href="/producttour#newfeatures-expand" className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-700 transition inline-block">
                                 Learn More
                             </Link>
                         </div>
 
-                        {/* Shorter Vertical Divider */}
-                        <div className="w-px bg-gray-300 h-20 mx-4"></div>
+                        {/* Shorter Vertical Divider - Hidden on mobile */}
+                        <div className="hidden md:block w-px bg-gray-300 h-20 mx-4"></div>
 
                         {/* Right Section */}
-                        <div className="w-1/2 pl-4">
+                        <div className="w-full md:w-1/2 md:pl-4">
                             <h4 className="text-lg font-semibold mb-2">Automated Currency Trading</h4>
                             <p className="text-gray-600">
                                 Trade currency pairs effortlessly with our automated system now!
@@ -69,14 +69,14 @@ export default function Services() {
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl font-bold mb-10">
+            <h2 className="text-3xl font-bold mb-10 text-center">
                 Fx<span className="text-sky-500">Auto</span> Key Features
             </h2>
 
             {/* Key Features Grid */}
-            <div className="flex flex-wrap justify-center gap-6 w-full md:w-[90%]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-6  w-full  lg:w-[90%]">
                 {/* Automated Trading */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
+                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
                     <AiOutlineRobot size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Automated Trading</h2>
                     <p className="mt-4 text-gray-600">
@@ -88,7 +88,7 @@ export default function Services() {
                 </div>
 
                 {/* Real-time Analytics and Reporting */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
+                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 ">
                     <FiPieChart size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Real-time Analytics and Reporting</h2>
                     <p className="mt-4 text-gray-600">
@@ -100,7 +100,7 @@ export default function Services() {
                 </div>
 
                 {/* Risk Management Tools */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
+                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
                     <FiShield size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Risk Management Tools</h2>
                     <p className="mt-4 text-gray-600">
@@ -112,7 +112,7 @@ export default function Services() {
                 </div>
 
                 {/* Profit and Loss Tracking */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
+                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
                     <AiOutlineLineChart size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Profit and Loss Tracking</h2>
                     <p className="mt-4 text-gray-600">
@@ -124,7 +124,7 @@ export default function Services() {
                 </div>
 
                 {/* Multi-Asset Trading Support */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
+                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
                     <FiDollarSign size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Multi-Asset Trading Support</h2>
                     <p className="mt-4 text-gray-600">
@@ -136,7 +136,7 @@ export default function Services() {
                 </div>
 
                 {/* AI-Powered Market Predictions */}
-                <div className="flex flex-col p-6 m-4 bg-white rounded-lg border border-sky-400 w-80">
+                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
                     <AiOutlineBulb size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">AI-Powered Market Predictions</h2>
                     <p className="mt-4 text-gray-600">
@@ -153,10 +153,10 @@ export default function Services() {
                 <h3 className="text-2xl font-bold mb-6 text-center">
                     Need <span className="text-sky-500">Help?</span>
                 </h3>
-                <div className="flex justify-center lg:justify-between gap-8 p-6 bg-white w-full ">
+                <div className="flex flex-col md:flex-row justify-center gap-8 p-6 bg-white">
                     {/* Phone Support */}
-                    <div className="flex items-start w-64">
-                        <FiPhone size={80} className="text-sky-500 mr-4" />
+                    <div className="flex flex-col sm:flex-row items-start w-full sm:w-64 mb-8 sm:mb-0">
+                        <FiPhone size={80} className="text-sky-500 mr-4 mb-4 sm:mb-0" />
                         <div>
                             <h4 className="text-lg font-semibold">24/7 Phone Support</h4>
                             <p className="mt-2 text-gray-600 text-sm">
@@ -169,8 +169,8 @@ export default function Services() {
                     </div>
 
                     {/* FAQs */}
-                    <div className="flex items-start w-64">
-                        <FiHelpCircle size={80} className="text-sky-500 mr-4" />
+                    <div className="flex flex-col sm:flex-row items-start w-full sm:w-64 mb-8 sm:mb-0">
+                        <FiHelpCircle size={80} className="text-sky-500 mr-4 mb-4 sm:mb-0" />
                         <div>
                             <h4 className="text-lg font-semibold">FAQs</h4>
                             <p className="mt-2 text-gray-600 text-sm">
@@ -183,8 +183,8 @@ export default function Services() {
                     </div>
 
                     {/* Blog */}
-                    <div className="flex items-start w-64">
-                        <FiBookOpen size={80} className="text-sky-500 mr-4" />
+                    <div className="flex flex-col sm:flex-row items-start w-full sm:w-64">
+                        <FiBookOpen size={80} className="text-sky-500 mr-4 mb-4 sm:mb-0" />
                         <div>
                             <h4 className="text-lg font-semibold">Product Tour</h4>
                             <p className="mt-2 text-gray-600 text-sm">
@@ -199,10 +199,10 @@ export default function Services() {
             </div>
 
             {/* Trusted Crypto Exchange Section */}
-            <div className="mt-16 w-full md:w-[90%]">
-                <div className="flex items-center justify-center gap-8">
+            <div className="mt-16 w-full lg:w-[90%]">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
                     {/* Left Side - Text Content */}
-                    <div className="w-1/2">
+                    <div className="w-full lg:w-1/2 order-2 lg:order-1">
                         <h3 className="text-2xl font-bold mb-4">
                             Your <span className="text-sky-500">trusted</span> forex bot
                         </h3>
@@ -257,11 +257,11 @@ export default function Services() {
                     </div>
 
                     {/* Right Side - Image */}
-                    <div className="w-1/2">
+                    <div className="w-full lg:w-1/2 order-1 lg:order-2 mb-8 lg:mb-0">
                         <img
                             src="https://www.fingramota.by/files/images/2015/7/2/635714311701708846.jpg"
                             alt="Secure Crypto Exchange"
-                            className="w-full h-auto"
+                            className="w-full h-auto rounded-lg"
                         />
                     </div>
                 </div>

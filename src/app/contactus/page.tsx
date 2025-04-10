@@ -7,102 +7,100 @@ const Contact = () => {
   return (
     <div className="font-sans text-gray-900">
       <Header />
-      <br></br>
-      <br></br>
+      
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-  <img 
-    src="https://www.aeaweb.org/content/file?id=7175" 
-    alt="Background"
-    className="absolute w-full h-full object-cover"
-  />
-  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-  <div className="relative z-10 text-center py-16">
-    <h2 className="text-3xl font-semibold text-white">
-      <span className="underline decoration-sky-500">Connect</span> with Our Team
-    </h2>
-    <p className="mt-2 text-gray-300 max-w-lg mx-auto">
-      Have questions about our Forex trading bot? Our team is here to help with setup, strategies, and support. Reach out today!
-    </p>
-  </div>
-</section>
-<br></br>
-      <br></br>
-      <br></br>
+      <section className="relative overflow-hidden py-16 md:py-24">
+        <img 
+          src="https://www.aeaweb.org/content/file?id=7175" 
+          alt="Background"
+          className="absolute w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="relative z-10 text-center px-4 py-8 md:py-16 container mx-auto">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white">
+            <span className="underline decoration-sky-500">Connect</span> with Our Team
+          </h2>
+          <p className="mt-2 md:mt-4 text-gray-300 max-w-lg mx-auto text-sm md:text-base">
+            Have questions about our Forex trading bot? Our team is here to help with setup, strategies, and support. Reach out today!
+          </p>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section className="container mx-auto px-6 grid md:grid-cols-2 gap-8">
+      <section className="container mx-auto px-4 sm:px-6 py-8 md:py-12 grid md:grid-cols-2 gap-6 md:gap-8">
         {/* Form Section */}
-        <div className="border-4 border-sky-100 p-6 rounded-lg bg-transparent">
-          <h3 className="text-lg font-semibold mb-4">Get in Touch with Us</h3>
-          <form className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-            <input
-  type="text"
-  placeholder="Input your name"
-  className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md"
-/>
-<input
-  type="email"
-  placeholder="Input your email"
-  className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md"
-/>
+        <div className="border-2 md:border-4 border-sky-100 p-4 md:p-6 rounded-lg bg-transparent">
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Get in Touch with Us</h3>
+          <form className="space-y-3 md:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <input
+                type="text"
+                placeholder="Input your name"
+                className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md text-sm md:text-base"
+              />
+              <input
+                type="email"
+                placeholder="Input your email"
+                className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md text-sm md:text-base"
+              />
             </div>
             <input
-  type="text"
-  placeholder="Subject"
-  className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md"
-/>
-<textarea
-  placeholder="Submit your message request"
-  className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md h-24"
-/>
-            <button className="bg-darkBlue text-white px-4 py-2 rounded-md">Send message</button>
+              type="text"
+              placeholder="Subject"
+              className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md text-sm md:text-base"
+            />
+            <textarea
+              placeholder="Submit your message request"
+              className="p-2 w-full border border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-md h-24 text-sm md:text-base"
+            />
+            <button className="bg-darkBlue text-white px-4 py-2 rounded-md text-sm md:text-base hover:bg-blue-700 transition-colors">
+              Send message
+            </button>
           </form>
-        </div >
+        </div>
 
         {/* Contact Details Section */}
-        <div id="chatnow">
-          <h3 className="text-lg font-semibold mb-4">Contact Details</h3>
-          <p className="text-gray-500 mb-4">
+        <div id="chatnow" className="mt-4 md:mt-0">
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Contact Details</h3>
+          <p className="text-gray-500 mb-4 text-sm md:text-base">
             Reach us for inquiries about our Forex trading bot, account setup, or technical support. We&apos;re here to assist you!
           </p>
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {/* Address */}
-<div className="flex items-center space-x-3 border-4 border-sky-100 p-3 rounded-md bg-transparent">
-  <FaMapMarkerAlt className="text-sky-500 text-xl" />
-  <p className="font-semibold">University Of Malawi</p>
-</div>
+            <div className="flex items-center space-x-3 border-2 md:border-4 border-sky-100 p-2 md:p-3 rounded-md bg-transparent">
+              <FaMapMarkerAlt className="text-sky-500 text-lg md:text-xl" />
+              <p className="font-semibold text-sm md:text-base">University Of Malawi</p>
+            </div>
             {/* Mobile */}
-<div className="flex items-center space-x-3 border-4 border-sky-100 p-3 rounded-md bg-transparent">
-  <FaPhone className="text-sky-500 text-xl" />
-  <p className="font-semibold">(+265) 990 000 000</p>
-</div>
+            <div className="flex items-center space-x-3 border-2 md:border-4 border-sky-100 p-2 md:p-3 rounded-md bg-transparent">
+              <FaPhone className="text-sky-500 text-lg md:text-xl" />
+              <p className="font-semibold text-sm md:text-base">(+265) 990 000 000</p>
+            </div>
             {/* Availability */}
-<div className="flex items-center space-x-3 border-4 border-sky-100 p-3 rounded-md bg-transparent">
-  <FaClock className="text-sky-500 text-xl" />  
-  <p className="font-semibold">Daily 07 am - 05 pm</p>
-</div>
+            <div className="flex items-center space-x-3 border-2 md:border-4 border-sky-100 p-2 md:p-3 rounded-md bg-transparent">
+              <FaClock className="text-sky-500 text-lg md:text-xl" />  
+              <p className="font-semibold text-sm md:text-base">Daily 07 am - 05 pm</p>
+            </div>
             {/* Email */}
-<div className="flex items-center space-x-3 border-4 border-sky-100 p-3 rounded-md bg-transparent">
-  <FaEnvelope className="text-sky-500 text-xl" />
-  <p className="font-semibold">support@autofx.com</p>
-</div>
+            <div className="flex items-center space-x-3 border-2 md:border-4 border-sky-100 p-2 md:p-3 rounded-md bg-transparent">
+              <FaEnvelope className="text-sky-500 text-lg md:text-xl" />
+              <p className="font-semibold text-sm md:text-base">support@autofx.com</p>
+            </div>
           </div>
-
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faqs" className="py-16 mt-12">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center rounded-lg border-4 border-sky-100">
+      <section id="faqs" className="py-8 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-6 md:gap-8 items-center rounded-lg border-2 md:border-4 border-sky-100 p-4 md:p-6">
           {/* Left - FAQ */}
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-center">
+            <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
               Your Common Queries Answered <br />
               <span className="underline decoration-sky-500">with Additional FAQs</span>
             </h2>
             {/* FAQ Accordion */}
-            <div className="mt-6 space-y-4">
+            <div className="mt-4 md:mt-6 space-y-3 md:space-y-4">
               {[
                 {
                   question: "What is algorithmic trading?",
@@ -125,23 +123,26 @@ const Contact = () => {
                   answer: "Yes, you can pause or stop automated trading at any time through your account dashboard. Your settings will be saved for when you wish to resume.",
                 },
               ].map((faq, index) => (
-                <details key={index} className="bg-white border border-sky-400 p-4 rounded-md cursor-pointer">
+                <details key={index} className="bg-white border border-sky-400 p-3 md:p-4 rounded-md cursor-pointer text-sm md:text-base">
                   <summary className="font-medium">{faq.question}</summary>
                   <p className="mt-2 text-gray-500">{faq.answer}</p>
                 </details>
               ))}
             </div>
-
           </div>
 
           {/* Right - Image */}
-          <div className="flex justify-center mt-20">
-            <img src="https://efsol.ru/wp-content/uploads/2024/02/girl-1.png" alt="Support Team"/>
+          <div className="flex justify-center mt-6 md:mt-20">
+            <img 
+              src="https://efsol.ru/wp-content/uploads/2024/02/girl-1.png" 
+              alt="Support Team"
+              className="w-full max-w-md object-contain"
+            />
           </div>
         </div>
       </section>
+      
       <Footer />
-
     </div>
   );
 };

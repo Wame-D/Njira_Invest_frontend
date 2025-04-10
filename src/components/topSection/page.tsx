@@ -19,7 +19,6 @@ export default function TopSection() {
         }
     }, []);
 
-
     useEffect(() => {
         // Anime.js for dir-normal element with opacity change
         anime({
@@ -53,7 +52,6 @@ export default function TopSection() {
     const openLogin = () => {
         if (token) {
             window.location.href = '/dashboard';
-            // going to dashboad
         } else {
             setShowChatbot(true);
         }
@@ -66,7 +64,6 @@ export default function TopSection() {
     const handleDashboardClick = () => {
         if (token) {
             window.location.href = '/dashboard';
-            // going to dashboard
         } else {
             setShowChatbot(true);
         }
@@ -80,19 +77,16 @@ export default function TopSection() {
                         <h1 className='text-center dir-normal'>TRADE FOREX WITH <strong className='automated'>AUTOMATED</strong> PRECISION</h1>
                         <p className='text-m text-white opacity-70 text-center '>Harness the power of algorithmic trading. Let our system trade for you while you watch your portfolio grow, 24/7.</p>
 
-                        <div className='w-fit h-fit flex mt-20 top-links dir-alternate dir-reverse'>
+                        <div className='w-full flex justify-center mt-20 top-links dir-alternate dir-reverse'>
                             {token ? (
-
-                                <a className="links-in-top flex flex row justify-items-center items-center inside-utton" onClick={handleDashboardClick}>
+                                <a className="links-in-top flex flex-row justify-center items-center inside-utton" onClick={handleDashboardClick}>
                                     Your dashboard &gt;
                                 </a>
                             ) : (
-                                <button className="links-in-top flex flex row justify-items-center items-center inside-utton" onClick={openLogin}>
+                                <button className="links-in-top flex flex-row justify-center items-center inside-utton" onClick={openLogin}>
                                     Start trading with us &gt;
                                 </button>
                             )}
-
-
                         </div>
                     </div>
                 </div>

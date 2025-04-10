@@ -1,285 +1,197 @@
-/* Base Styles */
-.header-container {
+.header {
   background-color: rgba(255, 255, 255, 1);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  border-bottom: 0.5px solid rgba(12, 38, 61, 0.9);
-  padding: 0 2rem; /* Equal padding on both sides */
-}
-
-.header-content {
-  max-width: 1440px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   height: 6rem;
-  position: relative;
-  width: 100%; /* Full width within container */
+  position: fixed !important;
+  top: 0;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  z-index: 1000;
+  border-bottom: 0.5px solid rgba(12, 38, 61, 0.9);
 }
 
 .logo {
   font-family: 'CustomFont', sans-serif;
+  /* margin-left: 5vw; */
+  margin-top: 3px;
   color: rgba(12, 38, 61, 1);
-  font-size: 1.5rem;
-  margin: 0;
-  z-index: 1001;
-  padding-left: 0; /* Remove any extra padding */
+  font-size: 20px;
 }
 
 .trading {
   color: rgb(4, 155, 214);
 }
 
-/* Desktop Navigation */
-.desktop-nav {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 2rem;
-}
-
-.nav-links-container {
-  display: flex;
-  justify-content: center;
-  flex: 1;
-}
-
 .nav-links {
+  right: 10rem;
+  margin-top: 3px;
   display: flex;
-  gap: 2rem;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 40%;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
+
+.links {
+  font-size: medium;
   color: rgb(3, 151, 177);
   font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  white-space: nowrap;
+  border-color: rgba(73, 44, 44, 0);
 }
 
-.nav-link:hover {
+.links:hover {
   color: rgb(255, 0, 0);
 }
 
-.link-icon {
-  margin-left: 0.3rem;
-  font-size: 0.9rem;
+.links:active {
+  text-decoration: none;
+  color: aqua;
 }
 
-/* User Section */
-.user-section {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.user-icon {
-  font-size: 2rem;
-  color: rgba(12, 38, 61, 1);
-}
-
-.user-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin: 0;
-  color: rgba(12, 38, 61, 1);
-}
-
-.user-email {
-  font-size: 0.75rem;
-  margin: 0;
-  color: rgba(12, 38, 61, 0.8);
-}
-
-/* CTA Button */
-.cta-button {
-  background-color: rgba(12, 38, 61, 1);
-  padding: 0.8rem 1.2rem;
-  border-radius: 0.5rem;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-  margin-right: 0; /* Removed margin-right to rely on container padding */
-}
-
-.cta-button:hover {
-  background-color: red;
-}
-
-/* Mobile Menu Icon */
 .menu-icon {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  z-index: 1001;
 }
 
-.bar {
-  width: 25px;
-  height: 3px;
+/*menu icon*/
+#copyright {
+  bottom: 10%;
+  left: 35%;
+  position: absolute;
+  color: rgb(7, 163, 190) !important;
+}
+
+.my-icon11 {
+  margin-right: 0.3rem;
+  margin-top: 5px;
+  margin-left: 0.5rem;
+  font-size: medium;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 4px;
   background-color: rgb(0, 135, 253);
-  margin: 3px 0;
-  transition: all 0.4s ease;
+  margin: 6px 0;
+  transition: 0.4s;
 }
 
-.menu-icon.change .bar1 {
-  transform: translateY(8px) rotate(-45deg);
+.change .bar1 {
   background-color: rgb(226, 58, 7);
+  transform: translate(0, 11px) rotate(-45deg);
 }
 
-.menu-icon.change .bar2 {
+.change .bar2 {
   opacity: 0;
 }
 
-.menu-icon.change .bar3 {
-  transform: translateY(-8px) rotate(45deg);
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
   background-color: rgb(226, 58, 7);
 }
 
-/* Mobile Navigation */
-.mobile-nav {
-  display: none;
-}
+@media only screen and (max-width: 820px) {
 
-.copyright {
-  display: none;
-}
-
-/* Mobile CTA Container */
-.mobile-cta-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* Added gap instead of margin-right on button */
-}
-
-/* Responsive Styles */
-@media (max-width: 1024px) {
   .nav-links {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 820px) {
-  .header-content {
-    height: 4rem;
-  }
-
-  .desktop-nav .nav-links-container {
     display: none;
   }
 
-  .mobile-nav {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 2rem;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1000;
-  }
-
-  .mobile-nav.mobile-show {
-    transform: translateX(0);
-  }
-
-  .links-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-  }
-
-  .copyright {
-    display: block;
+  .logo {
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    color: rgb(7, 163, 190);
-    font-size: 0.9rem;
+    left: 1rem;
+    font-size: 16px;
+  }
+
+  .new-links {
+    width: 100%;
+    height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 3.5rem;
+    color: rgb(2, 139, 139);
+    background-color: white;
+    padding: 5px;
+    padding-top: 1rem;
+    box-shadow: 0 1px 1px rgba(12, 245, 245, 0.5);
+  }
+
+  .links {
+    margin-left: 4px;
+    margin-top: 1.5rem;
   }
 
   .menu-icon {
-    display: flex;
+    display: block;
+    margin-left: 2rem;
+    color: rgba(12, 38, 61, 1);
   }
 
-  .user-info {
-    gap: 0.5rem;
+  #menu {
+    top: 7px;
+    right: 0;
+    position: absolute;
+    width: 5rem;
+    height: 4rem;
   }
 
-  .user-icon {
-    font-size: 1.8rem;
+  .header {
+    height: 4rem;
+    margin-bottom: 0;
+    background-color: white;
   }
 
-  .user-name {
-    font-size: 0.8rem;
+
+}
+
+@media only screen and (max-width: 820px) {
+  .links {
+    font-size: 1rem;
+    margin-left: 10px;
   }
 
-  .user-email {
-    font-size: 0.7rem;
+  .btn-on-header{
+    display: none;
+    width: 0 ;
   }
 }
 
-@media (max-width: 480px) {
-  .header-container {
-    padding: 0 1rem; /* Adjusted for mobile */
-  }
-
-  .logo {
-    font-size: 1.2rem;
-  }
-
-  .cta-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .user-icon {
-    font-size: 1.5rem;
-  }
-
-  .user-name {
-    font-size: 0.7rem;
-  }
-
-  .user-email {
-    font-size: 0.6rem;
-  }
-
-  .mobile-cta-container {
-    gap: 0.5rem; /* Smaller gap on mobile */
-  }
+.btn-start-trading {
+  background-color: rgba(12, 38, 61, 1);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
 }
+
+.btn-start-trading:hover {
+  background-color: red;
+}
+
+/* user detail data */
+.fulname {
+  font-weight: bold;
+  font-size: 0.9vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.emailinheader2 {
+  margin: 0;
+}
+
+
+.face-icon {
+  font-size: 2vw;
+  margin-right: 0.8vw;
+  opacity: 1;
+}
+

@@ -102,10 +102,10 @@ const Dashboard = () => {
       if (typeof cookietoken === 'string') {
         if (showBalance == true) {
           authorizeUser(cookietoken);
+        }else{
+          router.replace('/');
         }
       }
-    } else {
-      router.replace('/');
     }
   }, [acct1, token1, cur1, showBalance]);
 

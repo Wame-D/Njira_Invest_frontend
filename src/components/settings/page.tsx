@@ -412,7 +412,7 @@ const SettingsPage = () => {
                     alert('Error  Please try again.');
                 }
             } else {
-                alert(`your bot will trading on ${margins[0]}`);
+                alert(`your bot will start trading on ${margins[0]}`);
             }
         } catch (error) {
             console.error('Fetch error:', error);
@@ -514,7 +514,7 @@ const SettingsPage = () => {
                                 onChange={handleRadioChange}></input>
                             <label htmlFor='mal' className='text-m m-0 text-gray-700'>Both</label>
                         </div>
-                        <input className='submitt mt-4' type='Submit'></input>
+                        <input className='submitt mt-4' type='Submit' value="Save"></input>
                         {error1 && <p style={{ color: "red" }}>{error1}</p>}
                         {success1 && <p style={{ color: "green" }}>{success1}</p>}
                     </form>
@@ -548,20 +548,20 @@ const SettingsPage = () => {
                     <form className='w-full h-fit mt-4' onSubmit={handleSymbolChange}>
                         <div className='flex flex-row items-center ' >
                             <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-box' : ''}`}
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "frxXAUUSD") ? 'disabled-box' : ''}`}
                                 type="checkbox"
-                                value="Gold"
+                                value="frxXAUUSD"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "Gold") ? 'disabled-label' : ''}`}>Gold</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "frxXAUUSD") ? 'disabled-label' : ''}`}>frxXAUUSD</label>
                         </div>
 
                         <div className='flex flex-row items-center '>
                             <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-box' : ''}`}
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "OTC_SPC") ? 'disabled-box' : ''}`}
                                 type="checkbox"
-                                value="US_30"
+                                value="OTC_SPC"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "US_30") ? 'disabled-label' : ''}`}>US_30</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "OTC_SPC") ? 'disabled-label' : ''}`}>OTC_SPC</label>
                         </div>
 
                         <div className='flex flex-row items-center'>
@@ -570,19 +570,28 @@ const SettingsPage = () => {
                                 type="checkbox"
                                 value="frxEURUSD"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "Euro/USD") ? 'disabled-label' : ''}`}>Euro/USD</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "frxEURUSD") ? 'disabled-label' : ''}`}>frxEURUSD</label>
                         </div>
 
                         <div className='flex flex-row items-center '>
                             <input
-                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-box' : ''}`}
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "R_75") ? 'disabled-box' : ''}`}
                                 type="checkbox"
-                                value="V_75"
+                                value="R_75"
                                 onChange={handleCheckboxChange}></input>
-                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "V_75") ? 'disabled-label' : ''}`}>V_75</label>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "R_75") ? 'disabled-label' : ''}`}>R_75</label>
                         </div>
 
-                        <input className='submitt mt-4' type='Submit'></input>
+                        <div className='flex flex-row items-center '>
+                            <input
+                                className={`boxes-str mr-2 ${symbols.some((item) => item[0] === "OTC_AS51") ? 'disabled-box' : ''}`}
+                                type="checkbox"
+                                value="OTC_AS51"
+                                onChange={handleCheckboxChange}></input>
+                            <label className={`text-m m-0 text-gray-700 ${symbols.some((item) => item[0] === "OTC_AS51") ? 'disabled-label' : ''}`}>OTC_AS51</label>
+                        </div>
+
+                        <input className='submitt mt-4' type='Submit' value="Save"></input>
                         {error2 && <p style={{ color: "red" }}>{error2}</p>}
                         {success2 && <p style={{ color: "green" }}>{success2}</p>}
                     </form>
@@ -618,7 +627,7 @@ const SettingsPage = () => {
                             max={30}
                             onChange={(e) => setPerDay(Number(e.target.value))}
                         />
-                        <input className="submitt mt-2" type="submit" value="Submit" />
+                        <input className="submitt mt-2" type="submit" value="Save" />
                         {error3 && <p style={{ color: 'red' }}>{error3}</p>}
                         {success3 && <p style={{ color: 'green' }}>{success3}</p>}
                     </form>
@@ -706,7 +715,7 @@ const SettingsPage = () => {
                         <input
                             // disabled={!isComplete}
                             className="submitt mt-4"
-                            type="submit" value="Submit" />
+                            type="submit" value="Save" />
                         {error4 && <p style={{ color: 'red' }}>{error4}</p>}
                         {success4 && <p style={{ color: 'green' }}>{success4}</p>}
                     </form>

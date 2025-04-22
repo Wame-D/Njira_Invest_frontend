@@ -20,6 +20,7 @@ import Link from 'next/link';
 import TradingViewWidget from '../eurousdwidget/page';
 import GoldWidget from '../goldwidget/page';
 import US30Widget from '../us30widget/page';
+import V75Widget from '../v75widget/page';
 
 export default function Services() {
     return (
@@ -154,6 +155,7 @@ export default function Services() {
             <TradingViewWidget />
             <GoldWidget />
             <US30Widget />
+            <V75Widget />
 
             {/* Need Help Section */}
             <div className="mt-16 w-full max-w-6xl">

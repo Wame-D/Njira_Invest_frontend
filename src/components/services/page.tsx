@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fi';
 import '../../app/globals.css';
 import Link from 'next/link';
+import TradingViewWidget from '../widget/page';
 
 export default function Services() {
     return (
@@ -147,6 +148,8 @@ export default function Services() {
                     </a>
                 </div>
             </div>
+
+            <TradingViewWidget />
 
             {/* Need Help Section */}
             <div className="mt-16 w-full max-w-6xl">

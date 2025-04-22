@@ -1,4 +1,3 @@
-// components/TradingViewWidget.js
 import { useEffect } from 'react';
 
 const TradingViewWidget = () => {
@@ -12,16 +11,19 @@ const TradingViewWidget = () => {
       "width": "100%",
       "locale": "en",
       "colorTheme": "light",
-      "isTransparent": false
+      "isTransparent": true  // This removes the background and helps with border removal
     });
 
-    // Append script to container
+    // Find container and append script
     const container = document.querySelector('.tradingview-widget-container__widget');
     if (container) {
+      // Clear any existing content
+      container.innerHTML = '';
+      // Append the new script
       container.appendChild(script);
     }
 
-    // Cleanup function
+    // Cleanup
     return () => {
       if (container && container.contains(script)) {
         container.removeChild(script);
@@ -30,7 +32,7 @@ const TradingViewWidget = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container mt-16 w-full max-w-6xl">
+    <div className="tradingview-widget-container mt-16 w-full max-w-6xl" style={{ border: 'none' }}>
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
         

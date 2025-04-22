@@ -17,7 +17,7 @@ import {
 } from 'react-icons/fi';
 import '../../app/globals.css';
 import Link from 'next/link';
-import TradingViewWidget from '../widget/page';
+import TradingViewWidget from '../eurousdwidget/page';
 import GoldWidget from '../goldwidget/page';
 
 export default function Services() {

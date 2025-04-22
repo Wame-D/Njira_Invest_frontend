@@ -152,10 +152,12 @@ export default function Services() {
                 </div>
             </div>
 
-            <TradingViewWidget />
+            
+
+            {/* <TradingViewWidget />
             <GoldWidget />
             <US30Widget />
-            <V75Widget />
+            <V75Widget /> */}
 
             {/* Need Help Section */}
             <div className="mt-16 w-full max-w-6xl">

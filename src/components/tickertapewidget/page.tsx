@@ -2,28 +2,15 @@ import React, { useEffect } from 'react';
 
 const TickerTapeWidget = () => {
   useEffect(() => {
-    // Create script element
     const script = document.createElement('script');
     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
     script.async = true;
     script.innerHTML = JSON.stringify({
       "symbols": [
-        {
-          "proName": "FX_IDC:EURUSD",
-          "title": "EUR to USD"
-        },
-        {
-          "description": "GOLD",
-          "proName": "NCDEX:GOLD"
-        },
-        {
-          "description": "US30",
-          "proName": "CAPITALCOM:US30"
-        },
-        {
-          "description": "V75",
-          "proName": "CAPITALCOM:VIX"
-        }
+        { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
+        { "description": "GOLD", "proName": "NCDEX:GOLD" },
+        { "description": "US30", "proName": "CAPITALCOM:US30" },
+        { "description": "V75", "proName": "CAPITALCOM:VIX" }
       ],
       "showSymbolLogo": true,
       "isTransparent": true,
@@ -32,13 +19,9 @@ const TickerTapeWidget = () => {
       "locale": "en"
     });
 
-    // Append script to container
     const container = document.querySelector('.tradingview-widget-container__widget');
-    if (container) {
-      container.appendChild(script);
-    }
+    if (container) container.appendChild(script);
 
-    // Cleanup function
     return () => {
       if (container && script.parentNode === container) {
         container.removeChild(script);
@@ -47,12 +30,10 @@ const TickerTapeWidget = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container">
-      <div className="tradingview-widget-container__widget"></div>
+    <div className="tradingview-widget-container" style={{ width: '100%', height: '46px' }}>
+      <div className="tradingview-widget-container__widget" style={{ width: '100%', height: '100%' }}></div>
       <div className="tradingview-widget-copyright">
-        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-          <span className="blue-text">Track all markets on TradingView</span>
-        </a>
+        
       </div>
     </div>
   );

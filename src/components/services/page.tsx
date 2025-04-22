@@ -21,6 +21,7 @@ import TradingViewWidget from '../eurousdwidget/page';
 import GoldWidget from '../goldwidget/page';
 import US30Widget from '../us30widget/page';
 import V75Widget from '../v75widget/page';
+import TickerTapeWidget from '../tickertapewidget/page';
 
 export default function Services() {
     return (
@@ -151,8 +152,11 @@ export default function Services() {
                     </a>
                 </div>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
 
-            
+            <TickerTapeWidget />
 
             {/* <TradingViewWidget />
             <GoldWidget />

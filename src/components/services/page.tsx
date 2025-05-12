@@ -81,76 +81,58 @@ export default function Services() {
             {/* Key Features Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-6 max-w-6xl w-full">
                 {/* Automated Trading */}
-                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
+                <Link href="/" className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 hover:shadow-lg transition">
                     <AiOutlineRobot size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Automated Trading</h2>
                     <p className="mt-4 text-gray-600">
                         Our trading app is fully automated, designed to place trades on your behalf based on deep market analysis.
                     </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Trade &gt;
-                    </a>
-                </div>
+                </Link>
 
                 {/* Real-time Analytics and Reporting */}
-                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
+                <Link href="/" className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 hover:shadow-lg transition">
                     <FiPieChart size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Real-time Analytics and Reporting</h2>
                     <p className="mt-4 text-gray-600">
                         Get access to real-time market insights, analytics, and trade execution reports.
                     </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        View Analytics &gt;
-                    </a>
-                </div>
+                </Link>
 
                 {/* Risk Management Tools */}
-                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
+                <Link href="/" className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 hover:shadow-lg transition">
                     <FiShield size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Risk Management Tools</h2>
                     <p className="mt-4 text-gray-600">
                         We prioritize capital protection with robust risk management systems.
                     </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Get Started &gt;
-                    </a>
-                </div>
+                </Link>
 
                 {/* Profit and Loss Tracking */}
-                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
+                <Link href="/" className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 hover:shadow-lg transition">
                     <AiOutlineLineChart size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Profit and Loss Tracking</h2>
                     <p className="mt-4 text-gray-600">
                         Our platform provides detailed insights into your trading performance.
                     </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Track &gt;
-                    </a>
-                </div>
+                </Link>
 
                 {/* Multi-Asset Trading Support */}
-                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
+                <Link href="/" className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 hover:shadow-lg transition">
                     <FiDollarSign size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">Multi-Asset Trading Support</h2>
                     <p className="mt-4 text-gray-600">
                         Trade across multiple asset classes, including forex, stocks, indices, and commodities.
                     </p>
-                    <a href="/" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Explore Assets &gt;
-                    </a>
-                </div>
+                </Link>
 
                 {/* AI-Powered Market Predictions */}
-                <div className="flex flex-col p-6 bg-white rounded-lg border border-sky-400">
+                <Link href="/producttour#aipredictions-expand" className="flex flex-col p-6 bg-white rounded-lg border border-sky-400 hover:shadow-lg transition">
                     <AiOutlineBulb size={50} className="text-sky-500" />
                     <h2 className="mt-4 text-xl font-semibold">AI-Powered Market Predictions</h2>
                     <p className="mt-4 text-gray-600">
                         Leverage AI-driven market forecasts to make informed trading decisions.
                     </p>
-                    <a href="/producttour#aipredictions-expand" className="flex items-center mt-4 text-sky-500 hover:text-sky-700">
-                        Learn More &gt;
-                    </a>
-                </div>
+                </Link>
             </div>
             <br></br>
             <br></br>

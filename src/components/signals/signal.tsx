@@ -5,7 +5,7 @@ import '../charts/charts.css';
 
 const SignalsDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
-  const embeddedDashboardId = "b1fb63ec-24b8-4204-849d-082da09b2a5c";
+  const embeddedDashboardId = "2b8475d8-6820-4c01-8b78-cc540cf78489";
 
   const fetchGuestToken = async () => {
     try {

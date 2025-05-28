@@ -7,7 +7,7 @@ const userEmail = getCookie('userEmail');
 
 const TradeDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
-  const embeddedDashboardId = "fa733f1c-698c-47e8-9eeb-b4ab38f0adcf";
+  const embeddedDashboardId = "d24a7c91-b346-4052-92ca-11529ab5a92b";
 
 
   const fetchGuestToken = async () => {

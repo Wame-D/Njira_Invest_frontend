@@ -75,33 +75,6 @@ export default function Home() {
           <HowItWork />
           <BeginTrading />
         </div>
-        {/* <div className=' flex justify-center items-center fixedwhatsappdiv'>
-          <p className='fixedwhatsapp'>
-            <Link href="https://wa.me/265990024684">
-
-              <FaWhatsapp color="#25D366" className="my-ico" />
-            </Link>
-          </p>
-        </div>
-        <div className="flex justify-center items-center  flex-col fixed-buttondiv" >
-          <button className="flex justify-center items-center fixed-button" onClick={openChatbot}>
-            <p >
-              <MdChat className="my-ico" />
-            </p>
-          </button>
-          <p className='text-sm text-white opacity-100 mt-1'>Ask AI</p>
-        </div> */}
-
-
-        {/* Conditional rendering for the chatbot overlay */}
-        {/* {showChatbot && (
-          <div className="overlay1">
-            <div className="modal1">
-              <span className="close1" onClick={closeChatbot}>&times;</span>
-              <AiPage />
-            </div>
-          </div>
-        )} */}
       </div>
 
       <Footer />

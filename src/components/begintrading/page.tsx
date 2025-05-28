@@ -24,7 +24,7 @@ export default function BeginTrading() {
         }
     };
     return (
-        <div className="flex flex-col items-center justify-center w-full min-h-screen">
+        <div className="flex flex-col items-center justify-center w-full md:min-h-[60vh] h-fit">
             {/* Get Started Section with Background Image */}
             <div className="my-8 md:my-16 w-full py-12 md:py-20 px-4 bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-600 mb-4 text-center">

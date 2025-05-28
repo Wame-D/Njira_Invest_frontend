@@ -7,7 +7,7 @@ import './charts.css';
 
 const SupersetDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
-  const embeddedDashboardId = "81429aff-ef7f-45a7-b31b-2eb06d86c1ce";
+  const embeddedDashboardId = "be72237a-a860-4253-bf78-f4e33544ebc1";
 
   const fetchGuestToken = async () => {
 

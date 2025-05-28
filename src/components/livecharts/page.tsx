@@ -67,7 +67,6 @@ const TradingViewWidget = () => {
     // terminate trade
     const [contractIds, setContractIds] = useState("");
     const [message, setMessage] = useState("");
-
     const handleSubmit2 = async (e: React.FormEvent) => {
         e.preventDefault();
         setMessage("");
@@ -151,7 +150,7 @@ const TradingViewWidget = () => {
                 {/* enter trade */}
                 <form
                     onSubmit={handleSubmit}
-                    className="max-w-md mx-auto p-4 bg-white rounded-lg shadow space-y-4"
+                    className="max-w-md mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 border border-gray-200"
                 >
                     <h2 className="text-xl font-bold text-center">Trade Setup</h2>
 
@@ -214,7 +213,35 @@ const TradingViewWidget = () => {
                 </form>
 
                 {/* terminate trade */}
+                <form
+                    onSubmit={handleSubmit2}
+                    className="max-w-md mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 mt-8 border border-gray-200"
+                >
+                    <h2 className="text-xl font-bold text-center">Terminate Trades</h2>
 
+                    <div>
+                        <label className="block mb-1 font-medium">Contract ID(s)</label>
+                        <input
+                            type="text"
+                            value={contractIds}
+                            onChange={(e) => setContractIds(e.target.value)}
+                            placeholder="e.g. 123456, 789012"
+                            className="w-full p-2 border rounded-md"
+                            required
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="w-full bg-red-600 text-white py-2 font-bold text-lg rounded-md hover:bg-red-700"
+                    >
+                        Terminate Trade(s)
+                    </button>
+
+                    {message && (
+                        <div className="text-center text-sm font-medium text-green-600 mt-2">{message}</div>
+                    )}
+                </form>
             </div>
         </div>
 

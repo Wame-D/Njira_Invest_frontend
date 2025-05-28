@@ -1,31 +1,47 @@
 'use client';
-import Head from 'next/head';
+import React, { useEffect } from 'react';
 import Header from "../components/header/page";
 import TopSection from "../components/topSection/page";
 import Services from "../components/services/page";
 import HowItWork from "../components/how/page";
-import React from 'react';
-// import { FaWhatsapp } from 'react-icons/fa';
-// import { MdChat } from 'react-icons/md';
-// import Link from 'next/link';
-// import AiPage from "../components/chatot/page";
 import Footer from "../components/footer/page";
 import BeginTrading from "../components/begintrading/page";
 
+// Note: In Next.js App Router, use metadata.ts instead of Head
 export default function Home() {
+  // Add smooth scrolling behavior
+  useEffect(() => {
+    // Enable smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Handle anchor link clicks for smooth scrolling
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a[href^="#"]');
+      
+      if (anchor) {
+        e.preventDefault();
+        const id = anchor.getAttribute('href')?.substring(1);
+        if (id) {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    };
 
-  // const [showChatbot, setShowChatbot] = useState(false);
+    document.addEventListener('click', handleAnchorClick);
+    
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+      document.removeEventListener('click', handleAnchorClick);
+    };
+  }, []);
 
-  // const openChatbot = () => {
-  //   setShowChatbot(true);
-  // };
-
-  // const closeChatbot = () => {
-  //   setShowChatbot(false);
-  // };
   return (
     <>
-      {/* SEO Configuration */}
+      {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -55,56 +71,28 @@ export default function Home() {
           }),
         }}
       />
-      <Head>
-        <title>FX-auto-malawi</title>
-        <meta
-          name="description"
-          content="Trade forex automatically with Xhed FX. Our AI-powered app places trades for you using deep market analysis. Trusted by traders globally."
-        />
-        <meta name="keywords" content="xhed fx, forex trading, automated forex trading, fx auto, forex Malawi, forex robot" />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Xhed Technologies" />
-        <link rel="canonical" href="https://forex.xhed.net" />
-      </Head>
-      <div className=" items-center justify-items-center h-fit w-full ">
+      
+      <main className="w-full h-fit">
         <Header />
-        <TopSection />
-        <Services />
-        <div id="how-it-work">
-
+        
+        <section id="top-section">
+          <TopSection />
+        </section>
+        
+        <section id="services">
+          <Services />
+        </section>
+        
+        <section id="how-it-work">
           <HowItWork />
+        </section>
+        
+        <section id="begin-trading">
           <BeginTrading />
-        </div>
-        {/* <div className=' flex justify-center items-center fixedwhatsappdiv'>
-          <p className='fixedwhatsapp'>
-            <Link href="https://wa.me/265990024684">
-
-              <FaWhatsapp color="#25D366" className="my-ico" />
-            </Link>
-          </p>
-        </div>
-        <div className="flex justify-center items-center  flex-col fixed-buttondiv" >
-          <button className="flex justify-center items-center fixed-button" onClick={openChatbot}>
-            <p >
-              <MdChat className="my-ico" />
-            </p>
-          </button>
-          <p className='text-sm text-white opacity-100 mt-1'>Ask AI</p>
-        </div> */}
-
-
-        {/* Conditional rendering for the chatbot overlay */}
-        {/* {showChatbot && (
-          <div className="overlay1">
-            <div className="modal1">
-              <span className="close1" onClick={closeChatbot}>&times;</span>
-              <AiPage />
-            </div>
-          </div>
-        )} */}
-      </div>
-
-      <Footer />
+        </section>
+        
+        <Footer />
+      </main>
     </>
   );
 }

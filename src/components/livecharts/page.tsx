@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import React, { memo } from 'react';
 
 const TradingViewWidget = () => {
+    const   token =  "a1-Iox7kjWeAxr4K8TbOOq1ErShcfkom";
+    const email = 'wamedaniel9@gmail.com';
     // form data
     const [form, setForm] = useState({
         entry: "",
@@ -10,8 +12,6 @@ const TradingViewWidget = () => {
         takeProfit: "",
         symbol: "EURUSD",
         tradeType: "BUY",
-        email: "",
-        token: "",
     });
 
     const [errors, setErrors] = useState({
@@ -36,7 +36,7 @@ const TradingViewWidget = () => {
         setForm((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         // Final validation
@@ -50,18 +50,36 @@ const TradingViewWidget = () => {
         const hasError = Object.values(newErrors).some((e) => e !== "");
         if (hasError) return;
 
-        // Log final JSON
         const payload = {
-            entry: parseFloat(form.entry),
-            stopLoss: parseFloat(form.stopLoss),
-            takeProfit: parseFloat(form.takeProfit),
+            email: email,
+            token: token,
+            trade_type: form.tradeType,  // Note: changed from tradeType to trade_type
+            lot_size: parseFloat(form.entry),  // Using entry as lot_size
+            tp: parseFloat(form.takeProfit),   // Changed from takeProfit to tp
+            sl: parseFloat(form.stopLoss),     // Changed from stopLoss to sl
             symbol: form.symbol,
-            tradeType: form.tradeType,
-            email: form.email,
-            token: form.token,
+            strategy: 'Manual',
         };
-
-        console.log("JSON payload:", JSON.stringify(payload, null, 2));
+    
+        try {
+            const response = await fetch("http://127.0.0.1:8000/placeTrade/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),  // Remove the nested payload object
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to terminate trade(s)");
+            }
+    
+            const result = await response.json();
+            setMessage(result.message || "Trades terminated successfully.");
+            setContractIds("");
+        } catch (error) {
+            console.error(error);
+            setMessage("An error occurred while terminating trades.");
+        }
     };
 
     // terminate trade
@@ -70,28 +88,29 @@ const TradingViewWidget = () => {
     const handleSubmit2 = async (e: React.FormEvent) => {
         e.preventDefault();
         setMessage("");
-
+    
         const idsArray = contractIds
             .split(",")
-            .map((id) => id.trim())
-            .filter((id) => id.length > 0);
-
+            .map((id) => parseInt(id.trim(), 10)) // ✅ convert to integer
+            .filter((id) => !isNaN(id)); // ✅ filter out invalid numbers
+    
         if (idsArray.length === 0) {
-            setMessage("Please enter at least one contract ID.");
+            setMessage("Please enter at least one valid contract ID.");
             return;
         }
-
+    
         try {
-            const response = await fetch("/api/terminate-trade", {
+            const response = await fetch("http://127.0.0.1:8000/terminateTrade/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ contractIds: idsArray }),
+                body: JSON.stringify({ token, contract_ids: idsArray }),
             });
-
+    
             if (!response.ok) {
-                throw new Error("Failed to terminate trade(s)");
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to terminate trade(s)");
             }
-
+    
             const result = await response.json();
             setMessage(result.message || "Trades terminated successfully.");
             setContractIds("");
@@ -99,7 +118,8 @@ const TradingViewWidget = () => {
             console.error(error);
             setMessage("An error occurred while terminating trades.");
         }
-    }
+    };
+    
 
     //   trading view widget
     const container = useRef<HTMLDivElement>(null);
@@ -163,10 +183,11 @@ const TradingViewWidget = () => {
                             onChange={handleChange}
                             className="w-full p-2 border rounded-md"
                         >
-                            <option value="EURUSD">EURUSD</option>
-                            <option value="GBPUSD">GBPUSD</option>
-                            <option value="USDJPY">USDJPY</option>
-                            <option value="XAUUSD">XAUUSD</option>
+                            <option value="frxEURUSD">EURUSD</option>
+                            <option value="frxGBPUSD">GBPUSD</option>
+                            <option value="frxUSDJPY">USDJPY</option>
+                            <option value="frxXAUUSD">XAUUSD</option>
+                            <option value="R_75">V75</option>
                         </select>
                     </div>
 
@@ -185,7 +206,7 @@ const TradingViewWidget = () => {
                     </div>
 
                     {/* Decimal Inputs */}
-                    {["entry", "stopLoss", "takeProfit"].map((field) => (
+                    {["Lot Size", "stopLoss", "takeProfit"].map((field) => (
                         <div key={field}>
                             <label className="block mb-1 font-medium capitalize">
                                 {field.replace(/([A-Z])/g, " $1")}

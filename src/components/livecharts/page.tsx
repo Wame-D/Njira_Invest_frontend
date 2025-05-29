@@ -35,7 +35,7 @@ const TradingViewWidget = () => {
 
         setForm((prev) => ({ ...prev, [name]: value }));
     };
-
+    const [message1, setMessage1] = useState("");
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -62,7 +62,7 @@ const TradingViewWidget = () => {
         };
     
         try {
-            const response = await fetch("http://127.0.0.1:8000/placeTrade/", {
+            const response = await fetch("https://api.xhed.net/placeTrade/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),  // Remove the nested payload object
@@ -70,15 +70,15 @@ const TradingViewWidget = () => {
     
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error || "Failed to terminate trade(s)");
+                throw new Error(errorData.error || "Failed to place trade trade(s)");
             }
     
             const result = await response.json();
-            setMessage(result.message || "Trades terminated successfully.");
+            setMessage1(result.message || "Trade placed successfully.");
             setContractIds("");
         } catch (error) {
             console.error(error);
-            setMessage("An error occurred while terminating trades.");
+            setMessage1("An error occurred while placing trade.");
         }
     };
 
@@ -91,8 +91,8 @@ const TradingViewWidget = () => {
     
         const idsArray = contractIds
             .split(",")
-            .map((id) => parseInt(id.trim(), 10)) // ✅ convert to integer
-            .filter((id) => !isNaN(id)); // ✅ filter out invalid numbers
+            .map((id) => parseInt(id.trim(), 10)) // convert to integer
+            .filter((id) => !isNaN(id)); // filter out invalid numbers
     
         if (idsArray.length === 0) {
             setMessage("Please enter at least one valid contract ID.");
@@ -100,7 +100,7 @@ const TradingViewWidget = () => {
         }
     
         try {
-            const response = await fetch("http://127.0.0.1:8000/terminateTrade/", {
+            const response = await fetch("https://api.xhed.net/terminateTrade/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, contract_ids: idsArray }),
@@ -156,21 +156,20 @@ const TradingViewWidget = () => {
     }, []);
 
     return (
-        <div className=" flex flex-row justify-between items-center w-full h-full ">
+        <div className="relative flex lg:flex-row flex-col justify-between items-center w-full lg:h-full h-fit">
             {/* trading view widget */}
-            <div className="w-[80%] h-full">
+            <div className="lg:w-[80%] w-full h-[90vh]  overflow-hidden">
                 <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>
                     <div className="tradingview-widget-container__widget" style={{ height: "calc(100% - 32px)", width: "100%" }}></div>
                 </div>
             </div>
 
             {/* trading  */}
-            <div className="w-[20%] h-full px-4">
-
+            <div className="w-full lg:w-[20%] flex lg:flex-col md:flex-row flex-col lg:h-full  h-fit px-4 lg:py-2 md:py-4 py-8  bg-white items-start justify-center gap-4 ">
                 {/* enter trade */}
                 <form
                     onSubmit={handleSubmit}
-                    className="max-w-md mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 border border-gray-200"
+                    className="md:max-w-md  w-full mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 border border-gray-200"
                 >
                     <h2 className="text-xl font-bold text-center">Trade Setup</h2>
 
@@ -231,12 +230,15 @@ const TradingViewWidget = () => {
                     >
                         Place Trade
                     </button>
+                    {message1 && (
+                        <div className="text-center text-sm font-medium text-green-600 mt-2">{message1}</div>
+                    )}
                 </form>
 
                 {/* terminate trade */}
                 <form
                     onSubmit={handleSubmit2}
-                    className="max-w-md mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 mt-8 border border-gray-200"
+                    className="md:max-w-md  w-full mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 md:mt-0 mt-8 border border-gray-200"
                 >
                     <h2 className="text-xl font-bold text-center">Terminate Trades</h2>
 

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import React, { memo } from 'react';
 
 const TradingViewWidget = () => {
-    const   token =  "a1-Iox7kjWeAxr4K8TbOOq1ErShcfkom";
+    const token = "a1-Iox7kjWeAxr4K8TbOOq1ErShcfkom";
     const email = 'wamedaniel9@gmail.com';
     // form data
     const [form, setForm] = useState({
@@ -27,16 +27,75 @@ const TradingViewWidget = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
 
-        // Validate decimals inline
+        // Validate decimals for numeric fields
         if (["entry", "stopLoss", "takeProfit"].includes(name)) {
-            const error = validateDecimals(value);
-            setErrors((prev) => ({ ...prev, [name]: error }));
+            // Allow empty value or valid number
+            if (value === "" || /^\d*\.?\d{0,2}$/.test(value)) {
+                setErrors(prev => ({ ...prev, [name]: "" }));
+                setForm(prev => ({ ...prev, [name]: value }));
+            }
+        } else {
+            setForm(prev => ({ ...prev, [name]: value }));
         }
-
-        setForm((prev) => ({ ...prev, [name]: value }));
     };
     const [message1, setMessage1] = useState("");
-    const handleSubmit = async (e: React.FormEvent) => {
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+
+    //     // Final validation
+    //     const newErrors = {
+    //         entry: validateDecimals(form.entry),
+    //         stopLoss: validateDecimals(form.stopLoss),
+    //         takeProfit: validateDecimals(form.takeProfit),
+    //     };
+    //     setErrors(newErrors);
+
+    //     const hasError = Object.values(newErrors).some((e) => e !== "");
+    //     if (hasError) return;
+
+    //     // const payload = {
+    //     //     email: email,
+    //     //     token: token,
+    //     //     trade_type: form.tradeType,  // Note: changed from tradeType to trade_type
+    //     //     lot_size: parseFloat(form.entry),  // Using entry as lot_size
+    //     //     tp: parseFloat(form.takeProfit),   // Changed from takeProfit to tp
+    //     //     sl: parseFloat(form.stopLoss),     // Changed from stopLoss to sl
+    //     //     symbol: form.symbol,
+    //     //     strategy: 'Manual',
+    //     // };
+
+    //     try {
+    //         const response = await fetch('https://api.xhed.net/placeTrade/', {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({
+    //                 email: "user@example.com", // You need to get this from auth/session
+    //                 token: "your-auth-token", // You need to get this from auth/session
+    //                 trade_type: form.tradeType || "buy", // Default to buy if not specified
+    //                 lot_size: parseFloat(form.entry),
+    //                 tp: parseFloat(form.takeProfit), // Map takeProfit to tp
+    //                 sl: parseFloat(form.stopLoss),   // Map stopLoss to sl
+    //                 symbol: form.symbol,
+    //                 strategy: 'Manual'
+    //             })
+    //         });
+
+    //         if (!response.ok) {
+    //             const errorData = await response.json();
+    //             throw new Error(errorData.error || "Failed to place trade trade(s)");
+    //         }
+
+    //         const result = await response.json();
+    //         setMessage1(result.message || "Trade placed successfully.");
+    //         setContractIds("");
+    //     } catch (error) {
+    //         console.error(error);
+    //         setMessage1("An error occurred while placing trade.");
+    //     }
+    // };
+
+    // terminate trade
+    const handleSubmit34 = async (e: React.FormEvent) => {
         e.preventDefault();
 
         // Final validation
@@ -50,67 +109,67 @@ const TradingViewWidget = () => {
         const hasError = Object.values(newErrors).some((e) => e !== "");
         if (hasError) return;
 
-        const payload = {
-            email: email,
-            token: token,
-            trade_type: form.tradeType,  // Note: changed from tradeType to trade_type
-            lot_size: parseFloat(form.entry),  // Using entry as lot_size
-            tp: parseFloat(form.takeProfit),   // Changed from takeProfit to tp
-            sl: parseFloat(form.stopLoss),     // Changed from stopLoss to sl
-            symbol: form.symbol,
-            strategy: 'Manual',
-        };
-    
+        // Convert trade type to lowercase for backend
+        const tradeType = form.tradeType.toLowerCase();
+
         try {
-            const response = await fetch("https://api.xhed.net/placeTrade/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),  // Remove the nested payload object
+            const response = await fetch('https://api.xhed.net/placeTrade/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email, // Use the email from component state
+                    token: token, // Use the token from component state
+                    trade_type: tradeType, // Converted to lowercase
+                    lot_size: parseFloat(form.entry), // Using entry as lot_size
+                    tp: parseFloat(form.takeProfit),
+                    sl: parseFloat(form.stopLoss),
+                    symbol: form.symbol,
+                    strategy: 'Manual'
+                })
             });
-    
+
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error || "Failed to place trade trade(s)");
+                throw new Error(errorData.error || "Failed to place trade");
             }
-    
+            // console.log(response)
             const result = await response.json();
-            setMessage1(result.message || "Trade placed successfully.");
+            setMessage1(result.data.message);
             setContractIds("");
         } catch (error) {
             console.error(error);
-            setMessage1("An error occurred while placing trade.");
+            setMessage1(error instanceof Error ? error.message : "An error occurred while placing trade.");
         }
     };
 
-    // terminate trade
     const [contractIds, setContractIds] = useState("");
     const [message, setMessage] = useState("");
     const handleSubmit2 = async (e: React.FormEvent) => {
         e.preventDefault();
         setMessage("");
-    
+
         const idsArray = contractIds
             .split(",")
             .map((id) => parseInt(id.trim(), 10)) // convert to integer
             .filter((id) => !isNaN(id)); // filter out invalid numbers
-    
+
         if (idsArray.length === 0) {
             setMessage("Please enter at least one valid contract ID.");
             return;
         }
-    
+
         try {
             const response = await fetch("https://api.xhed.net/terminateTrade/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, contract_ids: idsArray }),
             });
-    
+
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || "Failed to terminate trade(s)");
             }
-    
+
             const result = await response.json();
             setMessage(result.message || "Trades terminated successfully.");
             setContractIds("");
@@ -119,7 +178,7 @@ const TradingViewWidget = () => {
             setMessage("An error occurred while terminating trades.");
         }
     };
-    
+
 
     //   trading view widget
     const container = useRef<HTMLDivElement>(null);
@@ -168,7 +227,7 @@ const TradingViewWidget = () => {
             <div className="w-full lg:w-[20%] flex lg:flex-col md:flex-row flex-col lg:h-full  h-fit px-4 lg:py-2 md:py-4 py-8  bg-white items-start justify-center gap-4 ">
                 {/* enter trade */}
                 <form
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmit34}
                     className="md:max-w-md  w-full mx-auto p-4 py-8 bg-white rounded-m shadow space-y-4 border border-gray-200"
                 >
                     <h2 className="text-xl font-bold text-center">Trade Setup</h2>
@@ -205,7 +264,7 @@ const TradingViewWidget = () => {
                     </div>
 
                     {/* Decimal Inputs */}
-                    {["Lot Size", "stopLoss", "takeProfit"].map((field) => (
+                    {/* {["Lot Size", "stopLoss", "takeProfit"].map((field) => (
                         <div key={field}>
                             <label className="block mb-1 font-medium capitalize">
                                 {field.replace(/([A-Z])/g, " $1")}
@@ -217,6 +276,24 @@ const TradingViewWidget = () => {
                                 onChange={handleChange}
                                 className={`w-full p-2 border rounded-md ${errors[field as keyof typeof errors] ? "border-red-500" : ""
                                     }`}
+                                required
+                            />
+                            {errors[field as keyof typeof errors] && (
+                                <p className="text-sm text-red-600">{errors[field as keyof typeof errors]}</p>
+                            )}
+                        </div>
+                    ))} */}
+                    {["entry", "stopLoss", "takeProfit"].map((field) => (
+                        <div key={field}>
+                            <label className="block mb-1 font-medium capitalize">
+                                {field === 'entry' ? 'Lot Size' : field.replace(/([A-Z])/g, " $1")}
+                            </label>
+                            <input
+                                type="text"
+                                name={field}
+                                value={form[field as keyof typeof form]}
+                                onChange={handleChange}
+                                className={`w-full p-2 border rounded-md ${errors[field as keyof typeof errors] ? "border-red-500" : ""}`}
                                 required
                             />
                             {errors[field as keyof typeof errors] && (

@@ -61,6 +61,9 @@ export default function Header() {
         <a className="links flex flex-row" href="https://charts.xhed.net/">
           Charts <TbExternalLink className="my-icon11" />
         </a>
+        <a className="links flex flex-row" href="/ai">
+          Ai <TbExternalLink className="my-icon11" />
+        </a>
         <a className="links flex flex-row" href="/producttour">
           Product tour <TbExternalLink className="my-icon11" />
         </a>

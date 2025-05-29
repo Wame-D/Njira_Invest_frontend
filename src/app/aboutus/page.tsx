@@ -1,6 +1,5 @@
 import Header from "../../components/header/page";
 import { FaCheckCircle, FaChartLine, FaUsers } from "react-icons/fa";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import Footer from "../../components/footer/page";
 
 export default function About() {
@@ -88,33 +87,25 @@ export default function About() {
         </div>
       </div>
 
-      {/* Team Section - Updated with proper image fitting */}
-      <div className="bg-stone-100 py-20">
+      {/* Team Section - Updated with full-bleed images and no social links */}
+      <div className="bg-stone-100 py-20 px-4">
         <h1 className="font-bold text-2xl text-center">
           <span className="text-sky-500 font-bold text-2xl">Team</span> Members
         </h1>
         <p className="mt-4 mb-10 text-center">Meet the experts behind our AI-powered trading bot, dedicated to innovation and success in Forex trading.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {members.map((member, index) => (
-            <div key={index} className="bg-white rounded-2xl overflow-hidden text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="relative h-48 bg-gray-50 flex items-center justify-center">
+            <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-64 w-full overflow-hidden">
                 <img 
                   src={member.image} 
                   alt={member.name} 
-                  className="max-w-full max-h-full object-contain p-2"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="relative -mt-6 mb-8">
-                <div className="bg-sky-500 text-white p-3 rounded-xl w-[90%] mx-auto shadow-lg">
-                  <div className="font-bold text-sm md:text-base">{member.name}</div>
-                  <div className="text-xs md:text-sm">{member.position}</div>
-                </div>
-              </div>
-              <div className="flex justify-center gap-4 p-3 text-gray-500 mb-4">
-                <FaFacebookF className="hover:text-blue-600 cursor-pointer transition-colors" />
-                <FaTwitter className="hover:text-blue-400 cursor-pointer transition-colors" />
-                <FaLinkedinIn className="hover:text-blue-700 cursor-pointer transition-colors" />
-                <FaInstagram className="hover:text-pink-600 cursor-pointer transition-colors" />
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-lg">{member.name}</h3>
+                <p className="text-sky-600 text-sm mt-1">{member.position}</p>
               </div>
             </div>
           ))}

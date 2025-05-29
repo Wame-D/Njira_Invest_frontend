@@ -9,17 +9,53 @@ export default function AIOnCenter() {
   const [cards, setCards] = useState<string[]>([]);
   const [copySuccess, setCopySuccess] = useState('');
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   const res = await fetch('http://127.0.0.1:8000/optimise/', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ prompt }),
+  //   });
+  //   const data = await res.json();
+  //   setResponse(data.result);
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch('/api/prompt', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt }),
-    });
-    const data = await res.json();
-    setResponse(data.result);
+    
+    try {
+      // Ensure prompt is wrapped in an array (matches backend expectation)
+      const requestData = [prompt];  // <- Critical fix: send as array
+      
+      const res = await fetch('http://127.0.0.1:8000/optimise/', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),  // Send as array
+      });
+  
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Optimization failed");
+      }
+  
+      const data = await res.json();
+      setResponse(data.results);  // Match backend response key ("results")
+    } catch (error) {
+      console.error("Request failed:", error);
+      setResponse("Error: " + (error instanceof Error ? error.message : "Unknown error"));
+    }
   };
-
+  
+  // Helper to get CSRF token from cookies
+  function getCSRFToken(): string {
+    return (
+      document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrftoken='))
+        ?.split('=')[1] || ""
+    );
+  }
   const handleCopy = async () => {
     await navigator.clipboard.writeText(response);
     setCopySuccess('Copied!');
@@ -35,7 +71,7 @@ export default function AIOnCenter() {
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center p-4">
       <Header />
-      <h1 className="text-6xl font-bold mb-6">Optimize Your Signals with AI Insights</h1>
+      <h1 className="text-6xl font-bold mb-6 trading">Optimize Your Signals with AI Insights</h1>
       <p className='w-[50%] text-gray-600 text-center mt-4 mb-8'>Take your trading strategy to the next level. Enter your signal and let our AI provide refined suggestions, highlight potential improvements, and uncover patterns you might have missed. It's like having a second brain focused on smarter, data-driven decisions.</p>
 
       <div className='w-[80%] h-[30vh] bg-gray-100 rounded-lg gap-8 border-2 flex flex-col items-center justify-center shadow-m'>

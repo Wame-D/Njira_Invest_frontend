@@ -87,7 +87,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* Team Section - Updated with full-bleed images and no social links */}
+      {/* Team Section with Sky Blue Chip Backgrounds */}
       <div className="bg-stone-100 py-20 px-4">
         <h1 className="font-bold text-2xl text-center">
           <span className="text-sky-500 font-bold text-2xl">Team</span> Members
@@ -104,8 +104,10 @@ export default function About() {
                 />
               </div>
               <div className="p-4 text-center">
-                <h3 className="font-bold text-lg">{member.name}</h3>
-                <p className="text-sky-600 text-sm mt-1">{member.position}</p>
+                <h3 className="font-bold text-lg mb-2">{member.name}</h3>
+                <span className="inline-block bg-sky-100 text-sky-800 text-xs px-3 py-1 rounded-full">
+                  {member.position}
+                </span>
               </div>
             </div>
           ))}

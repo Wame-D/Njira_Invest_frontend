@@ -105,15 +105,8 @@ export default function NotificationCenter() {
             exit={{ opacity: 0, scale: 0.9 }}
             className="absolute z-10 right-0 mt-2 w-96 bg-white shadow-lg rounded-lg"
           >
-            <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+            <div className="p-4 border-b border-gray-200">
               <h3 className="text-lg font-bold text-gray-700">Notifications</h3>
-              <button
-                onClick={deleteNotifications}
-                className="text-red-500 hover:text-red-700"
-                title="Delete all"
-              >
-                <FaTrash className="h-5 w-5" />
-              </button>
             </div>
 
             <div className="max-h-80 overflow-y-auto divide-y divide-gray-200">
@@ -150,14 +143,34 @@ export default function NotificationCenter() {
               )}
             </div>
 
-            <div className="p-4 bg-gray-100 flex justify-end">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-sm text-gray-500 hover:text-gray-700"
-              >
-                Close
-              </button>
-            </div>
+            {notifications.length > 0 && (
+              <div className="p-4 border-t bg-gray-100 flex justify-between items-center">
+                <button
+                  onClick={deleteNotifications}
+                  className="text-sm text-red-500 hover:text-red-700 flex items-center gap-2"
+                >
+                  <FaTrash className="h-4 w-4" />
+                  Delete All
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-gray-500 hover:text-gray-700"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+
+            {notifications.length === 0 && (
+              <div className="p-4 bg-gray-100 flex justify-end">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-gray-500 hover:text-gray-700"
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

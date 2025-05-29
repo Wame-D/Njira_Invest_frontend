@@ -79,10 +79,13 @@ export default function About() {
 
         {/* Video Section */}
         <div className="w-full md:w-[40vw] h-64 md:h-[40vh] bg-stone-600 rounded-lg m-4 md:ml-[-10vh] overflow-hidden border-4 border-white">
-          <iframe
-            src="https://www.youtube.com/embed/5iEHsRja8u0?autoplay=1&loop=1&mute=1&playlist=5iEHsRja8u0"
+          <video
+            src="/videos/About.mp4"
             className="w-full h-full object-cover rounded-lg"
-            allow="autoplay"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         </div>
       </div>

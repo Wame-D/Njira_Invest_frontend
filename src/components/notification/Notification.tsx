@@ -4,8 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { IoNotifications } from "react-icons/io5";
 import { FaTrash } from "react-icons/fa";
+import { getCookie } from "cookies-next";
 
 interface Notification {
+  id: string;
   subject: string;
   message: string;
   timestamp: string;
@@ -14,7 +16,8 @@ interface Notification {
 export default function NotificationCenter() {
   const [isOpen, setIsOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
-  const email = "mkalidozo3@gmail.com";
+  // const email = getCookie("userEmail");
+  const email = "mkalidozo3@gmail.com"; // Replace with dynamic cookie retrieval if needed
 
   const BACKEND_URL = "http://localhost:8000";
 
@@ -54,7 +57,23 @@ export default function NotificationCenter() {
 
       setNotifications([]);
     } catch (err) {
-      console.error("Delete failed:", err);
+      console.error("Delete all failed:", err);
+    }
+  };
+
+  const deleteNotificationById = async (id: string) => {
+    try {
+      await fetch(`${BACKEND_URL}/notifications/delete-by-id/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      setNotifications((prev) => prev.filter((notif) => notif.id !== id));
+    } catch (err) {
+      console.error("Delete single notification failed:", err);
     }
   };
 
@@ -91,6 +110,7 @@ export default function NotificationCenter() {
               <button
                 onClick={deleteNotifications}
                 className="text-red-500 hover:text-red-700"
+                title="Delete all"
               >
                 <FaTrash className="h-5 w-5" />
               </button>
@@ -98,17 +118,29 @@ export default function NotificationCenter() {
 
             <div className="max-h-80 overflow-y-auto divide-y divide-gray-200">
               {notifications.length > 0 ? (
-                notifications.map((notification, index) => (
-                  <div key={index} className="p-4 bg-white hover:bg-gray-50">
-                    <p className="font-semibold text-gray-700">
-                      {notification.subject}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {notification.message}
-                    </p>
-                    <p className="text-xs text-gray-400">
-                      {new Date(notification.timestamp).toLocaleString()}
-                    </p>
+                notifications.map((notification) => (
+                  <div
+                    key={notification.id}
+                    className="p-4 bg-white hover:bg-gray-50 flex justify-between items-start gap-2"
+                  >
+                    <div className="flex-1">
+                      <p className="font-semibold text-gray-700">
+                        {notification.subject}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        {notification.message}
+                      </p>
+                      <p className="text-xs text-gray-400">
+                        {new Date(notification.timestamp).toLocaleString()}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => deleteNotificationById(notification.id)}
+                      className="text-red-400 hover:text-red-600"
+                      title="Delete notification"
+                    >
+                      <FaTrash className="h-4 w-4" />
+                    </button>
                   </div>
                 ))
               ) : (

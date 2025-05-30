@@ -236,35 +236,8 @@ export default function Backtest() {
   }, [signals.length, centerIdx, backtestStarted]);
 
   // --- Handle swipe/scroll for carousel ---
-  const handleScroll = () => {
-    const container = signalsContainerRef.current;
-    if (!container) return;
-    const cards = Array.from(container.children) as HTMLElement[];
-    let center = 0;
-    let minDelta = Number.POSITIVE_INFINITY;
-    const containerRect = container.getBoundingClientRect();
-    cards.forEach((card, idx) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const delta = Math.abs(
-        cardCenter - (containerRect.left + containerRect.width / 2)
-      );
-      if (delta < minDelta) {
-        minDelta = delta;
-        center = idx;
-      }
-    });
-    setCenterIdx(center);
-  };
 
   // --- Keyboard navigation for accessibility ---
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight" && centerIdx < signals.length - 1) {
-      setCenterIdx(centerIdx + 1);
-    } else if (e.key === "ArrowLeft" && centerIdx > 0) {
-      setCenterIdx(centerIdx - 1);
-    }
-  };
 
   // Split signals into two rows for a grid
   const rowCount = 2;

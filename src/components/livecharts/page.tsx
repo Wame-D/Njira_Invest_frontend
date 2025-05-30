@@ -1,10 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import React, { memo } from 'react';
+import { getCookie } from 'cookies-next';
 
 const TradingViewWidget = () => {
     const token = "a1-Iox7kjWeAxr4K8TbOOq1ErShcfkom";
-    const email = 'wamedaniel9@gmail.com';
+    // const email = 'wamedaniel9@gmail.com';
+    const email = getCookie('userEmail');
     // form data
     const [form, setForm] = useState({
         entry: "",
@@ -39,61 +41,6 @@ const TradingViewWidget = () => {
         }
     };
     const [message1, setMessage1] = useState("");
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-
-    //     // Final validation
-    //     const newErrors = {
-    //         entry: validateDecimals(form.entry),
-    //         stopLoss: validateDecimals(form.stopLoss),
-    //         takeProfit: validateDecimals(form.takeProfit),
-    //     };
-    //     setErrors(newErrors);
-
-    //     const hasError = Object.values(newErrors).some((e) => e !== "");
-    //     if (hasError) return;
-
-    //     // const payload = {
-    //     //     email: email,
-    //     //     token: token,
-    //     //     trade_type: form.tradeType,  // Note: changed from tradeType to trade_type
-    //     //     lot_size: parseFloat(form.entry),  // Using entry as lot_size
-    //     //     tp: parseFloat(form.takeProfit),   // Changed from takeProfit to tp
-    //     //     sl: parseFloat(form.stopLoss),     // Changed from stopLoss to sl
-    //     //     symbol: form.symbol,
-    //     //     strategy: 'Manual',
-    //     // };
-
-    //     try {
-    //         const response = await fetch('https://api.xhed.net/placeTrade/', {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({
-    //                 email: "user@example.com", // You need to get this from auth/session
-    //                 token: "your-auth-token", // You need to get this from auth/session
-    //                 trade_type: form.tradeType || "buy", // Default to buy if not specified
-    //                 lot_size: parseFloat(form.entry),
-    //                 tp: parseFloat(form.takeProfit), // Map takeProfit to tp
-    //                 sl: parseFloat(form.stopLoss),   // Map stopLoss to sl
-    //                 symbol: form.symbol,
-    //                 strategy: 'Manual'
-    //             })
-    //         });
-
-    //         if (!response.ok) {
-    //             const errorData = await response.json();
-    //             throw new Error(errorData.error || "Failed to place trade trade(s)");
-    //         }
-
-    //         const result = await response.json();
-    //         setMessage1(result.message || "Trade placed successfully.");
-    //         setContractIds("");
-    //     } catch (error) {
-    //         console.error(error);
-    //         setMessage1("An error occurred while placing trade.");
-    //     }
-    // };
-
     // terminate trade
     const handleSubmit34 = async (e: React.FormEvent) => {
         e.preventDefault();

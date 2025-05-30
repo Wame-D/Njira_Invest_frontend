@@ -15,7 +15,7 @@ export default function OptimalDays() {
   useEffect(() => {
     const fetchOptimalTimes = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/optimalTime/', {
+        const response = await fetch('https://api.xhed.net/optimalTime/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

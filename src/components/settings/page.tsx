@@ -8,8 +8,11 @@ import { FaTrashAlt } from 'react-icons/fa';
 const SettingsPage = () => {
     const [selectedStrategy, setSelectedStrategy] = useState('');
     const email = getCookie('userEmail');
+    // const email = 'wamedaniel9@gmail.com';
+    // const token = "a1-Iox7kjWeAxr4K8TbOOq1ErShcfkom";
     const token = getCookie('userToken');
     const domain = "https://api.xhed.net";
+    // const domain = "http://127.0.0.1:8000";
 
     // Handle radio button change
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
@@ -23,6 +26,7 @@ const SettingsPage = () => {
     const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
     const [save_symbol, setSymbolChange] = useState(false)
 
+    // saving strategy
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
@@ -41,7 +45,7 @@ const SettingsPage = () => {
                     token,
                     email,
                     strategy: selectedStrategy,
-                    trading: false,
+                    trading: 'false',
                 }),
             });
 

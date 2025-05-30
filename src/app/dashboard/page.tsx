@@ -81,9 +81,11 @@ const Dashboard = () => {
   const token1 = searchParams?.get('token1');
   const cur1 = searchParams?.get('cur1');
   const cookietoken = getCookie('userToken');
-  const email = getCookie('userEmail');
+  // const email = getCookie('userEmail');
   const userName = getCookie('userName');
   const [showBalance, setShowBalance] = useState(false);
+
+    const email = 'wamedaniel9@gmail.com';
 
   useEffect(() => {
     if (acct1 && token1 && cur1) {
@@ -175,13 +177,13 @@ const Dashboard = () => {
         const response = await fetch(`${domain}/Get-start-time/?email=${email}`)
 
         const data = await response.json();
-
+        console.log(data )
         if (response.ok) {
           const startTime = new Date(data.start_time).getTime();
           const trading = data.trading;
           // const targetDate = new Date('2025-01-06T10:00:00').getTime();
 
-          if (trading == 1) {
+          if (trading == 'true') {
             setIsTrading(true);
             setStartTime(startTime);
           }

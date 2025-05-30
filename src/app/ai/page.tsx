@@ -53,7 +53,7 @@ export default function AIOnCenter() {
 
       const requestData = [signalData];
 
-      const res = await fetch('http://127.0.0.1:8000/optimise/', {
+      const res = await fetch('https://api.xhed.net/optimise/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ export default function AIOnCenter() {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/optimalTradeTime')
+    fetch('https://api.xhed.net/optimalTradeTime')
       .then((res) => res.json())
       .then((data) => setCards(data.cards || []));
   }, []);

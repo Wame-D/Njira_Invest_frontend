@@ -17,10 +17,6 @@ import {
 } from 'react-icons/fi';
 import '../../app/globals.css';
 import Link from 'next/link';
-import TradingViewWidget from '../eurousdwidget/page';
-import GoldWidget from '../goldwidget/page';
-import US30Widget from '../us30widget/page';
-import V75Widget from '../v75widget/page';
 import TickerTapeWidget from '../tickertapewidget/page';
 
 export default function Services() {

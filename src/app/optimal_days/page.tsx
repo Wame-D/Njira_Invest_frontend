@@ -5,7 +5,6 @@ interface OptimalTime {
   symbol: string;
   best_days: string[];
   best_hours: string[];
-  notes: string;
 }
 
 export default function OptimalDays() {
@@ -30,12 +29,21 @@ export default function OptimalDays() {
 
         const data = await response.json();
 
-        const formattedData = data.optimal_times.map((item: any[]) => ({
+        type RawOptimalTime = [string, string[] | string, string[] | string, string];
+
+        const formattedData = (data.optimal_times as RawOptimalTime[]).map((item) => ({
           symbol: item[0],
           best_days: Array.isArray(item[1]) ? item[1] : [item[1]],
           best_hours: Array.isArray(item[2]) ? item[2] : [item[2]],
           notes: item[3] || ''
         }));
+
+        // const formattedData = data.optimal_times.map((item: any[]) => ({
+        //   symbol: item[0],
+        //   best_days: Array.isArray(item[1]) ? item[1] : [item[1]],
+        //   best_hours: Array.isArray(item[2]) ? item[2] : [item[2]],
+        //   notes: item[3] || ''
+        // }));
 
         setOptimalTimes(formattedData);
       } catch (err) {
@@ -67,7 +75,6 @@ export default function OptimalDays() {
               symbol={time.symbol}
               bestDays={time.best_days}
               bestHours={time.best_hours}
-              notes={time.notes}
             />
           ))}
         </div>
@@ -103,10 +110,9 @@ interface OptimalTimeCardProps {
   symbol: string;
   bestDays: string[];
   bestHours: string[];
-  notes: string;
 }
 
-const OptimalTimeCard = ({ symbol, bestDays, bestHours, notes }: OptimalTimeCardProps) => (
+const OptimalTimeCard = ({ symbol, bestDays, bestHours }: OptimalTimeCardProps) => (
   <div className="flex-shrink-0 w-72 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 border border-blue-200">
     <div className="flex items-center mb-3">
       <span className="inline-block  trading text-lg font-semibold  rounded-xl">
@@ -146,6 +152,6 @@ const EmptyState = () => (
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
     <h3 className="mt-2 text-sm font-medium text-gray-900">No optimal times found</h3>
-    <p className="mt-1 text-sm text-gray-500">We couldn't find any optimal trading times for your account.</p>
+    <p className="mt-1 text-sm text-gray-500">We couldn&apos;t find any optimal trading times for your account.</p>
   </div>
 );

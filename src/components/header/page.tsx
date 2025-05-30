@@ -33,8 +33,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? "bg-gradient-to-r from-green-500 to-green-700 shadow-lg"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg"
+
           : "bg-white"
         }`}
     >
@@ -65,8 +67,13 @@ export default function Header() {
             <a className="links flex flex-row" href="/producttour">
               Product Tour <TbExternalLink className="my-icon11" />
             </a>
+            <a className="links flex flex-row" href="/backteste">
+              Backtester
+              <TbExternalLink className="my-icon11" />
+
             <a className="links flex flex-row" href="/ai">
               Ai Optimiser <TbExternalLink className="my-icon11" />
+
             </a>
             <a className="links flex flex-row" href="/contactus">
               Contact Us <TbExternalLink className="my-icon11" />
@@ -89,6 +96,10 @@ export default function Header() {
           </a>
           <a className="links flex flex-row" href="/producttour">
             Product tour <TbExternalLink className="my-icon11" />
+          </a>
+          <a className="links flex flex-row" href="/backtest">
+            Backtester
+            <TbExternalLink className="my-icon11" />
           </a>
           <a className="links flex flex-row" href="/contactus">
             Contact us <TbExternalLink className="my-icon11" />

@@ -116,7 +116,7 @@ export default function AIOnCenter() {
   };
 
   useEffect(() => {
-    fetch('/api/cards')
+    fetch('http://127.0.0.1:8000/optimalTradeTime')
       .then((res) => res.json())
       .then((data) => setCards(data.cards || []));
   }, []);

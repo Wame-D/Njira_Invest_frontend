@@ -11,6 +11,7 @@ import React from 'react';
 // import AiPage from "../components/chatot/page";
 import Footer from "../components/footer/page";
 import BeginTrading from "../components/begintrading/page";
+import OptimalDays from './optimal_days/page';
 
 export default function Home() {
 
@@ -69,9 +70,11 @@ export default function Home() {
       <div className=" items-center justify-items-center h-fit w-full ">
         <Header />
         <TopSection />
+        <div className='w-full overflow-hidden px-8 h-fit bg-white py-4'>
+          <OptimalDays />
+        </div>
         <Services />
         <div id="how-it-work">
-
           <HowItWork />
           <BeginTrading />
         </div>

@@ -1,14 +1,13 @@
 import Header from "../../components/header/page";
 import { FaCheckCircle, FaChartLine, FaUsers } from "react-icons/fa";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import Footer from "../../components/footer/page";
 
 export default function About() {
   const members = [
-    { name: "Peter Kayira", position: "Front-End Developer", image: "https://scontent.fblz2-1.fna.fbcdn.net/v/t39.30808-6/460370590_17985617756721539_7305534897771603808_n.jpg?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFT5EXillj2O0PYInLqt3wFY4MeacJirB1jgx5pwmKsHTOeRcnv4rNJdkNsfxf0Lk9Fpo0OywwkOin36FBAUHeY&_nc_ohc=Z7Lz0BS4mlcQ7kNvgGvvlvO&_nc_zt=23&_nc_ht=scontent.fblz2-1.fna&_nc_gid=AKo1IPzutvFn6RYLbDXQgJK&oh=00_AYBqhzigo96tCFY48UmHixDFk3qZYHC5TRPsRYFLsJZOrA&oe=67B9F09B" },
-    { name: "Richard Mlambuzi", position: "Trading Strategist", image: "https://avatars.githubusercontent.com/u/95221011?v=4" },
-    { name: "Daniel Wame", position: "Market Analyst", image: "https://avatars.githubusercontent.com/u/119085857?v=4" },
-    { name: "Melvin Kalidozo", position: "Trade Execution Specialist", image: "https://scontent.fblz2-1.fna.fbcdn.net/v/t39.30808-6/462695211_2592965444207395_5286495986513675172_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGjFMce3hsLDMNFeCpNI7l3LmthFglfzY0ua2EWCV_NjZseAGNSeVU3RqVq7rbAcqf-qmBtFEgkfb8UUXbeb3PO&_nc_ohc=w9ixIDtdlyMQ7kNvgFsO4tn&_nc_zt=23&_nc_ht=scontent.fblz2-1.fna&_nc_gid=A9aamcndbYpz_XpxMtP2-en&oh=00_AYA_h9g_0rzjkf5FiMf7O-1Pd5qUVv6aGiWPCgsAL1qSMg&oe=67B9E18A" },
+    { name: "Peter Kayira", position: "Front-End Developer", image: "/images/Peter.jpg" },
+    { name: "Richard Mlambuzi", position: "Trading Strategist", image: "/images/Richard.jpg" },
+    { name: "Daniel Wame", position: "Market Analyst", image: "/images/Daniel.jpg" },
+    { name: "Melvin Kalidozo", position: "Trade Execution Specialist", image: "/images/Melvin.jpg" },
   ];
 
   return (
@@ -67,48 +66,51 @@ export default function About() {
         </div>
       </div>
 
-     {/* Media Section */}
-<div className="flex flex-col md:flex-row items-center justify-center p-4 mt-10">
-  {/* Image Section */}
-  <div className="w-full md:w-[40vw] h-64 md:h-[50vh] bg-black m-4 rounded-lg overflow-hidden">
-    <img
-      src="https://nielseniq.com/wp-content/uploads/sites/4/2021/12/GettyImages-887882750-1201x801-d21b45d.jpg"
-      alt="Forex Trading Bot"
-      className="w-full h-full object-cover rounded-lg"
-    />
-  </div>
+      {/* Media Section */}
+      <div className="flex flex-col md:flex-row items-center justify-center p-4 mt-10">
+        {/* Image Section */}
+        <div className="w-full md:w-[40vw] h-64 md:h-[50vh] bg-black m-4 rounded-lg overflow-hidden">
+          <img
+            src="https://nielseniq.com/wp-content/uploads/sites/4/2021/12/GettyImages-887882750-1201x801-d21b45d.jpg"
+            alt="Forex Trading Bot"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
 
-  {/* Video Section */}
-  <div className="w-full md:w-[40vw] h-64 md:h-[40vh] bg-stone-600 rounded-lg m-4 md:ml-[-10vh] overflow-hidden border-4 border-white">
-    <iframe
-      src="https://www.youtube.com/embed/5iEHsRja8u0?autoplay=1&loop=1&mute=1&playlist=5iEHsRja8u0"
-      className="w-full h-full object-cover rounded-lg"
-      allow="autoplay"
-    />
-  </div>
-</div>
+        {/* Video Section */}
+        <div className="w-full md:w-[40vw] h-64 md:h-[40vh] bg-stone-600 rounded-lg m-4 md:ml-[-10vh] overflow-hidden border-4 border-white">
+          <video
+            src="/videos/About.mp4"
+            className="w-full h-full object-cover rounded-lg"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </div>
+      </div>
 
-      {/* Team Section */}
-      <div className="bg-stone-100 py-20">
+      {/* Team Section with Sky Blue Chip Backgrounds */}
+      <div className="bg-stone-100 py-20 px-4">
         <h1 className="font-bold text-2xl text-center">
           <span className="text-sky-500 font-bold text-2xl">Team</span> Members
         </h1>
         <p className="mt-4 mb-10 text-center">Meet the experts behind our AI-powered trading bot, dedicated to innovation and success in Forex trading.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {members.map((member, index) => (
-            <div key={index} className="bg-white rounded-2xl overflow-hidden text-center">
-              <div className="relative">
-                <img src={member.image} alt={member.name} className="w-full h-48 object-cover" />
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-sky-500 text-white p-3 rounded-t-2xl rounded-b-2xl w-60 text-center shadow-lg">
-                  <div className="font-bold">{member.name}</div>
-                  <div>{member.position}</div>
-                </div>
+            <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-64 w-full overflow-hidden">
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
-              <div className="flex justify-center gap-7 p-3 text-gray-500 mt-10">
-                <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-                <FaTwitter className="hover:text-blue-400 cursor-pointer" />
-                <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
-                <FaInstagram className="hover:text-pink-600 cursor-pointer" />
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-lg mb-2">{member.name}</h3>
+                <span className="inline-block bg-sky-100 text-sky-800 text-xs px-3 py-1 rounded-full">
+                  {member.position}
+                </span>
               </div>
             </div>
           ))}

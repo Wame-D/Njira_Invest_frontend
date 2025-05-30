@@ -7,7 +7,7 @@ import './charts.css';
 
 const SupersetDashboard = () => {
   const supersetDomain = "https://superset.xhed.net";
-  const embeddedDashboardId = "81429aff-ef7f-45a7-b31b-2eb06d86c1ce";
+  const embeddedDashboardId = "be72237a-a860-4253-bf78-f4e33544ebc1";
 
   const fetchGuestToken = async () => {
 
@@ -40,25 +40,41 @@ const SupersetDashboard = () => {
             console.log("Fetched guest token:", guestToken); // Debug the token
 
             // Embed the dashboard with the guest token
+            // await embedDashboard({
+            //   id: embeddedDashboardId,
+            //   supersetDomain,
+            //   mountPoint,
+            //   fetchGuestToken: () => {
+            //     console.log("Fetching guest token for embedDashboard");
+            //     console.log("Guest Token:", guestToken); // Log the token for debugging
+            //     return guestToken;
+            //   },
+            //   dashboardUiConfig: {
+            //     hideTitle: true,
+            //     hideChartControls: true,
+            //     filters: {
+            //       expanded: false,
+              
+            //     },
+            //   },
+            //   iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
+            // } 
             await embedDashboard({
               id: embeddedDashboardId,
               supersetDomain,
               mountPoint,
-              fetchGuestToken: () => {
-                console.log("Fetching guest token for embedDashboard");
-                console.log("Guest Token:", guestToken); // Log the token for debugging
-                return guestToken;
-              },
+              fetchGuestToken: fetchGuestToken,  // ✅ Pass the actual function
               dashboardUiConfig: {
                 hideTitle: true,
                 hideChartControls: true,
                 filters: {
                   expanded: false,
-              
                 },
               },
               iframeSandboxExtras: ['allow-top-navigation', 'allow-popups-to-escape-sandbox']
             } as unknown as EmbedDashboardParams);
+           
+            // as unknown as EmbedDashboardParams);
           } catch (error) {
             console.error('Error initializing dashboard:', error);
           }

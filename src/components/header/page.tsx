@@ -36,8 +36,9 @@ export default function Header() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg"
+
           : "bg-white"
-      }`}
+        }`}
     >
       <div className="px-[5%] header">
         <h1 className="logo">
@@ -69,6 +70,10 @@ export default function Header() {
             <a className="links flex flex-row" href="/backteste">
               Backtester
               <TbExternalLink className="my-icon11" />
+
+            <a className="links flex flex-row" href="/ai">
+              Ai Optimiser <TbExternalLink className="my-icon11" />
+
             </a>
             <a className="links flex flex-row" href="/contactus">
               Contact Us <TbExternalLink className="my-icon11" />
@@ -79,12 +84,15 @@ export default function Header() {
           </div>
         )}
 
-        <div className="nav-links">
+        <div className='nav-links'>
           <a className="links flex flex-row" href="/">
             Home <TbExternalLink className="my-icon11" />
           </a>
           <a className="links flex flex-row" href="https://charts.xhed.net/">
             Charts <TbExternalLink className="my-icon11" />
+          </a>
+          <a className="links flex flex-row" href="/ai">
+            Ai Optimiser<TbExternalLink className="my-icon11" />
           </a>
           <a className="links flex flex-row" href="/producttour">
             Product tour <TbExternalLink className="my-icon11" />

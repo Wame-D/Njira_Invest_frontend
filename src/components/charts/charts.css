@@ -81,3 +81,17 @@ iframe {
   box-sizing: border-box;
   flex-shrink: 0;
 }
+
+/* removing filter left bar button */
+#app > div > div.css-z133oh > div > div > div.open.css-1bb8poa > span.anticon.css-1ftkxmp,
+#app > div > div.css-z133oh > div > div > div.open.css-1bb8poa{
+  display: none !important;
+  width: 0 !important;
+}
+
+/* removing filter svg icons */
+#app > div > div.css-z133oh > div > div > div.open.css-1bb8poa > span.anticon.css-fa1m73 > svg,
+#app > div > div.css-z133oh > div > div > div.open.css-1bb8poa > span.anticon.css-1ftkxmp > svg{
+  display: none !important;
+  font-size: 0 !important;
+}

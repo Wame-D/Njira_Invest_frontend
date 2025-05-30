@@ -1,47 +1,32 @@
 'use client';
-import React, { useEffect } from 'react';
+import Head from 'next/head';
 import Header from "../components/header/page";
 import TopSection from "../components/topSection/page";
 import Services from "../components/services/page";
 import HowItWork from "../components/how/page";
+import React from 'react';
+// import { FaWhatsapp } from 'react-icons/fa';
+// import { MdChat } from 'react-icons/md';
+// import Link from 'next/link';
+// import AiPage from "../components/chatot/page";
 import Footer from "../components/footer/page";
 import BeginTrading from "../components/begintrading/page";
+import OptimalDays from './optimal_days/page';
 
-// Note: In Next.js App Router, use metadata.ts instead of Head
 export default function Home() {
-  // Add smooth scrolling behavior
-  useEffect(() => {
-    // Enable smooth scrolling
-    document.documentElement.style.scrollBehavior = 'smooth';
-    
-    // Handle anchor link clicks for smooth scrolling
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a[href^="#"]');
-      
-      if (anchor) {
-        e.preventDefault();
-        const id = anchor.getAttribute('href')?.substring(1);
-        if (id) {
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      }
-    };
 
-    document.addEventListener('click', handleAnchorClick);
-    
-    return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
-      document.removeEventListener('click', handleAnchorClick);
-    };
-  }, []);
+  // const [showChatbot, setShowChatbot] = useState(false);
 
+  // const openChatbot = () => {
+  //   setShowChatbot(true);
+  // };
+
+  // const closeChatbot = () => {
+  //   setShowChatbot(false);
+  // };
   return (
     <>
-      {/* JSON-LD for SEO */}
+      {/* SEO Configuration */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -71,28 +56,31 @@ export default function Home() {
           }),
         }}
       />
-      
-      <main className="w-full h-fit">
+      <Head>
+        <title>FX-auto-malawi</title>
+        <meta
+          name="description"
+          content="Trade forex automatically with Xhed FX. Our AI-powered app places trades for you using deep market analysis. Trusted by traders globally."
+        />
+        <meta name="keywords" content="xhed fx, forex trading, automated forex trading, fx auto, forex Malawi, forex robot" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Xhed Technologies" />
+        <link rel="canonical" href="https://forex.xhed.net" />
+      </Head>
+      <div className=" items-center justify-items-center h-fit w-full ">
         <Header />
-        
-        <section id="top-section">
-          <TopSection />
-        </section>
-        
-        <section id="services">
-          <Services />
-        </section>
-        
-        <section id="how-it-work">
+        <TopSection />
+        <div className='w-full overflow-hidden px-8 h-fit bg-white py-4'>
+          <OptimalDays />
+        </div>
+        <Services />
+        <div id="how-it-work">
           <HowItWork />
-        </section>
-        
-        <section id="begin-trading">
           <BeginTrading />
-        </section>
-        
-        <Footer />
-      </main>
+        </div>
+      </div>
+
+      <Footer />
     </>
   );
 }

@@ -477,7 +477,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <NotificationCenter target_role={'admin'} />
+            <NotificationCenter />
           </div>
         </div>
 
